@@ -2,7 +2,7 @@ import React from "react";
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "../styles/Navbar.css";
-import "../styles/main.css";
+import "../styles/Main.css";
 
 
 function Navbar() {
