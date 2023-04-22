@@ -3,11 +3,11 @@ import { StyleSheet, View, FlatList, Image, Text } from 'react-native';
 
 const Feed = () => {
     const data = [
-        { id: 1, imageUrl: 'https://picsum.photos/id/237/200/300' },
+        { id: 1, imageUrl: 'https://picsum.photos/id/756/200/300' },
         { id: 2, imageUrl: 'https://picsum.photos/id/238/200/300' },
-        { id: 3, imageUrl: 'https://picsum.photos/id/239/200/300' },
-        { id: 4, imageUrl: 'https://picsum.photos/id/240/200/300' },
-        { id: 5, imageUrl: 'https://picsum.photos/id/241/200/300' },
+        { id: 3, imageUrl: 'https://picsum.photos/id/243/200/300' },
+        { id: 4, imageUrl: 'https://picsum.photos/id/154/200/300' },
+        { id: 5, imageUrl: 'https://picsum.photos/id/242/200/300' },
     ];
 
     const renderItem = ({ item }) => (
@@ -19,6 +19,7 @@ const Feed = () => {
     );
 
     return (
+
         <View style={styles.container}>
             <FlatList
                 data={data}
@@ -33,10 +34,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
+        width: 250,
     },
     card: {
         margin: 16,
-        backgroundColor: '#fff',
+        backgroundColor: '#aee3a4',
         borderRadius: 8,
         shadowColor: '#000',
         shadowOffset: {
@@ -46,12 +48,15 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 5,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
     },
     image: {
-        width: '100%',
+        width: 200,
         height: 200,
-        borderTopLeftRadius: 8,
-        borderTopRightRadius: 8,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
     },
     title: {
         fontSize: 18,
