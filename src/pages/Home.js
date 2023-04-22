@@ -1,21 +1,17 @@
 import React from "react";
-// import Announcement from "../components/Announcement";
-// import Categories from "../components/Categories";
-// import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-// import Newsletter from "../components/Newsletter";
+import Feed from "../components/Feed";
+// import Categories from "../components/Categories";
 // import Products from "../components/Products";
-// import Slider from "../components/Slider";
+// import Footer from "../components/Footer";
 
 const Home = () => {
     return (
         <div>
-            {/*<Announcement />*/}
             <Navbar />
-            {/*<Slider />*/}
+            <Feed />
             {/*<Categories />*/}
             {/*<Products/>*/}
-            {/*<Newsletter/>*/}
             {/*<Footer/>*/}
         </div>
     );
