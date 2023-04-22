@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BiHome } from "react-icons/bi";
 import { CiShoppingCart, CiSquarePlus } from "react-icons/ci";
 import { HiMagnifyingGlass } from "react-icons/hi2";
+import { HiOutlineUserCircle } from "react-icons/hi";
 import "../styles/Footer.css";
 
 const BottomNavbar = () => {
@@ -17,29 +18,31 @@ const BottomNavbar = () => {
                 className={`nav-item ${active === "home" ? "active" : ""}`}
                 onClick={() => handleNavClick("home")}
             >
-                <BiHome size={24}/>
-                <p>Home</p>
+                <BiHome size={32}/>
             </div>
             <div
                 className={`nav-item ${active === "search" ? "active" : ""}`}
                 onClick={() => handleNavClick("search")}
             >
-                <HiMagnifyingGlass size={24}/>
-                <p>Search</p>
+                <HiMagnifyingGlass size={32}/>
             </div>
             <div
                 className={`nav-item ${active === "add" ? "active" : ""}`}
                 onClick={() => handleNavClick("add")}
             >
-                <CiSquarePlus size={24}/>
-                <p>Add</p>
+                <CiSquarePlus size={32}/>
             </div>
             <div
-                className={`nav-item ${active === "heart" ? "active" : ""}`}
-                onClick={() => handleNavClick("heart")}
+                className={`nav-item ${active === "cart" ? "active" : ""}`}
+                onClick={() => handleNavClick("cart")}
             >
-                <CiShoppingCart size={24}/>
-                <p>CiShoppingCart</p>
+                <CiShoppingCart size={32}/>
+            </div>
+            <div
+                className={`nav-item ${active === "user" ? "active" : ""}`}
+                onClick={() => handleNavClick("user")}
+            >
+                <HiOutlineUserCircle size={32}/>
             </div>
         </div>
     );

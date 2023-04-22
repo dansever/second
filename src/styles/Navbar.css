@@ -5,12 +5,6 @@
     font-family: 'Urbanist', sans-serif;;
 }
 
-:root {
-    --mainColor: #638f63;
-    --mainColorLight: #7aa476;
-    --secondaryColor: #1c6cc4;
-    --textColor: #eee;
-}
 
 header {
     display: flex;
@@ -18,8 +12,8 @@ header {
     justify-content: space-between;
     height: 80px;
     padding: 0 2rem;
-    background-color: var(--mainColor);
-    color: var(--textColor);
+    background-color: var(--primary_green);
+    color: var(--white);
 }
 
 #icon {
@@ -30,12 +24,14 @@ header {
 nav a {
     font-size: 1.5rem;
     margin: 0 3rem;
-    color: var(--textColor);
+    color: var(--text_color);
+    font-size: 24px;
     text-decoration: none;
 }
 
 nav a:hover {
-    color: var(--secondaryColor);
+    color: var(--text_color);
+    font-weight: bold;
 }
 
 header .nav-btn {
@@ -44,7 +40,7 @@ header .nav-btn {
     background: transparent;
     border: none;
     outline: none;
-    color: var(--textColor);
+    color: var(--white);
     visibility: hidden;
     opacity: 0;
     font-size: 1.8rem;
@@ -73,7 +69,7 @@ nav {
         align-items: center;
         justify-content: center;
         gap: 1.5rem;
-        background-color: var(--mainColor);
+        background-color: var(--primary_green);
         transition: 1s;
     }
 
