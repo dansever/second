@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import styles from '../styles/UploadItem.css';
-
+import '../styles/UploadItem.css';
+import { AiOutlineArrowLeft } from "react-icons/ai";
+import { BsImages } from "react-icons/bs";
 
 const ItemForm = () => {
     const [title, setTitle] = useState("");
@@ -18,8 +19,17 @@ const ItemForm = () => {
     };
     return (
         <div>
-            <h1 className="Title">Upload</h1>
+
+            <div className="top-bar">
+                <AiOutlineArrowLeft size="24px"/>
+                <h1 id="page-title">Upload</h1>
+            </div>
+
             <div className="form-box">
+                <div className="photo-box">
+                    Select images from gallery
+                    <BsImages size="50px"/>
+                </div>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="title">Title:</label>
                     <input
@@ -71,13 +81,14 @@ const ItemForm = () => {
                     />
                     <label htmlFor="price">Price (in Tokens):</label>
                     <input
-                        type="text"
+                        type="number"
                         id="price"
                         value={price}
                         onChange={(event) => setPrice(event.target.value)}
                         required
                     />
-                    <button type="submit">Add to your shop</button>
+                    <button className="button" type="submit">Add to your shop</button>
+
                 </form>
             </div>
         </div>
