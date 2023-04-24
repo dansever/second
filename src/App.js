@@ -1,5 +1,6 @@
 import Home from "./pages/Home";
-import UploadItem from "./pages/UploadItem";
+import ItemUpload from "./pages/ItemUpload";
+import ItemCard from "./components/Card";
 
 const App = () => {
   return <Home/>;
