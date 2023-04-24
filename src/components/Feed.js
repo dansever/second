@@ -2,13 +2,13 @@ import React from 'react';
 import { StyleSheet, View, FlatList, Image, Text } from 'react-native';
 
 const Feed = () => {
-    const data = [
-        { id: 1, imageUrl: 'https://picsum.photos/id/756/200/300' },
-        { id: 2, imageUrl: 'https://picsum.photos/id/238/200/300' },
-        { id: 3, imageUrl: 'https://picsum.photos/id/243/200/300' },
-        { id: 4, imageUrl: 'https://picsum.photos/id/154/200/300' },
-        { id: 5, imageUrl: 'https://picsum.photos/id/242/200/300' },
-    ];
+    // const data = [
+    //     { id: 1, imageUrl: 'https://picsum.photos/id/756/200/300' },
+    //     { id: 2, imageUrl: 'https://picsum.photos/id/238/200/300' },
+    //     { id: 3, imageUrl: 'https://picsum.photos/id/243/200/300' },
+    //     { id: 4, imageUrl: 'https://picsum.photos/id/154/200/300' },
+    //     { id: 5, imageUrl: 'https://picsum.photos/id/242/200/300' },
+    // ];
 
     const renderItem = ({ item }) => (
         <View style={styles.card}>
