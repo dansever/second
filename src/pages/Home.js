@@ -1,17 +1,16 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import Feed from "../components/Feed";
+import MainFeed from "../components/MainFeed";
 import Footer from "../components/Footer";
+import ItemPage from "./ItemPage";
 
 const Home = () => {
     return (
         <div>
             <Navbar />
-            <Feed />
+            <ItemPage />
             <Footer />
-            {/*<Categories />*/}
-            {/*<Products/>*/}
-            {/*<Footer/>*/}
+
         </div>
     );
 };

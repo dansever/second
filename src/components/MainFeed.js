@@ -8,6 +8,9 @@ const App = () => (
             <ItemCard/>
             <ItemCard/>
             <ItemCard/>
+            <ItemCard/>
+            <ItemCard/>
+            <ItemCard/>
         </Col>
     </Row>
 );

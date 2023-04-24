@@ -1,0 +1,13 @@
+.item-container {
+    height: 400px;
+}
+
+.item-image {
+    width: 250px;
+    height: 250px;
+    border-radius: 25px;
+}
+
+.Descriptions.Item {
+    content: "strong";
+}
