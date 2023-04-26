@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
-import { PlusOutlined } from '@ant-design/icons';
-import '../styles/Main.css';
+import {PlusOutlined, StarOutlined} from '@ant-design/icons';
+import '../../styles/Main.css';
 import './ProductUploadForm.css';
 import {    Button, Form, Input, InputNumber, Select, Upload    } from 'antd';
 import styled from 'styled-components'
+
+const Container = styled.div`
+    background-color: var(--light_green);
+`;
 
 const normFile = (e) => {
     if (Array.isArray(e)) {
@@ -12,19 +16,6 @@ const normFile = (e) => {
     }
     return e?.fileList;
 };
-
-const FormItem = styled.div`
-     font-weight: bold;
-`;
-function Header() {
-
-    return (
-        <div className="top-bar">
-            <AiOutlineArrowLeft size="24px"/>
-            <h1>Upload</h1>
-        </div>
-    )
-}
 function UploadImage() {
     return (
         <Form.Item label="Upload"
@@ -33,11 +24,7 @@ function UploadImage() {
             <Upload action="/upload.do" listType="picture-card">
                 <div>
                     <PlusOutlined />
-                    <div
-                        style={{
-                            marginTop: 8,
-                        }}
-                    >
+                    <div style={{ marginTop: 8}}>
                         Select Image from Gallery
                     </div>
                 </div>
@@ -48,7 +35,7 @@ function UploadImage() {
 function ProductTitle() {
     return (
         <Form.Item label="Title">
-            <Input />
+            <Input style/>
         </Form.Item>
     )
 }
@@ -111,6 +98,8 @@ function ProductCondition() {
 function ProductPrice() {
     return (
         <Form.Item label="Price (in tokens)">
+            <StarOutlined className={"StarOutlined_icon"}/>
+
             <InputNumber />
         </Form.Item>
     )
@@ -123,24 +112,22 @@ function SubmitButton() {
     )
 }
 
-function ItemForm() {
+function ProductUploadForm() {
     return (
-        <div>
-            <Header/>
-            <div className="form-container">
-                <Form>
-                    <UploadImage/>
-                    <ProductTitle/>
-                    <ProductType/>
-                    <ProductSize/>
-                    <ProductColor/>
-                    <ProductBrand/>
-                    <ProductCondition/>
-                    <ProductPrice/>
-                    <SubmitButton/>
-                </Form>
-            </div>
-        </div>
+        <Container>
+            {/*/> className="form-container">*/}
+            <Form>
+                <UploadImage/>
+                <ProductTitle/>
+                <ProductType/>
+                <ProductSize/>
+                <ProductColor/>
+                <ProductBrand/>
+                <ProductCondition/>
+                <ProductPrice/>
+                <SubmitButton/>
+            </Form>
+        </Container>
     );
 };
-export default ItemForm;
+export default ProductUploadForm;

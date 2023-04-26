@@ -1,12 +1,12 @@
 import React from 'react';
-import styled from "styled-components"
 import "../styles/ProductPage.css"
 import "../styles/Main.css"
-import Footer from "../components/Footer/Footer";
-import { Descriptions } from 'antd';
+import styled from "styled-components"
 import { StarOutlined, ArrowLeftOutlined } from '@ant-design/icons';
+import { Descriptions } from 'antd';
 import profile_pic from "../assets/images/generic-profile-pic.jpg";
 import product_pic from "../assets/images/old army shows.jpg";
+import Footer from "../components/Footer/Footer";
 import AddToCart from "../components/AddToCart/AddToCart";
 
 

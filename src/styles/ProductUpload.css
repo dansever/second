@@ -1,0 +1,11 @@
+.ArrowLeftOutlined {
+    scale: 250%;
+    margin-left: 10px;
+    background-color: var(--primary_green);
+    color: var(--text_color);
+}
+
+.ArrowLeftOutlined:hover {
+    scale: 275%;
+    cursor: pointer;
+}
