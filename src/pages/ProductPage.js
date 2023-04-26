@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from "styled-components"
 import "../styles/ProductPage.css"
 import "../styles/Main.css"
 import Footer from "../components/Footer/Footer";
 import { Descriptions } from 'antd';
-import { StarOutlined, ArrowLeftOutlined, SearchOutlined} from '@ant-design/icons';
-import { Button } from 'antd';
+import { StarOutlined, ArrowLeftOutlined } from '@ant-design/icons';
 import profile_pic from "../assets/images/generic-profile-pic.jpg";
 import product_pic from "../assets/images/old army shows.jpg";
 import AddToCart from "../components/AddToCart/AddToCart";
