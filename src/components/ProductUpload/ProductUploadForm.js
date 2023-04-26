@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { PlusOutlined } from '@ant-design/icons';
-// import '../styles/Main.css';
-import '../styles/ItemForm.css';
+import '../styles/Main.css';
+import './ProductUploadForm.css';
 import {    Button, Form, Input, InputNumber, Select, Upload    } from 'antd';
 import styled from 'styled-components'
 
@@ -54,15 +54,15 @@ function ProductTitle() {
 }
 function ProductType() {
     return (
-    <Form.Item label="Type">
-        <Select>
-            <Select.Option value="Swimwear">Swimwear</Select.Option>
-            <Select.Option value="Dress">Dress</Select.Option>
-            <Select.Option value="Shirt">Shirt</Select.Option>
-            <Select.Option value="Pants">Pants</Select.Option>
-            <Select.Option value="Shoes">Shoes</Select.Option>
-        </Select>
-    </Form.Item>
+        <Form.Item label="Type">
+            <Select>
+                <Select.Option value="Swimwear">Swimwear</Select.Option>
+                <Select.Option value="Dress">Dress</Select.Option>
+                <Select.Option value="Shirt">Shirt</Select.Option>
+                <Select.Option value="Pants">Pants</Select.Option>
+                <Select.Option value="Shoes">Shoes</Select.Option>
+            </Select>
+        </Form.Item>
     )
 }
 function ProductSize() {
@@ -122,6 +122,7 @@ function SubmitButton() {
         </Form.Item>
     )
 }
+
 function ItemForm() {
     return (
         <div>

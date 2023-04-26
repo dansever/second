@@ -1,10 +1,10 @@
 import React from "react";
-import ItemForm from "../components/ItemForm";
+import ProductUploadForm from "../components/ProductUpload/ProductUploadForm";
 
 const ItemUpload = () => {
     return (
         <div>
-            <ItemForm/>
+            <ProductUploadForm/>
         </div>
     );
 };
