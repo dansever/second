@@ -1,13 +1,42 @@
-.item-container {
-    height: 400px;
+/*.item-container {*/
+/*    height: 400px;*/
+/*}*/
+
+/*.item-image {*/
+/*    width: 250px;*/
+/*    height: 250px;*/
+/*    border-radius: 25px;*/
+/*}*/
+
+/* Container needed to position the button. Adjust the width as needed */
+.container {
+    position: relative;
+    width: 50%;
 }
 
-.item-image {
-    width: 250px;
-    height: 250px;
+/* Make the image responsive */
+.container img {
+    width: 100%;
+    height: auto;
     border-radius: 25px;
 }
 
-.Descriptions.Item {
-    content: "strong";
+/* Style the button and place it in the middle of the container/image */
+.container .like-btn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #e8e8e8;
+    color: #053d50;
+    font-size: 24px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.container .btn:hover {
+    background-color: black;
 }
