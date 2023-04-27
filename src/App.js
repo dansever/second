@@ -1,10 +1,19 @@
+import React from "react";
+import Card from "./components/Card";
 import Home from "./pages/Home";
-import ItemUpload from "./pages/ItemUpload";
-import ItemCard from "./components/Card";
-import MainFeed from "./components/MainFeed";
+import UserProfile from "./pages/UserProfile";
+import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
+import Header_Back_Arrow, { Header_Settings } from "./components/Header";
+import MyProfile from "./pages/MyProfile";
+import Upload from "./pages/Upload";
+import Product from "./pages/Product";
+import ProductPage from "./pages/Product";
 
-const App = () => {
-  return <MainFeed/>;
-};
 
-export default App;
+export default function App() {
+  return (
+      <BrowserRouter>
+         <ProductPage/>
+      </BrowserRouter>
+  )
+}

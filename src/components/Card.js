@@ -1,3 +1,6 @@
+import React from "react";
+import "../styles/Main.css";
+
 import { Card } from 'antd';
 const { Meta } = Card;
 const ItemCard = () => (

@@ -1,0 +1,28 @@
+.bottom-navbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--secondary_green);
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.25);
+    padding: 16px;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--primary_green);
+    stroke-width: 60;
+}
+
+.nav-item:hover {
+    scale: 125%;
+    cursor: pointer;
+}
+
+.nav-item.active {
+    color: var(--text_color);
+    scale: 125%;
+}

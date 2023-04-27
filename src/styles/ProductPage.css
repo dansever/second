@@ -1,0 +1,25 @@
+.ArrowLeftOutlined {
+    scale: 250%;
+    margin-left: 10px;
+    background-color: var(--primary_green);
+    color: var(--text_color);
+}
+
+.ArrowLeftOutlined:hover {
+    scale: 275%;
+    cursor: pointer;
+}
+
+.seller_name_and_rating {
+    display: flex;
+    flex-direction: column;
+}
+
+.seller_rating {
+    display: flex;
+    flex-direction: row;
+}
+
+.StarOutlined_icon {
+    font-size: 24px;
+}
