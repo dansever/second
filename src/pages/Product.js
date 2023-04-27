@@ -7,7 +7,7 @@ import { Descriptions } from 'antd';
 import profile_pic from "../assets/images/generic-profile-pic.jpg";
 import product_pic from "../assets/images/Women's Red High Heels.jpg";
 import Footer from "../components/Footer/Footer";
-import Header_Back_Arrow from "../components/Header";
+import Header_Back_Arrow from "../components/Header/Header";
 import {Button} from "../components/AddButton";
 import { Divider } from 'antd';
 import second_token from "../assets/images/second-token.png";

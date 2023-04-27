@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import "../styles/Main.css"
+import "../styles/Index.css"
 
 export  const Button = styled.button`
   background-color: var(--dark_green);

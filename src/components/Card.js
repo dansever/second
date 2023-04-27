@@ -1,46 +1,7 @@
 import { Card } from 'antd';
 import "../styles/Card.css"
-// import styled from "styled-components"
-//
-// import Coin from "../assets/images/coin.png"
-// import Jacket from "../assets/images/flower jacket.jpg"
 
 const { Meta } = Card;
-//
-// const Card = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   border-radius: 8px;
-// `
-//
-// const Image = styled.image``
-//
-// const CoinImage = styled.image`
-//   max-width: 50px;
-// `
-//
-// const RowWrapper = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-//   justify-content: center;
-// `
-//
-// const ColWrapper = styled.div`
-//   display: flex;
-//   flex-direction: col;
-//   align-items: center;
-//   justify-content: center;
-// `
-//
-// const Title = styled.div`
-//   font-size: 18px;
-// `
-
-
-
 
 const ItemCard = (src,) => (
     <Card className="card-item"
@@ -66,16 +27,5 @@ const ItemCard = (src,) => (
             </div>
         </div>
     </Card>
-    //
-    // <Card>
-    //     <Image src={Jacket} />
-    //     <RowWrapper>
-    //         <CoinImage src={Coin}/>
-    //         <ColWrapper>
-    //             <Title>Hello</Title>
-    //             <Title>hello</Title>
-    //         </ColWrapper>
-    //     </RowWrapper>
-    // </Card>
 );
 export default ItemCard;
