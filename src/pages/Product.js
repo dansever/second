@@ -13,8 +13,6 @@ import { Divider } from 'antd';
 import second_token from "../assets/images/second-token.png";
 
 
-
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -104,7 +102,7 @@ function AddToCart() {
 }
 
 
-export default function ProductPage () {
+export default function Product () {
     return (
         <div style={{display:"flex", flexDirection:"column"}}>
             <Header_Back_Arrow/>
@@ -118,7 +116,6 @@ export default function ProductPage () {
                     borderColor: 'black' }}/>
                 <AddToCart/>
             </Container>
-            <Footer/>
         </div>
     );
 };

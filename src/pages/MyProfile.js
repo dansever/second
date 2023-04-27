@@ -24,7 +24,6 @@ export default function MyProfile() {
             <Container>
                 <PageTitle>My Profile</PageTitle>
             </Container>
-            <Footer/>
         </div>
     )
 }
