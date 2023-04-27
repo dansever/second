@@ -1,18 +1,19 @@
 import React from "react";
-import {PlusOutlined, StarOutlined} from '@ant-design/icons';
+import { PlusOutlined } from '@ant-design/icons';
 import '../../styles/Main.css';
 import './ProductUploadForm.css';
 import { Form, Input, InputNumber, Select, Upload } from 'antd';
 import styled from 'styled-components'
 import { Button } from "../AddButton";
+import second_token from "../../assets/images/second-token.png"
+
 
 const Container = styled.div`
   background-color: var(--secondary_green);
-  padding: 0 20px 0 20px;
-  //display: flex;
-  //flex-direction: column;
-  //justify-content: center;
-  align-items: center;`;
+  padding: 0 20px 50px 20px;
+  display: flex;
+  flex-direction: column;
+`;
 
 const normFile = (e) => {
     if (Array.isArray(e)) {
@@ -24,7 +25,8 @@ function UploadImage() {
     return (
         <Form.Item label="Upload"
                    valuePropName="fileList"
-                   getValueFromEvent={normFile}>
+                   getValueFromEvent={normFile}
+                   style={{display: "flex", justifyContent: "center"}}>
             <Upload action="/upload.do" listType="picture-card">
                 <div>
                     <PlusOutlined />
@@ -36,14 +38,14 @@ function UploadImage() {
         </Form.Item>
     )
 }
-function ProductTitle() {
+function Title() {
     return (
         <Form.Item label="Title">
             <Input style/>
         </Form.Item>
     )
 }
-function ProductType() {
+function Type() {
     return (
         <Form.Item label="Type">
             <Select>
@@ -56,7 +58,7 @@ function ProductType() {
         </Form.Item>
     )
 }
-function ProductSize() {
+function Size() {
     return (
         <Form.Item label="Size">
             <Select>
@@ -69,7 +71,7 @@ function ProductSize() {
         </Form.Item>
     )
 }
-function ProductColor() {
+function Color() {
     return (
         <Form.Item label="Color">
             <Select>
@@ -80,14 +82,14 @@ function ProductColor() {
         </Form.Item>
     )
 }
-function ProductBrand() {
+function Brand() {
     return (
         <Form.Item label="Brand">
             <Input />
         </Form.Item>
     )
 }
-function ProductCondition() {
+function Condition() {
     return (
         <Form.Item label="Condition">
             <Select>
@@ -99,36 +101,44 @@ function ProductCondition() {
         </Form.Item>
     )
 }
-function ProductPrice() {
+function Price() {
     return (
-        <Form.Item label="Price (in tokens)">
-            <StarOutlined className={"StarOutlined_icon"}/>
-
-            <InputNumber />
-        </Form.Item>
+        <div style={{display: "flex", justifyContent: "flex-start",
+            flexDirection:"column"}}>
+            <div style={{display: "flex",
+                justifyContent: "flex-start",
+                alignItems: "center"}}>
+                <h4>Price</h4>
+                <img src={second_token} alt={second_token}
+                     style={{width:"40px"}}/>
+                <InputNumber />
+            </div>
+        </div>
     )
 }
 function SubmitButton() {
     return (
-        <Button>Add to your shop</Button>
+        <div style={{display:"flex", justifyContent:"center",
+            padding: "20px 0 0 0"}}>
+            <Button>Add to your shop</Button>
+        </div>
     )
 }
-
 function ProductUploadForm() {
     return (
         <Container>
             <Form>
                 <UploadImage/>
-                <ProductTitle/>
-                <ProductType/>
-                <ProductSize/>
-                <ProductColor/>
-                <ProductBrand/>
-                <ProductCondition/>
-                <ProductPrice/>
+                <Title/>
+                <Type/>
+                <Size/>
+                <Color/>
+                <Brand/>
+                <Condition/>
+                <Price/>
             </Form>
-            <Button>Add To Shop</Button>
+            <SubmitButton/>
         </Container>
     );
-};
+}
 export default ProductUploadForm;

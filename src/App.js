@@ -1,19 +1,23 @@
 import React from "react";
-import Card from "./components/Card";
-import Home from "./pages/Home";
-import UserProfile from "./pages/UserProfile";
 import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
-import Header_Back_Arrow, { Header_Settings } from "./components/Header";
-import MyProfile from "./pages/MyProfile";
-import Upload from "./pages/Upload";
 import Product from "./pages/Product";
-import ProductPage from "./pages/Product";
-
+import Home from "./pages/Home";
+import MyProfile from "./pages/MyProfile";
+import {Upload} from "antd";
+import Footer from "./components/Footer/Footer";
+import Feed from "./components/Feed";
+import App2 from "./components/Feed";
 
 export default function App() {
   return (
       <BrowserRouter>
-         <ProductPage/>
+          <App2/>
+          {/*<Routes>*/}
+          {/*    <Route path="/" element={<MyProfile/>}/>*/}
+          {/*    <Route path="/upload" element={<Upload/>}/>*/}
+          {/*    <Route path="/profile" element={<MyProfile/>}/>*/}
+          {/*</Routes>*/}
+          {/*<Footer/>*/}
       </BrowserRouter>
   )
 }

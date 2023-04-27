@@ -1,17 +1,81 @@
-import React from "react";
-import "../styles/Main.css";
-
 import { Card } from 'antd';
+import "../styles/Card.css"
+// import styled from "styled-components"
+//
+// import Coin from "../assets/images/coin.png"
+// import Jacket from "../assets/images/flower jacket.jpg"
+
 const { Meta } = Card;
-const ItemCard = () => (
-    <Card
-        hoverable
-        style={{
-            width: 240,
-        }}
-        cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
-    >
-        <Meta title="Europe Street beat" description="www.instagram.com" />
+//
+// const Card = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   border-radius: 8px;
+// `
+//
+// const Image = styled.image``
+//
+// const CoinImage = styled.image`
+//   max-width: 50px;
+// `
+//
+// const RowWrapper = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   justify-content: center;
+// `
+//
+// const ColWrapper = styled.div`
+//   display: flex;
+//   flex-direction: col;
+//   align-items: center;
+//   justify-content: center;
+// `
+//
+// const Title = styled.div`
+//   font-size: 18px;
+// `
+
+
+
+
+const ItemCard = (src,) => (
+    <Card className="card-item"
+          hoverable
+          style={{
+              // maxWidth: '3',
+              // flex: '0 0 19%',
+              // width: 240,
+          }}
+          cover={<img alt="green dress" src={require("../assets/images/green_dress.jpg")} />}>
+        {/*<Meta title="Europe Street beat" description="www.instagram.com" />*/}
+        <div className="card-details">
+            <div className="card-coins">
+                <img src={require("../assets/images/second-token.png")} width="50px" />
+                <span className="bold">5</span>
+                <span> • </span>
+                <span className="grey">Jerusalem</span>
+            </div>
+            <div className="card--size">
+                <span className="bold">M</span>
+                <span> • </span>
+                <span>Zara</span>
+            </div>
+        </div>
     </Card>
+    //
+    // <Card>
+    //     <Image src={Jacket} />
+    //     <RowWrapper>
+    //         <CoinImage src={Coin}/>
+    //         <ColWrapper>
+    //             <Title>Hello</Title>
+    //             <Title>hello</Title>
+    //         </ColWrapper>
+    //     </RowWrapper>
+    // </Card>
 );
 export default ItemCard;
