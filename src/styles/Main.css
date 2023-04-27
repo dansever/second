@@ -8,7 +8,7 @@
     --text_color: #02110A;
 }
 
-h1 {
+h1,h2, h3{
     font-family: 'Lora', serif;
     font-weight: bold;
 }

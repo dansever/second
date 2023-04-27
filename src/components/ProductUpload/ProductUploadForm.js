@@ -1,14 +1,18 @@
-import React, { useState } from "react";
-import { AiOutlineArrowLeft } from "react-icons/ai";
+import React from "react";
 import {PlusOutlined, StarOutlined} from '@ant-design/icons';
 import '../../styles/Main.css';
 import './ProductUploadForm.css';
-import {    Button, Form, Input, InputNumber, Select, Upload    } from 'antd';
+import { Form, Input, InputNumber, Select, Upload } from 'antd';
 import styled from 'styled-components'
+import { Button } from "../AddButton";
 
 const Container = styled.div`
-    background-color: var(--light_green);
-`;
+  background-color: var(--secondary_green);
+  padding: 0 20px 0 20px;
+  //display: flex;
+  //flex-direction: column;
+  //justify-content: center;
+  align-items: center;`;
 
 const normFile = (e) => {
     if (Array.isArray(e)) {
@@ -106,16 +110,13 @@ function ProductPrice() {
 }
 function SubmitButton() {
     return (
-        <Form.Item id="submit-button">
-            <Button>Add To Your Shop</Button>
-        </Form.Item>
+        <Button>Add to your shop</Button>
     )
 }
 
 function ProductUploadForm() {
     return (
         <Container>
-            {/*/> className="form-container">*/}
             <Form>
                 <UploadImage/>
                 <ProductTitle/>
@@ -125,8 +126,8 @@ function ProductUploadForm() {
                 <ProductBrand/>
                 <ProductCondition/>
                 <ProductPrice/>
-                <SubmitButton/>
             </Form>
+            <Button>Add To Shop</Button>
         </Container>
     );
 };

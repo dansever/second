@@ -17,6 +17,11 @@
     stroke-width: 60;
 }
 
+.nav-item:hover {
+    scale: 125%;
+    cursor: pointer;
+}
+
 .nav-item.active {
     color: var(--text_color);
     scale: 125%;

@@ -6,7 +6,7 @@ import { HiOutlineUserCircle } from "react-icons/hi";
 import "./Footer.css";
 
 
-const Footer = () => {
+export default function Footer () {
     const [active, setActive] = useState("home");
 
     const handleNavClick = (navItem) => {
@@ -48,5 +48,3 @@ const Footer = () => {
         </div>
     );
 };
-
-export default Footer;

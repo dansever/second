@@ -2,23 +2,18 @@ import React from 'react';
 import "../styles/ProductPage.css"
 import "../styles/Main.css"
 import styled from "styled-components"
-import { StarOutlined, ArrowLeftOutlined } from '@ant-design/icons';
+import { StarOutlined } from '@ant-design/icons';
 import { Descriptions } from 'antd';
 import profile_pic from "../assets/images/generic-profile-pic.jpg";
-import product_pic from "../assets/images/old army shows.jpg";
+import product_pic from "../assets/images/Women's Red High Heels.jpg";
 import Footer from "../components/Footer/Footer";
-import AddToCart from "../components/AddToCart/AddToCart";
+import Header_Back_Arrow from "../components/Header";
+import {Button} from "../components/AddButton";
+import { Divider } from 'antd';
+import second_token from "../assets/images/second-token.png";
 
 
-const ProductPageHeader = styled.div`
-  width: 100%;
-  height: 60px;
-  background-color: var(--primary_green);
-  display: flex;
-  align-items: center;
-  color: white;
-  padding: 10px;
-`;
+
 
 const Container = styled.div`
   display: flex;
@@ -33,8 +28,8 @@ const ProductImage = styled.img`
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
-  height: 80%;
+  width: 60%;
+  height: 60%;
   border-radius: 0;
 `;
 
@@ -45,19 +40,11 @@ const SellerContainer = styled.div`
 `;
 
 const ProfileImage = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   object-fit: cover;
   border-radius: 50%;
 `;
-
-// function SellerRating() {
-//     return (
-//         <center style={{ marginTop: 100 }}>
-//             <StarFilled />
-//         </center>
-//     );
-// };
 
 function SellerInfo() {
     return (
@@ -66,9 +53,9 @@ function SellerInfo() {
             <div className={"seller_name_and_rating"}>
                 <h3>Sarah Johnson</h3>
                 <div className={"seller_rating"}>
-                <StarOutlined className={"StarOutlined_icon"}/>
-                <StarOutlined className={"StarOutlined_icon"}/>
-                <StarOutlined className={"StarOutlined_icon"}/>
+                    <StarOutlined className={"StarOutlined_icon"}/>
+                    <StarOutlined className={"StarOutlined_icon"}/>
+                    <StarOutlined className={"StarOutlined_icon"}/>
                 </div>
 
             </div>
@@ -87,25 +74,51 @@ const ProductInfo = () => (
             <Descriptions.Item label="Price">12 tokens</Descriptions.Item>
             <Descriptions.Item label="Address">""</Descriptions.Item>
         </Descriptions>
-        <AddToCart/>
     </div>
 );
 
+const AddToCartContainer = styled.div`
+  width: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+`;
 
-const ProductPage = () => {
+const TokenImg = styled.img`
+  width: 50px;
+  height: 50px;
+`;
+
+
+function AddToCart() {
     return (
-        <div>
-            <ProductPageHeader>
-                <ArrowLeftOutlined className={"ArrowLeftOutlined"}/>
-            </ProductPageHeader>
+        <AddToCartContainer>
+            <TokenImg src={second_token} alt={"token"}/>
+            <h4 style={{flex:2}}>5</h4>
+            {/*<AddToCartButton/>*/}
+            <Button>Add To Cart </Button>
+        </AddToCartContainer>
+    );
+}
+
+
+export default function ProductPage () {
+    return (
+        <div style={{display:"flex", flexDirection:"column"}}>
+            <Header_Back_Arrow/>
             <Container>
                 <ProductImage src={product_pic}/>
                 <SellerInfo/>
+                <Divider style={{ borderWidth: 1,
+                    borderColor: 'black' }}/>
                 <ProductInfo/>
+                <Divider style={{ borderWidth: 1,
+                    borderColor: 'black' }}/>
+                <AddToCart/>
             </Container>
             <Footer/>
         </div>
     );
 };
-
-export default ProductPage
