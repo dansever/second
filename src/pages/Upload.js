@@ -1,14 +1,14 @@
 import React from "react";
 import ProductUploadForm from "../components/ProductUpload/ProductUploadForm";
 import styled from "styled-components";
-import Header_Back_Arrow from "../components/Header";
+import Header_Back_Arrow from "../components/Header/Header";
 
 
 const Container = styled.div`
   background-color: var(--secondary_green);
   height: 100%;
   overflow: auto;
-  //padding-left: 10px;
+  padding: 0 0 20px 0;
 `;
 
 const PageTitle = styled.div`
@@ -21,12 +21,10 @@ const PageTitle = styled.div`
 
 export default function Upload() {
     return (
-        <div>
-            <Container>
-                <Header_Back_Arrow/>
-                <PageTitle>Upload</PageTitle>
-                <ProductUploadForm/>
-            </Container>
-        </div>
+        <Container>
+            <Header_Back_Arrow/>
+            <PageTitle>Upload</PageTitle>
+            <ProductUploadForm/>
+        </Container>
     );
 };

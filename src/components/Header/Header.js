@@ -1,6 +1,6 @@
 import React from "react";
-import "../styles/Main.css";
-import "../styles/Header.css";
+import "../../styles/Index.css";
+import "./Header.css";
 import styled from "styled-components";
 import {ArrowLeftOutlined, SettingFilled} from "@ant-design/icons";
 

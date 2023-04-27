@@ -1,7 +1,7 @@
 import React from "react";
-import {Header_Settings} from "../components/Header";
+import {Header_Settings} from "../../components/Header/Header";
 import styled from "styled-components";
-import Footer from "../components/Footer/Footer";
+import Footer from "../../components/Footer/Footer";
 
 const Container = styled.div`
   background-color: var(--secondary_green);

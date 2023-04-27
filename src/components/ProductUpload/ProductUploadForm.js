@@ -1,6 +1,6 @@
 import React from "react";
 import { PlusOutlined } from '@ant-design/icons';
-import '../../styles/Main.css';
+import '../../styles/Index.css';
 import './ProductUploadForm.css';
 import { Form, Input, InputNumber, Select, Upload } from 'antd';
 import styled from 'styled-components'
