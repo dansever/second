@@ -1,0 +1,14 @@
+.add_to_shop {
+    color: var(--dark_green);
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 0 0;
+}
+
+.accept_challenge {
+    color: transparent;
+}
+
+.refuse_challenge {
+    color: red;
+}
