@@ -10,7 +10,6 @@ import Footer from "./components/Footer/Footer";
 import Upload from "./pages/Upload/Upload";
 import MyProfile from "./pages/Profile/MyProfile";
 
-
 export default function App() {
     return (
         <BrowserRouter>

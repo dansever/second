@@ -4,7 +4,7 @@ import '../../styles/Index.css';
 import './ProductUploadForm.css';
 import { Form, Input, InputNumber, Select, Upload } from 'antd';
 import styled from 'styled-components'
-import { Button } from "../AddButton";
+import AddToShop from "../../components/Buttons/Button";
 import second_token from "../../assets/images/second-token.png"
 
 
@@ -116,14 +116,7 @@ function Price() {
         </div>
     )
 }
-function SubmitButton() {
-    return (
-        <div style={{display:"flex", justifyContent:"center",
-            padding: "20px 0 0 0"}}>
-            <Button>Add to your shop</Button>
-        </div>
-    )
-}
+
 function ProductUploadForm() {
     return (
         <Container>
@@ -137,7 +130,7 @@ function ProductUploadForm() {
                 <Condition/>
                 <Price/>
             </Form>
-            <SubmitButton/>
+            <AddToShop/>
         </Container>
     );
 }
