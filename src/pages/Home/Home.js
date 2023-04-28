@@ -21,6 +21,11 @@ export default function Home() {
                         <RefuseChallenge/>
                     </div>
                 </div>
+                <h2> Items from sellers you liked </h2>
+                <div className={"home_second_container"}>
+                    <div className={"liked-sellers-container"}>
+                    </div>
+                </div>
             </div>
         </div>
     )
