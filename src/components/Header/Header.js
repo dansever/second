@@ -10,26 +10,52 @@ const Container = styled.div`
   background-color: var(--primary_green);
   display: flex;
   align-items: center;
+  padding-right: 10px;
 `;
 
-export default function Header_Back_Arrow() {
+export default function Header_Home() {
     return (
-        <Container style={{
-            justifyContent: "flex-start",
-            paddingLeft: "10px"}}>
+        <Container>
+            <Link className="site-logo" to="/">
+                <Logo/>
+            </Link>
+            <BellOutlined style={{scale:"200%"}}/>
+            {/*<nav>*/}
+            {/*    <Link to="/About">About</Link>*/}
+            {/*    <Link to="/Contact">Contact</Link>*/}
+            {/*</nav>*/}
+        </Container>
+    )
+}
+
+export function Header_Search() {
+    return (
+        <Container>
+            {/*// style={{*/}
+            {/*// justifyContent: "flex-start",*/}
+            {/*// paddingLeft: "10px"}}>*/}
             <ArrowLeftOutlined className={"btn"}
                                style={{fontSize: '36px' }}/>
         </Container>
     )
 }
 
-export function Header_Settings () {
+export function Header_Upload() {
     return (
-        <Container style={{
-            justifyContent: "flex-end",
-            paddingRight: "10px"}}>
+        <Container>
+            <ArrowLeftOutlined className={"btn"}
+                               style={{fontSize: '36px' }}/>
+        </Container>
+    )
+}
+
+
+export function Header_Profile () {
+    return (
+        <Container style={{display: "flex",
+            justifyContent: "flex-end"}}>
             <SettingFilled className={"btn"}
-                           style={{fontSize: '36px' }}/>
+                           style={{fontSize: '36px'}}/>
         </Container>
     )
 }
