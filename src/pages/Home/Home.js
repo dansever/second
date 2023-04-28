@@ -14,8 +14,12 @@ export default function Home() {
             <Header_Home/>
             <div className="home-container">
                 <div className="weekly-challenge">
-                    <AcceptChallenge/>
-                    <RefuseChallenge/>
+                    <h2>Weekly Challenge</h2>
+                    <p>loren ipsum loren ipsum</p>
+                    <div className="buttons-container">
+                        <AcceptChallenge/>
+                        <RefuseChallenge/>
+                    </div>
                 </div>
             </div>
         </div>
