@@ -1,5 +1,6 @@
 import React from "react"
 import "../styles/Index.css"
+import {Header_Search} from "../components/Header/Header"
 
 export default function Vans() {
     const [vans, setVans] = React.useState([])
@@ -21,11 +22,14 @@ export default function Vans() {
     ))
 
     return (
-        <div className="van-list-container">
-            <h1>Explore our van options</h1>
-            <div className="van-list">
-                {vanElements}
+        <div>
+            <Header_Search/>
+            <div className="van-list-container">
+                <h1>Explore our van options</h1>
+                <div className="van-list">
+                    {vanElements}
+                </div>
             </div>
         </div>
-    )
-}
+    );
+};

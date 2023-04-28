@@ -7,19 +7,14 @@ import Cart from "./pages/Cart/Cart";
 import Logo from "./components/Logo";
 import Contact from "./pages/Contact/Contact";
 import Footer from "./components/Footer/Footer";
-import Upload from "./pages/Upload";
+import Upload from "./pages/Upload/Upload";
 import MyProfile from "./pages/Profile/MyProfile";
 
 
 export default function App() {
     return (
         <BrowserRouter>
-            <header>
-                <Link className="site-logo" to="/">
-                    <Logo/>
-                </Link>
-                <Footer/>
-            </header>
+            <Footer/>
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/About" element={<About/>}/>

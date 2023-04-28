@@ -1,5 +1,5 @@
 import React from "react";
-import {Header_Settings} from "../../components/Header/Header";
+import {Header_Profile} from "../../components/Header/Header";
 import styled from "styled-components";
 import Footer from "../../components/Footer/Footer";
 
@@ -20,7 +20,7 @@ const PageTitle = styled.div`
 export default function MyProfile() {
     return (
         <div>
-            <Header_Settings/>
+            <Header_Profile/>
             <Container>
                 <PageTitle>My Profile</PageTitle>
             </Container>

@@ -1,7 +1,7 @@
 import React from "react";
-import ProductUploadForm from "../components/ProductUpload/ProductUploadForm";
+import ProductUploadForm from "../../components/ProductUpload/ProductUploadForm";
 import styled from "styled-components";
-import Header_Back_Arrow from "../components/Header/Header";
+import { Header_Upload } from "../../components/Header/Header";
 
 
 const Container = styled.div`
@@ -22,7 +22,7 @@ const PageTitle = styled.div`
 export default function Upload() {
     return (
         <Container>
-            <Header_Back_Arrow/>
+            <Header_Upload/>
             <PageTitle>Upload</PageTitle>
             <ProductUploadForm/>
         </Container>

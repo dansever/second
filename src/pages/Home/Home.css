@@ -1,8 +1,8 @@
 .home-container {
-    background: darkseagreen;
+    background-color: var(--secondary_green);
     background-size: cover;
     min-height: 350px;
-    color: var(--text_color);
+    color: black;
     padding: 45px 23px;
 }
 
