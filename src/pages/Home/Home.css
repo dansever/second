@@ -57,6 +57,25 @@
     box-shadow: 0 8px 0 0 black;
 }
 
+.home_photo_grid {
+    width: 90%;
+    height: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    align-content: center;
+    /*border: 2px solid black;*/
+    gap: 15px;
+}
+
+.placeholder_image {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
 .buttons-container {
     display: flex;
     flex-direction: column;

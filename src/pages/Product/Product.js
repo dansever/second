@@ -1,16 +1,16 @@
 import React from 'react';
-import "../styles/ProductPage.css"
-import "../styles/Main.css"
+import "../../styles/Index.css"
+import "./Product.css"
 import styled from "styled-components"
 import { StarOutlined } from '@ant-design/icons';
 import { Descriptions } from 'antd';
-import profile_pic from "../assets/images/generic-profile-pic.jpg";
-import product_pic from "../assets/images/Women's Red High Heels.jpg";
-import Footer from "../components/Footer/Footer";
-import Header_Back_Arrow from "../components/Header/Header";
-import {Button} from "../components/AddButton";
+import profile_pic from "../../assets/images/generic-profile-pic.jpg";
+import product_pic from "../../assets/images/Women's Red High Heels.jpg";
+import Footer from "../../components/Footer/Footer";
+import {Header_Search} from "../../components/Header/Header";
+import {AddToCart} from "../../components/Buttons/Button";
 import { Divider } from 'antd';
-import second_token from "../assets/images/second-token.png";
+import second_token from "../../assets/images/second-token.png";
 
 
 const Container = styled.div`
@@ -31,12 +31,6 @@ const ProductImage = styled.img`
   border-radius: 0;
 `;
 
-const SellerContainer = styled.div`
-  display: flex;
-  gap: 15px;
-  font-size: medium;
-`;
-
 const ProfileImage = styled.img`
   width: 50px;
   height: 50px;
@@ -44,9 +38,10 @@ const ProfileImage = styled.img`
   border-radius: 50%;
 `;
 
+
 function SellerInfo() {
     return (
-        <SellerContainer>
+        <div className={"seller_info"}>
             <ProfileImage src={profile_pic} alt={"profile_pic"}/>
             <div className={"seller_name_and_rating"}>
                 <h3>Sarah Johnson</h3>
@@ -55,12 +50,10 @@ function SellerInfo() {
                     <StarOutlined className={"StarOutlined_icon"}/>
                     <StarOutlined className={"StarOutlined_icon"}/>
                 </div>
-
             </div>
-        </SellerContainer>
+        </div>
     );
 };
-
 const ProductInfo = () => (
     <div>
         <Descriptions size="small"
@@ -89,33 +82,40 @@ const TokenImg = styled.img`
   height: 50px;
 `;
 
-
-function AddToCart() {
-    return (
-        <AddToCartContainer>
-            <TokenImg src={second_token} alt={"token"}/>
-            <h4 style={{flex:2}}>5</h4>
-            {/*<AddToCartButton/>*/}
-            <Button>Add To Cart </Button>
-        </AddToCartContainer>
-    );
-}
-
+// function AddToCart() {
+//     return (
+//         <AddToCartContainer>
+//             <TokenImg src={second_token} alt={"token"}/>
+//             <h4 style={{flex:2}}>5</h4>
+//             {/*<AddToCartButton/>*/}
+//             <Button>Add To Cart </Button>
+//         </AddToCartContainer>
+//     );
+// }
 
 export default function Product () {
     return (
-        <div style={{display:"flex", flexDirection:"column"}}>
-            <Header_Back_Arrow/>
-            <Container>
-                <ProductImage src={product_pic}/>
+        // <div style={{display:"flex", flexDirection:"column"}}>
+        <div>
+            <Header_Search/>
+            <div className={"product-container"}>
+                <img className={"product_image"} alt={"prodoct_image"} src={product_pic}/>
                 <SellerInfo/>
-                <Divider style={{ borderWidth: 1,
-                    borderColor: 'black' }}/>
-                <ProductInfo/>
-                <Divider style={{ borderWidth: 1,
-                    borderColor: 'black' }}/>
+                <Divider style={{ borderWidth: 1, borderColor: 'black' }}/>
+                <div className={"prodct_info"}>
+
+                </div>
+                <Divider style={{ borderWidth: 1, borderColor: 'black' }}/>
                 <AddToCart/>
-            </Container>
+
+                {/*    <ProductImage src={product_pic}/>*/}
+            {/*    <SellerInfo/>*/}
+
+            {/*    <ProductInfo/>*/}
+            {/*    <Divider style={{ borderWidth: 1,*/}
+            {/*        borderColor: 'black' }}/>*/}
+            {/*    <AddToCart/>*/}
+            </div>
         </div>
     );
 };

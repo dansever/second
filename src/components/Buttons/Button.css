@@ -5,6 +5,13 @@
     padding: 20px 0 0 0;
 }
 
+.add_to_cart {
+    color: var(--dark_green);
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 0 0;
+}
+
 .accept_challenge {
     color: transparent;
 }

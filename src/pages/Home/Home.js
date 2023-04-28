@@ -5,6 +5,7 @@ import "./Home.css"
 import Header_Home from "../../components/Header/Header";
 import styled from "styled-components";
 import {AcceptChallenge , RefuseChallenge} from "../../components/Buttons/Button"
+import second_hand_clothes from "../../assets/images/second_hand_clothes.jpg"
 
 
 
@@ -16,6 +17,9 @@ export default function Home() {
                 <div className="weekly-challenge">
                     <h2>Weekly Challenge</h2>
                     <p>loren ipsum loren ipsum</p>
+                    <div className={"home_photo_grid"}>
+                        <img src={second_hand_clothes} className="placeholder_image" />
+                    </div>
                     <div className="buttons-container">
                         <AcceptChallenge/>
                         <RefuseChallenge/>
