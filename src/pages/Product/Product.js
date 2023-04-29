@@ -5,9 +5,9 @@ import styled from "styled-components"
 import { StarOutlined } from '@ant-design/icons';
 import { Descriptions } from 'antd';
 import profile_pic from "../../assets/images/generic-profile-pic.jpg";
-import product_pic from "../../assets/images/Women's Red High Heels.jpg";
+import product_pic from "../../assets/images/second_hand_clothes.jpg";
 import Footer from "../../components/Footer/Footer";
-import {Header_Search} from "../../components/Header/Header";
+import {Header_Product} from "../../components/Header/Header";
 import {AddToCart} from "../../components/Buttons/Button";
 import { Divider } from 'antd';
 import second_token from "../../assets/images/second-token.png";
@@ -97,7 +97,7 @@ export default function Product () {
     return (
         // <div style={{display:"flex", flexDirection:"column"}}>
         <div>
-            <Header_Search/>
+            <Header_Product/>
             <div className={"product-container"}>
                 <img className={"product_image"} alt={"prodoct_image"} src={product_pic}/>
                 <SellerInfo/>
