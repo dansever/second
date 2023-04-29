@@ -116,6 +116,7 @@ export default function Product () {
             {/*        borderColor: 'black' }}/>*/}
             {/*    <AddToCart/>*/}
             </div>
+            <Footer/>
         </div>
     );
 };
