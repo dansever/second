@@ -1,5 +1,5 @@
 .home-container {
-    /*background-color: var(--secondary_green);*/
+    background-color: var(--background_green);
     background-size: cover;
     height: 90vh;
     color: black;

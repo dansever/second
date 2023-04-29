@@ -58,10 +58,9 @@ export function RefuseChallenge() {
 export function FilterButton() {
     return (
         <div className={"filter-btn"}>
-            <FilterFilled/>
-            <MyButton>Refuse Challenge</MyButton>
             {/*<FilterFilled/>*/}
-            <Button><HiFilter/>Filter</Button>
+            {/*<FilterFilled/>*/}
+            <MyButton><HiFilter/>Filter</MyButton>
         </div>
     );
 }
@@ -69,7 +68,7 @@ export function FilterButton() {
 export function SortButton() {
     return (
         <div className={"sort-btn"}>
-            <Button><HiSortDescending/>Sort</Button>
+            <MyButton><HiSortDescending/>Sort</MyButton>
         </div>
     );
 }
