@@ -30,9 +30,12 @@ export default function Home() {
                 {/*<h2> Items from sellers you liked </h2>*/}
                 <div className={"home_second_container"}>
                     <div className={"liked-sellers-container"}>
+                        <h2>Items from sellers you liked</h2>
+
                     </div>
                 </div>
             </div>
+
         <Footer/>
     </div>
     )

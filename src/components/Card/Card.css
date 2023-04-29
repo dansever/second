@@ -18,17 +18,18 @@
 
 .card-details{
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: start;
+    /*justify-content: space-between;*/
+    flex-direction: column;
 
 
 }
 
 .card--size{
-    justify-content: flex-end;
+    justify-content: start;
 }
 
 span{
     /*padding: 5px;*/
-    width: 1em;
+    font-size:1em;
 }
