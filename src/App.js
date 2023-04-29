@@ -10,6 +10,8 @@ import Footer from "./components/Footer/Footer";
 import Upload from "./pages/Upload/Upload";
 import MyProfile from "./pages/Profile/MyProfile";
 import Product from "./pages/Product/Product";
+import Search from "./pages/Search/Search";
+
 
 
 export default function App() {
@@ -19,7 +21,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/About" element={<About/>}/>
-                <Route path="/Product" element={<Product/>}/>
+                <Route path="/Search" element={<Search/>}/>
                 <Route path="/Product/:id" element={<Product/>}/>
                 <Route path="/Upload" element={<Upload/>}/>
                 <Route path="/Cart" element={<Cart/>}/>
