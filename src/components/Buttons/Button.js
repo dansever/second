@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import "../../styles/Index.css"
 import "./Button.css"
+import {FilterFilled} from "@ant-design/icons"
+
 
 export const Button = styled.button`
   color: var(--text_color);
@@ -45,6 +47,15 @@ export function AcceptChallenge() {
 export function RefuseChallenge() {
     return (
         <div className={"refuse_challenge"}>
+            <Button>Refuse Challenge</Button>
+        </div>
+    );
+}
+
+export function FilterButton() {
+    return (
+        <div className={"filter-btn"}>
+            <FilterFilled/>
             <Button>Refuse Challenge</Button>
         </div>
     );

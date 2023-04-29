@@ -12,8 +12,6 @@ import Product from "./pages/Product/Product";
 import Search from "./pages/Search/Search";
 import MainFeed from "./components/Feed/Feed"
 
-
-
 export default function App() {
     return (
         <BrowserRouter>
