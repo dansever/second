@@ -1,0 +1,12 @@
+.search-bar-container{
+    background-color: white;
+    width: 40%;
+    height: 30px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row-reverse;
+    padding-right: 5px;
+    align-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
