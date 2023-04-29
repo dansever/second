@@ -4,7 +4,7 @@ import ItemCard from "./components/Card";
 import MainFeed from "./components/MainFeed";
 
 const App = () => {
-  return <MainFeed/>;
+  return <Home/>;
 };
 
 export default App;

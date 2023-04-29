@@ -2,12 +2,13 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Feed from "../components/Feed";
 import Footer from "../components/Footer";
+import MainFeed from "../components/MainFeed";
 
 const Home = () => {
     return (
         <div>
             <Navbar />
-            <Feed />
+            <MainFeed />
             <Footer />
             {/*<Categories />*/}
             {/*<Products/>*/}
