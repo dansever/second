@@ -2,7 +2,6 @@ import React from "react";
 import {BrowserRouter as Router, Routes, Route, BrowserRouter, Link} from 'react-router-dom';
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
-import Vans from "./pages/Vans";
 import Cart from "./pages/Cart/Cart";
 import Logo from "./components/Logo";
 import Contact from "./pages/Contact/Contact";
@@ -22,7 +21,7 @@ export default function App() {
                 <Route path="/" element={<Home/>}/>
                 <Route path="/About" element={<About/>}/>
                 <Route path="/Search" element={<Search/>}/>
-                <Route path="/Product/:id" element={<Product/>}/>
+                <Route path="/Search/:id" element={<Product/>}/>
                 <Route path="/Upload" element={<Upload/>}/>
                 <Route path="/Cart" element={<Cart/>}/>
                 <Route path="/Contact" element={<Contact/>}/>

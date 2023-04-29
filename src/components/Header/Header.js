@@ -5,6 +5,8 @@ import styled from "styled-components";
 import {ArrowLeftOutlined, SettingFilled, BellOutlined} from "@ant-design/icons";
 import {Link} from "react-router-dom";
 import Logo from "../Logo";
+import { BiHome } from "react-icons/bi";
+
 
 
 const Container = styled.div`
@@ -42,6 +44,18 @@ export function Header_Search() {
         </Container>
     );
 };
+
+export function Header_Product() {
+    return (
+        <Container>
+            <Link to="/Search">
+                <ArrowLeftOutlined className={"btn"}
+                                   style={{fontSize: '36px'}} color={"black"}/>
+            </Link>
+        </Container>
+    );
+};
+
 
 export function Header_Upload() {
     return (
