@@ -9,7 +9,7 @@
     color: var(--dark_green);
     display: flex;
     justify-content: center;
-    padding: 20px 0 0 0;
+    padding: 0 0 0 0;
 }
 
 .accept_challenge {
