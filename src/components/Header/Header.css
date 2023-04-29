@@ -1,0 +1,11 @@
+.btn:hover {
+    scale: 110%;
+    cursor: pointer;
+}
+
+.site-logo {
+    color: black;
+    margin-right: auto;
+    font-weight: 900;
+    font-size: 25px;
+}

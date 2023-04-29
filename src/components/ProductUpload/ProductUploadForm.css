@@ -4,6 +4,11 @@
     padding: 0;
 }
 
+.ant-form-item-label label{
+    font-weight: bold;
+    font-size: 24px;
+}
+
 .top-bar {
     display: flex;
     column-gap: 35%;
@@ -64,12 +69,11 @@ input {
 
 .button {
     display: inline-block;
-    width: 200px;
-    height: 2rem;
+    width: 2000px;
+    height: 5rem;
     color: #ffffff;
     background-color: #5e8c59;
     border: 0;
-    /*bottom: 0;*/
     cursor: pointer;
     font-size: 20px;
     font-weight: bold;
