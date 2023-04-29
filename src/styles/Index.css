@@ -6,6 +6,7 @@
     --off_white: #F1F7F1;
     --secondary_blue: #68a8bd;
     --text_color: #02110A;
+    --background_green: #e8eee8;
 }
 
 h1, h2, h3{
@@ -16,6 +17,7 @@ h1, h2, h3{
 html, body {
     margin: 0;
     padding: 0;
+    background-color: var(--background_green);
     position:relative;
     height:100%;
     font-family: 'Montserrat', sans-serif;

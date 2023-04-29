@@ -1,7 +1,12 @@
 .search-container {
-    background-color: var(--secondary_green);
+    background-color: var(--background_green);
     display: flex;
     flex-direction: column;
     align-content: center;
     align-items: center;
+}
+
+h1{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

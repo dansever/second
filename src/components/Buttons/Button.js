@@ -4,6 +4,9 @@ import "../../styles/Index.css"
 import "./Button.css"
 import {FilterFilled} from "@ant-design/icons"
 import { Button, Radio } from 'antd';
+import {HiMagnifyingGlass} from "react-icons/hi2";
+import {HiFilter} from "react-icons/hi";
+import {HiSortDescending} from "react-icons/hi";
 
 export const MyButton = styled.button`
   color: var(--text_color);
@@ -57,6 +60,16 @@ export function FilterButton() {
         <div className={"filter-btn"}>
             <FilterFilled/>
             <MyButton>Refuse Challenge</MyButton>
+            {/*<FilterFilled/>*/}
+            <Button><HiFilter/>Filter</Button>
+        </div>
+    );
+}
+
+export function SortButton() {
+    return (
+        <div className={"sort-btn"}>
+            <Button><HiSortDescending/>Sort</Button>
         </div>
     );
 }
