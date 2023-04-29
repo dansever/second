@@ -15,6 +15,11 @@
     width: 80%;
 }
 
+.product-info {
+    width: 90%;
+    padding-left: 20px;
+    line-height: 25px;
+}
 .Price-and-add{
     border:1px solid transparent;
     width:90%;

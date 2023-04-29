@@ -3,8 +3,9 @@ import {Header_Profile} from "../../components/Header/Header";
 import styled from "styled-components";
 import Footer from "../../components/Footer/Footer";
 import "./Profile.css"
-import ProfileInfo from "../../components/UserInfo/UserInfo"
+import ProfileInfo, {SellerInfo} from "../../components/UserInfo/UserInfo"
 import {ProfileOptions} from "../../components/Buttons/Button";
+import {Divider} from "antd";
 
 const PageTitle = styled.div`
   position: absolute;
@@ -22,6 +23,8 @@ export default function MyProfile() {
             <nav className={"page_container"}>
                 <ProfileInfo/>
                 <ProfileOptions/>
+                <Divider style={{ borderWidth: 0.5, borderColor: 'grey' }}/>
+                <SellerInfo/>
             </nav>
             <Footer/>
         </div>

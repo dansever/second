@@ -82,3 +82,11 @@ export function ProfileOptions () {
         </Radio.Group>
     );
 }
+
+export function FollowUnfollowBtn() {
+    return (
+        <div>
+            <div className={"follow_seller"}>Unfollow</div>
+        </div>
+    );
+}

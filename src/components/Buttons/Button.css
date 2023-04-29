@@ -28,3 +28,23 @@
 .sort-btn{
     margin: 10px;
 }
+
+.follow_seller {
+    color: var(--primary_green);
+    border-radius: 10px;
+    height: 40px;
+    width: 140px;
+    font-size: medium;
+    font-weight: bold;
+    border: 1px solid var(--primary_green);
+    box-shadow: 5px 5px 0 0 var(--primary_green);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.follow_seller:hover {
+     cursor: pointer;
+     font-size: 105%;
+     width: 140px;
+ }
