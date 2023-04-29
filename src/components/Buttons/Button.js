@@ -3,6 +3,9 @@ import styled from "styled-components";
 import "../../styles/Index.css"
 import "./Button.css"
 import {FilterFilled} from "@ant-design/icons"
+import {HiMagnifyingGlass} from "react-icons/hi2";
+import {HiFilter} from "react-icons/hi";
+import {HiSortDescending} from "react-icons/hi";
 
 
 export const Button = styled.button`
@@ -55,8 +58,16 @@ export function RefuseChallenge() {
 export function FilterButton() {
     return (
         <div className={"filter-btn"}>
-            <FilterFilled/>
-            <Button>Refuse Challenge</Button>
+            {/*<FilterFilled/>*/}
+            <Button><HiFilter/>Filter</Button>
+        </div>
+    );
+}
+
+export function SortButton() {
+    return (
+        <div className={"sort-btn"}>
+            <Button><HiSortDescending/>Sort</Button>
         </div>
     );
 }
