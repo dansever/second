@@ -9,6 +9,10 @@ import Contact from "./pages/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 import Upload from "./pages/Upload/Upload";
 import MyProfile from "./pages/Profile/MyProfile";
+import Product from "./pages/Product/Product";
+import Search from "./pages/Search/Search";
+
+
 
 export default function App() {
     return (
@@ -17,7 +21,8 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/About" element={<About/>}/>
-                <Route path="/Vans" element={<Vans/>}/>
+                <Route path="/Search" element={<Search/>}/>
+                <Route path="/Product/:id" element={<Product/>}/>
                 <Route path="/Upload" element={<Upload/>}/>
                 <Route path="/Cart" element={<Cart/>}/>
                 <Route path="/Contact" element={<Contact/>}/>

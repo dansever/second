@@ -26,6 +26,15 @@ export default function AddToShop() {
     );
 }
 
+export  function AddToCart() {
+    return (
+        <div className={"add_to_cart"}>
+            <Button>Add to cart</Button>
+        </div>
+    );
+}
+
+
 export function AcceptChallenge() {
     return (
         <div className={"accept_challenge"}>

@@ -41,7 +41,7 @@ export default function Footer () {
 
             <div className={`nav-item ${active === "search" ? "active" : ""}`}
                  onClick={() => handleNavClick("search")}>
-                <Link to="/Vans">
+                <Link to="/Search">
                     <HiMagnifyingGlass size={32} strokeWidth={1.5}
                                        color={"black"}/>
                 </Link>
