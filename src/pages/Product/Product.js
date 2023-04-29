@@ -11,6 +11,7 @@ import {Header_Product} from "../../components/Header/Header";
 import {AddToCart} from "../../components/Buttons/Button";
 import { Divider } from 'antd';
 import second_token from "../../assets/images/second-token.png";
+import SellerInfo from "../../components/UserInfo/UserInfo";
 
 
 const Container = styled.div`
@@ -22,38 +23,6 @@ const Container = styled.div`
   background-color: var(--secondary_green);
 `;
 
-const ProductImage = styled.img`
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 60%;
-  height: 60%;
-  border-radius: 0;
-`;
-
-const ProfileImage = styled.img`
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: 50%;
-`;
-
-
-function SellerInfo() {
-    return (
-        <div className={"seller_info"}>
-            <ProfileImage src={profile_pic} alt={"profile_pic"}/>
-            <div className={"seller_name_and_rating"}>
-                <h3>Sarah Johnson</h3>
-                <div className={"seller_rating"}>
-                    <StarOutlined className={"StarOutlined_icon"}/>
-                    <StarOutlined className={"StarOutlined_icon"}/>
-                    <StarOutlined className={"StarOutlined_icon"}/>
-                </div>
-            </div>
-        </div>
-    );
-};
 const ProductInfo = () => (
     <div>
         <Descriptions size="small"

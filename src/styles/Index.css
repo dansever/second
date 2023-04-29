@@ -9,11 +9,7 @@
     --background_green: #e8eee8;
 }
 
-* {
-    box-sizing: border-box;
-}
-
-h1,h2, h3{
+h1, h2, h3{
     font-family: 'Lora', serif;
     font-weight: bold;
 }
@@ -22,6 +18,8 @@ html, body {
     margin: 0;
     padding: 0;
     background-color: var(--background_green);
+    position:relative;
+    height:100%;
     font-family: 'Montserrat', sans-serif;
 }
 
