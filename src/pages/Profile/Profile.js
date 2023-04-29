@@ -25,6 +25,12 @@ export default function MyProfile() {
                 <ProfileOptions/>
                 <Divider style={{ borderWidth: 0.5, borderColor: 'grey' }}/>
                 <SellerInfo/>
+                <Divider style={{ borderWidth: 0.5, borderColor: 'transparent' }}/>
+                <SellerInfo/>
+                <Divider style={{ borderWidth: 0.5, borderColor: 'transparent' }}/>
+                <SellerInfo/>
+                <Divider style={{ borderWidth: 0.5, borderColor: 'transparent' }}/>
+                <SellerInfo/>
             </nav>
             <Footer/>
         </div>
