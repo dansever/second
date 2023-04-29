@@ -54,17 +54,18 @@ const ItemCard = (props) => (
             {/*//   cover={<img alt="green dress" src={require("../assets/images/green dress.jpg")} />}>*/}
             {/*<Meta title="Europe Street beat" description="www.instagram.com" />*/}
             <div className="card-details">
-                <div className="card-coins">
-                    <img src={require("../../assets/images/coin.png")} width="50px" />
-                    <span className="bold">{props.prise}</span>
-                    <span> • </span>
-                    <span className="grey">{props.location}</span>
-                </div>
                 <div className="card--size">
                     <span className="bold">{props.size}</span>
                     <span> • </span>
-                    <span>{props.brand}</span>
+                    <span>{props.location}</span>
                 </div>
+                <div className="card-coins">
+                    <img src={require("../../assets/images/coin.png")} width="30%" />
+                    <span className="bold">{props.prise}</span>
+                    {/*<span> • </span>*/}
+                    {/*<span className="grey">{props.location}</span>*/}
+                </div>
+
             </div>
         </Card>
     </Link>
