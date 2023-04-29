@@ -94,3 +94,27 @@
 h2{
     margin: 10px;
 }
+
+.home_second_container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    align-content: center;
+    margin: 20px;
+    /*padding: 20px;*/
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 0 8px 0 0 black;
+}
+
+.profile_name_rating{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+h6{
+
+}
