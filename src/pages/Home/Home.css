@@ -1,5 +1,5 @@
 .home-container {
-    background-color: var(--secondary_green);
+    /*background-color: var(--secondary_green);*/
     background-size: cover;
     height: 90vh;
     color: black;
@@ -42,8 +42,8 @@
 }
 
 .weekly-challenge {
-    background-color: var(--secondary_green);
-    color: var(--text_color);
+    /*background-color: var(--secondary_green);*/
+    /*color: var(--text_color);*/
     height: 60%;
     width: 90%;
     display: flex;
