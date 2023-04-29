@@ -2,7 +2,7 @@ import React from "react";
 import ProductUploadForm from "../../components/ProductUpload/ProductUploadForm";
 import styled from "styled-components";
 import { Header_Upload } from "../../components/Header/Header";
-
+import Footer from "../../components/Footer/Footer"
 
 const Container = styled.div`
   background-color: var(--secondary_green);
@@ -21,10 +21,13 @@ const PageTitle = styled.div`
 
 export default function Upload() {
     return (
-        <Container>
-            <Header_Upload/>
-            <PageTitle>Upload</PageTitle>
-            <ProductUploadForm/>
-        </Container>
+        <div>
+            <Container>
+                <Header_Upload/>
+                <PageTitle>Upload</PageTitle>
+                <ProductUploadForm/>
+            </Container>
+            <Footer/>
+        </div>
     );
 };

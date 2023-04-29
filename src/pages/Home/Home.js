@@ -6,6 +6,7 @@ import Header_Home from "../../components/Header/Header";
 import styled from "styled-components";
 import {AcceptChallenge , RefuseChallenge} from "../../components/Buttons/Button"
 import second_hand_clothes from "../../assets/images/second_hand_clothes.jpg"
+import Footer from "../../components/Footer/Footer"
 
 
 
@@ -31,6 +32,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     )
 };

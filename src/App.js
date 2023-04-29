@@ -10,13 +10,14 @@ import Upload from "./pages/Upload/Upload";
 import MyProfile from "./pages/Profile/MyProfile";
 import Product from "./pages/Product/Product";
 import Search from "./pages/Search/Search";
+import MainFeed from "./components/Feed/Feed"
 
 
 
 export default function App() {
     return (
         <BrowserRouter>
-            <Footer/>
+            {/*<Footer/>*/}
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/About" element={<About/>}/>

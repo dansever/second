@@ -9,20 +9,20 @@ const Container = styled.div`
   align-items: center;
 `;
 
-// const AppName = styled.div`
-//   background-color: transparent;
-//   font-family: 'Lora', serif;
-//   font-weight: bold;
-//   font-size: 30px;
-//  `;
-//
+const AppName = styled.div`
+  background-color: transparent;
+  font-family: 'Lora', serif;
+  font-weight: bold;
+  font-size: 30px;
+ `;
+
 
 export default function Logo() {
     return (
         <Container>
             <img src={second_logo} alt={second_logo}
                  style={{width:"70px", height:"50px"}}/>
-            {/*<AppName>.second</AppName>*/}
+            <AppName>.second</AppName>
         </Container>
     );
 };
