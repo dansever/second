@@ -22,52 +22,57 @@ const BottomNavbar = styled.div`
 
 export default function Footer () {
 
-    const [active, setActive] = useState("home");
-
-    const handleNavClick = (navItem) => {
-        setActive(navItem);
-    };
+    // const [active, setActive] = useState("home");
+    //
+    // const handleNavClick = (navItem) => {
+    //     setActive(navItem);
+    // };
 
     return (
         <BottomNavbar>
 
-            <div className={`nav-item ${active === "home" ? "active" : ""}`}
-                 onClick={() => handleNavClick("home")}>
+            <div>
+                {/*className={`nav-item ${active === "home" ? "active" : ""}`}*/}
+                {/* onClick={() => handleNavClick("home")}>*/}
                 <Link to="/">
-                    <BiHome size={32} strokeWidth={0.5}
+                    <BiHome size={36} strokeWidth={0.5}
                             color={"black"}/>
                 </Link>
             </div>
 
-            <div className={`nav-item ${active === "search" ? "active" : ""}`}
-                 onClick={() => handleNavClick("search")}>
+            <div>
+                {/*className={`nav-item ${active === "search" ? "active" : ""}`}*/}
+                {/* onClick={() => handleNavClick("search")}>*/}
                 <Link to="/Search">
-                    <HiMagnifyingGlass size={32} strokeWidth={1.5}
+                    <HiMagnifyingGlass size={36} strokeWidth={1.5}
                                        color={"black"}/>
                 </Link>
             </div>
 
 
-            <div className={`nav-item ${active === "add" ? "active" : ""}`}
-                 onClick={() => handleNavClick("add")}>
+            <div>
+                {/*className={`nav-item ${active === "add" ? "active" : ""}`}*/}
+                {/* onClick={() => handleNavClick("add")}>*/}
                 <Link to="/Upload">
-                    <CiSquarePlus size={32} strokeWidth={1.5}
+                    <CiSquarePlus size={36} strokeWidth={1.5}
                                   color={"black"}/>
                 </Link>
             </div>
 
-            <div className={`nav-item ${active === "cart" ? "active" : ""}`}
-                 onClick={() => handleNavClick("cart")}>
+            <div>
+                {/*className={`nav-item ${active === "cart" ? "active" : ""}`}*/}
+                {/* onClick={() => handleNavClick("cart")}>*/}
                 <Link to="/Cart">
-                    <CiShoppingCart size={32} strokeWidth={1.5}
+                    <CiShoppingCart size={36} strokeWidth={1.5}
                                     color={"black"}/>
                 </Link>
             </div>
 
-            <div className={`nav-item ${active === "user" ? "active" : ""}`}
-                 onClick={() => handleNavClick("user")}>
+            <div>
+                {/*className={`nav-item ${active === "user" ? "active" : ""}`}*/}
+                {/* onClick={() => handleNavClick("user")}>*/}
                 <Link to="/Profile">
-                    <HiOutlineUserCircle size={32} strokeWidth={2}
+                    <HiOutlineUserCircle size={36} strokeWidth={2}
                                          color={"black"}/>
                 </Link>
             </div>

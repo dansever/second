@@ -3,9 +3,9 @@ import styled from "styled-components";
 import "../../styles/Index.css"
 import "./Button.css"
 import {FilterFilled} from "@ant-design/icons"
+import { Button, Radio } from 'antd';
 
-
-export const Button = styled.button`
+export const MyButton = styled.button`
   color: var(--text_color);
   border-radius: 10px;
   height: 40px;
@@ -23,7 +23,7 @@ export const Button = styled.button`
 export default function AddToShop() {
     return (
         <div className={"add_to_shop"}>
-            <Button>Add to your shop</Button>
+            <MyButton>Add to your shop</MyButton>
         </div>
     );
 }
@@ -31,7 +31,7 @@ export default function AddToShop() {
 export  function AddToCart() {
     return (
         <div className={"add_to_cart"}>
-            <Button>Add to cart</Button>
+            <MyButton>Add to cart</MyButton>
         </div>
     );
 }
@@ -40,14 +40,14 @@ export  function AddToCart() {
 export function AcceptChallenge() {
     return (
         <div className={"accept_challenge"}>
-            <Button>Accept Challenge</Button>
+            <MyButton>Accept Challenge</MyButton>
         </div>
     );
 }
 export function RefuseChallenge() {
     return (
         <div className={"refuse_challenge"}>
-            <Button>Refuse Challenge</Button>
+            <MyButton>Refuse Challenge</MyButton>
         </div>
     );
 }
@@ -56,8 +56,17 @@ export function FilterButton() {
     return (
         <div className={"filter-btn"}>
             <FilterFilled/>
-            <Button>Refuse Challenge</Button>
+            <MyButton>Refuse Challenge</MyButton>
         </div>
     );
 }
 
+export function ProfileOptions () {
+    return (
+        <Radio.Group style={{scale:"120%"}}>
+            <Radio.Button value="MyShop">My Shop</Radio.Button>
+            <Radio.Button value="Saved">Saved Items</Radio.Button>
+            <Radio.Button value="Seller">Sellers</Radio.Button>
+        </Radio.Group>
+    );
+}

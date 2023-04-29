@@ -1,89 +1,55 @@
-.home-container {
-    /*background-color: var(--secondary_green);*/
+.home {
+    background-color: var(--secondary_green);
+    color: var(--text_color);
     background-size: cover;
-    height: 90vh;
-    color: black;
-    padding: 10px 10px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     align-content: center;
+    justify-content: start;
     gap: 20px;
 }
 
-.home-container h1 {
-    font-weight: 700;
-    font-size: 2.25rem;
-    line-height: 42px;
-}
-
-.home-container p {
-    line-height: 24px;
-}
-
-.home-container a {
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    background-color: #FF8C38;
-    border: none;
-    width: 100%;
-    margin-top: 27px;
-    padding-block: .75rem;
-    color: white;
-    font-weight: 700;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform .1s ease-in-out;
-}
-
-.home-container a:hover {
-    transform: translate(1px, 1px);
-}
-
 .weekly-challenge {
-    /*background-color: var(--secondary_green);*/
-    /*color: var(--text_color);*/
-    height: 60%;
     width: 90%;
+    height: 52%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     flex-direction: column;
     align-content: center;
-    padding: 20px;
+    padding: 10px;
     border: 2px solid black;
     border-radius: 10px;
     box-shadow: 0 8px 0 0 black;
+    gap: 10px;
 }
+
 
 .home_photo_grid {
-    width: 80%;
+    width: 95%;
+/*    height: 900px;*/
+/*    border: 2px solid black;*/
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-direction: column;
-    align-content: center;
-    /*border: 2px solid black;*/
-    gap: 15px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.placeholder_image {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
+.home_photo_grid img {
+    width: 22%;
+    object-fit: contain;
 }
 
 .buttons-container {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    flex-direction: row;
+    gap: 25px;
 }
 
-.home_second_container {
-    width: 90%;
-    height: 20vh;
-    padding: 20px;
-    border: 1px solid grey;
-}
+/*!*.home_second_container {*!*/
+/*!*    width: 90%;*!*/
+/*!*    height: 20vh;*!*/
+/*!*    padding: 20px;*!*/
+/*!*    border: 1px solid grey;*!*/
+/*!*}*!*/
