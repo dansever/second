@@ -13,7 +13,7 @@ const BottomNavbar = styled.div`
   bottom: 0;
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: var(--secondary_green);
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.25);
   padding: 16px;
@@ -30,7 +30,6 @@ export default function Footer () {
 
     return (
         <BottomNavbar>
-
             <div>
                 {/*className={`nav-item ${active === "home" ? "active" : ""}`}*/}
                 {/* onClick={() => handleNavClick("home")}>*/}
@@ -39,7 +38,6 @@ export default function Footer () {
                             color={"black"}/>
                 </Link>
             </div>
-
             <div>
                 {/*className={`nav-item ${active === "search" ? "active" : ""}`}*/}
                 {/* onClick={() => handleNavClick("search")}>*/}
@@ -48,8 +46,6 @@ export default function Footer () {
                                        color={"black"}/>
                 </Link>
             </div>
-
-
             <div>
                 {/*className={`nav-item ${active === "add" ? "active" : ""}`}*/}
                 {/* onClick={() => handleNavClick("add")}>*/}
@@ -58,7 +54,6 @@ export default function Footer () {
                                   color={"black"}/>
                 </Link>
             </div>
-
             <div>
                 {/*className={`nav-item ${active === "cart" ? "active" : ""}`}*/}
                 {/* onClick={() => handleNavClick("cart")}>*/}
@@ -67,7 +62,6 @@ export default function Footer () {
                                     color={"black"}/>
                 </Link>
             </div>
-
             <div>
                 {/*className={`nav-item ${active === "user" ? "active" : ""}`}*/}
                 {/* onClick={() => handleNavClick("user")}>*/}

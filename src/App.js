@@ -3,15 +3,12 @@ import {BrowserRouter as Router, Routes, Route, BrowserRouter, Link} from 'react
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Cart from "./pages/Cart/Cart";
-import Logo from "./components/Logo";
 import Contact from "./pages/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 import Upload from "./pages/Upload/Upload";
 import Profile from "./pages/Profile/Profile";
 import Product from "./pages/Product/Product";
 import Search from "./pages/Search/Search";
-import MainFeed from "./components/Feed/Feed"
-
 export default function App() {
     return (
         <BrowserRouter>
