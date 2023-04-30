@@ -6,6 +6,7 @@ import {ArrowLeftOutlined, SettingFilled, BellOutlined} from "@ant-design/icons"
 import {Link} from "react-router-dom";
 import { BiHome } from "react-icons/bi";
 import second_logo from "../../assets/images/second-logo.png";
+import {useNavigate} from "react-router";
 
 
 const HeaderContainer = styled.div`
@@ -44,10 +45,12 @@ export default function Header_Home() {
 };
 
 export function Header_Search() {
+    const navigate = useNavigate();
     return (
         <HeaderContainer>
             <ArrowLeftOutlined className={"btn"}
-                               style={{fontSize: '36px' }}/>
+                               style={{fontSize: '36px' }}
+                               onClick={() => navigate(-1)}/>
         </HeaderContainer>
     );
 };
@@ -65,10 +68,12 @@ export function Header_Product() {
 
 
 export function Header_Upload() {
+    const navigate = useNavigate();
     return (
         <HeaderContainer>
             <ArrowLeftOutlined className={"btn"}
-                               style={{fontSize: '36px' }}/>
+                               style={{fontSize: '36px' }}
+                               onClick={() => navigate(-1)}/>
         </HeaderContainer>
     );
 };
