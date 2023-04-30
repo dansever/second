@@ -47,24 +47,8 @@ export default function MyProfile() {
             <PageContainer>
                 <ProfileInfo/>
                 <ProfileOptions/>
-                <Divider style={{ borderWidth: 0.5, borderColor: 'grey' }}/>
-                <SellerInfo/>
-                <Divider style={{ borderWidth: 0.5, borderColor: 'transparent' }}/>
-                <SellerInfo/>
-                <Divider style={{ borderWidth: 0.5, borderColor: 'transparent' }}/>
-                <SellerInfo/>
-                <Divider style={{ borderWidth: 0.5, borderColor: 'transparent' }}/>
-                <SellerInfo/>
             </PageContainer>
             <Footer/>
         </div>
-        // <div style={{display:"flex",
-        //     flexDirection:"column",
-        //     justifyContent:"center",
-        //     alignItems:"center",
-        //     alignContent:"center"}}>
-        //     <PageTitle>My Profile</PageTitle>
-        //     <div className = "profile_container">
-        //     </div>
     );
 }
