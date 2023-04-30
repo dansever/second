@@ -42,16 +42,16 @@ export  function AddToCart() {
 
 export function AcceptChallenge() {
     return (
-        <div className={"accept_challenge"}>
+        // <div className={"accept_challenge"}>
             <MyButton>Accept Challenge</MyButton>
-        </div>
+        // </div>
     );
 }
 export function RefuseChallenge() {
     return (
-        <div className={"refuse_challenge"}>
+        // <div className={"refuse_challenge"}>
             <MyButton>Refuse Challenge</MyButton>
-        </div>
+        // </div>
     );
 }
 
