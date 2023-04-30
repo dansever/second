@@ -12,7 +12,7 @@ import profile_pic from "../../assets/images/generic-profile-pic.jpg";
 import Colors from "../../color"
 
 const HomeContainer = styled.div`
-  border: 1px solid black;
+  //border: 1px solid black;
   background-color: var(--background_green);
   position: fixed;
   padding: 10px 10px;
@@ -37,7 +37,7 @@ const SubContainer1 = styled.div`
 `;
 
 const ImgGrid = styled.div`
-  border: 2px solid black;
+  //border: 2px solid black;
   width: 80%;
   height: 45%;
   display: flex;
@@ -51,7 +51,7 @@ const ProfileImage = styled.img`
 `;
 
 const SubContainer2 = styled.div`
-  border: 1px solid black;
+  //border: 1px solid black;
   height: 40%;
   width: 100%;
   display: flex;
@@ -75,7 +75,7 @@ export default function Home() {
                         <img src={green_item} className="placeholder_image"  alt={"green_item"}/>
                     </ImgGrid>
                     <MyButton>Accept Challenge</MyButton>
-                    <MyButton>Refuse Challenge</MyButton>
+                    <MyButton>See what others uploaded</MyButton>
                 </SubContainer1>
                 <SubContainer2>
                 <h2> Items from sellers you liked </h2>

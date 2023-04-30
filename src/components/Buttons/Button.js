@@ -73,16 +73,6 @@ export function SortButton() {
     );
 }
 
-export function ProfileOptions () {
-    return (
-        <Radio.Group style={{scale:"120%"}}>
-            <Radio.Button value="MyShop">My Shop</Radio.Button>
-            <Radio.Button value="Saved">Saved Items</Radio.Button>
-            <Radio.Button value="Seller">Sellers</Radio.Button>
-        </Radio.Group>
-    );
-}
-
 export function FollowUnfollowBtn() {
     return (
         <div>

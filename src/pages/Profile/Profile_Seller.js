@@ -1,20 +1,11 @@
 import React from "react";
-import {Header_Profile} from "../../components/Header/Header";
+import {Header_Profile, Header_Search} from "../../components/Header/Header";
+import ProfileInfo, {SellerInfo} from "../../components/UserInfo/UserInfo";
 import styled from "styled-components";
-import Footer from "../../components/Footer/Footer";
-import "./Profile.css"
-import ProfileInfo, {SellerInfo} from "../../components/UserInfo/UserInfo"
 import {Divider, Radio} from "antd";
+import {FilterButton} from "../../components/Buttons/Button";
 import {useNavigate} from "react-router";
-
-const PageTitle = styled.div`
-  position: absolute;
-  top: 6px;
-  left: 30%;
-  font-family: 'Lora', serif;
-  font-size: 36px;
-`;
-
+import Footer from "../../components/Footer/Footer";
 
 const PageContainer = styled.div`
     background-color: var(--secondary_green);
@@ -38,15 +29,21 @@ function ProfileOptions () {
     );
 }
 
-
-export default function MyProfile() {
+export default function Profile_Seller() {
     return (
         <div>
-            <Header_Profile/>
-            <PageTitle>My Profile</PageTitle>
+            <Header_Search/>
             <PageContainer>
                 <ProfileInfo/>
                 <ProfileOptions/>
+                <Divider style={{ borderWidth: 0.5, borderColor: 'grey' }}/>
+                <SellerInfo/>
+                <Divider style={{ borderWidth: 0.5, borderColor: 'transparent' }}/>
+                <SellerInfo/>
+                <Divider style={{ borderWidth: 0.5, borderColor: 'transparent' }}/>
+                <SellerInfo/>
+                <Divider style={{ borderWidth: 0.5, borderColor: 'transparent' }}/>
+                <SellerInfo/>
             </PageContainer>
             <Footer/>
         </div>
