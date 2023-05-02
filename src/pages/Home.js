@@ -1,7 +1,7 @@
 import React from "react"
 import "../styles/Index.css"
 import Header from "../components/Header"
-import MainFeed from "../components/Feed/Feed"
+import Feed from "../components/Feed"
 import SearchBar from "../components/SearchBar/SearchBar";
 import Navbar from "../components/Navbar"
 import styled from "styled-components";
@@ -21,7 +21,7 @@ export default function Home() {
             <Header/>
             <HomeContainer>
                 <SearchBar/>
-                <MainFeed/>
+                <Feed/>
             </HomeContainer>
             <Navbar/>
         </div>

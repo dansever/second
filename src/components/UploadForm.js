@@ -1,7 +1,7 @@
 import React from "react";
 import { UploadOutlined } from '@ant-design/icons';
 import '../styles/Index.css';
-import '../components/ProductUpload/ProductUploadForm.css';
+// import '../components/ProductUpload/ProductUploadForm.css';
 import {Button, Form, Input, InputNumber, Select, Upload, Rate, Space} from 'antd';
 import styled from 'styled-components'
 import { Radio } from 'antd'

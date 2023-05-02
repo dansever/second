@@ -1,5 +1,5 @@
 import React from "react";
-import {Header_Profile, Header_Search} from "../../components/Header/Header";
+import {GeneralHeader} from "../../components/Header";
 import ProfileInfo, {SellerInfo} from "../../components/UserInfo/UserInfo";
 import styled from "styled-components";
 import {Divider, Radio} from "antd";
@@ -32,7 +32,7 @@ function ProfileOptions () {
 export default function Profile_Seller() {
     return (
         <div>
-            <Header_Search/>
+            <GeneralHeader/>
             <PageContainer>
                 <ProfileInfo/>
                 <ProfileOptions/>

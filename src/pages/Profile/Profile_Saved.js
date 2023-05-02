@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {Header_Search} from "../../components/Header/Header";
+import {GeneralHeader} from "../../components/Header";
 import ProfileInfo from "../../components/UserInfo/UserInfo";
 import Navbar from "../../components/Navbar";
 import {FilterButton, SortButton} from "../../components/Buttons/Button";
@@ -33,7 +33,7 @@ function ProfileOptions () {
 export default function Profile_Saved() {
     return (
         <div>
-            <Header_Search/>
+            <GeneralHeader/>
             <PageContainer>
                 <ProfileInfo/>
                 <ProfileOptions/>

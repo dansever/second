@@ -1,6 +1,7 @@
 import React from "react";
-import UploadForm from "../components/UploadForm";
 import styled from "styled-components";
+import "../styles/Index.css"
+import UploadForm from "../components/UploadForm";
 import Navbar from "../components/Navbar"
 import {GeneralHeader} from "../components/Header";
 
@@ -13,20 +14,12 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const PageTitle = styled.div`
-  margin-left: auto;
-  margin-right: auto;
-
-  font-family: 'Lora', serif;
-  font-size: 36px;
-`;
-
 export default function Upload() {
     return (
         <div>
             <GeneralHeader/>
             <Container>
-                <PageTitle>Upload an Item</PageTitle>
+                <div className={"page-title"}>Upload an Item</div>
                 <UploadForm/>
             </Container>
             <Navbar/>

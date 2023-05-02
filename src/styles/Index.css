@@ -16,10 +16,22 @@ h1, h2, h3{
 html, body {
     margin: 0;
     padding: 0;
-    background-color: var(--background_green);
+    background-color: var(--light_green);
     position:relative;
     height:100%;
     font-family: 'Montserrat', sans-serif;
+}
+
+.page-title {
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Lora', serif;
+    font-size: 36px;
+}
+
+/*UploadForm*/
+.ant-form-item-label label{
+    font-weight: bold;
 }
 
 body::-webkit-scrollbar {

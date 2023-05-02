@@ -7,7 +7,7 @@ import { Descriptions } from 'antd';
 import profile_pic from "../../assets/images/generic-profile-pic.jpg";
 import product_pic from "../../assets/images/second_hand_clothes.jpg";
 import Navbar from "../../components/Navbar";
-import {Header_Product} from "../../components/Header/Header";
+import {GeneralHeader} from "../../components/Header";
 import {AddToCart} from "../../components/Buttons/Button";
 import { Divider } from 'antd';
 import SellerInfo from "../../components/UserInfo/UserInfo";
@@ -36,7 +36,7 @@ function PriceAndAdd() {
 export default function Product () {
     return (
         <div>
-            <Header_Product/>
+            <GeneralHeader/>
             <div className={"product-page-container"}>
                 <img className={"product_image"}
                      alt={"product_image"}

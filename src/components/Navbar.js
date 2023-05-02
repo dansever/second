@@ -12,9 +12,9 @@ const NavbarStyle = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-around;
-  background-color: var(--secondary_green);
+  background-color: var(--primary_green);
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.25);
-  padding: 16px;
+  padding:  15px 0;
 `;
 
 
@@ -34,14 +34,6 @@ const NavItem = styled.div`
 export default function Navbar () {
     return (
         <NavbarStyle>
-
-
-            {/*<NavItem>*/}
-            {/*    <Link to="/Search">*/}
-            {/*        <HiMagnifyingGlass size={36} strokeWidth={1.5} color={"black"}/>*/}
-            {/*    </Link>*/}
-            {/*</NavItem>*/}
-
             <NavItem>
                 <Link to="/Upload">
                     <CiSquarePlus size={36} strokeWidth={1.5} color={"black"}/>
@@ -66,6 +58,11 @@ export default function Navbar () {
             {/*    </Link>*/}
             {/*</NavItem>*/}
 
+            {/*<NavItem>*/}
+            {/*    <Link to="/Search">*/}
+            {/*        <HiMagnifyingGlass size={36} strokeWidth={1.5} color={"black"}/>*/}
+            {/*    </Link>*/}
+            {/*</NavItem>*/}
 
         </NavbarStyle>
     );

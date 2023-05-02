@@ -1,5 +1,5 @@
 import React from "react";
-import {Header_Search} from "../../components/Header/Header";
+import {GeneralHeader} from "../../components/Header";
 import styled from "styled-components";
 import ProfileInfo from "../../components/UserInfo/UserInfo";
 import {useNavigate} from "react-router";
@@ -31,7 +31,7 @@ function ProfileOptions () {
 export default function Profile_MyShop() {
     return (
         <div>
-            <Header_Search/>
+            <GeneralHeader/>
             <PageContainer>
                 <ProfileInfo/>
                 <ProfileOptions/>
