@@ -10,7 +10,7 @@ import Navbar from "../../components/Navbar";
 import {GeneralHeader} from "../../components/Header";
 import {AddToCart} from "../../components/Buttons/Button";
 import { Divider } from 'antd';
-import SellerInfo from "../../components/UserInfo/UserInfo";
+import SellerInfo from "../../components/ProfileContainers/ProfileContainers";
 import Price from "../../components/Price";
 
 

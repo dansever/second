@@ -11,14 +11,18 @@ import Login from "./pages/Login";
 import Profile_Seller from "./pages/Profile/Profile_Seller";
 import Profile_MyShop from "./pages/Profile/Profile_MyShop";
 import Profile_Saved from "./pages/Profile/Profile_Saved";
+import Welcome from "./pages/Welcome";
+import SignUp from "./pages/SignUp";
 
 export default function App() {
     return (
         <BrowserRouter>
             {/*<Navbar/>*/}
             <Routes>
-                <Route path="/" element={<Home/>}/>
+                <Route path="/" element={<Welcome/>}/>
+                <Route path="/Home" element={<Home/>}/>
                 <Route path="/Login" element={<Login/>}/>
+                <Route path="/Signup" element={<SignUp/>}/>
                 <Route path="/About" element={<About/>}/>
                 <Route path="/Search/:id" element={<Product/>}/>
                 <Route path="/Upload" element={<Upload/>}/>

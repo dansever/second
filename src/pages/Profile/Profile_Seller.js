@@ -1,6 +1,6 @@
 import React from "react";
 import {GeneralHeader} from "../../components/Header";
-import ProfileInfo, {SellerInfo} from "../../components/UserInfo/UserInfo";
+import ProfileInfo, {SellerInfo} from "../../components/ProfileContainers/ProfileContainers";
 import styled from "styled-components";
 import {Divider, Radio} from "antd";
 import {FilterButton} from "../../components/Buttons/Button";

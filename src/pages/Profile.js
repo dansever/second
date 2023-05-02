@@ -3,7 +3,7 @@ import {GeneralHeader} from "../components/Header";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import "./Profile/Profile.css"
-import ProfileInfo, {SellerInfo} from "../components/UserInfo/UserInfo"
+import ProfileInfo, {SellerInfo} from "../components/ProfileContainers/ProfileContainers"
 import {Divider, Radio} from "antd";
 import {useNavigate} from "react-router";
 

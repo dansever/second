@@ -41,7 +41,7 @@ export default function Navbar () {
             </NavItem>
 
             <NavItem>
-                <Link to="/">
+                <Link to="/Home">
                     <BiHome size={36} strokeWidth={0.5} color={"black"}/>
                 </Link>
             </NavItem>

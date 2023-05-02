@@ -8,25 +8,25 @@ import {HiMagnifyingGlass} from "react-icons/hi2";
 import {HiFilter} from "react-icons/hi";
 import {HiSortDescending} from "react-icons/hi";
 
-export const MyButton = styled.button`
-  color: var(--text_color);
-  border-radius: 10px;
-  height: 40px;
-  width: 190px;
-  font-size: medium;
-  font-weight: bold;
-  box-shadow: 5px 5px 0 0 black;
-  &:hover {
-    cursor: pointer;
-    font-size: 105%;
-    width: 190px;
-  }
+export const ButtonStyle = styled.button`
+    color: var(--text_color);
+    border-radius: 10px;
+    height: 40px;
+    width: 160px;
+    font-size: medium;
+    font-weight: bold;
+    box-shadow: 2px 3px 0 0 black;
+    &:hover {
+        cursor: pointer;
+        font-size: 110%;
+    }
 `;
+
 
 export default function AddToShop() {
     return (
         <div className={"add_to_shop"}>
-            <MyButton>Add to your shop</MyButton>
+            <ButtonStyle>Add to your shop</ButtonStyle>
         </div>
     );
 }
@@ -34,7 +34,7 @@ export default function AddToShop() {
 export  function AddToCart() {
     return (
         <div className={"add_to_cart"}>
-            <MyButton>Add to cart</MyButton>
+            <ButtonStyle>Add to cart</ButtonStyle>
         </div>
     );
 }
@@ -43,14 +43,14 @@ export  function AddToCart() {
 export function AcceptChallenge() {
     return (
         // <div className={"accept_challenge"}>
-            <MyButton>Accept Challenge</MyButton>
+            <ButtonStyle>Accept Challenge</ButtonStyle>
         // </div>
     );
 }
 export function RefuseChallenge() {
     return (
         // <div className={"refuse_challenge"}>
-            <MyButton>Refuse Challenge</MyButton>
+            <ButtonStyle>Refuse Challenge</ButtonStyle>
         // </div>
     );
 }
@@ -60,7 +60,7 @@ export function FilterButton() {
         <div className={"filter-btn"}>
             {/*<FilterFilled/>*/}
             {/*<FilterFilled/>*/}
-            <MyButton><HiFilter/>Filter</MyButton>
+            <ButtonStyle><HiFilter/>Filter</ButtonStyle>
         </div>
     );
 }
@@ -68,7 +68,7 @@ export function FilterButton() {
 export function SortButton() {
     return (
         <div className={"sort-btn"}>
-            <MyButton><HiSortDescending/>Sort</MyButton>
+            <ButtonStyle><HiSortDescending/>Sort</ButtonStyle>
         </div>
     );
 }

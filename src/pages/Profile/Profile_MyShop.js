@@ -1,7 +1,7 @@
 import React from "react";
 import {GeneralHeader} from "../../components/Header";
 import styled from "styled-components";
-import ProfileInfo from "../../components/UserInfo/UserInfo";
+import ProfileInfo from "../../components/ProfileContainers/ProfileContainers";
 import {useNavigate} from "react-router";
 import {Divider, Radio} from "antd";
 import Navbar from "../../components/Navbar";
