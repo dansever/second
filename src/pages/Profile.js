@@ -1,9 +1,9 @@
 import React from "react";
-import {Header_Profile} from "../../components/Header/Header";
+import {Header_Profile} from "../components/Header/Header";
 import styled from "styled-components";
-import Footer from "../../components/Footer/Footer";
-import "./Profile.css"
-import ProfileInfo, {SellerInfo} from "../../components/UserInfo/UserInfo"
+import Navbar from "../components/Navbar";
+import "./Profile/Profile.css"
+import ProfileInfo, {SellerInfo} from "../components/UserInfo/UserInfo"
 import {Divider, Radio} from "antd";
 import {useNavigate} from "react-router";
 
@@ -48,7 +48,7 @@ export default function MyProfile() {
                 <ProfileInfo/>
                 <ProfileOptions/>
             </PageContainer>
-            <Footer/>
+            <Navbar/>
         </div>
     );
 }

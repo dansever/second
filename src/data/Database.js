@@ -1,4 +1,4 @@
-import i1 from "./images/i1.jpg"
+import i1 from "../assets/images/i1.jpg"
 
 const data = [
     {

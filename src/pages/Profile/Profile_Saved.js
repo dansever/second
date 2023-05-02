@@ -1,8 +1,8 @@
 import React from "react";
-import {Header_Search} from "../../components/Header/Header";
 import styled from "styled-components";
+import {Header_Search} from "../../components/Header/Header";
 import ProfileInfo from "../../components/UserInfo/UserInfo";
-import Footer from "../../components/Footer/Footer";
+import Navbar from "../../components/Navbar";
 import {FilterButton, SortButton} from "../../components/Buttons/Button";
 import {useNavigate} from "react-router";
 import {Divider, Radio} from "antd";
@@ -40,10 +40,10 @@ export default function Profile_Saved() {
                 <Divider style={{ borderWidth: 0.5, borderColor: 'grey' }}/>
                 <FilterButton/>
                 <SortButton/>
-                <img src={require("../../assets/item_cards_for_profile_saved.png")}
+                <img src={require("../../assets/images/item_cards_for_profile_saved.png")}
                      alt={"placeholder"} style={{scale:"50%"}}/>
             </PageContainer>
-            <Footer/>
+            <Navbar/>
         </div>
     );
 }

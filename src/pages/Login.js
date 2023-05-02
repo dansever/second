@@ -1,57 +1,43 @@
-import { Button, Checkbox, Form, Input } from 'antd';
-const onFinish = (values) => {
-    console.log('Success:', values);
+import React, { useState } from 'react';
+import { useNavigate  } from 'react-router-dom';
+
+const Login = () => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate  = useNavigate ();
+
+    const handleUsernameChange = (event) => {
+        setUsername(event.target.value);
+    };
+
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(`Username: ${username}, Password: ${password}`);
+        // Here, you can add logic to send the login credentials to a server for validation
+        navigate("/OldHome");
+    };
+
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Username:
+                    <input type="text" value={username} onChange={handleUsernameChange} />
+                </label>
+                <br />
+                <label>
+                    Password:
+                    <input type="password" value={password} onChange={handlePasswordChange} />
+                </label>
+                <br />
+                <button type="submit">Log In</button>
+            </form>
+        </div>
+    );
 };
-const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-};
-const Login = () => (
-    <Form
-        name="basic"
-        labelCol={{span: 8,}}
-        wrapperCol={{span: 16,}}
-        style={{
-            padding:"50px",
-            display: "flex",
-            flexDirection:"column",
-            justifyItems: "center",
-            maxWidth: "100vh",
-            maxHeight: "60%"}}
-        initialValues={{remember: true,}}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off"
-    >
-        <Form.Item
-            label="Username"
-            name="username"
-            rules={[{required: true,
-                message: 'Please input your username',},]}>
-            <Input />
-        </Form.Item>
 
-        <Form.Item
-            label="Password"
-            name="password"
-            rules={[{required: true,
-                message: 'Please input your password',},]}>
-            <Input.Password />
-        </Form.Item>
-
-        <Form.Item
-            name="remember"
-            valuePropName="checked"
-            wrapperCol={{offset: 8,span: 16,}}
-        >
-            <Checkbox>Remember me</Checkbox>
-        </Form.Item>
-
-        <Form.Item
-            wrapperCol={{offset: 8, span: 16,}}>
-            <Button type="primary" htmlType="submit">
-                Submit
-            </Button>
-        </Form.Item>
-    </Form>
-);
 export default Login;

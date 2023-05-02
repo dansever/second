@@ -1,6 +1,6 @@
 import React from "react"
 import "./Cart.css"
-import Footer from "../../components/Footer/Footer";
+import Navbar from "../../components/Navbar";
 import {Header_Search} from "../../components/Header/Header";
 
 export default function About() {
@@ -8,7 +8,7 @@ export default function About() {
         <div className="cart-page-container">
             <Header_Search/>
             <div>Cart</div>
-            <Footer/>
+            <Navbar/>
         </div>
     );
 }

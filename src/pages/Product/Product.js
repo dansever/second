@@ -6,7 +6,7 @@ import { StarOutlined } from '@ant-design/icons';
 import { Descriptions } from 'antd';
 import profile_pic from "../../assets/images/generic-profile-pic.jpg";
 import product_pic from "../../assets/images/second_hand_clothes.jpg";
-import Footer from "../../components/Footer/Footer";
+import Navbar from "../../components/Navbar";
 import {Header_Product} from "../../components/Header/Header";
 import {AddToCart} from "../../components/Buttons/Button";
 import { Divider } from 'antd';
@@ -47,7 +47,7 @@ export default function Product () {
                 <Divider style={{ borderWidth: 0.5, borderColor: 'grey' }}/>
                 <PriceAndAdd/>
             </div>
-            <Footer/>
+            <Navbar/>
         </div>
     );
 };

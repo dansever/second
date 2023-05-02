@@ -4,7 +4,7 @@ import styled from "styled-components";
 import ProfileInfo from "../../components/UserInfo/UserInfo";
 import {useNavigate} from "react-router";
 import {Divider, Radio} from "antd";
-import Footer from "../../components/Footer/Footer";
+import Navbar from "../../components/Navbar";
 
 const PageContainer = styled.div`
     background-color: var(--secondary_green);
@@ -37,7 +37,7 @@ export default function Profile_MyShop() {
                 <ProfileOptions/>
                 <Divider style={{ borderWidth: 0.5, borderColor: 'grey' }}/>
             </PageContainer>
-            <Footer/>
+            <Navbar/>
         </div>
     );
 }

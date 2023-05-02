@@ -1,15 +1,13 @@
 import React from "react"
-import { Link } from "react-router-dom"
-import "../../styles/Index.css"
-import "./Home.css"
-import Header_Home from "../../components/Header/Header";
+// import "../styles/Index.css"
+// import "./Home/Home.css"
+import Header_Home from "../components/Header/Header";
 import styled from "styled-components";
-import {AcceptChallenge, MyButton, RefuseChallenge} from "../../components/Buttons/Button"
-import second_hand_clothes from "../../assets/images/second_hand_clothes.jpg"
-import green_item from "../../assets/images/green item.jpg"
-import Footer from "../../components/Footer/Footer"
-import profile_pic from "../../assets/images/generic-profile-pic.jpg";
-import Colors from "../../color"
+import { MyButton } from "../components/Buttons/Button"
+import green_item from "../assets/images/green item.jpg"
+import Navbar from "../components/Navbar"
+import profile_pic from "../assets/images/generic-profile-pic.jpg";
+import Colors from "../color"
 
 const HomeContainer = styled.div`
   //border: 1px solid black;
@@ -63,7 +61,7 @@ const SubContainer2 = styled.div`
 `;
 
 
-export default function Home() {
+export default function OldHome() {
     return (
         <div>
             <Header_Home/>
@@ -95,7 +93,7 @@ export default function Home() {
                         </div>
                 </SubContainer2>
             </HomeContainer>
-        <Footer/>
+        <Navbar/>
     </div>
     )
 };
