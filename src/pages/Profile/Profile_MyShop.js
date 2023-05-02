@@ -1,10 +1,10 @@
 import React from "react";
-import {Header_Search} from "../../components/Header/Header";
+import {GeneralHeader} from "../../components/Header";
 import styled from "styled-components";
 import ProfileInfo from "../../components/UserInfo/UserInfo";
 import {useNavigate} from "react-router";
 import {Divider, Radio} from "antd";
-import Footer from "../../components/Footer/Footer";
+import Navbar from "../../components/Navbar";
 
 const PageContainer = styled.div`
     background-color: var(--secondary_green);
@@ -31,13 +31,13 @@ function ProfileOptions () {
 export default function Profile_MyShop() {
     return (
         <div>
-            <Header_Search/>
+            <GeneralHeader/>
             <PageContainer>
                 <ProfileInfo/>
                 <ProfileOptions/>
                 <Divider style={{ borderWidth: 0.5, borderColor: 'grey' }}/>
             </PageContainer>
-            <Footer/>
+            <Navbar/>
         </div>
     );
 }

@@ -1,11 +1,11 @@
 import React from "react";
-import {Header_Profile, Header_Search} from "../../components/Header/Header";
+import {GeneralHeader} from "../../components/Header";
 import ProfileInfo, {SellerInfo} from "../../components/UserInfo/UserInfo";
 import styled from "styled-components";
 import {Divider, Radio} from "antd";
 import {FilterButton} from "../../components/Buttons/Button";
 import {useNavigate} from "react-router";
-import Footer from "../../components/Footer/Footer";
+import Navbar from "../../components/Navbar";
 
 const PageContainer = styled.div`
     background-color: var(--secondary_green);
@@ -32,7 +32,7 @@ function ProfileOptions () {
 export default function Profile_Seller() {
     return (
         <div>
-            <Header_Search/>
+            <GeneralHeader/>
             <PageContainer>
                 <ProfileInfo/>
                 <ProfileOptions/>
@@ -45,7 +45,7 @@ export default function Profile_Seller() {
                 <Divider style={{ borderWidth: 0.5, borderColor: 'transparent' }}/>
                 <SellerInfo/>
             </PageContainer>
-            <Footer/>
+            <Navbar/>
         </div>
     );
 }

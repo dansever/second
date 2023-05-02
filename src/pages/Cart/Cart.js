@@ -1,14 +1,14 @@
 import React from "react"
 import "./Cart.css"
-import Footer from "../../components/Footer/Footer";
-import {Header_Search} from "../../components/Header/Header";
+import Navbar from "../../components/Navbar";
+import {GeneralHeader} from "../../components/Header";
 
 export default function About() {
     return (
         <div className="cart-page-container">
-            <Header_Search/>
+            <GeneralHeader/>
             <div>Cart</div>
-            <Footer/>
+            <Navbar/>
         </div>
     );
 }
