@@ -18,7 +18,7 @@ const Login = () => {
         event.preventDefault();
         console.log(`Username: ${username}, Password: ${password}`);
         // Here, you can add logic to send the login credentials to a server for validation
-        navigate("/OldHome");
+        navigate("/Home");
     };
 
     return (

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import {GeneralHeader} from "../../components/Header";
-import ProfileInfo from "../../components/UserInfo/UserInfo";
+import ProfileInfo from "../../components/ProfileContainers/ProfileContainers";
 import Navbar from "../../components/Navbar";
 import {FilterButton, SortButton} from "../../components/Buttons/Button";
 import {useNavigate} from "react-router";

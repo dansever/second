@@ -35,7 +35,7 @@ export default function ProfileInfo() {
                 </div>
             </div>
             <div className={"coins"}>
-                <img src={require("../../assets/images/coin.png")}
+                <img src={coin_img}
                 alt={"coin_img"} width={"50px"}/>
                 <div>43 Coins</div>
             </div>
