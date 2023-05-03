@@ -8,18 +8,18 @@
     --text_color: #02110A;
 }
 
+html, body {
+    background-color: var(--light_green);
+    margin: 0;
+    padding: 0;
+    position:relative;
+    height:100vh;
+    font-family: 'Montserrat', sans-serif;
+}
+
 h1, h2, h3{
     font-family: 'Lora', serif;
     font-weight: bold;
-}
-
-html, body {
-    margin: 0;
-    padding: 0;
-    background-color: var(--light_green);
-    position:relative;
-    height:100%;
-    font-family: 'Montserrat', sans-serif;
 }
 
 .page-title {

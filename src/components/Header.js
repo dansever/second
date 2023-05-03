@@ -10,7 +10,6 @@ const HeaderContainer = styled.div`
   background-color: var(--secondary_green);
   display: flex;
   align-items: center;
-  padding-right: 10px;
   column-gap: 100px;
 `;
 
