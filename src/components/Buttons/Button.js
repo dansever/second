@@ -7,18 +7,20 @@ import { Button, Radio } from 'antd';
 import {HiMagnifyingGlass} from "react-icons/hi2";
 import {HiFilter} from "react-icons/hi";
 import {HiSortDescending} from "react-icons/hi";
+import Colors from "../../color"
 
 export const ButtonStyle = styled.button`
-    color: var(--text_color);
-    border-radius: 10px;
-    height: 40px;
-    width: 160px;
-    font-size: medium;
-    font-weight: bold;
-    box-shadow: 2px 3px 0 0 black;
-    &:hover {
-        cursor: pointer;
-        font-size: 110%;
+  color: var(--text_color);
+  border-radius: 10px;
+  height: 40px;
+  width: 160px;
+  font-size: medium;
+  font-weight: bold;
+  box-shadow: 2px 3px 0 0 black;
+  &:hover {
+    cursor: pointer;
+    //font-size: 105%;
+    background-color: var(--secondary_green);
     }
 `;
 
@@ -31,13 +33,15 @@ export default function AddToShop() {
     );
 }
 
-export  function AddToCart() {
-    return (
-        <div className={"add_to_cart"}>
-            <ButtonStyle>Add to cart</ButtonStyle>
-        </div>
-    );
-}
+// export function AddToCart() {
+//     return (
+//         <div style={{color: Colors.dark_green,
+//             display: "flex",
+//             justifyContent: "center", padding: "0 0 0 0"}}>
+//             <ButtonStyle>Add to cart</ButtonStyle>
+//         </div>
+//     );
+// }
 
 
 export function AcceptChallenge() {
