@@ -1,0 +1,29 @@
+.ant-input {
+    background-color: var(--light_green);
+    border: 1px solid var(--text_color);
+    border-radius: 4px;
+}
+
+.ant-input-number {
+    background-color: var(--light_green);
+    border: 1px solid var(--text_color);
+    border-radius: 4px;
+}
+
+.ant-btn {
+    background-color: var(--light_green);
+    border: 1px solid var(--text_color);
+    border-radius: 4px;
+}
+
+.ant-select{
+    background-color: var(--light_green);
+    border: 1px solid var(--text_color);
+    border-radius: 4px;
+}
+
+.ant-radio-button-wrapper {
+    background-color: var(--light_green);
+    border: 1px solid var(--text_color);
+    border-radius: 4px;
+}

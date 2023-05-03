@@ -61,10 +61,22 @@ function Size() {
 function Color() {
     return (
         <Form.Item label="Color">
-            <Select placeholder="input color">
-                <Select.Option value="Light">Light</Select.Option>
-                <Select.Option value="Dark">Dark</Select.Option>
-                <Select.Option value="Colorful">Colorful</Select.Option>
+            <Select placeholder="input color" bordered={false}>
+                <Select.Option value="Red">Red</Select.Option>
+                <Select.Option value="Green">Green</Select.Option>
+                <Select.Option value="Blue">Blue</Select.Option>
+                <Select.Option value="Yellow">Yellow</Select.Option>
+                <Select.Option value="Orange">Orange</Select.Option>
+                <Select.Option value="Purple">Purple</Select.Option>
+                <Select.Option value="Pink">Pink</Select.Option>
+                <Select.Option value="Brown">Brown</Select.Option>
+                <Select.Option value="Black">Black</Select.Option>
+                <Select.Option value="White">White</Select.Option>
+                <Select.Option value="Grey">Grey</Select.Option>
+                <Select.Option value="Beige">Beige</Select.Option>
+                <Select.Option value="Gold">Gold</Select.Option>
+                <Select.Option value="Silver">Silver</Select.Option>
+                <Select.Option value="Multi">Multi</Select.Option>
             </Select>
         </Form.Item>
     )
