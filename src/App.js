@@ -13,7 +13,7 @@ import Profile_MyShop from "./pages/Profile/Profile_MyShop";
 import Profile_Saved from "./pages/Profile/Profile_Saved";
 import Welcome from "./pages/Welcome";
 import SignUp from "./pages/SignUp";
-import override from "./override.css"
+
 
 export default function App() {
     return (

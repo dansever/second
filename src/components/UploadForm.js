@@ -2,7 +2,7 @@ import React from "react";
 import { UploadOutlined } from '@ant-design/icons';
 import '../styles/Index.css';
 // import '../components/ProductUpload/ProductUploadForm.css';
-import {Button, Form, Input, InputNumber, Select, Upload, Rate, Space} from 'antd';
+import {Button, Form, Input, InputNumber, Select, Upload, Rate, Space, ConfigProvider } from 'antd';
 import styled from 'styled-components'
 import { Radio } from 'antd'
 import Colors from "../color"
@@ -24,18 +24,62 @@ const normFile = (e) => {
 const onFinish = (values) => {
     console.log('Received values of form: ', values);
 };
+
+const StyledUpload = styled.button`
+    background-color: var(--light_green);
+    border: none;
+    color: var(--text_color);
+    .ant-btn {
+        background-color: var(--light_green);
+        border: 1px solid var(--text_color);
+        color: var(--text_color);
+    }
+  .ant-btn:hover {
+    background-color: var(--light_green);
+    border: 1px solid var(--dark_green);
+    color: var(--dark_green);
+  }
+`;
+
+const StyledInput = styled.div`
+    .ant-input {
+      background-color: var(--light_green);
+      border: 1px solid var(--text_color);
+      border-radius: 4px;
+    }
+    .ant-input-number {
+        background-color: var(--light_green);
+        border: 1px solid var(--text_color);
+        border-radius: 4px;
+    }
+`
+
+const StyledSelect = styled.div`
+    .ant-select-selector {
+        background-color: var(--light_green) !important;
+        border: 1px solid var(--text_color) !important;
+        border-radius: 4px;
+    }
+    .ant-select-selector:hover {
+      background-color: var(--light_green) !important;
+      border: 1px solid var(--dark_green) !important;
+      border-radius: 4px;
+    }
+`;
+
+
 function UploadImage() {
     return (
-        <Form.Item
-            name="upload"
-            label="Upload Image of Product"
-            valuePropName="fileList"
-            getValueFromEvent={normFile}
-        >
-            <Upload name="logo" action="/upload.do" listType="picture">
-                <Button icon={<UploadOutlined />}>Click to upload</Button>
-            </Upload>
-        </Form.Item>
+            <Form.Item
+                name="upload"
+                label="Upload Image of Product"
+                valuePropName="fileList"
+                getValueFromEvent={normFile}
+            >
+                <StyledUpload name="logo" action="/upload.do" listType="picture">
+                    <Button icon={<UploadOutlined />}>Click to upload</Button>
+                </StyledUpload>
+            </Form.Item>
     )
 }
 function Title() {
@@ -47,44 +91,52 @@ function Title() {
                 message: 'Please enter product title',
             },
             ]}>
-            <Input placeholder="input product title"/>
+            <StyledInput>
+                <Input placeholder="input product title"/>
+            </StyledInput>
         </Form.Item>
     )
 }
 function Size() {
     return (
         <Form.Item label="Size">
-            <Input placeholder="input size" size/>
+            <StyledInput>
+                <Input placeholder="input size" size/>
+            </StyledInput>
         </Form.Item>
     )
 }
 function Color() {
     return (
         <Form.Item label="Color">
-            <Select placeholder="input color" bordered={false}>
-                <Select.Option value="Red">Red</Select.Option>
-                <Select.Option value="Green">Green</Select.Option>
-                <Select.Option value="Blue">Blue</Select.Option>
-                <Select.Option value="Yellow">Yellow</Select.Option>
-                <Select.Option value="Orange">Orange</Select.Option>
-                <Select.Option value="Purple">Purple</Select.Option>
-                <Select.Option value="Pink">Pink</Select.Option>
-                <Select.Option value="Brown">Brown</Select.Option>
-                <Select.Option value="Black">Black</Select.Option>
-                <Select.Option value="White">White</Select.Option>
-                <Select.Option value="Grey">Grey</Select.Option>
-                <Select.Option value="Beige">Beige</Select.Option>
-                <Select.Option value="Gold">Gold</Select.Option>
-                <Select.Option value="Silver">Silver</Select.Option>
-                <Select.Option value="Multi">Multi</Select.Option>
-            </Select>
+            <StyledSelect>
+                <Select placeholder="choose color">
+                    <Select.Option value="Red">Red</Select.Option>
+                    <Select.Option value="Green">Green</Select.Option>
+                    <Select.Option value="Blue">Blue</Select.Option>
+                    <Select.Option value="Yellow">Yellow</Select.Option>
+                    <Select.Option value="Orange">Orange</Select.Option>
+                    <Select.Option value="Purple">Purple</Select.Option>
+                    <Select.Option value="Pink">Pink</Select.Option>
+                    <Select.Option value="Brown">Brown</Select.Option>
+                    <Select.Option value="Black">Black</Select.Option>
+                    <Select.Option value="White">White</Select.Option>
+                    <Select.Option value="Grey">Grey</Select.Option>
+                    <Select.Option value="Beige">Beige</Select.Option>
+                    <Select.Option value="Gold">Gold</Select.Option>
+                    <Select.Option value="Silver">Silver</Select.Option>
+                    <Select.Option value="Multi">Multi</Select.Option>
+                </Select>
+            </StyledSelect>
         </Form.Item>
     )
 }
 function Brand() {
     return (
         <Form.Item label="Brand">
-            <Input placeholder="input brand name (if known)"/>
+            <StyledInput>
+                <Input placeholder="input brand name (if known)"/>
+            </StyledInput>
         </Form.Item>
     )
 }
@@ -125,7 +177,9 @@ function Price() {
         <Form.Item
             name="input-price"
             label="Input Price" >
-            <InputNumber min={1} max={5} placeholder="1 to 5"/>
+            <StyledInput>
+                <InputNumber min={1} max={5} placeholder="1 to 5"/>
+            </StyledInput>
         </Form.Item>
     )
 }
