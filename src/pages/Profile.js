@@ -9,7 +9,7 @@ import {useNavigate} from "react-router";
 
 
 const Container = styled.div`
-  background-color: var(--light_green);
+  background-color: var(--off_white);
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -21,11 +21,14 @@ const Container = styled.div`
 function ProfileOptions () {
     const navigate = useNavigate();
     return (
-        <Radio.Group style={{scale:"120%"}}>
+
+        <Radio.Group style={{scale:"120%" }} buttonStyle={"solid"} size={"large"} defaultValue={"MyShop"}>
             <Radio.Button onClick={() => navigate("/Profile/MyShop")} value="MyShop">My Shop</Radio.Button>
             <Radio.Button onClick={() => navigate("/Profile/Saved")} value="Saved">Saved Items</Radio.Button>
             <Radio.Button onClick={() => navigate("/Profile/Seller")} value="Seller">Sellers</Radio.Button>
         </Radio.Group>
+
+
     );
 }
 
