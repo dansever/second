@@ -3,12 +3,17 @@ import "../styles/Index.css";
 import styled from "styled-components";
 import second_logo from "../assets/images/second-logo.png";
 import Colors from "../color"
+import { useNavigate } from 'react-router-dom';
+import {ArrowLeftOutlined} from "@ant-design/icons";
+import {Link} from "react-router-dom";
+
 
 const HeaderContainer = styled.div`
   width: 100%;
   height: 60px;
   background-color: var(--secondary_green);
   display: flex;
+  justify-content: space-between;
   align-items: center;
   column-gap: 100px;
 `;
@@ -50,8 +55,12 @@ export default function HomeHeader() {
 };
 
 export function GeneralHeader() {
+    const navigate = useNavigate();
     return (
         <HeaderContainer>
+            <ArrowLeftOutlined className={"btn"}
+                               style={{fontSize: '36px' }}
+                               onClick={() => navigate(-1)}/>
             <Logo/>
         </HeaderContainer>
     );
