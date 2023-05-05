@@ -21,14 +21,15 @@ const PageContainer = styled.div`
     row-gap: 20px;
 `;
 
-const profileOptionsStyle = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    height: 10vh;
-`;
+// const profileOptionsStyle = styled.div`
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: center;
+//     align-items: center;
+//     align-content: center;
+//     height: 10vh;
+// `;
+
 function ProfileOptions () {
     const navigate = useNavigate();
     return (
