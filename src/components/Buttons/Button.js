@@ -11,12 +11,14 @@ import Colors from "../../color"
 
 export const ButtonStyle = styled.button`
   color: var(--text_color);
-  border-radius: 10px;
+  border-radius: 12px;
   height: 40px;
   width: 160px;
+  font-family: "Montserrat", sans-serif;
   font-size: medium;
   font-weight: bold;
   box-shadow: 2px 3px 0 0 black;
+  align-items: left;
   &:hover {
     cursor: pointer;
     //font-size: 105%;

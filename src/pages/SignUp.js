@@ -4,7 +4,7 @@ import styled from "styled-components";
 import {ButtonStyle} from "../components/Buttons/Button";
 
 const Container = styled.div`
-  background-color: var(--light_green);
+  background-color: var(--off_white);
   display: flex;
   justify-content: center;
   align-items: center;

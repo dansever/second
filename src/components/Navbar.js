@@ -15,6 +15,8 @@ const NavbarStyle = styled.div`
   background-color: var(--primary_green);
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.25);
   padding:  15px 0;
+  z-index: 999;
+  
 `;
 
 
