@@ -8,6 +8,7 @@ import Navbar from "../../components/Navbar";
 import UserHeader from "../../components/UserComponents";
 import {MyShopCard} from "../../components/Card/Card";
 
+
 const PageContainer = styled.div`
     background-color: var(--off_white);
     display: flex;
