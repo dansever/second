@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
-import {HeartFilled, HeartOutlined} from "@ant-design/icons";
+import {HeartFilled, HeartOutlined, EditOutlined} from "@ant-design/icons";
 import {Button} from "antd";
 import coin_img from "../../assets/images/coin.png";
 
@@ -27,7 +27,7 @@ const InfoContainer = styled.div`
 `;
 
 
-export default function ItemCard() {
+export default function MainCard() {
     const [isTitleShown, setIsTitleShown] = useState(false);
     const handleClickCard = () => {
         setIsTitleShown((prevState) => !prevState);
@@ -89,6 +89,40 @@ export default function ItemCard() {
                                 boxShadow: "2px 2px 2px 0 black"}}
                             onClick={handleClickLike}>
                         <HeartFilled style={{ color: iconColor }}/>
+                    </Button>
+                </div>
+            </InfoContainer>
+        </CardStyle>
+    );
+}
+
+export function MyShopCard () {
+    const [isTitleShown, setIsTitleShown] = useState(false);
+    const handleClickCard = () => {
+        setIsTitleShown((prevState) => !prevState);
+    };
+    return (
+        <CardStyle>
+            <ImgContainer style={{ position: 'relative', paddingLeft:"5px"}}
+                          onClick={handleClickCard}>
+                {isTitleShown &&
+                    <h3
+                        style={{ position: 'absolute', top: 0, left: 0}}>
+                        Blue Summer Dress
+                    </h3>}
+            </ImgContainer>
+            <InfoContainer style={{display:"flex",justifyContent:"space-around"}}>
+                <div style={{display:"flex", flexDirection:"row",
+                    alignItems:"center", alignContent:"center"}}>
+                    <img src={coin_img} alt={"coin_img"} width={"30px"}/>
+                    <text style={{fontWeight: 'bold'}}>4</text>
+                </div>
+                <div style={{display:"flex", alignItems:"center"}}>
+                    <Button shape="circle"
+                            style={{scale:"140%",
+                                border:"1px solid black",
+                                boxShadow: "2px 2px 2px 0 black"}}>
+                        <EditOutlined/>
                     </Button>
                 </div>
             </InfoContainer>
