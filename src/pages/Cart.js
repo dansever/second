@@ -25,16 +25,24 @@ const ProductsContainer = styled.div`
   display: flex;
   flex-direction: row;
   column-gap: 15px;
+  align-items: center;
+  width: fit-content;
 `;
 
 
 const PayNowButton = styled(ButtonStyle)`
   background-color: var(--primary_green);
-  width: 40%;
   font-size: 20px;
   display: flex;
+  padding: 10px 16px;
   align-items: center;
-  justify-content: space-between;
+  flex-direction: row;
+  width: fit-content; 
+  
+  img {
+    margin-left: 13px;
+  }
+  
 `;
 
 const ProductBox = styled.img`
@@ -48,11 +56,24 @@ const ProductBox = styled.img`
 
 
 function ProductPic () {
+    const ProductBoxContainer = styled.div`
+        position: relative;
+        display: inline-block;
+    `;
+    const CloseIcon = styled(CloseCircleOutlined)`
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        font-size: 20px;
+        color: var(--text_color);
+        background-color: var(--off_white);
+        border-radius: 50%;
+    `;
     return (
-        <div>
+        <ProductBoxContainer>
             <ProductBox src={product_pic} alt={"product_pic"} />
-            <CloseCircleOutlined style={{width: '30px'}}/>
-        </div>
+            <CloseIcon />
+        </ProductBoxContainer>
     )
 }
 
@@ -63,12 +84,10 @@ function SellerSlider(){
             gap:"5px"}}>
             <SellerHeader/>
             <ProductsContainer>
-                <ProductPic/> <ProductPic/> <ProductPic/>
+                <ProductPic/><ProductPic/><ProductPic/>
             </ProductsContainer>
             <PayNowButton>
-                Pay now
-                <img src={coin_img} alt={"coin_img"} width={"50px"}/>
-                24
+                Pay now <img src={coin_img} alt={"coin_img"} width={"50px"}/>24
             </PayNowButton>
         </div>
     );

@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate  } from 'react-router-dom';
+import "../styles/Index.css"
+import styled from "styled-components";
+import {ButtonStyle} from "../components/Buttons/Button";
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30vh;
+`;
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -22,7 +32,7 @@ const Login = () => {
     };
 
     return (
-        <div>
+        <Container>
             <form onSubmit={handleSubmit}>
                 <label>
                     Username:
@@ -36,7 +46,7 @@ const Login = () => {
                 <br />
                 <button type="submit">Log In</button>
             </form>
-        </div>
+        </Container>
     );
 };
 
