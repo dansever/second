@@ -34,11 +34,6 @@ const NavItem = styled.div`
 export default function Navbar () {
     return (
         <NavbarStyle>
-            <NavItem>
-                <Link to="/Upload">
-                    <CiSquarePlus size={36} strokeWidth={1.5} color={"black"}/>
-                </Link>
-            </NavItem>
 
             <NavItem>
                 <Link to="/Home">
@@ -47,16 +42,24 @@ export default function Navbar () {
             </NavItem>
 
             <NavItem>
-                <Link to="/Profile">
+                <Link to="/Upload">
+                    <CiSquarePlus size={36} strokeWidth={1.5} color={"black"}/>
+                </Link>
+            </NavItem>
+
+
+            <NavItem>
+                <Link to="/Cart">
+                    <CiShoppingCart size={36} strokeWidth={1.5} color={"black"}/>
+                </Link>
+            </NavItem>
+
+            <NavItem>
+                <Link to="/Profile/MyShop">
                     <HiOutlineUserCircle size={36} strokeWidth={2} color={"black"}/>
                 </Link>
             </NavItem>
 
-            {/*<NavItem>*/}
-            {/*    <Link to="/Cart">*/}
-            {/*        <CiShoppingCart size={36} strokeWidth={1.5} color={"black"}/>*/}
-            {/*    </Link>*/}
-            {/*</NavItem>*/}
 
             {/*<NavItem>*/}
             {/*    <Link to="/Search">*/}

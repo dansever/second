@@ -1,84 +1,72 @@
 import React from 'react'
 import styled from "styled-components";
 import profile_pic from "../assets/images/generic-profile-pic.jpg"
-import token_img from "../assets/images/coin.png"
-import { StarOutlined , StarTwoTone } from "@ant-design/icons";
-import "../components/ProfileContainers/UserInfo.css"
 import {FollowUnfollowBtn} from "./Buttons/Button";
 import profile_pic_man from "../assets/images/profile_pic_man.jpg"
+import coin_img from "../assets/images/coin.png";
 
-const ContainerStyle = styled.div`
-  width: 50%;
+const Container = styled.div`
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
   align-items: center;
-  height: 100%;
-  column-gap: 10px;
-  //justify-content: center;
-  //justify-items: center;
-  //align-content: center;
+`;
+
+const PicAndName = styled.div`
+  display: flex;
+  gap: 15px;
+  font-size: medium;
+  justify-content: flex-start;
+  flex-direction: row;
 `;
 
 const ProfileImage = styled.img`
-  height: 70%;
-  aspect-ratio: 1 / 1;
+  width: 60px;
+  height: 60px;
   object-fit: cover;
   border-radius: 50%;
+  border: 1px solid black;
+  box-shadow: 0 2px 0 0 black;
 `;
 
-
-const TextContainer = styled.div`
+const Coins = styled.div`
   display: flex;
-  flex-direction: column;
-  font-weight: bold;
-  font-size: 24px;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: row;
   align-items: center;
+  align-content: flex-start;
 `;
-
-
-function StarRating () {
-    return (
-        <StarTwoTone twoToneColor="gold"
-                     style={{ fontSize: '120%'}}/>
-    )
-}
 
 
 export default function UserHeader() {
     return (
-        <ContainerStyle>
-            <ProfileImage src={profile_pic} alt={"profile_pic"}/>
-            <TextContainer>
-                Sara Boo
-                <div style={{display:"flex", flexDirection:"row"}}>
-                <StarRating/> <StarRating/> <StarRating/> <StarRating/>
+        <Container>
+            <PicAndName>
+                <ProfileImage src={profile_pic} alt={"profile_pic"}/>
+                <div style={{display: "flex", flexDirection: "column"}}>
+                    <h3>Sarah Johnson</h3>
                 </div>
-            </TextContainer>
-        </ContainerStyle>
-        );
-        //
-        // <div className={"profile_container"}>
-        //     <div className={"profile_name_rating"}>
-        //         <ProfileImage src={profile_pic} alt={"profile_pic"}/>
-        //         <div className={"seller_name_and_rating"}>
-        //             <h3>Sarah Johnson</h3>
-        //             <div className={"seller_rating"}>
-        //                 <StarRating />
-        //                 <StarRating />
-        //                 <StarRating/>
-        //             </div>
-        //         </div>
-        //     </div>
-        //     <div className={"coins"}>
-        //         <img src={token_img}
-        //              alt={"coin_img"} width={"50px"}/>
-        //         <div>43 Coins</div>
-        //     </div>
-        // </div>
-    // );
+            </PicAndName>
+            <Coins>
+                <img src={coin_img} alt={"coin_img"} width={"50px"}/>
+                <div>43 Coins</div>
+            </Coins>
+        </Container>
+    );
 };
 
+export function SellerHeader() {
+    return (
+        <Container>
+            <PicAndName>
+                <ProfileImage src={profile_pic} alt={"profile_pic"}/>
+                <div style={{display: "flex", flexDirection: "column"}}>
+                    <h3>Anna Kendrick</h3>
+                </div>
+            </PicAndName>
+        </Container>
+    );
+}
 
 export function SellerInfo() {
     return (
@@ -87,14 +75,9 @@ export function SellerInfo() {
                 <ProfileImage src={profile_pic_man} alt={"profile_pic"}/>
                 <div className={"seller_name_and_rating"}>
                     <h3>Ben Williams</h3>
-                    <div className={"seller_rating"}>
-                        <StarRating />
-                        <StarRating />
-                        <StarRating />
-                    </div>
                 </div>
             </div>
             <FollowUnfollowBtn/>
         </div>
     );
-};
+}

@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import {GeneralHeader} from "../../components/Header";
-import ProfileInfo from "../../components/ProfileContainers/ProfileContainers";
 import Navbar from "../../components/Navbar";
 import {FilterButton, SortButton} from "../../components/Buttons/Button";
 import {useNavigate} from "react-router";
 import {Divider, Radio, ConfigProvider} from "antd";
+import UserHeader from "../../components/UserComponents";
 
 const PageContainer = styled.div`
   background-color: var(--off_white);
@@ -17,16 +17,17 @@ const PageContainer = styled.div`
   align-content: center;
   height: 90vh;
   padding-top: 15px;
+  row-gap: 20px;
 `;
 
 
 function ProfileOptions () {
     const navigate = useNavigate();
     return (
-        <Radio.Group size={"large"} buttonStyle={"solid"} defaultValue={"Saved"}>
+        <Radio.Group style={{scale:"120%" }} buttonStyle={"solid"} size={"large"} defaultValue={"Saved"}>
             <Radio.Button onClick={() => navigate("/Profile/MyShop")} value="MyShop">My Shop</Radio.Button>
-            <Radio.Button  onClick={() => navigate("/Profile/Saved")} value="Saved">Saved Items</Radio.Button>
-            <Radio.Button onClick={() => navigate("/Profile/Seller")} value="Seller">Sellers</Radio.Button>
+            <Radio.Button onClick={() => navigate("/Profile/Saved")} value="Saved">Saved Items</Radio.Button>
+            <Radio.Button onClick={() => navigate("/Profile/Sellers")} value="Sellers">Sellers</Radio.Button>
         </Radio.Group>
     );
 }
@@ -48,7 +49,7 @@ export default function Profile_Saved() {
                 >
                 <GeneralHeader/>
                 <PageContainer>
-                    <ProfileInfo/>
+                    <UserHeader/>
                     <ProfileOptions />
                     <Divider style={{ borderWidth: 0.5, borderColor: 'grey' }}/>
                     <FilterButton/>
