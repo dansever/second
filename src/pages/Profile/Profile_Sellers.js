@@ -1,21 +1,22 @@
 import React from "react";
 import {GeneralHeader} from "../../components/Header";
-import ProfileInfo, {SellerInfo} from "../../components/ProfileContainers/ProfileContainers";
 import styled from "styled-components";
 import {Divider, Radio, ConfigProvider} from "antd";
 import {FilterButton} from "../../components/Buttons/Button";
 import {useNavigate} from "react-router";
 import Navbar from "../../components/Navbar";
+import UserHeader, {SellerInfo} from "../../components/UserComponents";
 
 const PageContainer = styled.div`
-    background-color: var(--off_white);
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    align-content: center;
-    height: 90vh;
-    padding-top: 15px;
+  background-color: var(--off_white);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  align-content: center;
+  height: 90vh;
+  padding-top: 15px;
+  row-gap: 20px;
 `;
 
 
@@ -23,14 +24,14 @@ const PageContainer = styled.div`
 function ProfileOptions () {
     const navigate = useNavigate();
     return (
-        <Radio.Group size={"large"} buttonStyle={"solid"} defaultValue={"Seller"}>
+        <Radio.Group style={{scale:"120%" }} buttonStyle={"solid"} size={"large"} defaultValue={"Sellers"}>
             <Radio.Button onClick={() => navigate("/Profile/MyShop")} value="MyShop">My Shop</Radio.Button>
-            <Radio.Button  onClick={() => navigate("/Profile/Saved")} value="Saved">Saved Items</Radio.Button>
-            <Radio.Button onClick={() => navigate("/Profile/Seller")} value="Seller">Sellers</Radio.Button>
+            <Radio.Button onClick={() => navigate("/Profile/Saved")} value="Saved">Saved Items</Radio.Button>
+            <Radio.Button onClick={() => navigate("/Profile/Sellers")} value="Sellers">Sellers</Radio.Button>
         </Radio.Group>
     );
 }
-export default function Profile_Seller() {
+export default function Profile_Sellers() {
     return (
         <div>
             <ConfigProvider
@@ -47,7 +48,7 @@ export default function Profile_Seller() {
             >
                 <GeneralHeader/>
                 <PageContainer>
-                    <ProfileInfo/>
+                    <UserHeader/>
                     <ProfileOptions/>
                     <Divider style={{ borderWidth: 0.5, borderColor: 'grey' }}/>
                     <SellerInfo/>
