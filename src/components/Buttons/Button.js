@@ -16,7 +16,7 @@ export const ButtonStyle = styled.button`
   width: 160px;
   font-family: "Montserrat", sans-serif;
   font-size: medium;
-  font-weight: bold;
+  font-weight: 600;
   box-shadow: 2px 3px 0 0 black;
   align-items: left;
   &:hover {
