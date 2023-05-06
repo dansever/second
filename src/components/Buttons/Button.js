@@ -80,8 +80,8 @@ export function SortButton() {
     );
 }
 
-export function FollowUnfollowBtn() {
-    const [isFollowing, setIsFollowing] = useState(false);
+export function FollowUnfollowBtn({isFollowed = false}) {
+    const [isFollowing, setIsFollowing] = useState(isFollowed);
 
     const handleClick = () => {
         setIsFollowing(!isFollowing);
@@ -90,7 +90,7 @@ export function FollowUnfollowBtn() {
     return (
         <div>
             <ButtonStyle onClick={handleClick} isFollowing={isFollowing}>
-                {isFollowing ? "Follow" : "Unfollow"}
+                {isFollowing ? "Following" : "Not Following"}
             </ButtonStyle>
         </div>
     );

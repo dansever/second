@@ -27,17 +27,16 @@ const InfoContainer = styled.div`
 `;
 
 
-export default function MainCard() {
+export default function MainCard({isLiked = false}) {
     const [isTitleShown, setIsTitleShown] = useState(false);
+    const [isToggledOn, setIsToggledOn] = useState(isLiked);
+
     const handleClickCard = () => {
         setIsTitleShown((prevState) => !prevState);
     };
 
-    const [iconColor, setIconColor] = useState("#02110A");
-    const [isToggledOn, setIsToggledOn] = useState(false);
     const handleClickLike = () => {
         setIsToggledOn((prevState) => !prevState);
-        setIconColor(isToggledOn ? "#02110A" : "red");
     };
 
     return (
@@ -89,7 +88,9 @@ export default function MainCard() {
                                 boxShadow: "2px 2px 2px 0 black",
                                 backgroundColor: "#F1F7F1"}}
                             onClick={handleClickLike}>
-                        {isToggledOn ? <HeartFilled style={{ color: iconColor }}/> : <HeartOutlined style={{ color: iconColor }}/>}
+                        {isToggledOn ?
+                            <HeartFilled style={{ color: "red" }}/>
+                            : <HeartOutlined style={{ color: "black" }}/>}
                     </Button>
                 </div>
             </InfoContainer>

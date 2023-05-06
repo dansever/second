@@ -8,6 +8,7 @@ import Navbar from "../../components/Navbar";
 import UserHeader from "../../components/UserComponents";
 import {MyShopCard} from "../../components/Card/Card";
 import {ScrollView} from "react-native";
+import {PageContainer} from "./Profile_Main";
 
 
 const PageContainer = styled.div`
