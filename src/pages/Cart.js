@@ -10,12 +10,14 @@ import {SellerHeader} from "../components/UserComponents";
 import product_pic from "../assets/images/i6.jpg"
 import {CloseCircleOutlined} from "@ant-design/icons";
 import {Button} from "antd";
+import {ScrollView} from "react-native";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 30px;
   padding: 10px;
+  height: 70vh;
 `;
 
 
@@ -124,10 +126,12 @@ export default function Cart() {
     return (
         <div>
             <GeneralHeader/>
+            <ScrollView>
             <Container>
                 <SellerSlider/>
                 <SellerSlider/>
             </Container>
+            </ScrollView>
             <Navbar/>
         </div>
     );

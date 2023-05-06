@@ -9,22 +9,25 @@ import { ButtonStyle} from "../components/Buttons/Button";
 import { Divider } from 'antd';
 import Price from "../components/Price";
 import UserHeader from "../components/UserComponents";
+import {ScrollView} from "react-native";
 
 
 const ProductContainer = styled.div`
   background-color: var(--light_green);
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   row-gap: 5px;
   padding: 5px;
+  height: 40vh;
 `;
 
 const ProductImgContainer = styled.div`
   //background-color: var(--primary_green);
   width:70%;
-  height:40vh;
+  //height:40vh;
   overflow:hidden;
   display: flex;
   justify-content: space-around;
@@ -33,7 +36,7 @@ const ProductImgContainer = styled.div`
 const SellerContainer = styled.div`
   background-color: var(--light_green);
   width:60%;
-  height:10vh;
+  //height:10vh;
   overflow:hidden;
   padding-left: 5px;
   &:hover {
@@ -46,7 +49,7 @@ const SellerContainer = styled.div`
 const ProductDescriptionContainer = styled.div`
   background-color: var(--light_green);
   width:70%;
-  height:21vh;
+  //height:21vh;
   overflow:hidden;
   align-items: center; 
 `;
@@ -54,7 +57,7 @@ const ProductDescriptionContainer = styled.div`
 const Add = styled.div`
   background-color: var(--light_green);
   width:70%;
-  height: 8vh;
+  //height: 8vh;
   overflow:hidden;
   display: flex;
   flex-direction: row;
@@ -89,23 +92,26 @@ export default function Product () {
     return (
         <div>
             <GeneralHeader/>
-            <ProductContainer>
-                <ProductImgContainer>
-                        <img className={"product_image"}
-                             alt={"product_img"}
-                             src={i1_img} style={{height:"100%"}}/>
-                </ProductImgContainer>
-                <SellerContainer>
-                    <UserHeader/>
-                </SellerContainer>
-                <ProductDescriptionContainer>
-                    <ProductDescription/>
-                </ProductDescriptionContainer>
-                <Add>
-                    <Price/>
-                    <AddToCartButton>Add To Cart</AddToCartButton>
-                </Add>
-            </ProductContainer>
+            <ScrollView>
+                <ProductContainer>
+                    <ProductImgContainer>
+                            <img className={"product_image"}
+                                 alt={"product_img"}
+                                 src={i1_img} style={{height:"100%"}}/>
+                    </ProductImgContainer>
+                    <SellerContainer>
+                        <UserHeader/>
+                    </SellerContainer>
+                    <ProductDescriptionContainer>
+                        <ProductDescription/>
+                    </ProductDescriptionContainer>
+                    <Add>
+                        <Price/>
+                        <AddToCartButton>Add To Cart</AddToCartButton>
+                    </Add>
+                </ProductContainer>
+            </ScrollView>
+
             <Navbar/>
         </div>
     );

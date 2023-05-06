@@ -7,16 +7,17 @@ import { Row, Col } from 'antd';
 import Navbar from "../../components/Navbar";
 import UserHeader from "../../components/UserComponents";
 import {MyShopCard} from "../../components/Card/Card";
+import {ScrollView} from "react-native";
 
 
 const PageContainer = styled.div`
-    background-color: var(--off_white);
+    //background-color: var(--off_white);
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center;
     align-content: center;
-    height: 90vh;
+    height: 70vh;
     padding-top: 15px;
     row-gap: 20px;
 `;
@@ -58,6 +59,7 @@ export default function Profile_MyShop() {
                 }}
             >
                 <GeneralHeader/>
+                <ScrollView>
                 <PageContainer>
                     <UserHeader/>
                     <ProfileOptions/>
@@ -85,6 +87,7 @@ export default function Profile_MyShop() {
                     </Row>
 
                 </PageContainer>
+                </ScrollView>
                 <Navbar/>
             </ConfigProvider>
         </div>

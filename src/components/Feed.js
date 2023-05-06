@@ -1,10 +1,20 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import MainCard from "./Card/Card";
+import {ScrollView} from "react-native";
+import styled from "styled-components";
 
+const PageContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    align-content: center;
+    height: 70vh;
+`
 export default function Feed() {
     return (
-        <div>
+        <PageContainer>
             <Grid container spacing={{xs: 2, lg: 2}} columns={{xs: 4, sm: 4, md: 9, lg: 12}}>
                 <Grid item xs={2} sm={2} md={3} lg={3}>
                     <MainCard img={require("../assets/images/green dress.jpg")} size={"M"} location={"Jerusalem"}
@@ -71,6 +81,6 @@ export default function Feed() {
                               brand={"H&M"}/>
                 </Grid>
             </Grid>
-        </div>
+        </PageContainer>
     );
 };
