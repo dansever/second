@@ -4,8 +4,9 @@ import '../styles/Index.css';
 // import '../components/ProductUpload/ProductUploadForm.css';
 import {Button, Form, Input, InputNumber, Select, Upload, Rate, Space, ConfigProvider } from 'antd';
 import styled from 'styled-components'
-import { Radio } from 'antd'
+import { Radio, AutoComplete } from 'antd'
 import Colors from "../color"
+import { AddToShop } from "./Buttons/Button"
 
 const FormContainer = styled.div`
   background-color: var(--background_green);
@@ -67,6 +68,47 @@ const StyledSelect = styled.div`
     }
 `;
 
+const options = [
+    {
+        value: 'Shirt',
+    },
+    {
+        value: 'Dress',
+    },
+    {
+        value: 'Pants',
+    },
+    {
+        value: 'Jacket',
+    },
+    {
+        value: 'Denim',
+    },
+    {
+        value: 'Boots',
+    },
+    {
+        value: 'Snickers',
+    },
+    {
+        value: 'Sweatshirt',
+    },
+    {
+        value: 'Trenings',
+    },
+    {
+        value: 'Top',
+    },
+    {
+        value: 'Coat',
+    },
+    {
+        value: 'Bickini',
+    },
+    {
+        value: 'Hat',
+    },
+];
 
 function UploadImage() {
     return (
@@ -101,7 +143,9 @@ function Size() {
     return (
         <Form.Item label="Size">
             <StyledInput>
-                <Input placeholder="input size" size/>
+                <Input style={{
+                    width: 90,
+                }} placeholder="input size" size/>
             </StyledInput>
         </Form.Item>
     )
@@ -110,7 +154,10 @@ function Color() {
     return (
         <Form.Item label="Color">
             <StyledSelect>
-                <Select placeholder="choose color">
+                <Select placeholder="choose color"
+                        style={{
+                            width: 100,
+                        }}>
                     <Select.Option value="Red">Red</Select.Option>
                     <Select.Option value="Green">Green</Select.Option>
                     <Select.Option value="Blue">Blue</Select.Option>
@@ -135,7 +182,9 @@ function Brand() {
     return (
         <Form.Item label="Brand">
             <StyledInput>
-                <Input placeholder="input brand name (if known)"/>
+                <Input style={{
+                    width: 200,
+                }} placeholder="input brand name)"/>
             </StyledInput>
         </Form.Item>
     )
@@ -146,29 +195,35 @@ function Condition() {
             name="condition"
             label="Condition"
         >
-            <Radio.Group>
-                <Radio.Button value="old">old</Radio.Button>
-                <Radio.Button value="worn">worn</Radio.Button>
-                <Radio.Button value="as new">as new</Radio.Button>
-                <Radio.Button value="new">new</Radio.Button>
-            </Radio.Group>
+            <StyledSelect>
+                <Select placeholder="choose color"
+                        style={{
+                            width: 100,
+                        }}>
+                    <Select.Option value="Old">Old</Select.Option>
+                    <Select.Option value="Worn">Worn</Select.Option>
+                    <Select.Option value="As New">As New</Select.Option>
+                    <Select.Option value="New">New</Select.Option>
+                </Select>
+            </StyledSelect>
         </Form.Item>
     )
 }
 function Type() {
     return (
-        <Form.Item
-            name="type"
-            label="Type"
-        >
-            <Radio.Group>
-                <Radio.Button value="Dress">Dress</Radio.Button>
-                <Radio.Button value="Shirt">Shirt</Radio.Button>
-                <Radio.Button value="Pants">Pants</Radio.Button>
-                <Radio.Button value="Shoes">Shoes</Radio.Button>
-                <Radio.Button value="Accessories">Accessories</Radio.Button>
-                <Radio.Button value="Swimwear">Swimwear</Radio.Button>
-            </Radio.Group>
+        <Form.Item label="Type">
+            <StyledSelect>
+                <AutoComplete
+                    style={{
+                        width: 200,
+                    }}
+                    options={options}
+                    placeholder="input category"
+                    filterOption={(inputValue, option) =>
+                        option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                    }
+                />
+            </StyledSelect>
         </Form.Item>
     )
 }
@@ -176,7 +231,7 @@ function Price() {
     return (
         <Form.Item
             name="input-price"
-            label="Input Price" >
+            label="Price" >
             <StyledInput>
                 <InputNumber min={1} max={5} placeholder="1 to 5"/>
             </StyledInput>
@@ -209,11 +264,14 @@ function SubmitButton () {
     )
 }
 
+const StyledDivRow = styled.div`
+    display: flex;
+    flex-direction: row;
+  gap: 40px;
+    `;
+
 export default function ProductUploadForm() {
     const formItemLayout = {
-        labelCol: {
-            span: 6,
-        },
         wrapperCol: {
             span: 14,
         },
@@ -223,13 +281,19 @@ export default function ProductUploadForm() {
         <Form style={{backgroundColor:Colors.light_green}} {...formItemLayout} layout={"vertical"}>
             <Title/>
             <UploadImage/>
-            <Type/>
-            <Size/>
-            <Brand/>
-            <Color/>
-            <Price/>
-            <Condition/>
-            <SubmitButton/>
+            <StyledDivRow>
+                <Type/>
+                <Size/>
+            </StyledDivRow>
+            <StyledDivRow>
+                <Brand/>
+                <Color/>
+            </StyledDivRow>
+            <StyledDivRow>
+                <Condition/>
+                <Price/>
+            </StyledDivRow>
+            <AddToShop/>
         </Form>
     );
 }
