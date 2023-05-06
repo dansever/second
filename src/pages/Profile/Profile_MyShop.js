@@ -1,34 +1,14 @@
 import React from "react";
 import {GeneralHeader} from "../../components/Header";
-import styled from "styled-components";
 import {useNavigate} from "react-router";
 import {Divider, Radio, ConfigProvider} from "antd";
 import { Row, Col } from 'antd';
 import Navbar from "../../components/Navbar";
 import UserHeader from "../../components/UserComponents";
 import {MyShopCard} from "../../components/Card/Card";
+import {PageContainer} from "./Profile_Main";
 
 
-const PageContainer = styled.div`
-    background-color: var(--off_white);
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    align-content: center;
-    height: 90vh;
-    padding-top: 15px;
-    row-gap: 20px;
-`;
-
-// const profileOptionsStyle = styled.div`
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: center;
-//     align-items: center;
-//     align-content: center;
-//     height: 10vh;
-// `;
 
 function ProfileOptions () {
     const navigate = useNavigate();
@@ -62,7 +42,6 @@ export default function Profile_MyShop() {
                     <UserHeader/>
                     <ProfileOptions/>
                     <Divider style={{ borderWidth: 0.5, borderColor: 'grey' }}/>
-
                     <Row gutter={[16, 16]}>
                         <Col span={12}>
                             <MyShopCard/>

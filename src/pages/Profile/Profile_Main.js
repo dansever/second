@@ -1,7 +1,20 @@
 import React from "react";
 import {useNavigate} from "react-router";
 import {Radio} from "antd";
+import styled from "styled-components";
 
+
+export const PageContainer = styled.div`
+  background-color: var(--off_white);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  align-content: center;
+  height: 90vh;
+  padding: 15px 30px 0 30px;
+  row-gap: 20px;
+`;
 
 export function ProfileOptions () {
     const navigate = useNavigate();

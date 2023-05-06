@@ -13,6 +13,7 @@ const HomeContainer = styled.div`
   flex-direction: column;
   align-content: center;
   align-items: center;
+  padding: 0 30px 0 30px;
 `;
 
 export default function Home() {
