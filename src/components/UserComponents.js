@@ -68,16 +68,35 @@ export function SellerHeader() {
     );
 }
 
+
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+`;
+
+const StyledDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+`;
+
+
 export function SellerInfo() {
     return (
-        <div className={"seller-info-container"}>
-            <div className={"profile_name_rating"}>
+        <StyledContainer className={"seller-info-container"}>
+            <StyledDiv className={"profile_name_rating"}>
                 <ProfileImage src={profile_pic_man} alt={"profile_pic"}/>
                 <div className={"seller_name_and_rating"}>
                     <h3>Ben Williams</h3>
                 </div>
-            </div>
+            </StyledDiv>
             <FollowUnfollowBtn/>
-        </div>
+        </StyledContainer>
+
     );
 }

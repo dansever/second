@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import "../../styles/Index.css"
 import "./Button.css"
@@ -24,6 +24,7 @@ export const ButtonStyle = styled.button`
     //font-size: 105%;
     background-color: var(--secondary_green);
     }
+  background-color: ${({ isFollowing }) => (isFollowing ? "#749A83" : "#F1F7F1" )};
 `;
 
 
@@ -80,9 +81,17 @@ export function SortButton() {
 }
 
 export function FollowUnfollowBtn() {
+    const [isFollowing, setIsFollowing] = useState(false);
+
+    const handleClick = () => {
+        setIsFollowing(!isFollowing);
+    };
+
     return (
         <div>
-            <div className={"follow_seller"}>Unfollow</div>
+            <ButtonStyle onClick={handleClick} isFollowing={isFollowing}>
+                {isFollowing ? "Follow" : "Unfollow"}
+            </ButtonStyle>
         </div>
     );
 }

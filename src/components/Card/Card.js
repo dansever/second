@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {HeartFilled, HeartOutlined} from "@ant-design/icons";
 import {Button} from "antd";
 import coin_img from "../../assets/images/coin.png";
+import Colors from "../../color";
 
 const CardStyle = styled.div`
   border-radius: 10px;
@@ -10,7 +11,6 @@ const CardStyle = styled.div`
   height: 200px;
   width: 190px;
   box-shadow: 3px 4px 0 0 black;
-
 `;
 
 const ImgContainer = styled.div`
@@ -33,11 +33,11 @@ export default function ItemCard() {
         setIsTitleShown((prevState) => !prevState);
     };
 
-    const [iconColor, setIconColor] = useState("grey");
+    const [iconColor, setIconColor] = useState("#02110A");
     const [isToggledOn, setIsToggledOn] = useState(false);
     const handleClickLike = () => {
         setIsToggledOn((prevState) => !prevState);
-        setIconColor(isToggledOn ? "grey" : "red");
+        setIconColor(isToggledOn ? "#02110A" : "red");
     };
 
     return (
@@ -86,9 +86,10 @@ export default function ItemCard() {
                     <Button shape="circle"
                             style={{scale:"120%",
                                 border:"1px solid black",
-                                boxShadow: "2px 2px 2px 0 black"}}
+                                boxShadow: "2px 2px 2px 0 black",
+                                backgroundColor: "#F1F7F1"}}
                             onClick={handleClickLike}>
-                        <HeartFilled style={{ color: iconColor }}/>
+                        {isToggledOn ? <HeartFilled style={{ color: iconColor }}/> : <HeartOutlined style={{ color: iconColor }}/>}
                     </Button>
                 </div>
             </InfoContainer>
