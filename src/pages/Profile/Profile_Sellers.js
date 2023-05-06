@@ -43,6 +43,7 @@ export default function Profile_Sellers() {
                         colorBorder: "#02110A",
                         colorBgContainer:"#F1F7F1",
                         borderRadiusLG: 26,
+                        fontFamily: "Montserrat",
                     },
                 }}
             >
