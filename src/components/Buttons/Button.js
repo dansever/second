@@ -28,7 +28,7 @@ export const ButtonStyle = styled.button`
 `;
 
 
-export default function AddToShop() {
+export function AddToShop() {
     return (
         <div className={"add_to_shop"}>
             <ButtonStyle>Add to your shop</ButtonStyle>
