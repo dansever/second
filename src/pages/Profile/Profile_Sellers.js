@@ -40,13 +40,13 @@ export default function Profile_Sellers() {
                     <UserHeader/>
                     <ProfileOptions/>
                     <Divider style={{ borderWidth: 0.5, borderColor: 'grey' }}/>
-                    <SellerInfo/>
+                    <SellerInfo followed = {true}/>
                     <Divider style={{ borderWidth: 0.5, borderColor: 'transparent' }}/>
-                    <SellerInfo/>
+                    <SellerInfo followed = {true}/>
                     <Divider style={{ borderWidth: 0.5, borderColor: 'transparent' }}/>
-                    <SellerInfo/>
+                    <SellerInfo followed = {true}/>
                     <Divider style={{ borderWidth: 0.5, borderColor: 'transparent' }}/>
-                    <SellerInfo/>
+                    <SellerInfo followed = {true}/>
                 </PageContainer>
                 <Navbar/>
             </ConfigProvider>
