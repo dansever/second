@@ -86,7 +86,7 @@ const StyledDiv = styled.div`
 `;
 
 
-export function SellerInfo() {
+export function SellerInfo({ followed = false }) {
     return (
         <StyledContainer className={"seller-info-container"}>
             <StyledDiv className={"profile_name_rating"}>
@@ -95,7 +95,7 @@ export function SellerInfo() {
                     <h3>Ben Williams</h3>
                 </div>
             </StyledDiv>
-            <FollowUnfollowBtn/>
+            <FollowUnfollowBtn isFollowed={followed}/>
         </StyledContainer>
 
     );
