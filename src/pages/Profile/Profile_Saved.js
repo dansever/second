@@ -1,24 +1,13 @@
 import React from "react";
-import styled from "styled-components";
 import {GeneralHeader} from "../../components/Header";
 import Navbar from "../../components/Navbar";
 import {FilterButton, SortButton} from "../../components/Buttons/Button";
 import {useNavigate} from "react-router";
 import {Divider, Radio, ConfigProvider} from "antd";
 import UserHeader from "../../components/UserComponents";
-
-const PageContainer = styled.div`
-  background-color: var(--off_white);
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  justify-items: flex-start;
-  align-items: center;
-  align-content: center;
-  height: 90vh;
-  padding-top: 15px;
-  row-gap: 20px;
-`;
+import Grid from "@mui/material/Grid";
+import MainCard from "../../components/Card/Card";
+import {PageContainer} from "./Profile_Main";
 
 
 function ProfileOptions () {
@@ -53,10 +42,19 @@ export default function Profile_Saved() {
                     <UserHeader/>
                     <ProfileOptions />
                     <Divider style={{ borderWidth: 0.5, borderColor: 'grey' }}/>
-                    <FilterButton/>
-                    <SortButton/>
-                    <img src={require("../../assets/images/item_cards_for_profile_saved.png")}
-                         alt={"placeholder"} style={{scale:"50%"}}/>
+
+                        <Grid container spacing={{xs: 2, lg: 2}} columns={{xs: 4, sm: 4, md: 9, lg: 12}}>
+                            <Grid item xs={2} sm={2} md={3} lg={3}>
+                                <MainCard isLiked = {true}/>
+                            </Grid>
+                            <Grid item xs={2} sm={2} md={3} lg={3}>
+                                <MainCard isLiked = {true}/>
+                            </Grid>
+                            <Grid item xs={2} sm={2} md={3} lg={3}>
+                                <MainCard isLiked = {true}/>
+                            </Grid>
+                        </Grid>
+
                 </PageContainer>
                 <Navbar/>
             </ConfigProvider>

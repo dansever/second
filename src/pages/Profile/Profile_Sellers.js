@@ -6,19 +6,7 @@ import {FilterButton} from "../../components/Buttons/Button";
 import {useNavigate} from "react-router";
 import Navbar from "../../components/Navbar";
 import UserHeader, {SellerInfo} from "../../components/UserComponents";
-
-const PageContainer = styled.div`
-  background-color: var(--off_white);
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  align-content: center;
-  height: 90vh;
-  padding-top: 15px;
-  row-gap: 20px;
-`;
-
+import {PageContainer} from "./Profile_Main";
 
 
 function ProfileOptions () {
