@@ -11,7 +11,7 @@ import {ScrollView} from "react-native";
 import {PageContainer} from "./Profile_Main";
 
 
-const PageContainer = styled.div`
+const Container = styled.div`
     //background-color: var(--off_white);
     display: flex;
     flex-direction: column;
@@ -61,33 +61,33 @@ export default function Profile_MyShop() {
             >
                 <GeneralHeader/>
                 <ScrollView>
-                <PageContainer>
+                <Container>
                     <UserHeader/>
                     <ProfileOptions/>
                     <Divider style={{ borderWidth: 0.5, borderColor: 'grey' }}/>
 
                     <Row gutter={[16, 16]}>
                         <Col span={12}>
-                            <MyShopCard/>
+                            <MyShopCard img={require("../../assets/images/i14.jpg")} price={4}/>
                         </Col>
                         <Col span={12}>
-                            <MyShopCard/>
+                            <MyShopCard img={require("../../assets/images/i13.jpg")} price={5}/>
                         </Col>
                         <Col span={12}>
-                            <MyShopCard/>
+                            <MyShopCard img={require("../../assets/images/i12.jpg")} price={4}/>
                         </Col>
                         <Col span={12}>
-                            <MyShopCard/>
+                            <MyShopCard img={require("../../assets/images/i11.jpg")} price={7}/>
                         </Col>
                         <Col span={12}>
-                            <MyShopCard/>
+                            <MyShopCard img={require("../../assets/images/i10.jpg")} price={3}/>
                         </Col>
                         <Col span={12}>
-                            <MyShopCard/>
+                            <MyShopCard img={require("../../assets/images/i9.jpg")} price={4}/>
                         </Col>
                     </Row>
 
-                </PageContainer>
+                </Container>
                 </ScrollView>
                 <Navbar/>
             </ConfigProvider>

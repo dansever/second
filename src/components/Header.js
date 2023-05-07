@@ -36,8 +36,8 @@ export function Logo() {
             flexDirection:"row",
             alignItems:"center"}}>
             <img src={second_logo} alt={second_logo}
-                 style={{width:"70px",
-                     height:"50px"}}/>
+                 style={{width:"100px",
+                     height:"80px"}}/>
         </div>
     );
 }

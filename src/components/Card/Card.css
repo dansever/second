@@ -28,6 +28,9 @@
     justify-content: flex-end;
 }
 
-/*span{*/
-/*    padding: 5px;*/
-/*}*/
+.imgItem{
+    /*height: 70%;*/
+    /*width: 160px;*/
+    object-fit: cover;
+
+}

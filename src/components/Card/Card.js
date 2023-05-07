@@ -1,15 +1,16 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
 import {HeartFilled, HeartOutlined, EditOutlined} from "@ant-design/icons";
-import {Button} from "antd";
+import {Button, Card} from "antd";
 import coin_img from "../../assets/images/coin.png";
 import Colors from "../../color";
+import "./Card.css"
 
 const CardStyle = styled.div`
   border-radius: 10px;
   border: 1px solid black;
   height: 200px;
-  width: 190px;
+  width: 160px;
   box-shadow: 3px 4px 0 0 black;
 `;
 
@@ -27,7 +28,7 @@ const InfoContainer = styled.div`
 `;
 
 
-export default function MainCard({isLiked = false}) {
+export default function MainCard(props,{isLiked = false}) {
     const [isTitleShown, setIsTitleShown] = useState(false);
     const [isToggledOn, setIsToggledOn] = useState(isLiked);
 
@@ -40,15 +41,20 @@ export default function MainCard({isLiked = false}) {
     };
 
     return (
-        <CardStyle>
-            <ImgContainer style={{ position: 'relative', paddingLeft:"5px"}}
-                onClick={handleClickCard}>
-                {isTitleShown &&
-                    <h3
-                        style={{ position: 'absolute', top: 0, left: 0}}>
-                        Blue Summer Dress
-                    </h3>}
-            </ImgContainer>
+        <Card className="card-item"
+              hoverable
+              style={{
+                  borderRadius: '10px',
+                  border: '1px solid black',
+                  boxShadow: '3px 4px 0 0 black',
+              }}
+              cover={<img className={'imgItem'} alt="cloth img" src={props.img} />}
+              onClick={handleClickCard}>
+            {isTitleShown &&
+                <h3
+                    style={{ position: 'absolute', top: 0, left: 0}}>
+                    Blue Summer Dress
+                </h3>}
             <InfoContainer>
                 <div style={{
                     display:"flex",
@@ -62,7 +68,7 @@ export default function MainCard({isLiked = false}) {
                         alignContent:"center",
                         columnGap:"5px"}}>
                         <text style={{fontWeight: 'bold'}}>Size:</text>
-                        <text> Small</text>
+                        <text>{props.size}</text>
                     </div>
 
                     <div style={{display:"flex",
@@ -71,13 +77,13 @@ export default function MainCard({isLiked = false}) {
                         alignContent:"center",
                         columnGap:"5px"}}>
                         <text style={{fontWeight: 'bold'}}>Distance:</text>
-                        <text> 1.2km</text>
+                        <text>{props.location}</text>
                     </div>
 
                     <div style={{display:"flex", flexDirection:"row",
                     alignItems:"center", alignContent:"center"}}>
                         <img src={coin_img} alt={"coin_img"} width={"30px"}/>
-                        <text style={{fontWeight: 'bold'}}>4</text>
+                        <text style={{fontWeight: 'bold'}}>{props.price}</text>
                     </div>
                 </div>
 
@@ -94,30 +100,35 @@ export default function MainCard({isLiked = false}) {
                     </Button>
                 </div>
             </InfoContainer>
-        </CardStyle>
+        </Card>
     );
 }
 
-export function MyShopCard () {
+export function MyShopCard (props) {
     const [isTitleShown, setIsTitleShown] = useState(false);
     const handleClickCard = () => {
         setIsTitleShown((prevState) => !prevState);
     };
     return (
-        <CardStyle>
-            <ImgContainer style={{ position: 'relative', paddingLeft:"5px"}}
-                          onClick={handleClickCard}>
-                {isTitleShown &&
-                    <h3
-                        style={{ position: 'absolute', top: 0, left: 0}}>
-                        Blue Summer Dress
-                    </h3>}
-            </ImgContainer>
+        <Card className="card-item"
+              hoverable
+              style={{
+                  borderRadius: '10px',
+                  border: '1px solid black',
+                  boxShadow: '3px 4px 0 0 black',
+              }}
+              cover={<img className={'imgItem'} alt="cloth img" src={props.img} />}
+              onClick={handleClickCard}>
+            {isTitleShown &&
+                <h3
+                    style={{ position: 'absolute', top: 0, left: 0}}>
+                    Blue Summer Dress
+                </h3>}
             <InfoContainer style={{display:"flex",justifyContent:"space-around"}}>
                 <div style={{display:"flex", flexDirection:"row",
                     alignItems:"center", alignContent:"center"}}>
                     <img src={coin_img} alt={"coin_img"} width={"30px"}/>
-                    <text style={{fontWeight: 'bold'}}>4</text>
+                    <text style={{fontWeight: 'bold'}}>{props.price}</text>
                 </div>
                 <div style={{display:"flex", alignItems:"center"}}>
                     <Button shape="circle"
@@ -128,6 +139,6 @@ export function MyShopCard () {
                     </Button>
                 </div>
             </InfoContainer>
-        </CardStyle>
+        </Card>
     );
 }
