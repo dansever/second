@@ -6,7 +6,7 @@ import {useNavigate} from "react-router";
 import {Divider, Radio, ConfigProvider} from "antd";
 import UserHeader from "../../components/UserComponents";
 import Grid from "@mui/material/Grid";
-import MainCard from "../../components/Card/Card";
+import MainCard from "../../components/Card";
 import {PageContainer} from "./Profile_Main";
 import {ScrollView} from "react-native";
 

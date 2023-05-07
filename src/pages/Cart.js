@@ -16,13 +16,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 30px;
-  padding: 10px;
+  padding: 80px 0 60px 10px;
   height: 70vh;
 `;
 
-
-const HorizontalSlider = styled.div`
-`;
 
 
 const ProductsContainer = styled.div`
@@ -102,13 +99,13 @@ function ProductPic () {
 }
 
 
-function SellerSlider(){
+function SellerSlider(props){
     return (
         <div style={{
             display:"flex",
             flexDirection:"column",
             rowGap:"10px"}}>
-            <SellerHeader/>
+            <SellerHeader name = {props}/>
             <ProductsContainer>
                 <ProductPic/><ProductPic/><ProductPic/>
             </ProductsContainer>
@@ -128,6 +125,8 @@ export default function Cart() {
             <GeneralHeader/>
             <ScrollView>
             <Container>
+                <SellerSlider/>
+                <SellerSlider/>
                 <SellerSlider/>
                 <SellerSlider/>
             </Container>

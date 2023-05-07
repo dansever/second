@@ -1,17 +1,21 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
-import {HeartFilled, HeartOutlined, EditOutlined} from "@ant-design/icons";
+import {HeartFilled, HeartOutlined, EditOutlined, ArrowLeftOutlined} from "@ant-design/icons";
 import {Button, Card} from "antd";
-import coin_img from "../../assets/images/coin.png";
-import Colors from "../../color";
-import "./Card.css"
+import coin_img from "../assets/images/coin.png";
+import Colors from "../color";
+import {useNavigate} from "react-router-dom";
 
 const CardStyle = styled.div`
-  border-radius: 10px;
+  border-radius: 30px;
   border: 1px solid black;
   height: 200px;
   width: 160px;
   box-shadow: 3px 4px 0 0 black;
+  &:hover {
+    scale: 103%;
+    cursor: pointer;
+  }
 `;
 
 const ImgContainer = styled.div`
@@ -28,16 +32,17 @@ const InfoContainer = styled.div`
 `;
 
 
-export default function MainCard(props,{isLiked = false}) {
+export default function MainCard(props) {
     const [isTitleShown, setIsTitleShown] = useState(false);
-    const [isToggledOn, setIsToggledOn] = useState(isLiked);
+    const [isLikeToggledOn, setLikeToggledOn] = useState(props.isLiked);
+    const navigate = useNavigate();
 
-    const handleClickCard = () => {
-        setIsTitleShown((prevState) => !prevState);
+    const navigateToProduct = () => {
+        navigate("/Search/:id");
     };
 
-    const handleClickLike = () => {
-        setIsToggledOn((prevState) => !prevState);
+    const handleLike = () => {
+        setLikeToggledOn((prevState) => !prevState);
     };
 
     return (
@@ -48,13 +53,9 @@ export default function MainCard(props,{isLiked = false}) {
                   border: '1px solid black',
                   boxShadow: '3px 4px 0 0 black',
               }}
-              cover={<img className={'imgItem'} alt="cloth img" src={props.img} />}
-              onClick={handleClickCard}>
-            {isTitleShown &&
-                <h3
-                    style={{ position: 'absolute', top: 0, left: 0}}>
-                    Blue Summer Dress
-                </h3>}
+              cover={<img className={'imgItem'} alt="cloth img" src={props.img}
+                          onClick={navigateToProduct}/>}
+              >
             <InfoContainer>
                 <div style={{
                     display:"flex",
@@ -93,8 +94,8 @@ export default function MainCard(props,{isLiked = false}) {
                                 border:"1px solid black",
                                 boxShadow: "2px 2px 2px 0 black",
                                 backgroundColor: "#F1F7F1"}}
-                            onClick={handleClickLike}>
-                        {isToggledOn ?
+                            onClick={handleLike}>
+                        {isLikeToggledOn ?
                             <HeartFilled style={{ color: "red" }}/>
                             : <HeartOutlined style={{ color: "black" }}/>}
                     </Button>
@@ -106,9 +107,14 @@ export default function MainCard(props,{isLiked = false}) {
 
 export function MyShopCard (props) {
     const [isTitleShown, setIsTitleShown] = useState(false);
+    const showTitle = () => {
+        setIsTitleShown((prevState) => !prevState);
+    };
+
     const handleClickCard = () => {
         setIsTitleShown((prevState) => !prevState);
     };
+
     return (
         <Card className="card-item"
               hoverable
