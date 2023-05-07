@@ -12,7 +12,7 @@ export const PageContainer = styled.div`
   align-items: center;
   align-content: center;
   height: 90vh;
-  padding: 70px 30px 120px 30px;
+  padding: 80px 30px 40px 30px;
   row-gap: 20px;
 `;
 

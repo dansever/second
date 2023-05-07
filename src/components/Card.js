@@ -5,10 +5,9 @@ import {Button, Card} from "antd";
 import coin_img from "../assets/images/coin.png";
 import Colors from "../color";
 import {useNavigate} from "react-router-dom";
-import "./Card.css"
 
 const CardStyle = styled.div`
-  border-radius: 10px;
+  border-radius: 30px;
   border: 1px solid black;
   height: 200px;
   width: 160px;
@@ -42,7 +41,7 @@ export default function MainCard(props,{isLiked = false}) {
         navigate("/Search/:id");
     };
 
-    const handleClickLike = () => {
+    const handleLikeProduct = () => {
         setIsToggledOn((prevState) => !prevState);
     };
 
@@ -54,13 +53,9 @@ export default function MainCard(props,{isLiked = false}) {
                   border: '1px solid black',
                   boxShadow: '3px 4px 0 0 black',
               }}
-              cover={<img className={'imgItem'} alt="cloth img" src={props.img} />}
-              onClick={handleClickCard}>
-            {isTitleShown &&
-                <h3
-                    style={{ position: 'absolute', top: 0, left: 0}}>
-                    Blue Summer Dress
-                </h3>}
+              cover={<img className={'imgItem'} alt="cloth img" src={props.img}
+                          onClick={navigateToProduct}/>}
+              >
             <InfoContainer>
                 <div style={{
                     display:"flex",
@@ -99,7 +94,7 @@ export default function MainCard(props,{isLiked = false}) {
                                 border:"1px solid black",
                                 boxShadow: "2px 2px 2px 0 black",
                                 backgroundColor: "#F1F7F1"}}
-                            onClick={handleClickLike}>
+                            onClick={handleLikeProduct}>
                         {isToggledOn ?
                             <HeartFilled style={{ color: "red" }}/>
                             : <HeartOutlined style={{ color: "black" }}/>}

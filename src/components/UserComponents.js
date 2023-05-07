@@ -63,7 +63,7 @@ export function SellerHeader() {
             <PicAndName>
                 <ProfileImage src={profile_pic} alt={"profile_pic"}/>
                 <div style={{display: "flex", flexDirection: "column"}}>
-                    <h3>Anna Kendrick</h3>
+                    <h3>Kendrick Lamar</h3>
                 </div>
             </PicAndName>
         </Container>

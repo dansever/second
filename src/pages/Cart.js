@@ -99,13 +99,13 @@ function ProductPic () {
 }
 
 
-function SellerSlider(){
+function SellerSlider(props){
     return (
         <div style={{
             display:"flex",
             flexDirection:"column",
             rowGap:"10px"}}>
-            <SellerHeader/>
+            <SellerHeader name = {props}/>
             <ProductsContainer>
                 <ProductPic/><ProductPic/><ProductPic/>
             </ProductsContainer>

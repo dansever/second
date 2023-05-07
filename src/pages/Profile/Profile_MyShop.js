@@ -6,36 +6,15 @@ import {Divider, Radio, ConfigProvider} from "antd";
 import { Row, Col } from 'antd';
 import Navbar from "../../components/Navbar";
 import UserHeader from "../../components/UserComponents";
-import {MyShopCard} from "../../components/Card/Card";
+import {MyShopCard} from "../../components/Card";
 import {ScrollView} from "react-native";
 import {PageContainer} from "./Profile_Main";
 
 
-const Container = styled.div`
-    //background-color: var(--off_white);
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    align-content: center;
-    height: 70vh;
-    padding-top: 15px;
-    row-gap: 20px;
-`;
-
-// const profileOptionsStyle = styled.div`
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: center;
-//     align-items: center;
-//     align-content: center;
-//     height: 10vh;
-// `;
-
 function ProfileOptions () {
     const navigate = useNavigate();
     return (
-        <Radio.Group style={{scale:"120%" }} buttonStyle={"solid"} size={"large"} defaultValue={"MyShop"}>
+        <Radio.Group style={{scale:"110%" }} buttonStyle={"solid"} size={"large"} defaultValue={"MyShop"}>
             <Radio.Button onClick={() => navigate("/Profile/MyShop")} value="MyShop">My Shop</Radio.Button>
             <Radio.Button onClick={() => navigate("/Profile/Saved")} value="Saved">Saved Items</Radio.Button>
             <Radio.Button onClick={() => navigate("/Profile/Sellers")} value="Sellers">Sellers</Radio.Button>
@@ -61,7 +40,7 @@ export default function Profile_MyShop() {
             >
                 <GeneralHeader/>
                 <ScrollView>
-                <Container>
+                <PageContainer>
                     <UserHeader/>
                     <ProfileOptions/>
                     <Divider style={{ borderWidth: 0.5, borderColor: 'grey' }}/>
@@ -87,7 +66,7 @@ export default function Profile_MyShop() {
                         </Col>
                     </Row>
 
-                </Container>
+                </PageContainer>
                 </ScrollView>
                 <Navbar/>
             </ConfigProvider>
