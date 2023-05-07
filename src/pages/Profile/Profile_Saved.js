@@ -45,13 +45,13 @@ export default function Profile_Saved() {
 
                         <Grid container spacing={{xs: 2, lg: 2}} columns={{xs: 4, sm: 4, md: 9, lg: 12}}>
                             <Grid item xs={2} sm={2} md={3} lg={3}>
-                                <MainCard isLiked = {true}/>
+                                <MainCard img={require("../../assets/images/i5.jpg")} isLiked= {true} />
                             </Grid>
                             <Grid item xs={2} sm={2} md={3} lg={3}>
-                                <MainCard isLiked = {true}/>
+                                <MainCard img={require("../../assets/images/i2.jpg")} isLiked= {true}/>
                             </Grid>
                             <Grid item xs={2} sm={2} md={3} lg={3}>
-                                <MainCard isLiked = {true}/>
+                                <MainCard img={require("../../assets/images/i7.jpg")} isLiked = {true}/>
                             </Grid>
                         </Grid>
 

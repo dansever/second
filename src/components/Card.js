@@ -32,17 +32,17 @@ const InfoContainer = styled.div`
 `;
 
 
-export default function MainCard(props,{isLiked = false}) {
+export default function MainCard(props) {
     const [isTitleShown, setIsTitleShown] = useState(false);
-    const [isToggledOn, setIsToggledOn] = useState(isLiked);
+    const [isLikeToggledOn, setLikeToggledOn] = useState(props.isLiked);
     const navigate = useNavigate();
 
     const navigateToProduct = () => {
         navigate("/Search/:id");
     };
 
-    const handleLikeProduct = () => {
-        setIsToggledOn((prevState) => !prevState);
+    const handleLike = () => {
+        setLikeToggledOn((prevState) => !prevState);
     };
 
     return (
@@ -94,8 +94,8 @@ export default function MainCard(props,{isLiked = false}) {
                                 border:"1px solid black",
                                 boxShadow: "2px 2px 2px 0 black",
                                 backgroundColor: "#F1F7F1"}}
-                            onClick={handleLikeProduct}>
-                        {isToggledOn ?
+                            onClick={handleLike}>
+                        {isLikeToggledOn ?
                             <HeartFilled style={{ color: "red" }}/>
                             : <HeartOutlined style={{ color: "black" }}/>}
                     </Button>
