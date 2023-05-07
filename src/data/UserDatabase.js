@@ -1,6 +1,4 @@
-import i1 from "../assets/images/i1.jpg"
-
-const data = [
+const users = [
     {
         id: 1,
         image: './images/i1.jpg',
@@ -45,4 +43,4 @@ const data = [
     },
 ]
 
-export default data
+export default users;

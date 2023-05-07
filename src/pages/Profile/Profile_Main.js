@@ -11,8 +11,7 @@ export const PageContainer = styled.div`
   justify-content: start;
   align-items: center;
   align-content: center;
-  height: 90vh;
-  padding: 15px 30px 0 30px;
+  padding: 80px 30px 100px 30px;
   row-gap: 20px;
 `;
 

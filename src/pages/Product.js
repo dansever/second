@@ -20,7 +20,7 @@ const ProductContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   row-gap: 5px;
-  padding: 5px;
+  padding: 65px 5px 65px 0;
   height: 40vh;
 `;
 

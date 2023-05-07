@@ -9,7 +9,7 @@ import {ScrollView} from "react-native";
 const Container = styled.div`
   background-color: var(--light_green);
   overflow: auto;
-  padding: 0 20px 0 20px;
+  padding: 60px 20px 60px 20px;
   display: flex;
   flex-direction: column;
   height: 70vh;
