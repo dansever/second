@@ -35,6 +35,8 @@ const Coins = styled.div`
   flex-direction: row;
   align-items: center;
   align-content: flex-start;
+  justify-items: center;
+  justify-content: center;
 `;
 
 

@@ -10,12 +10,17 @@ import {Link} from "react-router-dom";
 
 const HeaderContainer = styled.div`
   width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
   height: 60px;
   background-color: var(--secondary_green);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  column-gap: 100px;
+  //column-gap: 100px;
 `;
 
 

@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
-import {HeartFilled, HeartOutlined, EditOutlined} from "@ant-design/icons";
+import {HeartFilled, HeartOutlined, EditOutlined, ArrowLeftOutlined} from "@ant-design/icons";
 import {Button, Card} from "antd";
-import coin_img from "../../assets/images/coin.png";
-import Colors from "../../color";
+import coin_img from "../assets/images/coin.png";
+import Colors from "../color";
+import {useNavigate} from "react-router-dom";
 import "./Card.css"
 
 const CardStyle = styled.div`
@@ -12,6 +13,10 @@ const CardStyle = styled.div`
   height: 200px;
   width: 160px;
   box-shadow: 3px 4px 0 0 black;
+  &:hover {
+    scale: 103%;
+    cursor: pointer;
+  }
 `;
 
 const ImgContainer = styled.div`
@@ -31,9 +36,10 @@ const InfoContainer = styled.div`
 export default function MainCard(props,{isLiked = false}) {
     const [isTitleShown, setIsTitleShown] = useState(false);
     const [isToggledOn, setIsToggledOn] = useState(isLiked);
+    const navigate = useNavigate();
 
-    const handleClickCard = () => {
-        setIsTitleShown((prevState) => !prevState);
+    const navigateToProduct = () => {
+        navigate("/Search/:id");
     };
 
     const handleClickLike = () => {
@@ -106,9 +112,14 @@ export default function MainCard(props,{isLiked = false}) {
 
 export function MyShopCard (props) {
     const [isTitleShown, setIsTitleShown] = useState(false);
+    const showTitle = () => {
+        setIsTitleShown((prevState) => !prevState);
+    };
+
     const handleClickCard = () => {
         setIsTitleShown((prevState) => !prevState);
     };
+
     return (
         <Card className="card-item"
               hoverable
