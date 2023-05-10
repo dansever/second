@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
-import {HeartFilled, HeartOutlined, EditOutlined, ArrowLeftOutlined} from "@ant-design/icons";
+import {HeartFilled, HeartOutlined, EditOutlined} from "@ant-design/icons";
 import {Button, Card} from "antd";
 import coin_img from "../assets/images/coin.png";
-import Colors from "../color";
 import {useNavigate} from "react-router-dom";
 
 const CardStyle = styled.div`
@@ -33,7 +32,6 @@ const InfoContainer = styled.div`
 
 
 export default function MainCard(props) {
-    const [isTitleShown, setIsTitleShown] = useState(false);
     const [isLikeToggledOn, setLikeToggledOn] = useState(props.isLiked);
     const navigate = useNavigate();
 
@@ -106,11 +104,6 @@ export default function MainCard(props) {
 }
 
 export function MyShopCard (props) {
-    const [isTitleShown, setIsTitleShown] = useState(false);
-    const showTitle = () => {
-        setIsTitleShown((prevState) => !prevState);
-    };
-
     const handleClickCard = () => {
         setIsTitleShown((prevState) => !prevState);
     };
