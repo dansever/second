@@ -12,6 +12,7 @@ import {CloseCircleOutlined} from "@ant-design/icons";
 import {Button} from "antd";
 import {ScrollView} from "react-native";
 
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -19,7 +20,6 @@ const Container = styled.div`
   padding: 80px 0 60px 10px;
   height: 70vh;
 `;
-
 
 
 const ProductsContainer = styled.div`
@@ -123,6 +123,7 @@ export default function Cart() {
     return (
         <div>
             <GeneralHeader/>
+            <h1>Cart</h1>
             <ScrollView>
             <Container>
                 <SellerSlider/>
