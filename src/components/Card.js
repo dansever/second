@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
-import {HeartFilled, HeartOutlined, EditOutlined, ArrowLeftOutlined} from "@ant-design/icons";
+import {HeartFilled, HeartOutlined, EditOutlined} from "@ant-design/icons";
 import {Button, Card} from "antd";
 import coin_img from "../assets/images/coin.png";
-import Colors from "../color";
 import {useNavigate} from "react-router-dom";
 
 const CardStyle = styled.div`
@@ -33,7 +32,6 @@ const InfoContainer = styled.div`
 
 
 export default function MainCard(props) {
-    const [isTitleShown, setIsTitleShown] = useState(false);
     const [isLikeToggledOn, setLikeToggledOn] = useState(props.isLiked);
     const navigate = useNavigate();
 
@@ -46,14 +44,13 @@ export default function MainCard(props) {
     };
 
     return (
-        <Card className="card-item"
-              hoverable
+        <Card hoverable
               style={{
                   borderRadius: '10px',
                   border: '1px solid black',
                   boxShadow: '3px 4px 0 0 black',
               }}
-              cover={<img className={'imgItem'} alt="cloth img" src={props.img}
+              cover={<img alt="cloth img" src={props.img}
                           onClick={navigateToProduct}/>}
               >
             <InfoContainer>
@@ -81,14 +78,17 @@ export default function MainCard(props) {
                         <text>{props.location}</text>
                     </div>
 
-                    <div style={{display:"flex", flexDirection:"row",
-                    alignItems:"center", alignContent:"center"}}>
+                    <div style={{display:"flex",
+                        flexDirection:"row",
+                        alignItems:"center",
+                        alignContent:"center"}}>
                         <img src={coin_img} alt={"coin_img"} width={"30px"}/>
                         <text style={{fontWeight: 'bold'}}>{props.price}</text>
                     </div>
                 </div>
 
-                <div style={{display:"flex", alignItems:"center"}}>
+                <div style={{display:"flex",
+                    alignItems:"center"}}>
                     <Button shape="circle"
                             style={{scale:"120%",
                                 border:"1px solid black",
@@ -106,14 +106,9 @@ export default function MainCard(props) {
 }
 
 export function MyShopCard (props) {
-    const [isTitleShown, setIsTitleShown] = useState(false);
-    const showTitle = () => {
-        setIsTitleShown((prevState) => !prevState);
-    };
-
-    const handleClickCard = () => {
-        setIsTitleShown((prevState) => !prevState);
-    };
+    // const handleClickCard = () => {
+    //     setIsTitleShown((prevState) => !prevState);
+    // };
 
     return (
         <Card className="card-item"
@@ -123,13 +118,13 @@ export function MyShopCard (props) {
                   border: '1px solid black',
                   boxShadow: '3px 4px 0 0 black',
               }}
-              cover={<img className={'imgItem'} alt="cloth img" src={props.img} />}
-              onClick={handleClickCard}>
-            {isTitleShown &&
-                <h3
-                    style={{ position: 'absolute', top: 0, left: 0}}>
-                    Blue Summer Dress
-                </h3>}
+              cover={<img className={'imgItem'} alt="cloth img" src={props.img} />}>
+              {/*onClick={handleClickCard}>*/}
+            {/*{isTitleShown &&*/}
+            {/*    <h3*/}
+            {/*        style={{ position: 'absolute', top: 0, left: 0}}>*/}
+            {/*        Blue Summer Dress*/}
+            {/*    </h3>}*/}
             <InfoContainer style={{display:"flex",justifyContent:"space-around"}}>
                 <div style={{display:"flex", flexDirection:"row",
                     alignItems:"center", alignContent:"center"}}>

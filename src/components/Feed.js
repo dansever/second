@@ -3,7 +3,6 @@ import Grid from '@mui/material/Grid';
 import MainCard from "./Card";
 import styled from "styled-components";
 
-
 export default function Feed() {
     return (
         <div>
