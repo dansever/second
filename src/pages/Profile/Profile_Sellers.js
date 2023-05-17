@@ -1,8 +1,6 @@
 import React from "react";
-import {GeneralHeader} from "../../components/Header";
-import styled from "styled-components";
+import MainHeader from "../../components/Header";
 import {Divider, Radio, ConfigProvider} from "antd";
-import {FilterButton} from "../../components/Buttons/Button";
 import {useNavigate} from "react-router";
 import Navbar from "../../components/Navbar";
 import UserHeader, {SellerInfo} from "../../components/UserComponents";
@@ -35,7 +33,7 @@ export default function Profile_Sellers() {
                     },
                 }}
             >
-                <GeneralHeader/>
+                <MainHeader/>
                 <PageContainer>
                     <UserHeader/>
                     <ProfileOptions/>

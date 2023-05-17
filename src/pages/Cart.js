@@ -2,7 +2,7 @@ import React from "react"
 import { useNavigate } from 'react-router-dom';
 import "../styles/Index.css"
 import Navbar from "../components/Navbar";
-import {GeneralHeader} from "../components/Header";
+import MainHeader from "../components/Header";
 import styled from "styled-components";
 import {ButtonStyle} from "../components/Buttons/Button";
 import coin_img from "../assets/images/coin.png";
@@ -122,7 +122,7 @@ function SellerSlider(props){
 export default function Cart() {
     return (
         <div>
-            <GeneralHeader/>
+            <MainHeader/>
             <h1>Cart</h1>
             <ScrollView>
             <Container>

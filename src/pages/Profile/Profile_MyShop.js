@@ -1,6 +1,5 @@
 import React from "react";
-import {GeneralHeader} from "../../components/Header";
-import styled from "styled-components";
+import MainHeader from "../../components/Header";
 import {useNavigate} from "react-router";
 import {Divider, Radio, ConfigProvider} from "antd";
 import { Row, Col } from 'antd';
@@ -38,7 +37,7 @@ export default function Profile_MyShop() {
                     },
                 }}
             >
-                <GeneralHeader/>
+                <MainHeader/>
                 <ScrollView>
                 <PageContainer>
                     <UserHeader/>

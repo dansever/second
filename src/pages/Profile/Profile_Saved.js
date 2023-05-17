@@ -1,7 +1,6 @@
 import React from "react";
-import {GeneralHeader} from "../../components/Header";
+import MainHeader from "../../components/Header";
 import Navbar from "../../components/Navbar";
-import {FilterButton, SortButton} from "../../components/Buttons/Button";
 import {useNavigate} from "react-router";
 import {Divider, Radio, ConfigProvider} from "antd";
 import UserHeader from "../../components/UserComponents";
@@ -37,7 +36,7 @@ export default function Profile_Saved() {
                 },
             }}
                 >
-                <GeneralHeader/>
+                <MainHeader/>
                 <PageContainer>
                     <UserHeader/>
                     <ProfileOptions />

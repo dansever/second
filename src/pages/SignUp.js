@@ -1,28 +1,34 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { useNavigate  } from 'react-router-dom';
 import styled from "styled-components";
 import {ButtonStyle} from "../components/Buttons/Button";
 
 const Container = styled.div`
-  background-color: var(--off_white);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 30vh;
+
 `;
 
 const SignUpButton = styled(ButtonStyle)`
-  color: var(--primary_green);
-  border-color: var(--primary_green);
-  box-shadow: 2px 3px 0 0 var(--primary_green);
+  background-color: var(--primary_green);
+  font-size: 20px;
+  display: flex;
+  padding: 10px 16px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 `;
 
 const SignUp = () => {
+    const navigate  = useNavigate ();
+    const handleClick = (event) => {
+        navigate("/Signup");
+    };
     return (
         <Container>
-            <Link to={"/Home"}>
-                <SignUpButton>Sign Up</SignUpButton>
-            </Link>
+            <div>
+                <input placeholder={"Email..."}/>
+                <input placeholder={"Password..."}/>
+            </div>
+            <SignUpButton type="submit"  onClick={handleClick}>Finish</SignUpButton>
         </Container>
     );
 };
