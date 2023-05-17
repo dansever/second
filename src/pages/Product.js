@@ -4,9 +4,8 @@ import styled from "styled-components"
 import { Descriptions } from 'antd';
 import i1_img from "../assets/images/i1.jpg";
 import Navbar from "../components/Navbar";
-import {GeneralHeader} from "../components/Header";
+import {SecondaryHeader} from "../components/Header";
 import { ButtonStyle} from "../components/Buttons/Button";
-import { Divider } from 'antd';
 import Price from "../components/Price";
 import UserHeader from "../components/UserComponents";
 import {ScrollView} from "react-native";
@@ -91,7 +90,7 @@ const AddToCartButton = styled(ButtonStyle)`
 export default function Product () {
     return (
         <div>
-            <GeneralHeader/>
+            <SecondaryHeader/>
             <ScrollView>
                 <ProductContainer>
                     <ProductImgContainer>

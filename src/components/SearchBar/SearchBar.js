@@ -1,8 +1,5 @@
-import React, {useState} from "react"
+import React from "react"
 import "./SearchBar.css"
-import { HiMagnifyingGlass } from "react-icons/hi2";
-import Sort from "../Sort/Sort";
-import Filter from "../Filter/Filter";
 import {FilterButton, SortButton} from "../Buttons/Button";
 
 

@@ -37,7 +37,7 @@ export function Logo() {
     );
 }
 
-export default function HomeHeader() {
+export default function MainHeader() {
     return (
         <Container>
             <h3 style={{color: Colors.dark_green, fontSize:"32px"}}>second</h3>
@@ -47,7 +47,7 @@ export default function HomeHeader() {
     );
 };
 
-export function GeneralHeader() {
+export function SecondaryHeader() {
     const navigate = useNavigate();
     return (
         <Container>

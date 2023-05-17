@@ -1,15 +1,26 @@
 import React, { useState } from 'react';
 import { useNavigate  } from 'react-router-dom';
 import "../styles/Index.css"
+import "../styles/Login.css"
 import styled from "styled-components";
 import {ButtonStyle} from "../components/Buttons/Button";
+import {Logo} from "../components/Header";
+import { auth } from "../firebase"
+import { createUserWithEmailAndPassword } from "firebase/auth"
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  padding-inline: 20px;
   justify-content: center;
   align-items: center;
-  margin-top: 30vh;
+`;
+
+const Form = styled.form`
+  width: 60vw;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 `;
 
 const LoginButton = styled(ButtonStyle)`
@@ -22,16 +33,8 @@ const LoginButton = styled(ButtonStyle)`
   flex-direction: row;
 `;
 
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  gap: 4px;
-`;
-
 const LabelStyle = styled.label`
   font-weight: 600;
-  font-family: "Montserrat" sans-serif;
   justify-content: left;
 `;
 
@@ -39,50 +42,48 @@ const InputStyle = styled.input`
   border-radius: 4px;
   background-color: var(--off_white);
   border: 1px solid var(--text_color);
-  width: 160px;
-  font-family: "Montserrat", sans-serif;
+  width: 100%;
   font-size: medium;
-  align-items: left;
 `;
 
-const Login = () => {
-    const [username, setUsername] = useState('');
+export const Auth = () => {
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate  = useNavigate ();
 
-    const handleUsernameChange = (event) => {
-        setUsername(event.target.value);
+    const signIn = async () => {
+        await createUserWithEmailAndPassword(auth, email, password);
     };
 
-    const handlePasswordChange = (event) => {
-        setPassword(event.target.value);
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(`Username: ${username}, Password: ${password}`);
-        // Here, you can add logic to send the login credentials to a server for validation
-        navigate("/Home");
+    const goToSignUp = () => {
+        navigate("/Signup");
     };
 
     return (
         <Container>
-            <Form onSubmit={handleSubmit}>
-                <LabelStyle>
-                    Username
-                </LabelStyle>
-                <InputStyle type="text" value={username} onChange={handleUsernameChange} />
-                <br />
-                <LabelStyle>
-                    Password
-                </LabelStyle>
-                <InputStyle type="password" value={password} onChange={handlePasswordChange} />
+            <header> <h2 >Welcome to Second</h2> <Logo/> </header>
 
-                <br /><br /><br /><br />
-                <LoginButton type="submit">Log In</LoginButton>
+            <Form>
+                <LabelStyle>Email</LabelStyle>
+                <InputStyle
+                    onChange={(e) => setEmail(e.target.value)} />
+                <br />
+                <LabelStyle>Password</LabelStyle>
+                <InputStyle
+                    type="password"
+                    onChange={(e) => setPassword(e.target.value)} />
             </Form>
+
+            <br /><br />
+            <ButtonStyle onClick={signIn}>Sign In</ButtonStyle>
+            <br />
+
+            <div className={"sign_up_div"}>
+                <p>New to second?</p>
+                <h4 onClick={goToSignUp}>Sign Up</h4>
+            </div>
         </Container>
     );
 };
 
-export default Login;
+export default Auth;

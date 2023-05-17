@@ -3,7 +3,7 @@ import styled from "styled-components";
 import "../styles/Index.css"
 import UploadForm from "../components/UploadForm";
 import Navbar from "../components/Navbar"
-import {GeneralHeader} from "../components/Header";
+import MainHeader from "../components/Header";
 import {ScrollView} from "react-native";
 
 const Container = styled.div`
@@ -18,7 +18,7 @@ const Container = styled.div`
 export default function Upload() {
     return (
         <div>
-            <GeneralHeader/>
+            <MainHeader/>
             <ScrollView>
             <Container>
                 <div className={"page-title"}>Upload an Item</div>

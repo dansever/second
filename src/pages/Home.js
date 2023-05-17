@@ -1,15 +1,11 @@
 import React from "react"
 import "../styles/Index.css"
-import HomeHeader, {GeneralHeader} from "../components/Header"
 import Feed from "../components/Feed"
 import SearchBar from "../components/SearchBar/SearchBar";
 import Navbar from "../components/Navbar"
 import styled from "styled-components";
 import {ScrollView} from "react-native";
-import {Col, ConfigProvider, Divider, Row} from "antd";
-import {PageContainer} from "./Profile/Profile_Main";
-import UserHeader from "../components/UserComponents";
-import {MyShopCard} from "../components/Card";
+import MainHeader from "../components/Header";
 
 
 const HomeContainer = styled.div`
@@ -28,7 +24,7 @@ const HomeContainer = styled.div`
 export default function Home() {
     return (
         <div >
-            <HomeHeader/>
+            <MainHeader/>
             <ScrollView>
                 <HomeContainer>
                     <SearchBar/>

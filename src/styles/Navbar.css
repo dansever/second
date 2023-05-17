@@ -29,7 +29,7 @@ body {
     justify-content: space-around;
     align-items: center;
     align-content: center;
-    color: var(--dark_green);
+    color: var(--primary_green);
 }
 
 .nav a {
@@ -39,10 +39,10 @@ body {
 }
 
 .nav li.active {
-    scale: 120%;
+    scale: 110%;
     color: var(--text_color);
 }
 
 .nav li:hover {
-    scale: 120%;
+    scale: 110%;
     cursor: pointer;}
