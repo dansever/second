@@ -1,30 +1,29 @@
 import React from "react";
 import styled from "styled-components";
 import "../styles/Index.css"
+import "../styles/Upload.css"
 import UploadForm from "../components/UploadForm";
 import Navbar from "../components/Navbar"
 import MainHeader from "../components/Header";
-import {ScrollView} from "react-native";
 
 const Container = styled.div`
   background-color: var(--light_green);
   overflow: auto;
-  padding: 60px 20px 60px 20px;
+  padding: 60px 10px 0 10px;
   display: flex;
   flex-direction: column;
-  height: 70vh;
+  height: 90vh;
+  row-gap: 20px;
 `;
 
 export default function Upload() {
     return (
         <div>
             <MainHeader/>
-            <ScrollView>
             <Container>
-                <div className={"page-title"}>Upload an Item</div>
+                <header>Upload an Item</header>
                 <UploadForm/>
             </Container>
-            </ScrollView>
             <Navbar/>
         </div>
     );

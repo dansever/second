@@ -106,9 +106,6 @@ export default function MainCard(props) {
 }
 
 export function MyShopCard (props) {
-    // const handleClickCard = () => {
-    //     setIsTitleShown((prevState) => !prevState);
-    // };
 
     return (
         <Card className="card-item"
@@ -119,12 +116,6 @@ export function MyShopCard (props) {
                   boxShadow: '3px 4px 0 0 black',
               }}
               cover={<img className={'imgItem'} alt="cloth img" src={props.img} />}>
-              {/*onClick={handleClickCard}>*/}
-            {/*{isTitleShown &&*/}
-            {/*    <h3*/}
-            {/*        style={{ position: 'absolute', top: 0, left: 0}}>*/}
-            {/*        Blue Summer Dress*/}
-            {/*    </h3>}*/}
             <InfoContainer style={{display:"flex",justifyContent:"space-around"}}>
                 <div style={{display:"flex", flexDirection:"row",
                     alignItems:"center", alignContent:"center"}}>
