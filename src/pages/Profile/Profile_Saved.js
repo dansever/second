@@ -7,6 +7,7 @@ import UserHeader from "../../components/UserComponents";
 import Grid from "@mui/material/Grid";
 import MainCard from "../../components/Card";
 import {PageContainer} from "./Profile_Main";
+import {ScrollView} from "react-native";
 
 
 function ProfileOptions () {
@@ -41,7 +42,7 @@ export default function Profile_Saved() {
                     <UserHeader/>
                     <ProfileOptions />
                     <Divider style={{ borderWidth: 0.5, borderColor: 'grey' }}/>
-
+                    <ScrollView>
                         <Grid container spacing={{xs: 2, lg: 2}} columns={{xs: 4, sm: 4, md: 9, lg: 12}}>
                             <Grid item xs={2} sm={2} md={3} lg={3}>
                                 <MainCard isLiked = {true} img={require("../../assets/images/i1.jpg")} size={"38"} location={"0.3K"} price={4}/>
@@ -53,7 +54,7 @@ export default function Profile_Saved() {
                                 <MainCard isLiked = {true} img={require("../../assets/images/i2.jpg")} size={"38"} location={"0.3K"} price={4}/>
                             </Grid>
                         </Grid>
-
+                    </ScrollView>
                 </PageContainer>
                 <Navbar/>
             </ConfigProvider>
