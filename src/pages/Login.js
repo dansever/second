@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate  } from 'react-router-dom';
 import "../styles/Index.css"
-import "../styles/Login.css"
+import "../styles/SingUp.css"
 import styled from "styled-components";
 import {ButtonStyle} from "../components/Buttons/Button";
 import {Logo} from "../components/Header";
@@ -23,7 +23,7 @@ const Form = styled.form`
   gap: 4px;
 `;
 
-const LoginButton = styled(ButtonStyle)`
+const SubmitButton = styled(ButtonStyle)`
   background-color: var(--primary_green);
   font-size: 20px;
   display: flex;
@@ -52,7 +52,12 @@ export const Auth = () => {
     const navigate  = useNavigate ();
 
     const signIn = async () => {
-        await createUserWithEmailAndPassword(auth, email, password);
+        try {
+            await createUserWithEmailAndPassword(auth, email, password);
+        } catch (err) {
+            console.error(err);
+        }
+        navigate("/Home");
     };
 
     const goToSignUp = () => {
@@ -61,7 +66,7 @@ export const Auth = () => {
 
     return (
         <Container>
-            <header> <h2 >Welcome to Second</h2> <Logo/> </header>
+            <header> <h2 >Welcome Back!</h2> <Logo/> </header>
 
             <Form>
                 <LabelStyle>Email</LabelStyle>
@@ -75,7 +80,7 @@ export const Auth = () => {
             </Form>
 
             <br /><br />
-            <ButtonStyle onClick={signIn}>Sign In</ButtonStyle>
+            <SubmitButton onClick={signIn}>Sign In</SubmitButton>
             <br />
 
             <div className={"sign_up_div"}>

@@ -1,0 +1,57 @@
+header {
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Lora', serif;
+    font-size: 36px;
+}
+
+.form {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--light_green);
+}
+
+.form-row {
+    display: flex;
+}
+
+.form > div > label {
+    flex: 0 0 90px;
+    font-weight: bold;
+}
+
+.form > div > input  {
+    flex: 1;
+    padding: 7px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid lightgray;
+    background: #fff;
+    font-size: 16px;
+    color: rgb(0, 0, 32);
+    outline: none;
+    width: 60vw;
+}
+
+
+.form > div > input:focus,
+textarea:focus {
+    border: 1px solid rgb(79, 169, 79);
+}
+
+button {
+    width: 20%;
+    border-radius: 10px;
+}
+
+/* Override the default message styles */
+.ant-message-success {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}

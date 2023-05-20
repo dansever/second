@@ -23,14 +23,12 @@ const HomeContainer = styled.div`
 
 export default function Home() {
     return (
-        <div >
+        <div>
             <MainHeader/>
-            <ScrollView>
-                <HomeContainer>
-                    <SearchBar/>
-                    <Feed/>
-                </HomeContainer>
-            </ScrollView>
+            <HomeContainer>
+                <SearchBar/>
+                <Feed/>
+            </HomeContainer>
             <Navbar/>
         </div>
     );
