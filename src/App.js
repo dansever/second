@@ -5,7 +5,7 @@ import Cart from "./pages/Cart";
 import Contact from "./pages/Contact";
 import Upload from "./pages/Upload";
 import Product from "./pages/Product";
-import Auth from "./pages/Login";
+import LoginPage from "./pages/Login";
 import Profile_MyShop from "./pages/Profile/Profile_MyShop";
 import Profile_Saved from "./pages/Profile/Profile_Saved";
 import Profile_Seller from "./pages/Profile/Profile_Sellers";
@@ -17,9 +17,9 @@ export default function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Auth/>}/>
+                <Route path="/" element={<LoginPage/>}/>
                 <Route path="/CardPage" element={<CardPage/>}/>
-                <Route path="/Login" element={<Auth/>}/>
+                <Route path="/Login" element={<LoginPage/>}/>
                 <Route path="/Signup" element={<SignUp/>}/>
                 <Route path="/Home" element={<Home/>}/>
                 <Route path="/Search/:id" element={<Product/>}/>
