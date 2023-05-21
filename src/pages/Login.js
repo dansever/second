@@ -1,94 +1,62 @@
 import React, { useState } from 'react';
 import { useNavigate  } from 'react-router-dom';
-import "../styles/Index.css"
 import "../styles/SingUp.css"
-import styled from "styled-components";
-import {ButtonStyle} from "../components/Buttons/Button";
-import {Logo} from "../components/Header";
 import { auth } from "../firebase"
-import { createUserWithEmailAndPassword } from "firebase/auth"
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-inline: 20px;
-  justify-content: center;
-  align-items: center;
-`;
+import { signInWithEmailAndPassword } from "firebase/auth";
+import {Button, Input} from "antd";
 
-const Form = styled.form`
-  width: 60vw;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-`;
-
-const SubmitButton = styled(ButtonStyle)`
-  background-color: var(--primary_green);
-  font-size: 20px;
-  display: flex;
-  padding: 10px 16px;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-`;
-
-const LabelStyle = styled.label`
-  font-weight: 600;
-  justify-content: left;
-`;
-
-const InputStyle = styled.input`
-  border-radius: 4px;
-  background-color: var(--off_white);
-  border: 1px solid var(--text_color);
-  width: 100%;
-  font-size: medium;
-`;
-
-export const Auth = () => {
+export const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const navigate  = useNavigate ();
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
 
-    const signIn = async () => {
+    const handleLogin = async (e) => {
+        e.preventDefault();
         try {
-            await createUserWithEmailAndPassword(auth, email, password);
-        } catch (err) {
-            console.error(err);
+            await signInWithEmailAndPassword(auth, email, password);
+            navigate("/Home");
+            // User signed in successfully
+        } catch (error) {
+            setError('Invalid email or password. Please try again.');
         }
-        navigate("/Home");
     };
 
-    const goToSignUp = () => {
+    const handleSignup = () => {
+        // Redirect to signup page
         navigate("/Signup");
     };
 
     return (
-        <Container>
-            <header> <h2 >Welcome Back!</h2> <Logo/> </header>
+        <div className={"main-container"}>
+            <header><h3>Welcome</h3></header>
+            {error && <p>{error}</p>}
+            <form onSubmit={handleLogin}>
+                <Input
+                    type="email" value={email} placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}/>
+                <Input
+                    type="password" value={password} placeholder="Password"
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <button className={"submit-button"} type="submit">
+                    Login
+                </button>
+            </form>
 
-            <Form>
-                <LabelStyle>Email</LabelStyle>
-                <InputStyle
-                    onChange={(e) => setEmail(e.target.value)} />
-                <br />
-                <LabelStyle>Password</LabelStyle>
-                <InputStyle
-                    type="password"
-                    onChange={(e) => setPassword(e.target.value)} />
-            </Form>
+            <br/> <br/>
 
-            <br /><br />
-            <SubmitButton onClick={signIn}>Sign In</SubmitButton>
-            <br />
-
-            <div className={"sign_up_div"}>
-                <p>New to second?</p>
-                <h4 onClick={goToSignUp}>Sign Up</h4>
+            <div className={"new-user"}>
+                <p>Don't have an account?</p>
+                <Button
+                    className={"sign-up-button"}
+                    onClick={handleSignup}>
+                    Sign Up
+                </Button>
             </div>
-        </Container>
-    );
-};
 
-export default Auth;
+        </div>
+    )
+}
+export default LoginPage;

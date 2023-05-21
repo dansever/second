@@ -1,8 +1,78 @@
-header {
+header{
+    color: var(--dark_green);
     display: flex;
     justify-content: space-between;
 }
 
-header h2{
-    color: var(--dark_green);
+.main-container {
+    width: 100vw;
+    padding-left: 20px;
+
+}
+
+form {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+form > div > label {
+    font-weight: bold;
+}
+
+form > div > input  {
+    flex: 1;
+    padding: 7px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid lightgray;
+    background: #fff;
+    font-size: 16px;
+    color: rgb(0, 0, 32);
+    outline: none;
+    width: 60vw;
+}
+
+.submit-button {
+    border-radius: 10px;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--secondary_green);
+    font-weight: bold;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit-button:hover {
+    background-color: var(--primary_green);
+    cursor: pointer;
+}
+
+
+.new-user {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+    column-gap: 15px;
+}
+
+
+.sign-up-button {
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+    box-shadow: none;
+    border: none;
+
 }
