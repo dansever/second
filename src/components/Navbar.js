@@ -16,10 +16,10 @@ export default function Navbar () {
                 <CustomLink to="/Upload">
                     <CiSquarePlus size={36} strokeWidth={1.5}/>
                 </CustomLink>
-                <CustomLink to="/Cart">
+                <CustomLink to="/Liked">
                     <BiHeart size={36} strokeWidth={0.5}/>
                 </CustomLink>
-                <CustomLink to="/Profile/MyShop">
+                <CustomLink to="/Profile">
                     <HiOutlineUserCircle size={36} strokeWidth={2} />
                 </CustomLink>
             </ul>
