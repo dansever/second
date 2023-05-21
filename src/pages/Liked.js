@@ -6,11 +6,14 @@ import MainHeader from "../components/Header";
 import styled from "styled-components";
 import {ButtonStyle} from "../components/Buttons/Button";
 import coin_img from "../assets/images/coin.png";
-import {SellerHeader} from "../components/UserComponents";
+import UserHeader, {SellerHeader} from "../components/UserComponents";
 import product_pic from "../assets/images/i6.jpg"
 import {CloseCircleOutlined} from "@ant-design/icons";
-import {Button} from "antd";
+import {Button, Divider} from "antd";
 import {ScrollView} from "react-native";
+import Grid from "@mui/material/Grid";
+import MainCard from "../components/Card";
+import {PageContainer } from "./Profile";
 
 
 const Container = styled.div`
@@ -123,15 +126,26 @@ export default function Cart() {
     return (
         <div>
             <MainHeader/>
-            <h1>Cart</h1>
-            <ScrollView>
-            <Container>
-                <SellerSlider/>
-                <SellerSlider/>
-                <SellerSlider/>
-                <SellerSlider/>
-            </Container>
-            </ScrollView>
+            <PageContainer>
+                <ScrollView>
+                    <Grid container spacing={{xs: 2, lg: 2}} columns={{xs: 4, sm: 4, md: 9, lg: 12}}>
+                        <Grid item xs={2} sm={2} md={3} lg={3}>
+                            <MainCard
+                                isLiked = {true}
+                                img={require("../assets/images/i1.jpg")}
+                                size={"38"}
+                                location={"0.3K"}
+                                price={4}/>
+                        </Grid>
+                        <Grid item xs={2} sm={2} md={3} lg={3}>
+                            <MainCard isLiked = {true} img={require("../assets/images/i2.jpg")} size={"38"} location={"0.3K"} price={4}/>
+                        </Grid>
+                        <Grid item xs={2} sm={2} md={3} lg={3}>
+                            <MainCard isLiked = {true} img={require("../assets/images/i2.jpg")} size={"38"} location={"0.3K"} price={4}/>
+                        </Grid>
+                    </Grid>
+                </ScrollView>
+            </PageContainer>
             <Navbar/>
         </div>
     );

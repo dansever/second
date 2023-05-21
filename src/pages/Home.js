@@ -12,7 +12,7 @@ import {auth} from "../firebase";
 const HomeContainer = styled.div`
   background-color: var(--light_green);
   width: 100%;
-  padding: 60px 20px 80px 20px; 
+  padding: 60px 5px 80px 5px; 
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -23,22 +23,23 @@ const HomeContainer = styled.div`
 `;
 
 export default function Home() {
-    const [userID, setUserID] = useState(null);
+    const [userEmail, setUserEmail] = useState(null);
 
     useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged(user => {
-            if (user) {
-                setUserID(user.uid);
+        // Subscribe to the Firebase Auth state changes
+        auth.onAuthStateChanged(authUser => {
+            if (authUser) {
+                setUserEmail(authUser.email);
             } else {
-                setUserID(null);
+                // User is signed out
+                setUserEmail(null);
             }
         });
-        return () => unsubscribe();
-    }, []);
+        },[]);
 
     return (
         <div>
-            <MainHeader/>
+            <MainHeader email={userEmail}/>
             <HomeContainer>
                 <SearchBar/>
                 <Feed/>
