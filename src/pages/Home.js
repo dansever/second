@@ -1,11 +1,10 @@
-import React, {useContext, useEffect, useState} from "react"
+import React, {useContext} from "react"
 import "../styles/Index.css"
 import MainFeed from "../components/MainFeed"
 import SearchBar from "../components/SearchBar/SearchBar";
 import Navbar from "../components/Navbar"
 import styled from "styled-components";
 import MainHeader from "../components/Header";
-import {auth} from "../firebase";
 import { AuthContext } from '../components/AuthProvider';
 
 
