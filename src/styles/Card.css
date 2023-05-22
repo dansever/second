@@ -31,6 +31,12 @@
     width: 80%;
 }
 
+.left-side h3 {
+    display: flex;
+    justify-content: center;
+    color: var(--primary_green);
+}
+
 .left-side p {
     font-weight: bold;
 }

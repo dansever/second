@@ -1,10 +1,9 @@
 import React, {useContext, useEffect, useState} from "react"
 import "../styles/Index.css"
-import Feed from "../components/Feed"
+import MainFeed from "../components/MainFeed"
 import SearchBar from "../components/SearchBar/SearchBar";
 import Navbar from "../components/Navbar"
 import styled from "styled-components";
-import {ScrollView} from "react-native";
 import MainHeader from "../components/Header";
 import {auth} from "../firebase";
 import { AuthContext } from '../components/AuthProvider';
@@ -34,7 +33,7 @@ export default function Home() {
                 ( <MainHeader email={null}/> )}
             <HomeContainer>
                 <SearchBar/>
-                <Feed/>
+                <MainFeed/>
             </HomeContainer>
             <Navbar/>
         </div>
