@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, {useContext, useEffect, useState} from "react"
 import "../styles/Index.css"
 import Feed from "../components/Feed"
 import SearchBar from "../components/SearchBar/SearchBar";
@@ -7,6 +7,7 @@ import styled from "styled-components";
 import {ScrollView} from "react-native";
 import MainHeader from "../components/Header";
 import {auth} from "../firebase";
+import { AuthContext } from '../components/AuthProvider';
 
 
 const HomeContainer = styled.div`
@@ -23,23 +24,14 @@ const HomeContainer = styled.div`
 `;
 
 export default function Home() {
-    const [userEmail, setUserEmail] = useState(null);
-
-    useEffect(() => {
-        // Subscribe to the Firebase Auth state changes
-        auth.onAuthStateChanged(authUser => {
-            if (authUser) {
-                setUserEmail(authUser.email);
-            } else {
-                // User is signed out
-                setUserEmail(null);
-            }
-        });
-        },[]);
+    const currentUser = useContext(AuthContext);
 
     return (
         <div>
-            <MainHeader email={userEmail}/>
+            {currentUser ?
+                ( <MainHeader email={currentUser.email}/> )
+                :
+                ( <MainHeader email={null}/> )}
             <HomeContainer>
                 <SearchBar/>
                 <Feed/>

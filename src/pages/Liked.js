@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useContext} from "react"
 import { useNavigate } from 'react-router-dom';
 import "../styles/Index.css"
 import Navbar from "../components/Navbar";
@@ -14,6 +14,7 @@ import {ScrollView} from "react-native";
 import Grid from "@mui/material/Grid";
 import MainCard from "../components/Card";
 import {PageContainer } from "./Profile";
+import {AuthContext} from "../components/AuthProvider";
 
 
 const Container = styled.div`
@@ -122,10 +123,15 @@ function SellerSlider(props){
 }
 
 
-export default function Cart() {
+export default function Liked() {
+    const currentUser = useContext(AuthContext);
     return (
         <div>
-            <MainHeader/>
+            {currentUser ?
+                ( <MainHeader email={currentUser.email}/> )
+                :
+                ( <MainHeader email={null}/> )
+            }
             <PageContainer>
                 <ScrollView>
                     <Grid container spacing={{xs: 2, lg: 2}} columns={{xs: 4, sm: 4, md: 9, lg: 12}}>
