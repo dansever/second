@@ -20,11 +20,6 @@ const CardStyle = styled.div`
   }
 `;
 
-const ImgContainer = styled.div`
-  border-bottom: 2px solid black;
-  height: 60%;
-`;
-
 const InfoContainer = styled.div`
   height: 40%;
   display: flex;
@@ -37,10 +32,6 @@ export default function MainCard(props) {
 
     const [isLikeToggledOn, setLikeToggledOn] = useState(props.isLiked);
     const navigate = useNavigate();
-
-    const navigateToProduct = () => {
-        navigate("/Search/:id");
-    };
 
     const handleLike = () => {
         setLikeToggledOn((prevState) => !prevState);
