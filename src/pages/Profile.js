@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import MainHeader from "../components/Header";
 import {useNavigate} from "react-router";
 import {Divider, Radio, ConfigProvider} from "antd";
@@ -8,6 +8,7 @@ import UserHeader from "../components/UserComponents";
 import {MyShopCard} from "../components/Card";
 import {ScrollView} from "react-native";
 import styled from "styled-components";
+import { AuthContext } from '../components/AuthProvider';
 
 
 export const PageContainer = styled.div`
@@ -31,6 +32,8 @@ function ProfileOptions () {
 }
 
 export default function MyProfile() {
+    const currentUser = useContext(AuthContext);
+
     return (
         <div>
             <ConfigProvider
@@ -46,11 +49,14 @@ export default function MyProfile() {
                     },
                 }}
             >
-                <MainHeader/>
+                {currentUser ?
+                    ( <MainHeader email={currentUser.email}/> )
+                    :
+                    ( <MainHeader email={null}/> )}
+
                 <ScrollView>
                 <PageContainer>
                     <UserHeader/>
-                    <ProfileOptions/>
                     <Divider style={{ borderWidth: 0.5, borderColor: 'grey' }}/>
 
                     <Row gutter={[16, 16]}>

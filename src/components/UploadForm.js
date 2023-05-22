@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from './AuthProvider';
 import '../styles/Index.css';
 import '../styles/Upload.css';
 import { db, storage } from "../firebase";
@@ -11,9 +12,10 @@ import {
     doc,
 } from "firebase/firestore";
 import { ref, uploadBytes } from "firebase/storage";
-import { Input, Button, message } from 'antd';
+import {Input, Button, message, Select} from 'antd';
 import {ButtonStyle} from "./Buttons/Button";
 
+const { Option } = Select;
 function App() {
     const [productList, setProductList] = useState([]);
 
@@ -24,6 +26,8 @@ function App() {
     const [newBrand, setNewBrand] = useState("");
     const [newCondition, setNewCondition] = useState("");
     const [newPrice, setNewPrice] = useState(0);
+
+    const currentUser = useContext(AuthContext);
 
     // File Upload State
     const [fileUpload, setFileUpload] = useState(null);
@@ -50,6 +54,12 @@ function App() {
     useEffect(() => {
         getProductList();
     }, []);
+
+
+    const handleSizeChange = (value) => {
+        setNewSize(value);
+    };
+
 
     const handleSubmit = async () => {
         try {
@@ -121,12 +131,19 @@ function App() {
 
             <div className={"form-row"}>
                 <label>Size</label>
-                <Input
+                <Select
                     value={newSize}
-                    placeholder="Enter size..."
-                    type="text"
-                    onChange={(e) => setNewSize(e.target.value)}
-                />
+                    placeholder="Select value..."
+                    onChange={handleSizeChange}
+                    className="dropdown-style"
+                >
+                    <Option value="xs">XS</Option>
+                    <Option value="s">S</Option>
+                    <Option value="M">M</Option>
+                    <Option value="L">L</Option>
+                    <Option value="XL">XL</Option>
+                    <Option value="one_size">One Size</Option>
+                </Select>
             </div>
 
             <div className={"form-row"}>
