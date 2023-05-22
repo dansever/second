@@ -1,158 +1,42 @@
-import React, {useContext} from "react"
-import { useNavigate } from 'react-router-dom';
+import React, {useContext, useEffect, useState} from "react"
 import "../styles/Index.css"
-import Navbar from "../components/Navbar";
-import MainHeader from "../components/Header";
+import MainFeed from "../components/MainFeed"
+import SearchBar from "../components/SearchBar/SearchBar";
+import Navbar from "../components/Navbar"
 import styled from "styled-components";
-import {ButtonStyle} from "../components/Buttons/Button";
-import coin_img from "../assets/images/coin.png";
-import UserHeader, {SellerHeader} from "../components/UserComponents";
-import product_pic from "../assets/images/i6.jpg"
-import {CloseCircleOutlined} from "@ant-design/icons";
-import {Button, Divider} from "antd";
-import {ScrollView} from "react-native";
-import Grid from "@mui/material/Grid";
-import MainCard from "../components/Card";
-import {PageContainer } from "./Profile";
-import {AuthContext} from "../components/AuthProvider";
+import MainHeader from "../components/Header";
+import {auth} from "../firebase";
+import { AuthContext } from '../components/AuthProvider';
+import LikedFeed from "../components/LikedFeed";
 
 
 const Container = styled.div`
+  background-color: var(--light_green);
+  width: 100%;
+  padding: 60px 5px 80px 5px; 
+  flex: 1;
   display: flex;
   flex-direction: column;
-  row-gap: 30px;
-  padding: 80px 0 60px 10px;
-  height: 70vh;
-`;
-
-
-const ProductsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  column-gap: 15px;
+  align-content: center;
   align-items: center;
-  width: fit-content;
+  justify-items: center;
+  justify-content: center;
 `;
 
-
-const PayNowButton = styled(ButtonStyle)`
-  background-color: var(--primary_green);
-  font-size: 20px;
-  display: flex;
-  padding: 10px 16px;
-  align-items: center;
-  flex-direction: row;
-  width: fit-content; 
-  
-  img {
-    margin-left: 13px;
-  }
-  
-`;
-
-const ProductBox = styled.img`
-  max-width:250px;
-  max-height:115px;
-  width: auto;
-  height: auto;
-  border-radius: 5px;
-  box-shadow: 2px 4px 0 0 black;
-  
-  &:hover {
-    scale: 105%;
-    cursor: pointer;
-    border: 1px solid var(--primary_green);
-  }
-`;
-
-
-function ProductPic () {
-    const ProductBoxContainer = styled.div`
-      position: relative;
-      display: flex;
-      flex-direction: row;
-      padding-left: 10px;
-      
-    `;
-
-    const CloseIcon = styled(CloseCircleOutlined)`
-      position: relative;
-      font-size: 20px;
-      scale: 130%;
-      color: var(--text_color);
-      background-color: var(--off_white);
-      border-radius: 50%;
-      border: 2px solid snow;
-    `;
-
-    const navigate = useNavigate();
-
-    const handleClickOnProductImg = () => {
-        navigate('/Search/:id');
-    };
-
-    return (
-        <ProductBoxContainer>
-            <ProductBox src={product_pic} alt={"product_pic"}
-                        onClick={handleClickOnProductImg}/>
-            <Button shape="circle" style={{  position: "absolute", right: "-15px"}}>
-                <CloseIcon />
-            </Button>
-        </ProductBoxContainer>
-    )
-}
-
-
-function SellerSlider(props){
-    return (
-        <div style={{
-            display:"flex",
-            flexDirection:"column",
-            rowGap:"10px"}}>
-            <SellerHeader name = {props}/>
-            <ProductsContainer>
-                <ProductPic/><ProductPic/><ProductPic/>
-            </ProductsContainer>
-            <div style={{width:"90%", display:"flex", justifyContent:"flex-end"}}>
-                <PayNowButton>
-                    Pay now <img src={coin_img} alt={"coin_img"} width={"50px"}/>24
-                </PayNowButton>
-            </div>
-        </div>
-    );
-}
-
-
-export default function Liked() {
+export default function Home() {
     const currentUser = useContext(AuthContext);
+
     return (
         <div>
             {currentUser ?
                 ( <MainHeader email={currentUser.email}/> )
                 :
-                ( <MainHeader email={null}/> )
-            }
-            <PageContainer>
-                <ScrollView>
-                    <Grid container spacing={{xs: 2, lg: 2}} columns={{xs: 4, sm: 4, md: 9, lg: 12}}>
-                        <Grid item xs={2} sm={2} md={3} lg={3}>
-                            <MainCard
-                                isLiked = {true}
-                                img={require("../assets/images/i1.jpg")}
-                                size={"38"}
-                                location={"0.3K"}
-                                price={4}/>
-                        </Grid>
-                        <Grid item xs={2} sm={2} md={3} lg={3}>
-                            <MainCard isLiked = {true} img={require("../assets/images/i2.jpg")} size={"38"} location={"0.3K"} price={4}/>
-                        </Grid>
-                        <Grid item xs={2} sm={2} md={3} lg={3}>
-                            <MainCard isLiked = {true} img={require("../assets/images/i2.jpg")} size={"38"} location={"0.3K"} price={4}/>
-                        </Grid>
-                    </Grid>
-                </ScrollView>
-            </PageContainer>
+                ( <MainHeader email={null}/> )}
+            <Container>
+                <header style={{paddingBottom:'20px'}}>Liked Items</header>
+                <LikedFeed/>
+            </Container>
             <Navbar/>
         </div>
     );
-}
+};

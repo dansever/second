@@ -4,8 +4,8 @@ import '../styles/Upload.css';
 import { db, storage } from "../firebase";
 import { AuthContext } from './AuthProvider';
 import {ButtonStyle} from "./Buttons/Button";
-import { getDocs, collection, addDoc, deleteDoc, updateDoc, doc, } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { getDocs, collection, addDoc} from "firebase/firestore";
+import { ref, uploadBytes } from "firebase/storage";
 import {Input, message, Select, Form} from 'antd';
 import { v4 } from 'uuid';
 
