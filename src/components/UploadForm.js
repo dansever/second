@@ -12,10 +12,18 @@ import {
     doc,
 } from "firebase/firestore";
 import { ref, uploadBytes } from "firebase/storage";
-import {Input, Button, message, Select} from 'antd';
+import {Input, Button, message, Select, Form} from 'antd';
 import {ButtonStyle} from "./Buttons/Button";
 
 const { Option } = Select;
+
+const typeOptions = ['Hat', 'Shirt', 'Shoes', 'Top', 'Pants',
+    'Dress', 'Skirt', 'Swimwear'];
+const sizeOptions = ['XS', 'S', 'M', 'L', 'XL', 'One Size'];
+const genderOptions = ['Female', 'Male', 'Unisex'];
+const conditionOptions = ['Old', 'Worn', 'Good', 'As New', 'New'];
+
+
 function App() {
     const [productList, setProductList] = useState([]);
 
@@ -26,6 +34,7 @@ function App() {
     const [newBrand, setNewBrand] = useState("");
     const [newCondition, setNewCondition] = useState("");
     const [newPrice, setNewPrice] = useState(0);
+    const [newGender, setNewGender] = useState("");
 
     const currentUser = useContext(AuthContext);
 
@@ -60,6 +69,19 @@ function App() {
         setNewSize(value);
     };
 
+    const handleTypeChange = (value) => {
+        setNewType(value);
+    };
+
+    const handleGenderChange = (value) => {
+        setNewGender(value);
+    };
+
+    const handleConditionChange = (value) => {
+        setNewCondition(value);
+    };
+
+
 
     const handleSubmit = async () => {
         try {
@@ -70,6 +92,7 @@ function App() {
                 brand: newBrand,
                 condition: newCondition,
                 price: newPrice,
+                gender: newGender,
             }).then(() => {
                 message.success(
                     "Item Upload Successfully", 3, () => {
@@ -81,6 +104,7 @@ function App() {
                 setNewBrand("");
                 setNewCondition("");
                 setNewPrice(0);
+                setNewGender("");
             })
         } catch (err) {
             console.error(err);
@@ -121,29 +145,59 @@ function App() {
 
             <div className={"form-row"}>
                 <label>Type</label>
-                <Input
-                    value={newType}
-                    placeholder="Enter type..."
-                    type="text"
-                    onChange={(e) => setNewType(e.target.value)}
-                />
+                <Form.Item>
+                    <Select
+                        value={newType}
+                        placeholder="Select type..."
+                        onChange={handleTypeChange}
+                        allowClear
+                        style = {{width: '200px'}}>
+                        >
+                        {typeOptions.map((type_) => (
+                            <Option key={type_} value={type_}>
+                                {type_}
+                            </Option>
+                        ))}
+                    </Select>
+                </Form.Item>
             </div>
 
             <div className={"form-row"}>
                 <label>Size</label>
-                <Select
-                    value={newSize}
-                    placeholder="Select value..."
-                    onChange={handleSizeChange}
-                    className="dropdown-style"
-                >
-                    <Option value="xs">XS</Option>
-                    <Option value="s">S</Option>
-                    <Option value="M">M</Option>
-                    <Option value="L">L</Option>
-                    <Option value="XL">XL</Option>
-                    <Option value="one_size">One Size</Option>
-                </Select>
+                <Form.Item>
+                    <Select
+                        value={newSize}
+                        placeholder="Select size..."
+                        onChange={handleSizeChange}
+                        allowClear
+                        style = {{width: '200px'}}>
+                    >
+                        {sizeOptions.map((size) => (
+                            <Option key={size} value={size}>
+                                {size}
+                            </Option>
+                        ))}
+                    </Select>
+                </Form.Item>
+            </div>
+
+            <div className={"form-row"}>
+                <label>Gender</label>
+                <Form.Item>
+                    <Select
+                        value={newGender}
+                        placeholder="Select gender..."
+                        onChange={handleGenderChange}
+                        allowClear
+                        style = {{width: '200px'}}>
+                        >
+                        {genderOptions.map((gender) => (
+                            <Option key={gender} value={gender}>
+                                {gender}
+                            </Option>
+                        ))}
+                    </Select>
+                </Form.Item>
             </div>
 
             <div className={"form-row"}>
@@ -156,26 +210,39 @@ function App() {
                 />
             </div>
 
-
             <div className={"form-row"}>
                 <label>Condition</label>
-                <Input
-                    value={newCondition}
-                    placeholder="Enter condition..."
-                    type="text"
-                    onChange={(e) => setNewCondition(e.target.value)}
-                />
+                <Form.Item
+                >
+                    <Select
+                        value={newCondition}
+                        placeholder="Select condition..."
+                        onChange={handleConditionChange}
+                        allowClear
+                        style = {{width: '200px'}}>
+                        >
+                        {conditionOptions.map((_condition) => (
+                            <Option key={_condition} value={_condition}>
+                                {_condition}
+                            </Option>
+                        ))}
+                    </Select>
+                </Form.Item>
             </div>
+
 
             <div className={"form-row"}>
                 <label>Price</label>
-                <Input
-                    value={newPrice}
-                    placeholder="Enter price..."
-                    type="number"
-                    min={1} max={5}
-                    onChange={(e) => setNewPrice(e.target.value)}
-                />
+                <Form.Item>
+                    <Input
+                        value={newPrice}
+                        placeholder="Enter price..."
+                        type="number"
+                        min={1} max={5}
+                        onChange={(e) => setNewPrice(e.target.value)}
+                        style = {{width: '200px'}}
+                    />
+                </Form.Item>
             </div>
 
             <ButtonStyle onClick={handleSubmit}>Add To Shop</ButtonStyle>
