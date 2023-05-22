@@ -17,6 +17,7 @@ export const ButtonStyle = styled.button`
   &:hover {
     cursor: pointer;
     background-color: var(--secondary_green);
+    scale: 101%;
   }
   background-color: ${({ isFollowing }) => (isFollowing ? "#749A83" : "#F1F7F1" )};
 `;

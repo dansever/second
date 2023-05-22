@@ -39,3 +39,16 @@
     display: flex;
     align-items: center;
 }
+
+.card_like_button {
+    scale: 150%;
+    border-color: black;
+    box-shadow: 1px 1px 1px 0 black;
+    background-color: #F1F7F1;
+}
+
+
+.card_like_button:hover {
+    scale: 155%;
+    border-color: black;
+}
