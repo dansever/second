@@ -30,16 +30,18 @@ function App() {
     // New Product States
     const [newTitle, setNewTitle] = useState("");
     const [newType, setNewType] = useState("");
+    const [newImgUrl, setNewImgUrl] = useState("");
+    const [fileUpload, setFileUpload] = useState(null);
     const [newSize, setNewSize] = useState("");
     const [newBrand, setNewBrand] = useState("");
     const [newCondition, setNewCondition] = useState("");
     const [newPrice, setNewPrice] = useState(0);
     const [newGender, setNewGender] = useState("");
 
-    const currentUser = useContext(AuthContext);
+    //file handling consts
+    const [file, setFile] = useState(null);
 
-    // File Upload State
-    const [fileUpload, setFileUpload] = useState(null);
+    const currentUser = useContext(AuthContext);
 
     //Messages
     const [successMsg, setSuccessMsg] = useState("");
@@ -82,9 +84,9 @@ function App() {
     };
 
 
-
     const handleSubmit = async () => {
         try {
+            //todo add UID to each product
             await addDoc(productsCollectionRef, {
                 title: newTitle,
                 type: newType,
@@ -93,9 +95,10 @@ function App() {
                 condition: newCondition,
                 price: newPrice,
                 gender: newGender,
+                image_url: newImgUrl,
             }).then(() => {
                 message.success(
-                    "Item Upload Successfully", 3, () => {
+                    "Item Uploaded Successfully", 3, () => {
                     console.log('Pop-up closed');
                 });
                 setNewTitle("");
@@ -105,6 +108,7 @@ function App() {
                 setNewCondition("");
                 setNewPrice(0);
                 setNewGender("");
+                setNewImgUrl("");
             })
         } catch (err) {
             console.error(err);
@@ -112,15 +116,7 @@ function App() {
     };
 
 
-    const uploadFile = async () => {
-        if (!fileUpload) return;
-        const filesFolderRef = ref(storage, `projectFiles/${fileUpload.name}`);
-        try {
-            await uploadBytes(filesFolderRef, fileUpload);
-        } catch (err) {
-            console.error(err);
-        }
-    };
+
 
     return (
         <div className="form">
@@ -135,12 +131,24 @@ function App() {
                 />
             </div>
 
+            {/*<div className={"form-row"}>*/}
+            {/*    <label htmlFor="fileInput">Image</label>*/}
+            {/*    <input*/}
+            {/*        id="fileInput"*/}
+            {/*        type="file"*/}
+            {/*        accept="image/*" // Specify the accepted file types, e.g., images*/}
+            {/*        onChange={handleFileChange}*/}
+            {/*    />*/}
+            {/*</div>*/}
+
             <div className={"form-row"}>
-                <label>Image</label>
-                <input
-                    type="file"
-                    onChange={(e) => setFileUpload(e.target.files[0])} />
-                {/*<button onClick={uploadFile}> Upload File </button>*/}
+                <label>Brand</label>
+                <Input
+                    value={newBrand}
+                    placeholder="Enter brand..."
+                    type="text"
+                    onChange={(e) => setNewBrand(e.target.value)}
+                />
             </div>
 
             <div className={"form-row"}>
@@ -150,7 +158,6 @@ function App() {
                         value={newType}
                         placeholder="Select type..."
                         onChange={handleTypeChange}
-                        allowClear
                         style = {{width: '200px'}}>
                         >
                         {typeOptions.map((type_) => (
@@ -169,7 +176,6 @@ function App() {
                         value={newSize}
                         placeholder="Select size..."
                         onChange={handleSizeChange}
-                        allowClear
                         style = {{width: '200px'}}>
                     >
                         {sizeOptions.map((size) => (
@@ -188,7 +194,6 @@ function App() {
                         value={newGender}
                         placeholder="Select gender..."
                         onChange={handleGenderChange}
-                        allowClear
                         style = {{width: '200px'}}>
                         >
                         {genderOptions.map((gender) => (
@@ -201,16 +206,6 @@ function App() {
             </div>
 
             <div className={"form-row"}>
-                <label>Brand</label>
-                <Input
-                    value={newBrand}
-                    placeholder="Enter brand..."
-                    type="text"
-                    onChange={(e) => setNewBrand(e.target.value)}
-                />
-            </div>
-
-            <div className={"form-row"}>
                 <label>Condition</label>
                 <Form.Item
                 >
@@ -218,7 +213,6 @@ function App() {
                         value={newCondition}
                         placeholder="Select condition..."
                         onChange={handleConditionChange}
-                        allowClear
                         style = {{width: '200px'}}>
                         >
                         {conditionOptions.map((_condition) => (
