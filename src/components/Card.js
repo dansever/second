@@ -20,11 +20,6 @@ const CardStyle = styled.div`
   }
 `;
 
-const ImgContainer = styled.div`
-  border-bottom: 2px solid black;
-  height: 60%;
-`;
-
 const InfoContainer = styled.div`
   height: 40%;
   display: flex;
@@ -37,10 +32,6 @@ export default function MainCard(props) {
 
     const [isLikeToggledOn, setLikeToggledOn] = useState(props.isLiked);
     const navigate = useNavigate();
-
-    const navigateToProduct = () => {
-        navigate("/Search/:id");
-    };
 
     const handleLike = () => {
         setLikeToggledOn((prevState) => !prevState);
@@ -65,10 +56,7 @@ export default function MainCard(props) {
                 </div>
                 <div className={"right-side"}>
                     <Button shape="circle"
-                            style={{scale:"150%",
-                                border:"0.1px solid black",
-                                boxShadow: "1px 1px 1px 0 black",
-                                backgroundColor: "#F1F7F1"}}
+                            className={"card_like_button"}
                             onClick={handleLike}>
                         {isLikeToggledOn ?
                             <HeartFilled style={{ scale: "105%", color: "red" }}/>
