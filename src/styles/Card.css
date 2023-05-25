@@ -23,12 +23,14 @@
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 10px;
+    padding-left: 5px;
+
 }
 
 .left-side {
     width: 80%;
+    row-gap: 60px;
 }
 
 .left-side h3 {
@@ -43,11 +45,15 @@
 
 .right-side {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    padding-bottom: 15px;
+    padding-top: 15px;
 }
 
 .card_like_button {
-    scale: 150%;
+    scale: 120%;
     border-color: black;
     box-shadow: 1px 1px 1px 0 black;
     background-color: #F1F7F1;
@@ -55,6 +61,12 @@
 
 
 .card_like_button:hover {
-    scale: 155%;
+    scale: 125%;
     border-color: black;
+}
+
+.modal_icons {
+    display: flex;
+    flex-direction: row;
+    column-gap: 40px;
 }

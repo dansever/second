@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import { useNavigate  } from 'react-router-dom';
 import "../styles/SingUp.css"
 import {auth, db} from "../firebase"
@@ -9,6 +9,7 @@ import {addDoc, collection} from "firebase/firestore";
 export const SignUp = () => {
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [userID, setUserID] = useState(null);
@@ -35,8 +36,9 @@ export const SignUp = () => {
 
             await addDoc(usersCollectionRef, {
                 UID: newUserCredentials.user.uid,
-                address: address,
                 first_name: name,
+                address: address,
+                phone_number: phoneNumber,
                 tokens: 10,
                 items_in_shop: [""],
                 items_liked: [""],
@@ -65,6 +67,10 @@ export const SignUp = () => {
                 <Input
                     type="text" value={address} placeholder="Enter home address"
                     onChange={(e) => setAddress(e.target.value)}
+                />
+                <Input
+                    type="text" value={phoneNumber} placeholder="Enter phone number"
+                    onChange={(e) => setPhoneNumber(e.target.value)}
                 />
                 <Input
                     type="email" value={email} placeholder="Enter Email address"

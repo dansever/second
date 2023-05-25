@@ -3,6 +3,7 @@ header h3{
 }
 
 .main-container {
+    height: 60vh;
     display: flex;
     flex-direction: column;
     padding-inline: 20px;
@@ -11,27 +12,10 @@ header h3{
 }
 
 form {
-    width: 60vw;
+    width: 80vw;
     display: flex;
     flex-direction: column;
-    gap: 14px;
-}
-
-form > div > label {
-    font-weight: bold;
-}
-
-form > div > input  {
-    flex: 1;
-    padding: 7px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    border: 1px solid lightgray;
-    background: #fff;
-    font-size: 16px;
-    color: rgb(0, 0, 32);
-    outline: none;
-    width: 60vw;
+    gap: 16px;
 }
 
 .submit-button {
@@ -51,32 +35,16 @@ form > div > input  {
     cursor: pointer;
 }
 
-
-.new-user {
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-items: center;
-    justify-content: center;
-    column-gap: 15px;
-}
-
-
 .sign-up-button {
     font-size: 18px;
     font-weight: bold;
     border-radius: 5px;
-    background-color: transparent;
     display: flex;
     align-items: center;
     align-content: center;
     justify-items: center;
     justify-content: center;
-    box-shadow: none;
-    border: none;
-
 }
-
 
 .auth-wrapper {
     display: flex;
@@ -105,21 +73,4 @@ form > div > input  {
     margin: 0;
     line-height: 1;
     padding-bottom: 20px;
-}
-
-.custom-control-label {
-    font-weight: 400;
-}
-
-.forgot-password,
-.forgot-password a {
-    text-align: right;
-    font-size: 13px;
-    padding-top: 10px;
-    color: #7f7d7d;
-    margin: 0;
-}
-
-.forgot-password a {
-    color: #167bff;
 }
