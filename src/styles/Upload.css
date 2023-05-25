@@ -22,14 +22,19 @@ form h3 {
     justify-content: center;
 }
 
-.upload-row {
-    /*display: flex;*/
-    /*flex-direction: row;*/
-    /*align-items: center;*/
-}
 
 .form-row {
     display: flex;
+}
+
+.file-form-row {
+    display: flex;
+    background-color: transparent;
+}
+
+#fileInput {
+    background-color: transparent;
+    border-color: transparent;
 }
 
 .dropdown-style {
@@ -58,7 +63,6 @@ div > form > div > input  {
     outline: none;
     width: 60vw;
 }
-
 
 div > form > div > input:focus,
 textarea:focus {

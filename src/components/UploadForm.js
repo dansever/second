@@ -6,10 +6,7 @@ import { AuthContext } from './AuthProvider';
 import {ButtonStyle} from "./Buttons/Button";
 import { getDocs, collection, addDoc} from "firebase/firestore";
 import { ref, uploadBytes, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { v4 } from 'uuid';
 import {Input, message, Select, Form, Upload } from 'antd';
-import {LoadingOutlined, PlusOutlined } from "@ant-design/icons";
-import Colors from "../color";
 
 const { Option } = Select;
 
@@ -64,8 +61,6 @@ function App() {
     const handleGenderChange    = (value) => { setNewGender(value); };
     const handleConditionChange = (value) => { setNewCondition(value); };
 
-
-
     const handleImageUpload = async (file) => {
         try {
             const unique_filename = Date.now() + '_' + file.name;
@@ -117,6 +112,7 @@ function App() {
                 price: newPrice,
                 gender: newGender,
                 image_url: downloadURL,
+                seller_uid: currentUser.uid,
             });
             // Clear the form fields and image file state
             setNewTitle("");
@@ -145,6 +141,7 @@ function App() {
         <div>
             <form onSubmit={handleFormSubmit }>
                 <h3>Step 1 - Upload Image:</h3>
+
                 <div className={"form-row"}>
                     <input
                         id="fileInput"

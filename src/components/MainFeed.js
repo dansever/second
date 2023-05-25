@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import "../styles/Feed.css"
-import MainCard from "./Card";
 import {Col, Row} from "antd";
 import {collection, getDocs} from "firebase/firestore";
 import {db} from "../firebase";
+import ProductCard from "./Card";
 
 
 export default function MainFeed() {
@@ -32,7 +32,7 @@ export default function MainFeed() {
                 {productsList.map((card, index) => (
                     <Col span={12}
                          key={index}>
-                        <MainCard isLiked = {false}
+                        <ProductCard isLiked = {false}
                             title={card.title}
                             type={card.type}
                             image_url={card.image_url}

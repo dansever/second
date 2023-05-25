@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate  } from 'react-router-dom';
-import "../styles/SingUp.css"
+import "../styles/Login.css"
 import { auth } from "../firebase"
 
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -34,19 +34,22 @@ export const LoginPage = () => {
             {error && <p>{error}</p>}
             <form onSubmit={handleLogin}>
                 <Input
-                    type="email" value={email} placeholder="Email"
+                    type="email"
+                    value={email}
+                    placeholder="Email"
                     onChange={(e) => setEmail(e.target.value)}/>
                 <Input
-                    type="password" value={password} placeholder="Password"
+                    type="password"
+                    value={password}
+                    placeholder="Password"
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <button className={"submit-button"} type="submit">
+                <button
+                    className={"submit-button"}
+                    type="submit">
                     Login
                 </button>
             </form>
-
-            <br/> <br/>
-
             <div className={"new-user"}>
                 <p>Don't have an account?</p>
                 <Button
