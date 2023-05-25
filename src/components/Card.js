@@ -31,16 +31,16 @@ export default function MainCard(product) {
         <Card style={cardStyle}>
             <div className={"img-box"}>
                 <img
-                    src={product.image_ref}
+                    src={product.image_url}
                     alt={product.alt}
                 />
             </div>
             <div className={"content-box"}>
                 <div className={"left-side"}>
-                    <h3>    {product.title}         </h3>
-                    <p>     Price: ${product.price} </p>
-                    <p>     Size: {product.size}    </p>
-                    <p>     Brand: {product.brand}  </p>
+                    <h3>    {product.title}             </h3>
+                    <p>     Price:  ${product.price}    </p>
+                    <p>     Size:   {product.size}      </p>
+                    <p>     Brand:  {product.brand}     </p>
                 </div>
                 <div className={"right-side"}>
                     <Button shape="circle"
@@ -55,6 +55,13 @@ export default function MainCard(product) {
         </Card>
     );
 }
+
+
+
+
+
+
+
 
 export function MyShopCard (props) {
     return (

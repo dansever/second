@@ -35,7 +35,7 @@ export default function MainFeed() {
                         <MainCard isLiked = {false}
                             title={card.title}
                             type={card.type}
-                            image_ref={"https://firebasestorage.googleapis.com/v0/b/second-app-2529e.appspot.com/o/product_images%2Fadidas%20swater.jpg5240839e-752a-44f4-8910-ea93d589357b?alt=media&token=5ce70508-12c0-424c-917b-10eaa8439b4a"}
+                            image_url={card.image_url}
                             img_desc={card.img_desc}
                             brand={card.brand}
                             size={card.size}

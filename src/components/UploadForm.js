@@ -5,22 +5,21 @@ import { db, storage } from "../firebase";
 import { AuthContext } from './AuthProvider';
 import {ButtonStyle} from "./Buttons/Button";
 import { getDocs, collection, addDoc} from "firebase/firestore";
-import { ref, uploadBytes } from "firebase/storage";
-import {Input, message, Select, Form} from 'antd';
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import {Input, message, Select, Form } from 'antd';
 import { v4 } from 'uuid';
 
 const { Option } = Select;
 
-const typeOptions = ['Hat', 'Shirt', 'Shoes', 'Top', 'Pants',
+const typeOptions =
+    ['Hat', 'Shirt', 'Shoes', 'Top', 'Pants',
     'Dress', 'Skirt', 'Swimwear'];
 const sizeOptions = ['XS', 'S', 'M', 'L', 'XL', 'One Size'];
 const genderOptions = ['Female', 'Male', 'Unisex'];
 const conditionOptions = ['Old', 'Worn', 'Good', 'As New', 'New'];
 
-
 function App() {
     const [productList, setProductList] = useState([]);
-
     // New Product States
     const [newTitle, setNewTitle] = useState("");
     const [newType, setNewType] = useState("");
@@ -30,10 +29,9 @@ function App() {
     const [newPrice, setNewPrice] = useState(0);
     const [newGender, setNewGender] = useState("");
     const [sellerUID, setSellerUID] = useState("");
-
     // File States
-    const [imageUpload, setImageUpload] = useState(null);
-
+    const [imageFile, setImageFile] = useState(null);
+    const [imgUrl, setImgUrl] = useState(null);
     // User States
     const currentUser = useContext(AuthContext);
 
@@ -56,33 +54,37 @@ function App() {
         getProductList();
     }, []);
 
-
     const handleSizeChange      = (value) => { setNewSize(value); };
     const handleTypeChange      = (value) => { setNewType(value); };
     const handleGenderChange    = (value) => { setNewGender(value); };
     const handleConditionChange = (value) => { setNewCondition(value); };
-    //const handleImageChange     = (value) => { setImageUpload(value.target.files[0]) };
-
-    const uploadImage = () => {
-        if (imageUpload == null) {
-            return null;
-        }
-        const imageRef = ref(storage, `product_images/${imageUpload.name + v4()}`);
-        uploadBytes(imageRef, imageUpload);
-        return imageRef;
+    const handleImageChange = (event) => {
+        setImageFile(event.target.files[0]);
     };
 
+    const handleFileUpload = () => {
+        if (imageFile == null) {
+            return;
+        }
+        const image_name = imageFile.name + v4();
+        const imageRef = ref(storage, `/product_images/${image_name}`);
+        uploadBytes(imageRef, imageFile).then(() => {
+            getDownloadURL(imageRef).then((url) => {
+                setImgUrl(url);
+            }).catch(error => {
+                console.log(error.message, "error getting image URL");
+            });
+        }).catch(error => {
+            console.log(error.message, "error uploading image file");
+        });
+        console.log("url is now: "+imgUrl);
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
-            let imageRef = uploadImage();
-            let image_ref_full_path = null;
-            if (imageRef) {
-                image_ref_full_path = imageRef.fullPath;
-            }
-            await addDoc(productsCollectionRef, {
+            handleFileUpload();
+            addDoc(productsCollectionRef, {
                 title: newTitle,
                 type: newType,
                 size: newSize,
@@ -90,23 +92,22 @@ function App() {
                 condition: newCondition,
                 price: newPrice,
                 gender: newGender,
-                image_ref: image_ref_full_path,
+                image_url: imgUrl,
             }).then(() => {
-                message.success(
-                    "Item Uploaded Successfully", 3, () => {
-                        console.log('Pop-up closed');
-                    });
-                setNewTitle("");
-                setNewType("");
-                setNewSize("");
-                setNewBrand("");
-                setNewCondition("");
-                setNewPrice(0);
-                setNewGender("");
-                setImageUpload(null);
-            })
-        } catch (err) {
-            console.error(err);
+                message.success("Item Uploaded Successfully", 2, () => {});
+            });
+        } catch (error) {
+            console.error('An error occurred during actions:', error);
+        } finally {
+            setNewTitle("");
+            setNewType("");
+            setNewSize("");
+            setNewBrand("");
+            setNewCondition("");
+            setNewPrice(0);
+            setNewGender("");
+            setImageFile(null);
+            setImgUrl(null);
         }
     };
 
@@ -115,7 +116,7 @@ function App() {
         <div className="form">
             <div className={"form-row"}>
                 <label>Title</label>
-                <Input
+                <input
                     value={newTitle}
                     placeholder="Enter title..."
                     type="text"
@@ -129,15 +130,14 @@ function App() {
                 <input
                     id="fileInput"
                     type="file"
-                    accept="image/*" // Specify the accepted file types, e.g., images
-                    onChange={(e) => setImageUpload(e.target.files[0])}
-
+                    accept="image/" // Specify the accepted file types --> images
+                    onChange={handleImageChange}
                 />
             </div>
 
             <div className={"form-row"}>
                 <label>Brand</label>
-                <Input
+                <input
                     value={newBrand}
                     placeholder="Enter brand..."
                     type="text"
@@ -240,3 +240,4 @@ function App() {
 }
 
 export default App;
+
