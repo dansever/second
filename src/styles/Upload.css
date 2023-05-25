@@ -2,14 +2,30 @@ header {
     margin-left: auto;
     margin-right: auto;
     font-family: 'Lora', serif;
-    font-size: 36px;
+    font-size: 30px;
 }
 
-.form {
-    height: 100vh;
+form {
+    height: 70vh;
     display: flex;
     flex-direction: column;
     background-color: var(--light_green);
+}
+
+form h3 {
+    color: var(--primary_green);
+    margin-bottom: 0;
+}
+
+.upload-container {
+    display: flex;
+    justify-content: center;
+}
+
+.upload-row {
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*align-items: center;*/
 }
 
 .form-row {
@@ -25,18 +41,18 @@ header {
 }
 
 
-.form > div > label {
+div > form > div > label {
     flex: 0 0 90px;
     font-weight: bold;
 }
 
-.form > div > input  {
+div > form > div > input  {
     flex: 1;
     padding: 7px;
     border-radius: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 2px;
     border: 1px solid lightgray;
-    background: #fff;
+    /*background: var(--);*/
     font-size: 16px;
     color: rgb(0, 0, 32);
     outline: none;
@@ -44,7 +60,7 @@ header {
 }
 
 
-.form > div > input:focus,
+div > form > div > input:focus,
 textarea:focus {
     border: 1px solid rgb(79, 169, 79);
 }
