@@ -4,7 +4,7 @@ import "../styles/SingUp.css"
 import {auth, db} from "../firebase"
 import {createUserWithEmailAndPassword} from "firebase/auth"
 import {Input, message} from "antd";
-import {addDoc, setDoc, collection, doc} from "firebase/firestore";
+import { setDoc, collection, doc} from "firebase/firestore";
 
 export const SignUp = () => {
     const [name, setName] = useState('');

@@ -48,10 +48,6 @@ export default function ProductCard(product) {
         }
     }
 
-    const handleWhatsapp = () => {
-
-    };
-
     const handleModalOpen = () => {setModalVisible(true);};
     const handleModalClose = () => {setModalVisible(false);};
 
