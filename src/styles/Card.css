@@ -70,3 +70,10 @@
     flex-direction: row;
     column-gap: 40px;
 }
+
+.whatsapp-modal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 40px;
+}

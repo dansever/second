@@ -29,17 +29,21 @@ export default function MainFeed() {
     return (
         <div className="feed">
             <Row gutter={[16, 16]}>
-                {productsList.map((card, index) => (
+                {productsList.map((product, index) => (
                     <Col span={12}
                          key={index}>
-                        <ProductCard isLiked = {false}
-                            title={card.title}
-                            type={card.type}
-                            image_url={card.image_url}
-                            img_desc={card.img_desc}
-                            brand={card.brand}
-                            size={card.size}
-                            price={card.pr}
+                        <ProductCard
+                            isLiked = {false}
+                            product_id = {product.id}
+                            title={product.title}
+                            seller_id={product.seller_id}
+                            unique_id={product.unique_id}
+                            type={product.type}
+                            gender={product.gender}
+                            image_url={product.image_url}
+                            brand={product.brand}
+                            size={product.size}
+                            condition={product.condition}
                         />
                     </Col>
                 ))}

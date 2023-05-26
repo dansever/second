@@ -4,7 +4,7 @@ import "../styles/SingUp.css"
 import {auth, db} from "../firebase"
 import {createUserWithEmailAndPassword} from "firebase/auth"
 import {Input, message} from "antd";
-import {addDoc, collection} from "firebase/firestore";
+import {addDoc, setDoc, collection, doc} from "firebase/firestore";
 
 export const SignUp = () => {
     const [name, setName] = useState('');
@@ -34,22 +34,24 @@ export const SignUp = () => {
             // Step 3: Add a new document to the user's database
             const usersCollectionRef = collection(db, "users");
 
-            await addDoc(usersCollectionRef, {
-                UID: newUserCredentials.user.uid,
+            const newUserRef = doc(usersCollectionRef,
+                newUserCredentials.user.uid);
+            const data = {
                 first_name: name,
                 address: address,
                 phone_number: phoneNumber,
-                tokens: 10,
-                items_in_shop: [""],
-                items_liked: [""],
-            })
-            .then(() => {
-                message.success(
-                    "User created successfully", 3, () => {
-                        console.log('Pop-up closed');
-                    });
-                navigate("/Home");
-            })
+                shop_items: [],
+                liked_items: [],
+            };
+
+            setDoc(newUserRef, data)
+                .then(() => {
+                    message.success(
+                        "User created successfully", 3, () => {
+                            console.log('Pop-up closed');
+                        });
+                    navigate("/Home");
+                })
 
         } catch (error) {
             setError('Something went wrong. Please try again.');

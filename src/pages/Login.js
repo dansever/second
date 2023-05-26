@@ -17,9 +17,8 @@ export const LoginPage = () => {
         try {
             await signInWithEmailAndPassword(auth, email, password);
             navigate("/Home");
-            // User signed in successfully
         } catch (error) {
-            setError('Invalid email or password. Please try again.');
+            setError('Invalid credentials. Try again.');
         }
     };
 
@@ -31,7 +30,8 @@ export const LoginPage = () => {
     return (
         <div className={"main-container"}>
             <header><h3>Welcome</h3></header>
-            {error && <p>{error}</p>}
+            {error && <p
+                style={{color: 'red'}}>{error}</p>}
             <form onSubmit={handleLogin}>
                 <Input
                     type="email"
