@@ -5,8 +5,8 @@ import { db, storage } from "../firebase";
 import { AuthContext } from './AuthProvider';
 import {ButtonStyle} from "./Buttons/Button";
 import { getDocs, collection, addDoc} from "firebase/firestore";
-import { ref, uploadBytes, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import {Input, message, Select, Form, Upload } from 'antd';
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import {Select, Form} from 'antd';
 
 const { Option } = Select;
 
@@ -26,14 +26,10 @@ function App() {
     const [newSize, setNewSize] = useState("");
     const [newBrand, setNewBrand] = useState("");
     const [newCondition, setNewCondition] = useState("");
-    const [newPrice, setNewPrice] = useState(0);
     const [newGender, setNewGender] = useState("");
-    const [sellerUID, setSellerUID] = useState("");
 
     // File States
     const [imageFile, setImageFile] = useState(null);
-    const [imageUrl, setImageUrl] = useState('');
-    const [loading, setLoading] = useState(false);
 
     // User States
     const currentUser = useContext(AuthContext);
@@ -44,8 +40,7 @@ function App() {
         try {
             const data = await getDocs(productsCollectionRef);
             const filteredData = data.docs.map((doc) => ({
-                ...doc.data(),
-                id: doc.id,
+                ...doc.data(), id: doc.id,
             }));
             setProductList(filteredData);
         } catch (err) {
@@ -53,9 +48,7 @@ function App() {
         }
     };
 
-    useEffect(() => {
-        getProductList();
-    }, []);
+    useEffect(() => { getProductList(); }, []);
     const handleSizeChange      = (value) => { setNewSize(value); };
     const handleTypeChange      = (value) => { setNewType(value); };
     const handleGenderChange    = (value) => { setNewGender(value); };
@@ -84,13 +77,9 @@ function App() {
                     }
                 },
                 (error) => {
-                    // Handle unsuccessful uploads
                 },
                 () => {
-                    // Handle successful uploads on complete
-                    // For instance, get the download URL: https://firebasestorage.googleapis.com/...
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                        setImageUrl(downloadURL);
                         saveFormData(downloadURL);
                     });
                 }
@@ -109,22 +98,17 @@ function App() {
                 size: newSize,
                 brand: newBrand,
                 condition: newCondition,
-                price: newPrice,
                 gender: newGender,
                 image_url: downloadURL,
                 seller_uid: currentUser.uid,
             });
-            // Clear the form fields and image file state
             setNewTitle("");
             setNewType("");
             setNewSize("");
             setNewBrand("");
             setNewCondition("");
-            setNewPrice(0);
             setNewGender("");
             setImageFile(null);
-            setImageUrl('');
-            // Show a success message or perform any desired action
             console.log('Form data saved successfully!');
         } catch (error) {
             console.error('Error saving form data:', error);
@@ -250,20 +234,20 @@ function App() {
                     </Form.Item>
                 </div>
 
-                <div className={"form-row"}>
-                    <label>Price</label>
-                    <Form.Item
-                        style={{marginBottom:"0px"}}>
-                        <Input
-                            value={newPrice}
-                            placeholder="Enter price..."
-                            type="number"
-                            min={1} max={5}
-                            onChange={(e) => setNewPrice(e.target.value)}
-                            style = {{width: '200px'}}
-                        />
-                    </Form.Item>
-                </div>
+                {/*<div className={"form-row"}>*/}
+                {/*    <label>Price</label>*/}
+                {/*    <Form.Item*/}
+                {/*        style={{marginBottom:"0px"}}>*/}
+                {/*        <Input*/}
+                {/*            value={newPrice}*/}
+                {/*            placeholder="Enter price..."*/}
+                {/*            type="number"*/}
+                {/*            min={1} max={5}*/}
+                {/*            onChange={(e) => setNewPrice(e.target.value)}*/}
+                {/*            style = {{width: '200px'}}*/}
+                {/*        />*/}
+                {/*    </Form.Item>*/}
+                {/*</div>*/}
 
                 <ButtonStyle
                     type="submit">
