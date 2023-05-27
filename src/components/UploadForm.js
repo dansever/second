@@ -1,299 +1,263 @@
-import React from "react";
-import { UploadOutlined } from '@ant-design/icons';
+import React, { useEffect, useState, useContext } from "react";
 import '../styles/Index.css';
-// import '../components/ProductUpload/ProductUploadForm.css';
-import {Button, Form, Input, InputNumber, Select, Upload, Rate, Space, ConfigProvider } from 'antd';
-import styled from 'styled-components'
-import { Radio, AutoComplete } from 'antd'
-import Colors from "../color"
-import { AddToShop } from "./Buttons/Button"
+import '../styles/Upload.css';
+import { db, storage } from "../firebase";
+import { AuthContext } from './AuthProvider';
+import {ButtonStyle} from "./Buttons/Button";
+import { getDocs, collection, addDoc} from "firebase/firestore";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import {Select, Form} from 'antd';
 
-const FormContainer = styled.div`
-  background-color: var(--background_green);
-  padding: 0 20px 50px 20px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-`;
-const normFile = (e) => {
-    console.log('Upload event:', e);
-    if (Array.isArray(e)) {
-        return e;
-    }
-    return e?.fileList;
-};
-const onFinish = (values) => {
-    console.log('Received values of form: ', values);
-};
+const { Option } = Select;
 
-const StyledUpload = styled.button`
-    background-color: var(--light_green);
-    border: none;
-    color: var(--text_color);
-    .ant-btn {
-        background-color: var(--light_green);
-        border: 1px solid var(--text_color);
-        color: var(--text_color);
-    }
-  .ant-btn:hover {
-    background-color: var(--light_green);
-    border: 1px solid var(--dark_green);
-    color: var(--dark_green);
-  }
-`;
+const typeOptions =
+    ['Hat', 'Shirt', 'Shoes', 'Top', 'Pants',
+    'Dress', 'Skirt', 'Swimwear'];
+const sizeOptions = ['XS', 'S', 'M', 'L', 'XL', 'One Size'];
+const genderOptions = ['Female', 'Male', 'Unisex'];
+const conditionOptions = ['Old', 'Worn', 'Good', 'As New', 'New'];
 
-const StyledInput = styled.div`
-    .ant-input {
-      background-color: var(--light_green);
-      border: 1px solid var(--text_color);
-      border-radius: 4px;
-    }
-    .ant-input-number {
-        background-color: var(--light_green);
-        border: 1px solid var(--text_color);
-        border-radius: 4px;
-    }
-`
+function App() {
+    const [productList, setProductList] = useState([]);
 
-const StyledSelect = styled.div`
-    .ant-select-selector {
-        background-color: var(--light_green) !important;
-        border: 1px solid var(--text_color) !important;
-        border-radius: 4px;
-    }
-    .ant-select-selector:hover {
-      background-color: var(--light_green) !important;
-      border: 1px solid var(--dark_green) !important;
-      border-radius: 4px;
-    }
-`;
+    // States
+    const [newTitle, setNewTitle] = useState("");
+    const [newType, setNewType] = useState("");
+    const [newSize, setNewSize] = useState("");
+    const [newBrand, setNewBrand] = useState("");
+    const [newCondition, setNewCondition] = useState("");
+    const [newGender, setNewGender] = useState("");
 
-const options = [
-    {
-        value: 'Shirt',
-    },
-    {
-        value: 'Dress',
-    },
-    {
-        value: 'Pants',
-    },
-    {
-        value: 'Jacket',
-    },
-    {
-        value: 'Denim',
-    },
-    {
-        value: 'Boots',
-    },
-    {
-        value: 'Snickers',
-    },
-    {
-        value: 'Sweatshirt',
-    },
-    {
-        value: 'Trenings',
-    },
-    {
-        value: 'Top',
-    },
-    {
-        value: 'Coat',
-    },
-    {
-        value: 'Bickini',
-    },
-    {
-        value: 'Hat',
-    },
-];
+    // File States
+    const [imageFile, setImageFile] = useState(null);
 
-function UploadImage() {
-    return (
-            <Form.Item
-                name="upload"
-                label="Upload Image of Product"
-                valuePropName="fileList"
-                getValueFromEvent={normFile}
-            >
-                <StyledUpload name="logo" action="/upload.do" listType="picture">
-                    <Button icon={<UploadOutlined />}>Click to upload</Button>
-                </StyledUpload>
-            </Form.Item>
-    )
-}
-function Title() {
-    return (
-        <Form.Item
-            name="title"
-            label="Title"
-            rules={[{required: true,
-                message: 'Please enter product title',
-            },
-            ]}>
-            <StyledInput>
-                <Input placeholder="input product title"/>
-            </StyledInput>
-        </Form.Item>
-    )
-}
-function Size() {
-    return (
-        <Form.Item label="Size">
-            <StyledInput>
-                <Input style={{
-                    width: 90,
-                }} placeholder="input size" size/>
-            </StyledInput>
-        </Form.Item>
-    )
-}
-function Color() {
-    return (
-        <Form.Item label="Color">
-            <StyledSelect>
-                <Select placeholder="choose color"
-                        style={{
-                            width: 100,
-                        }}>
-                    <Select.Option value="Red">Red</Select.Option>
-                    <Select.Option value="Green">Green</Select.Option>
-                    <Select.Option value="Blue">Blue</Select.Option>
-                    <Select.Option value="Yellow">Yellow</Select.Option>
-                    <Select.Option value="Orange">Orange</Select.Option>
-                    <Select.Option value="Purple">Purple</Select.Option>
-                    <Select.Option value="Pink">Pink</Select.Option>
-                    <Select.Option value="Brown">Brown</Select.Option>
-                    <Select.Option value="Black">Black</Select.Option>
-                    <Select.Option value="White">White</Select.Option>
-                    <Select.Option value="Grey">Grey</Select.Option>
-                    <Select.Option value="Beige">Beige</Select.Option>
-                    <Select.Option value="Gold">Gold</Select.Option>
-                    <Select.Option value="Silver">Silver</Select.Option>
-                    <Select.Option value="Multi">Multi</Select.Option>
-                </Select>
-            </StyledSelect>
-        </Form.Item>
-    )
-}
-function Brand() {
-    return (
-        <Form.Item label="Brand">
-            <StyledInput>
-                <Input style={{
-                    width: 200,
-                }} placeholder="input brand name)"/>
-            </StyledInput>
-        </Form.Item>
-    )
-}
-function Condition() {
-    return (
-        <Form.Item
-            name="condition"
-            label="Condition"
-        >
-            <StyledSelect>
-                <Select placeholder="choose color"
-                        style={{
-                            width: 100,
-                        }}>
-                    <Select.Option value="Old">Old</Select.Option>
-                    <Select.Option value="Worn">Worn</Select.Option>
-                    <Select.Option value="As New">As New</Select.Option>
-                    <Select.Option value="New">New</Select.Option>
-                </Select>
-            </StyledSelect>
-        </Form.Item>
-    )
-}
-function Type() {
-    return (
-        <Form.Item label="Type">
-            <StyledSelect>
-                <AutoComplete
-                    style={{
-                        width: 200,
-                    }}
-                    options={options}
-                    placeholder="input category"
-                    filterOption={(inputValue, option) =>
-                        option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+    // User States
+    const currentUser = useContext(AuthContext);
+
+    const productsCollectionRef = collection(db, "products");
+
+    const getProductList = async () => {
+        try {
+            const data = await getDocs(productsCollectionRef);
+            const filteredData = data.docs.map((doc) => ({
+                ...doc.data(), id: doc.id,
+            }));
+            setProductList(filteredData);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    useEffect(() => { getProductList(); }, []);
+    const handleSizeChange      = (value) => { setNewSize(value); };
+    const handleTypeChange      = (value) => { setNewType(value); };
+    const handleGenderChange    = (value) => { setNewGender(value); };
+    const handleConditionChange = (value) => { setNewCondition(value); };
+
+    const handleImageUpload = async (file) => {
+        try {
+            const unique_filename = Date.now() + '_' + file.name;
+
+            const storageRef = ref(storage, `product_images/${unique_filename}`);
+
+            const uploadTask = uploadBytesResumable(storageRef, file);
+            uploadTask.on('state_changed',
+                (snapshot) => {
+                    // Observe state change events such as progress, pause, and resume
+                    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    console.log('Upload is ' + progress + '% done');
+                    switch (snapshot.state) {
+                        case 'paused':
+                            console.log('Upload is paused');
+                            break;
+                        case 'running':
+                            console.log('Upload is running');
+                            break;
                     }
-                />
-            </StyledSelect>
-        </Form.Item>
-    )
-}
-function Price() {
-    return (
-        <Form.Item
-            name="input-price"
-            label="Price" >
-            <StyledInput>
-                <InputNumber min={1} max={5} placeholder="1 to 5"/>
-            </StyledInput>
-        </Form.Item>
-    )
-}
-function RateProduct ()
-{
-    return (
-        <Form.Item name="rate" label="Rate">
-            <Rate />
-        </Form.Item>
-    );
-}
+                },
+                (error) => {
+                },
+                () => {
+                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                        saveFormData(downloadURL);
+                    });
+                }
+            );
+        } catch (error) {
+            console.error('Error uploading image:', error);
+        }
+    };
 
-function SubmitButton () {
-    return (
-        <Form.Item
-            wrapperCol={{
-                span: 12,
-                offset: 6,
-            }}
-        >
-            <Space>
-                <Button type="primary" htmlType="submit">
-                    Submit
-                </Button>
-            </Space>
-        </Form.Item>
-    )
-}
 
-const StyledDivRow = styled.div`
-    display: flex;
-    flex-direction: row;
-  gap: 40px;
-    `;
+    const saveFormData = (downloadURL) => {
+        try {
+            addDoc(productsCollectionRef, {
+                title: newTitle,
+                type: newType,
+                size: newSize,
+                brand: newBrand,
+                condition: newCondition,
+                gender: newGender,
+                image_url: downloadURL,
+                seller_uid: currentUser.uid,
+            });
+            setNewTitle("");
+            setNewType("");
+            setNewSize("");
+            setNewBrand("");
+            setNewCondition("");
+            setNewGender("");
+            setImageFile(null);
+            console.log('Form data saved successfully!');
+        } catch (error) {
+            console.error('Error saving form data:', error);
+        }
+    };
 
-export default function ProductUploadForm() {
-    const formItemLayout = {
-        wrapperCol: {
-            span: 14,
-        },
+
+    function handleFormSubmit  (e) {
+        e.preventDefault();
+        handleImageUpload(imageFile);
     };
 
     return (
-        <Form style={{backgroundColor:Colors.light_green}} {...formItemLayout} layout={"vertical"}>
-            <Title/>
-            <UploadImage/>
-            <StyledDivRow>
-                <Type/>
-                <Size/>
-            </StyledDivRow>
-            <StyledDivRow>
-                <Brand/>
-                <Color/>
-            </StyledDivRow>
-            <StyledDivRow>
-                <Condition/>
-                <Price/>
-            </StyledDivRow>
-            <AddToShop/>
-        </Form>
+        <div>
+            <form onSubmit={handleFormSubmit }>
+                <h3>Step 1 - Upload Image:</h3>
+
+                <div className={"form-row"}>
+                    <input
+                        id="fileInput"
+                        type="file"
+                        accept="image/" // Specify the accepted file types --> images
+                        onChange={(e) => setImageFile(e.target.files[0])}
+                    />
+                </div>
+
+                <h3>Step 2 - Fill Data:</h3>
+
+                <div className={"form-row"}>
+                    <label>Title</label>
+                    <input
+                        value={newTitle}
+                        placeholder="Enter title..."
+                        type="text"
+                        required
+                        onChange={(e) => setNewTitle(e.target.value)}
+                    />
+                </div>
+
+                <div className={"form-row"}>
+                    <label>Brand</label>
+                    <input
+                        value={newBrand}
+                        placeholder="Enter brand..."
+                        type="text"
+                        onChange={(e) => setNewBrand(e.target.value)}
+                    />
+                </div>
+
+                <div className={"form-row"}>
+                    <label>Type</label>
+                    <Form.Item
+                    style={{marginBottom:"0px"}}>
+                        <Select
+                            value={newType}
+                            placeholder="Select type..."
+                            onChange={handleTypeChange}
+                            style = {{width: '200px',}}>
+                            >
+                            {typeOptions.map((type_) => (
+                                <Option key={type_} value={type_}>
+                                    {type_}
+                                </Option>
+                            ))}
+                        </Select>
+                    </Form.Item>
+                </div>
+
+                <div className={"form-row"}>
+                    <label>Size</label>
+                    <Form.Item
+                        style={{marginBottom:"0px"}}>
+                        <Select
+                            value={newSize}
+                            placeholder="Select size..."
+                            onChange={handleSizeChange}
+                            style = {{width: '200px'}}>
+                        >
+                            {sizeOptions.map((size) => (
+                                <Option key={size} value={size}>
+                                    {size}
+                                </Option>
+                            ))}
+                        </Select>
+                    </Form.Item>
+                </div>
+
+                <div className={"form-row"}>
+                    <label>Gender</label>
+                    <Form.Item
+                        style={{marginBottom:"0px"}}>
+                        <Select
+                            value={newGender}
+                            placeholder="Select gender..."
+                            onChange={handleGenderChange}
+                            style = {{width: '200px'}}>
+                            >
+                            {genderOptions.map((gender) => (
+                                <Option key={gender} value={gender}>
+                                    {gender}
+                                </Option>
+                            ))}
+                        </Select>
+                    </Form.Item>
+                </div>
+
+                <div className={"form-row"}>
+                    <label>Condition</label>
+                    <Form.Item
+                        style={{marginBottom:"0px"}}>
+                        <Select
+                            value={newCondition}
+                            placeholder="Select condition..."
+                            onChange={handleConditionChange}
+                            style = {{width: '200px'}}>
+                            >
+                            {conditionOptions.map((_condition) => (
+                                <Option key={_condition} value={_condition}>
+                                    {_condition}
+                                </Option>
+                            ))}
+                        </Select>
+                    </Form.Item>
+                </div>
+
+                {/*<div className={"form-row"}>*/}
+                {/*    <label>Price</label>*/}
+                {/*    <Form.Item*/}
+                {/*        style={{marginBottom:"0px"}}>*/}
+                {/*        <Input*/}
+                {/*            value={newPrice}*/}
+                {/*            placeholder="Enter price..."*/}
+                {/*            type="number"*/}
+                {/*            min={1} max={5}*/}
+                {/*            onChange={(e) => setNewPrice(e.target.value)}*/}
+                {/*            style = {{width: '200px'}}*/}
+                {/*        />*/}
+                {/*    </Form.Item>*/}
+                {/*</div>*/}
+
+                <ButtonStyle
+                    type="submit">
+                    Add To Shop
+                </ButtonStyle>
+
+            </form>
+        </div>
     );
 }
+
+export default App;
+

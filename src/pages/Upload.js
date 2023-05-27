@@ -1,25 +1,34 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
 import "../styles/Index.css"
+import "../styles/Upload.css"
 import UploadForm from "../components/UploadForm";
 import Navbar from "../components/Navbar"
-import {GeneralHeader} from "../components/Header";
+import MainHeader from "../components/Header";
+import {AuthContext} from "../components/AuthProvider";
 
 const Container = styled.div`
   background-color: var(--light_green);
-  height: 100%;
   overflow: auto;
-  padding: 0 20px 0 20px;
+  padding: 60px 10px 0 10px;
   display: flex;
   flex-direction: column;
+  height: 90vh;
+  row-gap: 20px;
 `;
 
 export default function Upload() {
+    const currentUser = useContext(AuthContext);
+
     return (
         <div>
-            <GeneralHeader/>
+            {currentUser ?
+                ( <MainHeader email={currentUser.email}/> )
+                :
+                ( <MainHeader email={null}/> )
+            }
             <Container>
-                <div className={"page-title"}>Upload an Item</div>
+                <header>Upload an Item</header>
                 <UploadForm/>
             </Container>
             <Navbar/>

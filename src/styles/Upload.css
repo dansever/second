@@ -1,0 +1,86 @@
+header {
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Lora', serif;
+    font-size: 30px;
+}
+
+form {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--light_green);
+}
+
+form h3 {
+    color: var(--primary_green);
+    margin-bottom: 0;
+}
+
+.upload-container {
+    display: flex;
+    justify-content: center;
+}
+
+
+.form-row {
+    display: flex;
+}
+
+.file-form-row {
+    display: flex;
+    background-color: transparent;
+}
+
+#fileInput {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.dropdown-style {
+    /*flex: 1;*/
+    /*height: 32px;*/
+    /*!*border: 1px solid #d9d9d9;*!*/
+    /*border-radius: 4px;*/
+    /*line-height: 32px;*/
+}
+
+
+div > form > div > label {
+    flex: 0 0 90px;
+    font-weight: bold;
+}
+
+div > form > div > input  {
+    flex: 1;
+    padding: 7px;
+    border-radius: 8px;
+    margin-bottom: 2px;
+    border: 1px solid lightgray;
+    /*background: var(--);*/
+    font-size: 16px;
+    color: rgb(0, 0, 32);
+    outline: none;
+    width: 60vw;
+}
+
+div > form > div > input:focus,
+textarea:focus {
+    border: 1px solid rgb(79, 169, 79);
+}
+
+button {
+    width: 20%;
+    border-radius: 10px;
+}
+
+/* Override the default message styles */
+.ant-message-success {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}

@@ -2,28 +2,23 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import "../../styles/Index.css"
 import "./Button.css"
-import {FilterFilled} from "@ant-design/icons"
-import { Button, Radio } from 'antd';
-import {HiMagnifyingGlass} from "react-icons/hi2";
 import {HiFilter} from "react-icons/hi";
 import {HiSortDescending} from "react-icons/hi";
-import Colors from "../../color"
 
 export const ButtonStyle = styled.button`
   color: var(--text_color);
   border-radius: 12px;
   height: 40px;
-  width: 160px;
+  width: 170px;
   font-family: "Montserrat", sans-serif;
   font-size: medium;
   font-weight: 600;
   box-shadow: 2px 3px 0 0 black;
-  align-items: left;
   &:hover {
     cursor: pointer;
-    //font-size: 105%;
     background-color: var(--secondary_green);
-    }
+    scale: 101%;
+  }
   background-color: ${({ isFollowing }) => (isFollowing ? "#749A83" : "#F1F7F1" )};
 `;
 
@@ -33,32 +28,6 @@ export function AddToShop() {
         <div className={"add_to_shop"}>
             <ButtonStyle>Add to your shop</ButtonStyle>
         </div>
-    );
-}
-
-// export function AddToCart() {
-//     return (
-//         <div style={{color: Colors.dark_green,
-//             display: "flex",
-//             justifyContent: "center", padding: "0 0 0 0"}}>
-//             <ButtonStyle>Add to cart</ButtonStyle>
-//         </div>
-//     );
-// }
-
-
-export function AcceptChallenge() {
-    return (
-        // <div className={"accept_challenge"}>
-            <ButtonStyle>Accept Challenge</ButtonStyle>
-        // </div>
-    );
-}
-export function RefuseChallenge() {
-    return (
-        // <div className={"refuse_challenge"}>
-            <ButtonStyle>Refuse Challenge</ButtonStyle>
-        // </div>
     );
 }
 
@@ -80,8 +49,8 @@ export function SortButton() {
     );
 }
 
-export function FollowUnfollowBtn() {
-    const [isFollowing, setIsFollowing] = useState(false);
+export function FollowUnfollowBtn({isFollowed = false}) {
+    const [isFollowing, setIsFollowing] = useState(isFollowed);
 
     const handleClick = () => {
         setIsFollowing(!isFollowing);
@@ -90,7 +59,7 @@ export function FollowUnfollowBtn() {
     return (
         <div>
             <ButtonStyle onClick={handleClick} isFollowing={isFollowing}>
-                {isFollowing ? "Follow" : "Unfollow"}
+                {isFollowing ? "Following" : "Not Following"}
             </ButtonStyle>
         </div>
     );

@@ -1,14 +1,16 @@
-import React, {useContext} from "react"
+import React, {useContext, useEffect, useState} from "react"
 import "../styles/Index.css"
 import MainFeed from "../components/MainFeed"
 import SearchBar from "../components/SearchBar/SearchBar";
 import Navbar from "../components/Navbar"
 import styled from "styled-components";
 import MainHeader from "../components/Header";
+import {auth} from "../firebase";
 import { AuthContext } from '../components/AuthProvider';
+import LikedFeed from "../components/LikedFeed";
 
 
-const HomeContainer = styled.div`
+const Container = styled.div`
   background-color: var(--light_green);
   width: 100%;
   padding: 60px 5px 80px 5px; 
@@ -30,10 +32,10 @@ export default function Home() {
                 ( <MainHeader email={currentUser.email}/> )
                 :
                 ( <MainHeader email={null}/> )}
-            <HomeContainer>
-                <SearchBar/>
-                <MainFeed/>
-            </HomeContainer>
+            <Container>
+                <header style={{paddingBottom:'20px'}}>Liked Items</header>
+                <LikedFeed/>
+            </Container>
             <Navbar/>
         </div>
     );

@@ -1,11 +1,3 @@
-.add_to_shop {
-    color: var(--dark_green);
-    display: flex;
-    justify-content: center;
-    padding: 20px 0 0 0;
-}
-
-
 .filter-btn {
     margin: 10px;
 }

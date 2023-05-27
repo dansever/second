@@ -35,6 +35,8 @@ const Coins = styled.div`
   flex-direction: row;
   align-items: center;
   align-content: flex-start;
+  justify-items: center;
+  justify-content: center;
 `;
 
 
@@ -61,7 +63,7 @@ export function SellerHeader() {
             <PicAndName>
                 <ProfileImage src={profile_pic} alt={"profile_pic"}/>
                 <div style={{display: "flex", flexDirection: "column"}}>
-                    <h3>Anna Kendrick</h3>
+                    <h3>Kendrick Lamar</h3>
                 </div>
             </PicAndName>
         </Container>
@@ -86,7 +88,7 @@ const StyledDiv = styled.div`
 `;
 
 
-export function SellerInfo() {
+export function SellerInfo({ followed = false }) {
     return (
         <StyledContainer className={"seller-info-container"}>
             <StyledDiv className={"profile_name_rating"}>
@@ -95,7 +97,7 @@ export function SellerInfo() {
                     <h3>Ben Williams</h3>
                 </div>
             </StyledDiv>
-            <FollowUnfollowBtn/>
+            <FollowUnfollowBtn isFollowed={followed}/>
         </StyledContainer>
 
     );

@@ -1,8 +1,4 @@
 .search-bar-container{
-    /*background-color: white;*/
-    /*width: 40%;*/
-    /*height: 30px;*/
-    /*border: 1px solid black;*/
     display: flex;
     flex-direction: row-reverse;
     padding-right: 5px;
@@ -11,4 +7,5 @@
     border-radius: 10px;
     margin-bottom: 10px;
     margin-top: 10px;
+
 }
