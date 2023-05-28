@@ -14,7 +14,6 @@ export default function ProductCard(product) {
     const [modalVisible, setModalVisible] = useState(false);
     const [whatsappModalVisible, setWhatsappModalVisible] = useState(false);
 
-
     const currentUser = useContext(AuthContext);
     const currentUserRef = doc(db, 'users', currentUser.uid);
     const product_id = product.product_id;

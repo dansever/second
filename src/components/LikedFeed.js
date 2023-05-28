@@ -1,49 +1,110 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import "../styles/Feed.css"
 import {Col, Row} from "antd";
-import {collection, getDocs} from "firebase/firestore";
-import {db} from "../firebase";
+import {collection, getDoc, getDocs, query, where, doc} from 'firebase/firestore';
+import {auth, db} from "../firebase";
+import {AuthContext} from "./AuthProvider";
+import {getAuth} from "firebase/auth";
 import ProductCard from "./Card";
 
 
-export default function MainFeed() {
-    const [productsList, setProductsList] = useState([]);
+export default function LikedFeed() {
+    const [likedProductsList, setLikedProductsList] = useState([]);
+
+
+    const currentUser = useContext(AuthContext);
     const productsCollectionRef = collection(db,'products');
 
     useEffect(() => {
-        const getProductList = async () => {
+        const getLikedProductList = async () => {
             try {
                 const data = await getDocs(productsCollectionRef);
                 const filteredData = data.docs.map((doc) => ({
                     ...doc.data(),
                     id: doc.id
                 }));
-                setProductsList(filteredData);
+                setLikedProductsList(filteredData);
             } catch (err) {
                 console.error(err);
             }
         };
-        getProductList();
+        getLikedProductList();
     }, []);
 
+
+
     return (
-        <div className="feed">
-            <Row gutter={[16, 16]}>
-                {productsList.map((card, index) => (
+        <div>
+            <div className="feed">
+                <Row gutter={[16, 16]}>
+                    {likedProductsList.map((product, index) => (
                     <Col span={12}
                          key={index}>
-                        <ProductCard isLiked = {true}
-                                     title={card.title}
-                                     type={card.type}
-                                     image_url={card.image_url}
-                                     img_desc={card.img_desc}
-                                     brand={card.brand}
-                                     size={card.size}
-                                     price={card.pr}
+                        <ProductCard
+                            isLiked = {true}
+                            product_id = {product.id}
+                            title={product.title}
+                            seller_id={product.seller_id}
+                            unique_id={product.unique_id}
+                            type={product.type}
+                            gender={product.gender}
+                            image_url={product.image_url}
+                            brand={product.brand}
+                            size={product.size}
+                            condition={product.condition}
                         />
                     </Col>
                 ))}
             </Row>
         </div>
+        </div>
     );
 };
+
+
+
+// export default function MainFeed() {
+//     const [productsList, setProductsList] = useState([]);
+//     const productsCollectionRef = collection(db,'products');
+//
+//     useEffect(() => {
+//         const getProductList = async () => {
+//             try {
+//                 const data = await getDocs(productsCollectionRef);
+//                 const filteredData = data.docs.map((doc) => ({
+//                     ...doc.data(),
+//                     id: doc.id
+//                 }));
+//                 setProductsList(filteredData);
+//             } catch (err) {
+//                 console.error(err);
+//             }
+//         };
+//         getProductList();
+//     }, []);
+//
+//     return (
+//         <div className="feed">
+//             <Row gutter={[16, 16]}>
+//                 {productsList.map((product, index) => (
+//                     <Col span={12}
+//                          key={index}>
+//                         <ProductCard
+//                             isLiked = {false}
+//                             product_id = {product.id}
+//                             title={product.title}
+//                             seller_id={product.seller_id}
+//                             unique_id={product.unique_id}
+//                             type={product.type}
+//                             gender={product.gender}
+//                             image_url={product.image_url}
+//                             brand={product.brand}
+//                             size={product.size}
+//                             condition={product.condition}
+//                         />
+//                     </Col>
+//                 ))}
+//             </Row>
+//         </div>
+//     );
+// };
