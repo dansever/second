@@ -4,6 +4,7 @@ import { HiOutlineUserCircle } from "react-icons/hi";
 import { CiSquarePlus } from "react-icons/ci";
 import {Link, useMatch, useResolvedPath} from "react-router-dom";
 import "../styles/Navbar.css"
+import LikedPage from "../pages/LikedPage";
 
 
 export default function Navbar () {
@@ -13,12 +14,15 @@ export default function Navbar () {
                 <CustomLink to="/Home">
                     <BiHome size={36} strokeWidth={0.5}/>
                 </CustomLink>
+
                 <CustomLink to="/Upload">
                     <CiSquarePlus size={36} strokeWidth={1.5}/>
                 </CustomLink>
-                <CustomLink to="/Liked">
+
+                <CustomLink to="/LikedPage">
                     <BiHeart size={36} strokeWidth={0.5}/>
                 </CustomLink>
+
                 <CustomLink to="/Profile">
                     <HiOutlineUserCircle size={36} strokeWidth={2} />
                 </CustomLink>

@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from 'react-router-dom';
 import "../styles/Index.css";
 import styled from "styled-components";
-import second_logo from "../assets/images/second-logo.png";
+import second_logo from "../assets/Second_logo.png";
 import {ArrowLeftOutlined, CheckCircleOutlined, ExclamationCircleOutlined} from "@ant-design/icons";
 import Colors from "../color"
 
@@ -15,13 +15,8 @@ const HeaderContainer = styled.div`
   position: fixed;
   width: 100%;
   top: 0;
-  //left: 0;
-  //right: 0;
   z-index: 1;
   height: 60px;
-  //justify-content: space-between;
-  //align-items: center;
-  //column-gap: 100px;
   padding-left: 15px;
   padding-right: 5px;
   align-items: center;
@@ -34,9 +29,6 @@ const TitleAndLogo = styled.div`
   flex-direction: row;
   column-gap: 5px;
   align-items: center;
-  //align-content: center;
-  //justify-content: center;
-  //justify-items: center;
 `;
 
 
@@ -66,23 +58,31 @@ export default function MainHeader(props) {
                 <img
                     src={second_logo}
                     alt={second_logo}
-                    style={{width:"100px", height:"80px"}}
+                    style={{width:"36px", height:"28px"}}
                 />
             </TitleAndLogo>
 
             {props.email ? (
                 <p
                     style={{color: Colors.dark_green,
-                        display: "flex", flexDirection:"row",
-                        columnGap:"5px"}}>
+                        display: "flex",
+                        flexDirection:"row",
+                        columnGap:"5px",
+                        fontSize:"12px",
+                        alignItems:"center"
+                    }}>
                     <CheckCircleOutlined style={{scale:"150%"}} />
                     {props.email}
                 </p>
             ) : (
                 <p
                     style={{color: "darkred",
-                        display: "flex", flexDirection:"row",
-                        columnGap:"5px"}}>
+                        display: "flex",
+                        flexDirection:"row",
+                        columnGap:"5px",
+                        fontSize:"12px",
+                        alignItems:"center"
+                    }}>
                     <ExclamationCircleOutlined style={{scale:"150%"}} />
                     Not signed in
                 </p>

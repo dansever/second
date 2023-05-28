@@ -1,16 +1,14 @@
-import React, {useContext, useEffect, useState} from "react"
+import React, {useContext} from "react"
 import "../styles/Index.css"
 import MainFeed from "../components/MainFeed"
 import SearchBar from "../components/SearchBar/SearchBar";
 import Navbar from "../components/Navbar"
 import styled from "styled-components";
 import MainHeader from "../components/Header";
-import {auth} from "../firebase";
 import { AuthContext } from '../components/AuthProvider';
-import LikedFeed from "../components/LikedFeed";
+import LikedFeed from "../components/LikedFeed"
 
-
-const Container = styled.div`
+const HomeContainer = styled.div`
   background-color: var(--light_green);
   width: 100%;
   padding: 60px 5px 80px 5px; 
@@ -23,7 +21,7 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-export default function Home() {
+export default function LikedPage() {
     const currentUser = useContext(AuthContext);
 
     return (
@@ -32,10 +30,10 @@ export default function Home() {
                 ( <MainHeader email={currentUser.email}/> )
                 :
                 ( <MainHeader email={null}/> )}
-            <Container>
-                <header style={{paddingBottom:'20px'}}>Liked Items</header>
+            <HomeContainer>
+                <SearchBar/>
                 <LikedFeed/>
-            </Container>
+            </HomeContainer>
             <Navbar/>
         </div>
     );

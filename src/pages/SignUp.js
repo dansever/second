@@ -37,6 +37,7 @@ export const SignUp = () => {
             const newUserRef = doc(usersCollectionRef,
                 newUserCredentials.user.uid);
             const data = {
+                userId: newUserCredentials.user.uid,
                 first_name: name,
                 address: address,
                 phone_number: phoneNumber,
@@ -45,7 +46,7 @@ export const SignUp = () => {
             };
 
             setDoc(newUserRef, data)
-                .then(() => {
+                .then( () => {
                     message.success(
                         "User created successfully", 3, () => {
                             console.log('Pop-up closed');
