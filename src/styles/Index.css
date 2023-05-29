@@ -26,3 +26,7 @@ body {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
+.user_info_dropdown:hover {
+    cursor:pointer;
+}
