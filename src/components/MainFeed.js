@@ -36,7 +36,7 @@ export default function MainFeed() {
                             isLiked = {false}
                             product_id = {product.id}
                             title={product.title}
-                            seller_id={product.seller_id}
+                            seller_uid={product.seller_uid}
                             unique_id={product.unique_id}
                             type={product.type}
                             gender={product.gender}

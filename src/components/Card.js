@@ -1,18 +1,20 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {HeartFilled, HeartOutlined, WhatsAppOutlined} from "@ant-design/icons";
 import {Button, Modal} from "antd";
 import Card from '@mui/material/Card';
 import "../styles/Card.css"
 import {AuthContext} from "./AuthProvider";
 import {db} from "../firebase";
-import {doc, updateDoc, arrayUnion, arrayRemove} from "firebase/firestore";
+import {doc, updateDoc, arrayUnion, arrayRemove, getDocs, getDoc} from "firebase/firestore";
 import Colors from "../color";
+import {ref} from "firebase/storage";
 
 
 export default function ProductCard(product) {
     const [isLikeToggledOn, setLikeToggledOn] = useState(product.isLiked);
     const [modalVisible, setModalVisible] = useState(false);
     const [whatsappModalVisible, setWhatsappModalVisible] = useState(false);
+    const [sellerPhoneNumber, setSellerPhoneNumber] = useState('');
 
     const currentUser = useContext(AuthContext);
     const currentUserRef = doc(db, 'users', currentUser.uid);
@@ -29,14 +31,12 @@ export default function ProductCard(product) {
             liked_items: arrayUnion(product_id)
         });
     }
-
     const unlikeAction = () => {
         updateDoc(currentUserRef, {
             liked_items: arrayRemove(product_id)
         });
 
     }
-
     const handleLike = async () => {
         setLikeToggledOn(!isLikeToggledOn);
         if (isLikeToggledOn) {
@@ -46,13 +46,24 @@ export default function ProductCard(product) {
             likeAction();
         }
     }
-
     const handleModalOpen = () => {setModalVisible(true);};
     const handleModalClose = () => {setModalVisible(false);};
-
     const handleWhatsappModalOpen = () => {setWhatsappModalVisible(true);};
     const handleWhatsappModalClose = () => {setWhatsappModalVisible(false);};
 
+
+    useEffect(() => {
+        const getSellerPhoneNumber = async () => {
+            try {
+                const SellerUserRef = doc(db, 'users', product.seller_uid);
+                const docSnapshot = await getDoc(SellerUserRef);
+                setSellerPhoneNumber(docSnapshot.data()['phone_number']);
+            } catch (err) {
+                console.error(err);
+            }
+        };
+        getSellerPhoneNumber();
+    }, []);
 
 
     return (
@@ -108,8 +119,7 @@ export default function ProductCard(product) {
                 <p>Gender: {product.gender}</p>
                 <p>Size: {product.size}</p>
                 <p>condition: {product.condition}</p>
-
-
+                <p>seller phone number: {sellerPhoneNumber} </p>
             </Modal>
 
             {/*WHATSAPP MODAL*/}
@@ -141,6 +151,7 @@ export default function ProductCard(product) {
 export function MyShopCard (product) {
     <></>
 }
+
 //     const [isLikeToggledOn, setLikeToggledOn] = useState(product.isLiked);
 //     const [modalVisible, setModalVisible] = useState(false);
 //     const currentUser = useContext(AuthContext);

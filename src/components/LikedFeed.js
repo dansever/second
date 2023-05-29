@@ -16,9 +16,7 @@ export default function LikedFeed() {
     useEffect(() => {
         const userId = currentUser.uid;
         const likedProductsRef = doc(db,'products',userId);
-
-        console.log("HELLO");
-    }, []);
+        }, []);
 
 
 
