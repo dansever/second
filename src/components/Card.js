@@ -79,9 +79,8 @@ export default function ProductCard(product) {
 
                     <div className={"left-side"}
                          onClick={handleModalOpen}>
-                        <h3>{product.title}</h3>
                         <p>Size: {product.size}</p>
-                        <p>Brand: {product.brand}</p>
+                        <p>Price: {product.price}</p>
                     </div>
 
                     <div className={"right-side"}>
@@ -94,25 +93,23 @@ export default function ProductCard(product) {
                                 : <HeartOutlined
                                     style={{ scale: "120%", color: "black" }}/>}
                         </Button>
-                        <Button shape="circle"
-                                className={"card_like_button"}
-                                onClick={handleWhatsappModalOpen}>
-                            <WhatsAppOutlined
-                                style={{ scale: "140%", color: "green" }}/>
-                        </Button>
                     </div>
                 </div>
             </Card>
 
             {/*MAIN MODAL*/}
-            <Modal open={modalVisible}
+            <Modal className={"custom-modal"} open={modalVisible}
                    onCancel={handleModalClose}
                    footer={[]} // Empty array to hide buttons>
                 >
                 <h2 style={{color:Colors.dark_green}}>
-                    Item Information
+                    {product.title}
                 </h2>
-                <h3>{product.title}</h3>
+                <div className={"img-box-modal"}
+                     onClick={handleModalOpen}>
+                    <img src={product.image_url}
+                         alt={product.alt}/>
+                </div>
                 <p>Type: {product.type}</p>
                 <p>Price: {product.price}</p>
                 <p>Brand: {product.brand}</p>
@@ -146,7 +143,10 @@ export default function ProductCard(product) {
         </>
     );
 }
-
+                <Button href="whatsapp://send?text=WHATEVER_LINK_OR_TEXT_YOU_WANT_TO_SEND">
+                    <WhatsAppOutlined
+                        style={{scale: "140%", color: "green" }}/>Chat for more details or claiming product
+                </Button>
 
 export function MyShopCard (product) {
     <></>
