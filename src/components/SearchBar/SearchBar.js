@@ -1,22 +1,43 @@
 import React, {useState} from "react"
 import "./SearchBar.css"
 import {FilterButton, SortButton} from "../Buttons/Button";
-import {Form, Select, TreeSelect} from "antd";
+import {Button, Dropdown, Form, Select, Space, TreeSelect} from "antd";
+import {DownOutlined, UserOutlined} from "@ant-design/icons";
 
 const { TreeNode } = TreeSelect;
+const { Option } = Select;
+
+const sort_types = ['by name', 'by price'];
+
+const sort = [
+    {
+        label: 'by name',
+        key: '1',
+        icon: <UserOutlined />,
+    },
+    {
+        label: 'by price',
+        key: '1',
+        icon: <UserOutlined />,
+    },
+]
 
 
 export default function SearchBar(props) {
     const [neighborhoods, setNeighborhoods] = useState([])
-    const handleSelectionChange = (selectedValues) => {
-        setNeighborhoods(selectedValues);
-        console.log('neighborhoods:', neighborhoods);
-        console.log('selectedValues:', selectedValues);
+    const [sortBy, setSortBy] = useState('')
 
+    const handleFilterChange = (selectedValues) => {
+        setNeighborhoods(selectedValues);
+    };
+    const handleSortChange = (selectedValue) => {
+        setSortBy(selectedValue);
     };
 
+
     return (
-        <div>
+        <div className={"filter-sort-container"}>
+
             <TreeSelect
                 treeData={[
                     {title: 'Jerusalem', value: 'jerusalem',
@@ -43,20 +64,23 @@ export default function SearchBar(props) {
                 allowClear="true"
                 showCheckedStrategy="SHOW_CHILD"
                 placeholder="Select Neighborhood/s"
-                onChange={handleSelectionChange}
+                onChange={handleFilterChange}
                 defaultValue={props.userNeighborhood}
                 style={{ width: '50vw' }}
             />
 
+            <Select
+                placeholder="Sort By..."
+                onChange={handleSortChange}
+                style = {{width:'30vw'}}>
+                >
+                {sort_types.map((type_) => (
+                    <Option key={type_} value={type_}>
+                        {type_}
+                    </Option>
+                ))}
+            </Select>
+
         </div>
     );
 };
-
-
-//         <div className={"search-bar-container"}>
-//             <SortButton />
-//             <FilterButton />
-//         </div>
-//     )
-// }
-//

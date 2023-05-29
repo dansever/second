@@ -1,4 +1,4 @@
-.search-bar-container{
+.filter-sort-container{
     display: flex;
     flex-direction: row-reverse;
     padding-right: 5px;
@@ -7,5 +7,5 @@
     border-radius: 10px;
     margin-bottom: 10px;
     margin-top: 10px;
-
+    column-gap: 10px;
 }
