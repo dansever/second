@@ -3,10 +3,8 @@ import { useNavigate  } from 'react-router-dom';
 import "../styles/SingUp.css"
 import {auth, db} from "../firebase"
 import {createUserWithEmailAndPassword} from "firebase/auth"
-import {Form, Input, message, Select} from "antd";
+import {Input, message, TreeSelect} from "antd";
 import { setDoc, collection, doc} from "firebase/firestore";
-
-const { Option } = Select;
 
 const Neighborhood = ['Rehavia', 'Nahlaot', 'City Central',
     'Talbia', 'Katamon', 'Beit HaKerem', 'Pisgat Zeev',
@@ -15,13 +13,12 @@ const Neighborhood = ['Rehavia', 'Nahlaot', 'City Central',
 
 export const SignUp = () => {
     const [name, setName] = useState('');
-    const [address, setAddress] = useState('');
+    const [neighborhood, setNeighborhood] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [userID, setUserID] = useState(null);
     const [error, setError] = useState('');
-    const [neighborhood, setNeighborhood] = useState('');
     const navigate  = useNavigate ();
 
     // Step 2: Listen for authentication state changes
@@ -68,27 +65,47 @@ export const SignUp = () => {
         }
     };
 
+    const handleNeighborhoodChange = (value, label) => {
+        setNeighborhood(value);
+    };
+
     return (
         <div className={"main-container"}>
             <header> <h3 >Welcome to Second</h3> </header>
             <h3>Lets get started</h3>
             <form onSubmit={ handleSignup }>
+
                 <Input
                     type="text" value={name} placeholder="Enter first name"
                     onChange={(e) => setName(e.target.value)}/>
 
-                <Select
-                    placeholder="Select Neighborhood..."
+                <TreeSelect
+                    treeData={[
+                        {
+                            value: 'jerusalem',label: 'Jerusalem',
+                            children: [
+                                { value: 'rehavia',         label: 'Rehavia',},
+                                { value: 'nahlaot',         label: 'Nahlaot',},
+                                { value: 'city_central',    label: 'City Central',},
+                                { value: 'talbia',          label: 'Talbia',},
+                                { value: 'katamon',         label: 'Katamon',},
+                            ],
+                        },
+                        {
+                            value: 'tel_aviv', label: 'Tel Aviv',
+                            children: [
+                                { value: 'old_north', label: 'Old North' },
+                                { value: 'new_north', label: 'New North' },
+                                { value: 'lev_hair',  label: 'Lev Ha`ir' },
+                                { value: 'jaffo',     label: 'Jaffo'},
+                                { value: 'florentin', label: 'Florentin'},
+                                ]
+                        },
+                    ]}
                     value={neighborhood}
-                    onChange={(e) => setNeighborhood(e.target.value)}
-                    style = {{}}>
-                    >
-                    {Neighborhood.map((type_) => (
-                        <Option key={type_} value={type_}>
-                            {type_}
-                        </Option>
-                    ))}
-                </Select>
+                    placeholder={"Enter Neighborhood"}
+                    onChange={handleNeighborhoodChange}
+                />
 
                 <Input
                     type="text" value={phoneNumber} placeholder="Enter phone number"
