@@ -23,6 +23,7 @@ const HomeContainer = styled.div`
 
 export default function Home() {
     const currentUser = useContext(AuthContext);
+    // const userDocRef = doc(db, 'user', )
 
     return (
         <div>
@@ -31,7 +32,7 @@ export default function Home() {
                 :
                 ( <MainHeader email={null}/> )}
             <HomeContainer>
-                <SearchBar/>
+                <SearchBar />
                 <MainFeed/>
             </HomeContainer>
             <Navbar/>
