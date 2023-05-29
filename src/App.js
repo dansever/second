@@ -29,20 +29,20 @@ export default function App() {
         <BrowserRouter>
             <AuthProvider>
                 <Routes>
-                    {/*{showOnboarding && <Route path="/" element={<Onboarding />} />}*/}
-                    {/*{hasLoggedIn ? (*/}
-                    {/*    <>*/}
-                    {/*        <Route path="/" element={<Navigate to="/Login" />} />*/}
-                    {/*        <Route path="/Login" element={<LoginPage />} />*/}
-                    {/*        <Route path="/Signup" element={<SignUp />} />*/}
-                    {/*        <Route path="/Home" element={<Home />} />*/}
-                    {/*        <Route path="/Upload" element={<Upload />} />*/}
-                    {/*        <Route path="/LikedPage" element={<LikedPage />} />*/}
-                    {/*        <Route path="/Contact" element={<Contact />} />*/}
-                    {/*        <Route path="/Profile" element={<MyProfile />} />*/}
-                    {/*    </>*/}
-                    {/*) : (*/}
-                    {/*    <>*/}
+                    {showOnboarding && <Route path="/" element={<Onboarding />} />}
+                    {hasLoggedIn ? (
+                        <>
+                            <Route path="/" element={<Navigate to="/Login" />} />
+                            <Route path="/Login" element={<LoginPage />} />
+                            <Route path="/Signup" element={<SignUp />} />
+                            <Route path="/Home" element={<Home />} />
+                            <Route path="/Upload" element={<Upload />} />
+                            <Route path="/LikedPage" element={<LikedPage />} />
+                            <Route path="/Contact" element={<Contact />} />
+                            <Route path="/Profile" element={<MyProfile />} />
+                        </>
+                    ) : (
+                        <>
                             <Route path="/" element={<Home />} />
                             <Route path="/Login" element={<LoginPage />} />
                             <Route path="/Signup" element={<SignUp />} />
@@ -51,8 +51,8 @@ export default function App() {
                             <Route path="/LikedPage" element={<LikedPage />} />
                             <Route path="/Contact" element={<Contact />} />
                             <Route path="/Profile" element={<MyProfile />} />
-                        {/*</>*/}
-                    {/*)}*/}
+                        </>
+                    )}
                 </Routes>
             </AuthProvider>
         </BrowserRouter>

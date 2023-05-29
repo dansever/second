@@ -17,6 +17,7 @@ const sizeOptions = ['XS', 'S', 'M', 'L', 'XL', 'One Size'];
 const genderOptions = ['Female', 'Male', 'Unisex'];
 const conditionOptions = ['Old', 'Worn', 'Good', 'As New', 'New'];
 
+
 function App() {
     const [productList, setProductList] = useState([]);
 
@@ -27,6 +28,7 @@ function App() {
     const [newBrand, setNewBrand] = useState("");
     const [newCondition, setNewCondition] = useState("");
     const [newGender, setNewGender] = useState("");
+    const [newPrice, setNewPrice] = useState(0);
 
     // File States
     const [imageFile, setImageFile] = useState(null);
@@ -79,7 +81,8 @@ function App() {
                 (error) => {
                 },
                 () => {
-                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                    getDownloadURL(uploadTask.snapshot.ref)
+                        .then((downloadURL) => {
                         saveFormData(downloadURL);
                     });
                 }
@@ -101,6 +104,7 @@ function App() {
                 gender: newGender,
                 image_url: downloadURL,
                 seller_uid: currentUser.uid,
+                tokens: newPrice,
             });
             setNewTitle("");
             setNewType("");
@@ -108,6 +112,8 @@ function App() {
             setNewBrand("");
             setNewCondition("");
             setNewGender("");
+            setNewSize("");
+            setNewPrice(0);
             setImageFile(null);
             console.log('Form data saved successfully!');
         } catch (error) {
@@ -156,6 +162,18 @@ function App() {
                         type="text"
                         onChange={(e) => setNewBrand(e.target.value)}
                     />
+                </div>
+
+                <div className={"form-row"}>
+                    <label>Price</label>
+                        <input
+                            value={newPrice}
+                            placeholder="Enter price..."
+                            type="number"
+                            min={0} max={10}
+                            onChange={(e) => setNewPrice(e.target.value)}
+                            style = {{width: '200px'}}
+                        />
                 </div>
 
                 <div className={"form-row"}>
@@ -233,21 +251,6 @@ function App() {
                         </Select>
                     </Form.Item>
                 </div>
-
-                {/*<div className={"form-row"}>*/}
-                {/*    <label>Price</label>*/}
-                {/*    <Form.Item*/}
-                {/*        style={{marginBottom:"0px"}}>*/}
-                {/*        <Input*/}
-                {/*            value={newPrice}*/}
-                {/*            placeholder="Enter price..."*/}
-                {/*            type="number"*/}
-                {/*            min={1} max={5}*/}
-                {/*            onChange={(e) => setNewPrice(e.target.value)}*/}
-                {/*            style = {{width: '200px'}}*/}
-                {/*        />*/}
-                {/*    </Form.Item>*/}
-                {/*</div>*/}
 
                 <ButtonStyle
                     type="submit">

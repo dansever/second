@@ -3,8 +3,15 @@ import { useNavigate  } from 'react-router-dom';
 import "../styles/SingUp.css"
 import {auth, db} from "../firebase"
 import {createUserWithEmailAndPassword} from "firebase/auth"
-import {Input, message} from "antd";
+import {Form, Input, message, Select} from "antd";
 import { setDoc, collection, doc} from "firebase/firestore";
+
+const { Option } = Select;
+
+const Neighborhood = ['Rehavia', 'Nahlaot', 'City Central',
+    'Talbia', 'Katamon', 'Beit HaKerem', 'Pisgat Zeev',
+    'Ramot', 'The French Hill', 'Kiryat Yuvel', 'Kiryat Moshe',
+    'Malha', 'Kiryat Menahem'];
 
 export const SignUp = () => {
     const [name, setName] = useState('');
@@ -14,6 +21,7 @@ export const SignUp = () => {
     const [password, setPassword] = useState('');
     const [userID, setUserID] = useState(null);
     const [error, setError] = useState('');
+    const [neighborhood, setNeighborhood] = useState('');
     const navigate  = useNavigate ();
 
     // Step 2: Listen for authentication state changes
@@ -39,7 +47,8 @@ export const SignUp = () => {
             const data = {
                 userId: newUserCredentials.user.uid,
                 first_name: name,
-                address: address,
+                neighborhood: neighborhood,
+                coins: 20,
                 phone_number: phoneNumber,
                 shop_items: [],
                 liked_items: [],
@@ -67,10 +76,20 @@ export const SignUp = () => {
                 <Input
                     type="text" value={name} placeholder="Enter first name"
                     onChange={(e) => setName(e.target.value)}/>
-                <Input
-                    type="text" value={address} placeholder="Enter home address"
-                    onChange={(e) => setAddress(e.target.value)}
-                />
+
+                <Select
+                    placeholder="Select Neighborhood..."
+                    value={neighborhood}
+                    onChange={(e) => setNeighborhood(e.target.value)}
+                    style = {{}}>
+                    >
+                    {Neighborhood.map((type_) => (
+                        <Option key={type_} value={type_}>
+                            {type_}
+                        </Option>
+                    ))}
+                </Select>
+
                 <Input
                     type="text" value={phoneNumber} placeholder="Enter phone number"
                     onChange={(e) => setPhoneNumber(e.target.value)}
