@@ -31,7 +31,6 @@ export default function LikedPage() {
                 :
                 ( <MainHeader email={null}/> )}
             <HomeContainer>
-                <SearchBar/>
                 <LikedFeed/>
             </HomeContainer>
             <Navbar/>

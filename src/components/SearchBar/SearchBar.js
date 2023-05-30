@@ -1,33 +1,69 @@
-import React, {useState} from "react"
+import React, {useContext, useEffect, useState} from "react"
 import "./SearchBar.css"
 import {FilterButton, SortButton} from "../Buttons/Button";
 import {Button, Dropdown, Form, Select, Space, TreeSelect} from "antd";
 import {DownOutlined, UserOutlined} from "@ant-design/icons";
+import {doc, getDoc} from "firebase/firestore";
+import {db} from "../../firebase";
+import {AuthContext} from "../AuthProvider";
 
 const { TreeNode } = TreeSelect;
 const { Option } = Select;
 
 const sort_types = ['by name', 'by price'];
 
-const sort = [
+const neighborhoodDatabase = [
     {
-        label: 'by name',
-        key: '1',
-        icon: <UserOutlined />,
+        title: 'Jerusalem', value: 'jerusalem',
+        children: [
+            { title: 'Rehavia',     value: 'rehavia' },
+            { title: 'Nahlaot',     value: 'nahlaot' },
+            { title: 'City Central',value: 'city_central' },
+            { title: 'Talbia',      value: 'talbia' },
+            { title: 'Katamon',     value: 'katamon' },
+            ],
     },
     {
-        label: 'by price',
-        key: '1',
-        icon: <UserOutlined />,
+        title: 'Tel Aviv', value: 'tel_aviv',
+        children: [
+            { title: 'Old North',   value: 'old_north' },
+            { title: 'New North',   value: 'new_north' },
+            { title: 'Lev Ha`ir',   value: 'lev_hair' },
+            { title: 'Jaffo',       value: 'jaffo' },
+            { title: 'Florentin',   value: 'florentin' },
+        ],
     },
-]
+];
 
+const FilterDatabase = [
+    {
+        title: 'Size', value: 'size',
+        children: [
+            { title: 'XS',      value: 'xs' },
+            { title: 'S',       value: 's' },
+            { title: 'M',       value: 'm' },
+            { title: 'L',       value: 'l' },
+            { title: 'XL',      value: 'xl' },
+            { title: 'One Size',value: 'one_size' },
+        ],
+    },
+    {
+        title: 'Gender', value: 'gender',
+        children: [
+            { title: 'Male',    value: 'male' },
+            { title: 'Female',  value: 'female' },
+            { title: 'Unisex',  value: 'unisex' },
+        ],
+    },
+];
 
-export default function SearchBar(props) {
+export default function SearchBar() {
     const [neighborhoods, setNeighborhoods] = useState([])
     const [sortBy, setSortBy] = useState('')
+    const currentUser = useContext(AuthContext);
 
-    const handleFilterChange = (selectedValues) => {
+
+    const handleNeighborhoodFilterChange = (selectedValues) => {
         setNeighborhoods(selectedValues);
     };
     const handleSortChange = (selectedValue) => {
@@ -35,44 +71,38 @@ export default function SearchBar(props) {
     };
 
 
+    useEffect(() => {
+
+    }, []);
+
     return (
         <div className={"filter-sort-container"}>
 
             <TreeSelect
-                treeData={[
-                    {title: 'Jerusalem', value: 'jerusalem',
-                        children: [
-                            { title: 'Rehavia', value: 'rehavia' },
-                            { title: 'Nahlaot', value: 'nahlaot' },
-                            { title: 'City Central', value: 'city_central' },
-                            { title: 'Talbia', value: 'talbia' },
-                            { title: 'Katamon', value: 'katamon' },
-                            // { title: props.userNeighborhood, value:'s' },
-                        ],
-                    },
-                    {title: 'Tel Aviv', value: 'tel_aviv',
-                        children: [
-                            { title: 'Old North', value: 'old_north' },
-                            { title: 'New North', value: 'new_north' },
-                            { title: 'Lev Ha`ir', value: 'lev_hair' },
-                            { title: 'Jaffo', value: 'jaffo' },
-                            { title: 'Florentin', value: 'florentin' },
-                        ],
-                    },
-                ]}
+                treeData = {neighborhoodDatabase}
                 treeCheckable
                 allowClear="true"
                 showCheckedStrategy="SHOW_CHILD"
-                placeholder="Select Neighborhood/s"
-                onChange={handleFilterChange}
-                defaultValue={props.userNeighborhood}
-                style={{ width: '50vw' }}
+                placeholder="Neighborhood"
+                onChange={handleNeighborhoodFilterChange}
+                style={{ width: '43vw' }}
+            />
+
+            <TreeSelect
+                treeData = {FilterDatabase}
+                treeCheckable
+                allowClear="true"
+                showCheckedStrategy="SHOW_CHILD"
+                placeholder="Filter by"
+                onChange={handleNeighborhoodFilterChange}
+                style={{ width: '30vw' }}
             />
 
             <Select
-                placeholder="Sort By..."
+                placeholder="Sort"
                 onChange={handleSortChange}
-                style = {{width:'30vw'}}>
+                allowClear="true"
+                style = {{width:'20vw'}}>
                 >
                 {sort_types.map((type_) => (
                     <Option key={type_} value={type_}>

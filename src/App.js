@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {BrowserRouter , Routes, Route, Navigate} from 'react-router-dom';
 import Home from "./pages/Home";
-import Contact from "./pages/Contact";
 import Upload from "./pages/Upload";
 import LoginPage from "./pages/Login";
 import MyProfile from "./pages/Profile";
@@ -38,7 +37,6 @@ export default function App() {
                             <Route path="/Home" element={<Home />} />
                             <Route path="/Upload" element={<Upload />} />
                             <Route path="/LikedPage" element={<LikedPage />} />
-                            <Route path="/Contact" element={<Contact />} />
                             <Route path="/Profile" element={<MyProfile />} />
                         </>
                     ) : (
@@ -49,7 +47,6 @@ export default function App() {
                             <Route path="/Home" element={<Home />} />
                             <Route path="/Upload" element={<Upload />} />
                             <Route path="/LikedPage" element={<LikedPage />} />
-                            <Route path="/Contact" element={<Contact />} />
                             <Route path="/Profile" element={<MyProfile />} />
                         </>
                     )}

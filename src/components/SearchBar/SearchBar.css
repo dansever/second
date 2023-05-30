@@ -1,6 +1,6 @@
 .filter-sort-container{
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     padding-right: 5px;
     align-content: center;
     align-items: center;
