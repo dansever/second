@@ -1,29 +1,33 @@
-import React, {useContext} from "react"
+import React, {useContext, useEffect, useState} from "react"
 import "../styles/Index.css"
+import "../styles/Home.css"
 import MainFeed from "../components/MainFeed"
 import SearchBar from "../components/SearchBar/SearchBar";
 import Navbar from "../components/Navbar"
 import styled from "styled-components";
 import MainHeader from "../components/Header";
 import { AuthContext } from '../components/AuthProvider';
+import {doc, getDoc} from "firebase/firestore";
+import {db} from "../firebase";
 
-
-const HomeContainer = styled.div`
-  background-color: var(--light_green);
-  width: 100%;
-  padding: 60px 5px 80px 5px; 
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
-  justify-items: center;
-  justify-content: center;
-`;
 
 export default function Home() {
     const currentUser = useContext(AuthContext);
-    // const userDocRef = doc(db, 'user', )
+    const [userNeighborhood, setUserNeighborhood] = useState('');
+
+    const getUserNeighborhood = async () => {
+        try {
+            const CurrentUserRef = doc(db, 'users', currentUser.uid);
+            const docSnapshot = await getDoc(CurrentUserRef);
+            setUserNeighborhood(docSnapshot.data()['neighborhood']);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    useEffect(() => {
+        getUserNeighborhood();
+    }, []);
 
     return (
         <div>
@@ -31,10 +35,10 @@ export default function Home() {
                 ( <MainHeader email={currentUser.email}/> )
                 :
                 ( <MainHeader email={null}/> )}
-            <HomeContainer>
+            <div className={"home-container"}>
                 <SearchBar />
                 <MainFeed/>
-            </HomeContainer>
+            </div>
             <Navbar/>
         </div>
     );

@@ -6,6 +6,7 @@ import UploadForm from "../components/UploadForm";
 import Navbar from "../components/Navbar"
 import MainHeader from "../components/Header";
 import {AuthContext} from "../components/AuthProvider";
+import FormComponent from "../components/UploadForm";
 
 const Container = styled.div`
   background-color: var(--light_green);
@@ -29,7 +30,7 @@ export default function Upload() {
             }
             <Container>
                 <header>Upload an Item</header>
-                <UploadForm/>
+                <FormComponent/>
             </Container>
             <Navbar/>
         </div>
