@@ -1,9 +1,7 @@
-import React, {useContext, useEffect, useState} from "react"
+import React, {useState} from "react"
 import "./SearchBar.css"
 import { Select, TreeSelect} from "antd";
-import {AuthContext} from "../AuthProvider";
 import {filterDatabase, NeighborhoodDict, sortTypes} from "../../assets/DataSets";
-import {getDocs} from "firebase/firestore";
 
 const { Option } = Select;
 
