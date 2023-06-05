@@ -42,6 +42,7 @@ export default function MainFeed() {
                             gender={product.gender}
                             image_url={product.image_url}
                             brand={product.brand}
+                            tokens={product.tokens}
                             size={product.size}
                             condition={product.condition}
                         />

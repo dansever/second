@@ -7,7 +7,6 @@ import {doc, getDoc} from "firebase/firestore";
 import {db} from "../../firebase";
 import {AuthContext} from "../AuthProvider";
 
-const { TreeNode } = TreeSelect;
 const { Option } = Select;
 
 const sort_types = ['name', 'price'];

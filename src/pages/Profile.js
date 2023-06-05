@@ -4,19 +4,28 @@ import "../styles/Profile.css"
 import "../styles/Index.css"
 import Navbar from "../components/Navbar";
 import { AuthContext } from '../components/AuthProvider';
-import {doc, getDoc} from "firebase/firestore";
-import {db} from "../firebase";
-import {Badge, Descriptions, Space, Tooltip} from 'antd';
-import {EditOutlined, SettingOutlined} from "@ant-design/icons";
+import {collection, doc, getDoc, setDoc, updateDoc} from "firebase/firestore";
+import {auth, db} from "../firebase";
+import {Button, Descriptions, Input, message, Modal, Tooltip, TreeSelect} from 'antd';
+import {SettingOutlined, WhatsAppOutlined} from "@ant-design/icons";
 import MyShopFeed from "../components/MyShopFeed";
+import {NeighberhoodDict} from "../assets/DataSets";
+import {createUserWithEmailAndPassword} from "firebase/auth";
 
 
 
 export default function MyProfile() {
     const currentUser = useContext(AuthContext);
-    const [userName, setUserName] = useState("");
+    const [userFirstName, setUserFirstName] = useState("");
     const [userNeighborhood, setUserNeighborhood] = useState("");
     const [userPhoneNumber, setUserPhoneNumber] = useState("");
+    const [editInfoModalVisible, setEditInfoModalVisible] = useState(false);
+
+    useEffect(() => {
+        const userId = currentUser.uid;
+        const UserRef = doc(db,'users',userId);
+        getUserData(UserRef);
+    }, []);
 
 
 
@@ -24,12 +33,9 @@ export default function MyProfile() {
         try {
             const docSnap = await getDoc(UserRef);
             if (docSnap.exists()) {
-                const first_name = docSnap.data().first_name;
-                const neighborhood = docSnap.data().neighborhood;
-                const phone_number = docSnap.data().phone_number;
-                setUserName(first_name);
-                setUserNeighborhood(neighborhood);
-                setUserPhoneNumber(phone_number);
+                setUserFirstName(docSnap.data().first_name);
+                setUserNeighborhood(docSnap.data().neighborhood);
+                setUserPhoneNumber(docSnap.data().phone_number);
             } else {
                 console.log("User document does not exist");
                 return null;
@@ -40,12 +46,35 @@ export default function MyProfile() {
         }
     }
 
-    useEffect(() => {
-        const userId = currentUser.uid;
-        const UserRef = doc(db,'users',userId);
-        getUserData(UserRef);
-    }, []);
+    const handleEditInfoModalOpen = () => {setEditInfoModalVisible(true);};
+    const handleEditInfoModalClose = () => {setEditInfoModalVisible(false);};
 
+    const handleNeighborhoodChange = (value, label) => {
+        setUserNeighborhood(value);
+    };
+
+    const handleUserInfoEdit  = async (e) => {
+        e.preventDefault();
+        try {
+            const userId = currentUser.uid;
+            const UserRef = doc(db,'users',userId);
+            const newData = {
+                first_name: userFirstName,
+                neighborhood: userNeighborhood,
+                phone_number: userPhoneNumber,
+            };
+            updateDoc(UserRef, newData)
+                .then( () => {
+                    console.log('User updated successfully');
+                    message.success(
+                        "User updated successfully", 2, () => {
+                            console.log('Pop-up closed');
+                        });
+                })
+        } catch (error) {
+            console.log('Something went wrong. Please try again.');
+        }
+    };
 
 
     return (
@@ -64,13 +93,15 @@ export default function MyProfile() {
                               column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
                               bordered
                               size={"small"}>
-                    <Descriptions.Item label="Name">{userName}</Descriptions.Item>
+                    <Descriptions.Item label="Name">{userFirstName}</Descriptions.Item>
                     <Descriptions.Item label="Neighborhood">{userNeighborhood}</Descriptions.Item>
                     <Descriptions.Item label="Phone number">{userPhoneNumber}</Descriptions.Item>
                 </Descriptions>
                 <div style={{ position: 'absolute', top: '20px', right: '20px'}}>
                     <Tooltip className={"info-edit-btn"} title="Edit Info">
-                        <SettingOutlined style={{ fontSize: '16px' }} />
+                        <SettingOutlined style={{ fontSize: '16px' }}
+                                         onClick={handleEditInfoModalOpen}
+                            />
                     </Tooltip>
                 </div>
             </div>
@@ -81,6 +112,43 @@ export default function MyProfile() {
             </div>
 
             <Navbar/>
+
+            {/*EDIT INFO MODAL*/}
+            <Modal title="Edit Personal Information"
+                   open={editInfoModalVisible}
+                   onCancel={handleEditInfoModalClose}
+                   footer={[]} // Empty array to hide buttons>
+            >
+                <div className={"edit-info-modal"}>
+                    <form onSubmit={ handleUserInfoEdit }>
+
+                        <Input
+                            type="text" value={userFirstName} placeholder={userFirstName}
+                            onChange={(e) => setUserFirstName(e.target.value)}
+                        />
+
+                        <TreeSelect
+                            treeData = {NeighberhoodDict}
+                            value={userNeighborhood}
+                            placeholder={"Enter Neighborhood"}
+                            onChange={handleNeighborhoodChange}
+                        />
+
+                        <Input
+                            type="text"
+                            value={userPhoneNumber}
+                            placeholder={userPhoneNumber}
+                            onChange={(e) => setUserPhoneNumber(e.target.value)}
+                        />
+
+                        <button className={"update-button"} type="submit">
+                            Update Information
+                        </button>
+                    </form>
+                </div>
+            </Modal>
+
         </div>
     );
 }
+

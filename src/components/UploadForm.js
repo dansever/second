@@ -7,15 +7,11 @@ import {ButtonStyle} from "./Buttons/Button";
 import {getDocs, collection, addDoc, doc, updateDoc, arrayUnion} from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import {Select, Form} from 'antd';
+import {conditionOptions, genderOptions, sizeOptions, typeOptions} from "../assets/DataSets";
 
 const { Option } = Select;
 
-const typeOptions =
-    ['Hat', 'Shirt', 'Shoes', 'Top', 'Pants',
-    'Dress', 'Skirt', 'Swimwear'];
-const sizeOptions = ['XS', 'S', 'M', 'L', 'XL', 'One Size'];
-const genderOptions = ['Female', 'Male', 'Unisex'];
-const conditionOptions = ['Old', 'Worn', 'Good', 'As New', 'New'];
+
 
 
 function App() {

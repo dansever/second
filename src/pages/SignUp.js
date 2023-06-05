@@ -5,6 +5,7 @@ import {auth, db} from "../firebase"
 import {createUserWithEmailAndPassword} from "firebase/auth"
 import {Input, message, TreeSelect} from "antd";
 import {setDoc, collection, doc, arrayUnion} from "firebase/firestore";
+import { NeighberhoodDict } from "../assets/DataSets"
 
 const Neighborhood = ['Rehavia', 'Nahlaot', 'City Central',
     'Talbia', 'Katamon', 'Beit HaKerem', 'Pisgat Zeev',
@@ -42,7 +43,7 @@ export const SignUp = () => {
             const newUserRef = doc(usersCollectionRef,
                 newUserCredentials.user.uid);
             const data = {
-                userId: newUserCredentials.user.uid,
+                // userId: newUserCredentials.user.uid,
                 first_name: name,
                 neighborhood: neighborhood,
                 coins: 20,
@@ -80,28 +81,7 @@ export const SignUp = () => {
                     onChange={(e) => setName(e.target.value)}/>
 
                 <TreeSelect
-                    treeData={[
-                        {
-                            value: 'jerusalem',label: 'Jerusalem',
-                            children: [
-                                { value: 'rehavia',         label: 'Rehavia',},
-                                { value: 'nahlaot',         label: 'Nahlaot',},
-                                { value: 'city_central',    label: 'City Central',},
-                                { value: 'talbia',          label: 'Talbia',},
-                                { value: 'katamon',         label: 'Katamon',},
-                            ],
-                        },
-                        {
-                            value: 'tel_aviv', label: 'Tel Aviv',
-                            children: [
-                                { value: 'old_north', label: 'Old North' },
-                                { value: 'new_north', label: 'New North' },
-                                { value: 'lev_hair',  label: 'Lev Ha`ir' },
-                                { value: 'jaffo',     label: 'Jaffo'},
-                                { value: 'florentin', label: 'Florentin'},
-                                ]
-                        },
-                    ]}
+                    treeData = {NeighberhoodDict}
                     value={neighborhood}
                     placeholder={"Enter Neighborhood"}
                     onChange={handleNeighborhoodChange}
