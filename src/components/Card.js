@@ -182,24 +182,24 @@ export function MyItemCard (product) {
 
     const handleItemInfoEdit = async (e) => {
         e.preventDefault();
-        try {
-            const UserRef = doc(db,'users',userId);
-            const newData = {
-                first_name: userFirstName,
-                neighborhood: userNeighborhood,
-                phone_number: userPhoneNumber,
-            };
-            updateDoc(UserRef, newData)
-                .then( () => {
-                    console.log('User updated successfully');
-                    message.success(
-                        "User updated successfully", 2, () => {
-                            console.log('Pop-up closed');
-                        });
-                })
-        } catch (error) {
-            console.log('Something went wrong. Please try again.');
-        }
+        // try {
+        //     const UserRef = doc(db,'users',userId);
+        //     const newData = {
+        //         first_name: userFirstName,
+        //         neighborhood: userNeighborhood,
+        //         phone_number: userPhoneNumber,
+        //     };
+        //     updateDoc(UserRef, newData)
+        //         .then( () => {
+        //             console.log('User updated successfully');
+        //             message.success(
+        //                 "User updated successfully", 2, () => {
+        //                     console.log('Pop-up closed');
+        //                 });
+        //         })
+        // } catch (error) {
+        //     console.log('Something went wrong. Please try again.');
+        // }
     };
 
     const handleSizeChange      = (value) => { setSize(value); };
