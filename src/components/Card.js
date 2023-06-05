@@ -270,7 +270,7 @@ export function MyItemCard (product) {
                         </Form.Item>
 
                         <Form.Item
-                            style={{marginBottom: "0px"}}>
+                            style={{marginBottom: "0"}}>
                             <Select
                                 value={size} placeholder={size ? {size} : "size"}
                                 allowClear="true"
@@ -282,7 +282,7 @@ export function MyItemCard (product) {
                         </Form.Item>
 
                         <Form.Item
-                            style={{marginBottom:"0px"}}>
+                            style={{marginBottom:"0"}}>
                             <Select
                                 value={gender} placeholder={gender ? {gender} : "gender"}
                                 allowClear="true"
@@ -294,7 +294,7 @@ export function MyItemCard (product) {
                         </Form.Item>
 
                         <Form.Item
-                            style={{marginBottom:"0px"}}>
+                            style={{marginBottom:"0"}}>
                             <Select
                                 value={condition} placeholder={condition ? {condition} : "condition"}
                                 allowClear="true"

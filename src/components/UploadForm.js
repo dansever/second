@@ -188,7 +188,7 @@ function App() {
                 <div className={"form-row"}>
                     <label>Type</label>
                     <Form.Item
-                    style={{marginBottom:"0px"}}>
+                    style={{marginBottom:"0"}}>
                         <Select
                             value={newType}
                             placeholder="Select type..."
@@ -207,7 +207,7 @@ function App() {
                 <div className={"form-row"}>
                     <label>Size</label>
                     <Form.Item
-                        style={{marginBottom:"0px"}}>
+                        style={{marginBottom:"0"}}>
                         <Select
                             value={newSize}
                             placeholder="Select size..."
@@ -226,7 +226,7 @@ function App() {
                 <div className={"form-row"}>
                     <label>Gender</label>
                     <Form.Item
-                        style={{marginBottom:"0px"}}>
+                        style={{marginBottom:"0"}}>
                         <Select
                             value={newGender}
                             placeholder="Select gender..."
@@ -245,7 +245,7 @@ function App() {
                 <div className={"form-row"}>
                     <label>Condition</label>
                     <Form.Item
-                        style={{marginBottom:"0px"}}>
+                        style={{marginBottom:"0"}}>
                         <Select
                             value={newCondition}
                             placeholder="Select condition..."
