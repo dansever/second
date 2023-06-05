@@ -1,4 +1,4 @@
-export const NeighberhoodDict = [
+export const NeighborhoodDict = [
     {
         value: 'jerusalem',label: 'Jerusalem',
         children: [
@@ -12,7 +12,6 @@ export const NeighberhoodDict = [
             { value: 'pisgat_zeev',     label: 'Pisgat Zeev',},
             { value: 'kiryat_yuvel',    label: 'Kiryat Yuvel',},
             { value: 'malha',           label: 'Malha',},
-
         ],
     },
     {
@@ -32,9 +31,31 @@ export const NeighborhoodList = ['Rehavia', 'Nahlaot', 'City Central',
     'Ramot', 'The French Hill', 'Kiryat Yuvel', 'Kiryat Moshe',
     'Malha', 'Kiryat Menahem'];
 
-export const typeOptions =
-    ['Hat', 'Shirt', 'Shoes', 'Top', 'Pants',
-        'Dress', 'Skirt', 'Swimwear'];
+export const filterDatabase = [
+    {
+        title: 'Size', value: 'size',
+        children: [
+            { title: 'XS',      value: 'xs' },
+            { title: 'S',       value: 's' },
+            { title: 'M',       value: 'm' },
+            { title: 'L',       value: 'l' },
+            { title: 'XL',      value: 'xl' },
+            { title: 'One Size',value: 'one_size' },
+        ],
+    },
+    {
+        title: 'Gender', value: 'gender',
+        children: [
+            { title: 'Male',    value: 'male' },
+            { title: 'Female',  value: 'female' },
+            { title: 'Unisex',  value: 'unisex' },
+        ],
+    },
+];
+
+export const sortTypes = ['name', 'price'];
+export const typeOptions = ['Hat', 'Shirt', 'Shoes', 'Top', 'Pants',
+    'Dress', 'Skirt', 'Swimwear'];
 export const sizeOptions = ['XS', 'S', 'M', 'L', 'XL', 'One Size'];
 export const genderOptions = ['Female', 'Male', 'Unisex'];
 export const conditionOptions = ['Old', 'Worn', 'Good', 'As New', 'New'];

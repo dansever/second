@@ -258,6 +258,7 @@ export function MyItemCard (product) {
                             style={{marginBottom: "0px"}}>
                             <Select
                                 value={type} placeholder={type ? {type} : "type"}
+                                allowClear="true"
                                 onChange={handleTypeChange} style={{width: '200px',}}>
                                 {typeOptions.map((type_) => (
                                     <Option key={type_} value={type_}>
@@ -271,6 +272,7 @@ export function MyItemCard (product) {
                             style={{marginBottom: "0px"}}>
                             <Select
                                 value={size} placeholder={size ? {size} : "size"}
+                                allowClear="true"
                                 onChange={handleSizeChange}
                                 style={{width: '200px'}}>
                                 {sizeOptions.map((size) => (
@@ -282,6 +284,7 @@ export function MyItemCard (product) {
                             style={{marginBottom:"0px"}}>
                             <Select
                                 value={gender} placeholder={gender ? {gender} : "gender"}
+                                allowClear="true"
                                 onChange={handleGenderChange}
                                 style = {{width: '200px'}}>
                                 {genderOptions.map((gender) => (
@@ -293,6 +296,7 @@ export function MyItemCard (product) {
                             style={{marginBottom:"0px"}}>
                             <Select
                                 value={condition} placeholder={condition ? {condition} : "condition"}
+                                allowClear="true"
                                 onChange={handleConditionChange}
                                 style = {{width: '200px'}}>
                                 {conditionOptions.map((condition) => (

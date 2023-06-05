@@ -3,7 +3,6 @@ import "../styles/Index.css"
 import MainFeed from "../components/MainFeed"
 import SearchBar from "../components/SearchBar/SearchBar";
 import Navbar from "../components/Navbar"
-import styled from "styled-components";
 import MainHeader from "../components/Header";
 import { AuthContext } from '../components/AuthProvider';
 import LikedFeed from "../components/LikedFeed"

@@ -4,15 +4,12 @@ import "../styles/Profile.css"
 import "../styles/Index.css"
 import Navbar from "../components/Navbar";
 import { AuthContext } from '../components/AuthProvider';
-import {collection, doc, getDoc, setDoc, updateDoc} from "firebase/firestore";
-import {auth, db} from "../firebase";
-import {Button, Descriptions, Input, message, Modal, Tooltip, TreeSelect} from 'antd';
-import {SettingOutlined, WhatsAppOutlined} from "@ant-design/icons";
+import { doc, getDoc, updateDoc} from "firebase/firestore";
+import { db} from "../firebase";
+import { Descriptions, Input, message, Modal, Tooltip, TreeSelect} from 'antd';
+import {SettingOutlined} from "@ant-design/icons";
 import MyShopFeed from "../components/MyShopFeed";
-import {NeighberhoodDict} from "../assets/DataSets";
-import {createUserWithEmailAndPassword} from "firebase/auth";
-
-
+import {NeighborhoodDict} from "../assets/DataSets";
 
 export default function MyProfile() {
     const currentUser = useContext(AuthContext);
@@ -128,7 +125,7 @@ export default function MyProfile() {
                         />
 
                         <TreeSelect
-                            treeData = {NeighberhoodDict}
+                            treeData = {NeighborhoodDict}
                             value={userNeighborhood}
                             placeholder={"Enter Neighborhood"}
                             onChange={handleNeighborhoodChange}

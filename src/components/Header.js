@@ -1,15 +1,13 @@
-import React, {useContext} from "react";
-import {Link, useNavigate} from 'react-router-dom';
+import React from "react";
+import { useNavigate} from 'react-router-dom';
 import "../styles/Index.css";
 import styled from "styled-components";
 import second_logo from "../assets/Second_logo.png";
-import {ArrowLeftOutlined, CheckCircleOutlined, ExclamationCircleOutlined} from "@ant-design/icons";
+import {ArrowLeftOutlined} from "@ant-design/icons";
 import Colors from "../color";
 import { DownOutlined } from '@ant-design/icons';
-import { Dropdown, Space } from 'antd';
-import {getAuth} from "firebase/auth";
+import { Dropdown} from 'antd';
 import {auth} from "../firebase";
-import {AuthContext} from "./AuthProvider";
 
 
 const HeaderContainer = styled.div`
@@ -84,31 +82,6 @@ export default function MainHeader(props) {
                     </p>
                 </a>
             </Dropdown>
-            {/*{props.email ? (*/}
-            {/*    <p*/}
-            {/*        style={{color: Colors.dark_green,*/}
-            {/*            display: "flex",*/}
-            {/*            flexDirection:"row",*/}
-            {/*            columnGap:"5px",*/}
-            {/*            fontSize:"12px",*/}
-            {/*            alignItems:"center"*/}
-            {/*        }}>*/}
-            {/*        <CheckCircleOutlined style={{scale:"150%"}} />*/}
-            {/*        {props.email}*/}
-            {/*    </p>*/}
-            {/*) : (*/}
-            {/*    <p*/}
-            {/*        style={{color: "darkred",*/}
-            {/*            display: "flex",*/}
-            {/*            flexDirection:"row",*/}
-            {/*            columnGap:"5px",*/}
-            {/*            fontSize:"12px",*/}
-            {/*            alignItems:"center"*/}
-            {/*        }}>*/}
-            {/*        <ExclamationCircleOutlined style={{scale:"150%"}} />*/}
-            {/*        Not signed in*/}
-            {/*    </p>*/}
-            {/*)}*/}
         </HeaderContainer>
     );
 };

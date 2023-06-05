@@ -4,8 +4,8 @@ import "../styles/SingUp.css"
 import {auth, db} from "../firebase"
 import {createUserWithEmailAndPassword} from "firebase/auth"
 import {Input, message, TreeSelect} from "antd";
-import {setDoc, collection, doc, arrayUnion} from "firebase/firestore";
-import { NeighberhoodDict } from "../assets/DataSets"
+import {setDoc, collection, doc} from "firebase/firestore";
+import { NeighborhoodDict } from "../assets/DataSets"
 
 const Neighborhood = ['Rehavia', 'Nahlaot', 'City Central',
     'Talbia', 'Katamon', 'Beit HaKerem', 'Pisgat Zeev',
@@ -81,7 +81,7 @@ export const SignUp = () => {
                     onChange={(e) => setName(e.target.value)}/>
 
                 <TreeSelect
-                    treeData = {NeighberhoodDict}
+                    treeData = {NeighborhoodDict}
                     value={neighborhood}
                     placeholder={"Enter Neighborhood"}
                     onChange={handleNeighborhoodChange}
