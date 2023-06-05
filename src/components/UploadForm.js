@@ -4,7 +4,7 @@ import '../styles/Upload.css';
 import { db, storage } from "../firebase";
 import { AuthContext } from './AuthProvider';
 import {ButtonStyle} from "./Buttons/Button";
-import { getDocs, collection, addDoc} from "firebase/firestore";
+import {getDocs, collection, addDoc, doc, updateDoc, arrayUnion} from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import {Select, Form} from 'antd';
 
@@ -35,6 +35,7 @@ function App() {
 
     // User States
     const currentUser = useContext(AuthContext);
+    const [userId, setUserId] = useState("");
 
     const productsCollectionRef = collection(db, "products");
 
@@ -50,7 +51,15 @@ function App() {
         }
     };
 
-    useEffect(() => { getProductList(); }, []);
+    useEffect(() => {
+        setUserId(currentUser.uid);
+        console.log("new user id: " + userId);
+        }, [currentUser]);
+
+    useEffect(() => {
+        getProductList();
+        }, []);
+
     const handleSizeChange      = (value) => { setNewSize(value); };
     const handleTypeChange      = (value) => { setNewType(value); };
     const handleGenderChange    = (value) => { setNewGender(value); };
@@ -65,10 +74,7 @@ function App() {
             const uploadTask = uploadBytesResumable(storageRef, file);
             uploadTask.on('state_changed',
                 (snapshot) => {
-                    // Observe state change events such as progress, pause, and resume
-                    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    console.log('Upload is ' + progress + '% done');
                     switch (snapshot.state) {
                         case 'paused':
                             console.log('Upload is paused');
@@ -77,6 +83,7 @@ function App() {
                             console.log('Upload is running');
                             break;
                     }
+                    console.log('Upload is ' + progress + '% done');
                 },
                 (error) => {
                 },
@@ -93,9 +100,9 @@ function App() {
     };
 
 
-    const saveFormData = (downloadURL) => {
+    const saveFormData = async (downloadURL) => {
         try {
-            addDoc(productsCollectionRef, {
+            const docRef = await addDoc(productsCollectionRef, {
                 title: newTitle,
                 type: newType,
                 size: newSize,
@@ -106,6 +113,12 @@ function App() {
                 seller_uid: currentUser.uid,
                 tokens: newPrice,
             });
+            const newDocumentId = docRef.id;
+            console.log("New document ID:", newDocumentId);
+            await updateDoc( doc(db,'users',userId), {
+                uploaded_items: arrayUnion(newDocumentId)
+            });
+
             setNewTitle("");
             setNewType("");
             setNewSize("");

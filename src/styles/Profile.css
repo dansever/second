@@ -1,14 +1,27 @@
-.info-container {
-    padding: 0 5px 80px 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.personal-info-table{
+    padding: 10px 10px 0 10px;
 }
 
-#personal-info {
-
+.personal-info-table .ant-descriptions-item-label {
+    font-weight: bold;
+    font-family: 'Lora', serif;
+    font-size: 16px;
 }
 
-#product-info {
+.personal-info-table .ant-descriptions-item-content {
+    font-family: 'Lora', serif;
+    font-size: 16px;
+}
 
+.info-edit-btn {
+    scale: 150%;
+}
+.info-edit-btn:hover {
+    scale: 160%;
+    cursor: pointer;
+    color: var(--dark_green);
+}
+
+.feed-container {
+    padding-bottom: 100px;
 }

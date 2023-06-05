@@ -4,7 +4,7 @@ import "../styles/SingUp.css"
 import {auth, db} from "../firebase"
 import {createUserWithEmailAndPassword} from "firebase/auth"
 import {Input, message, TreeSelect} from "antd";
-import { setDoc, collection, doc} from "firebase/firestore";
+import {setDoc, collection, doc, arrayUnion} from "firebase/firestore";
 
 const Neighborhood = ['Rehavia', 'Nahlaot', 'City Central',
     'Talbia', 'Katamon', 'Beit HaKerem', 'Pisgat Zeev',
@@ -47,7 +47,7 @@ export const SignUp = () => {
                 neighborhood: neighborhood,
                 coins: 20,
                 phone_number: phoneNumber,
-                shop_items: [],
+                uploaded_items: [],
                 liked_items: [],
             };
 
