@@ -10,7 +10,7 @@ import {AuthContext} from "../AuthProvider";
 const { TreeNode } = TreeSelect;
 const { Option } = Select;
 
-const sort_types = ['by name', 'by price'];
+const sort_types = ['name', 'price'];
 
 const neighborhoodDatabase = [
     {
@@ -85,7 +85,7 @@ export default function SearchBar() {
                 showCheckedStrategy="SHOW_CHILD"
                 placeholder="Neighborhood"
                 onChange={handleNeighborhoodFilterChange}
-                style={{ width: '43vw' }}
+                style={{ width: '35vw' }}
             />
 
             <TreeSelect
@@ -95,14 +95,14 @@ export default function SearchBar() {
                 showCheckedStrategy="SHOW_CHILD"
                 placeholder="Filter by"
                 onChange={handleNeighborhoodFilterChange}
-                style={{ width: '30vw' }}
+                style={{ width: '35vw' }}
             />
 
             <Select
-                placeholder="Sort"
+                placeholder="Sort by"
                 onChange={handleSortChange}
                 allowClear="true"
-                style = {{width:'20vw'}}>
+                style = {{width:'25vw'}}>
                 >
                 {sort_types.map((type_) => (
                     <Option key={type_} value={type_}>

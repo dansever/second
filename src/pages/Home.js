@@ -4,7 +4,6 @@ import "../styles/Home.css"
 import MainFeed from "../components/MainFeed"
 import SearchBar from "../components/SearchBar/SearchBar";
 import Navbar from "../components/Navbar"
-import styled from "styled-components";
 import MainHeader from "../components/Header";
 import { AuthContext } from '../components/AuthProvider';
 import {doc, getDoc} from "firebase/firestore";
@@ -35,6 +34,7 @@ export default function Home() {
                 ( <MainHeader email={currentUser.email}/> )
                 :
                 ( <MainHeader email={null}/> )}
+
             <div className={"home-container"}>
                 <SearchBar />
                 <MainFeed/>

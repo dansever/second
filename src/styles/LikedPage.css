@@ -1,0 +1,12 @@
+.liked-page-container {
+    background-color: var(--light_green);
+    width: 100%;
+    padding: 60px 5px 80px 5px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}

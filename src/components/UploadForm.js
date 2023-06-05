@@ -134,6 +134,7 @@ function App() {
 
                 <div className={"form-row"}>
                     <input
+                        className={"upload-file-button"}
                         id="fileInput"
                         type="file"
                         accept="image/" // Specify the accepted file types --> images
