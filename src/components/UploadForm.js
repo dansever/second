@@ -81,6 +81,7 @@ function App() {
                     console.log('Upload is ' + progress + '% done');
                 },
                 (error) => {
+                    console.log("Error occured during upload");
                 },
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref)

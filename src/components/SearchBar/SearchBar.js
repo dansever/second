@@ -1,15 +1,15 @@
-import React, {useContext, useState} from "react"
+import React, {useContext, useEffect, useState} from "react"
 import "./SearchBar.css"
 import { Select, TreeSelect} from "antd";
 import {AuthContext} from "../AuthProvider";
 import {filterDatabase, NeighborhoodDict, sortTypes} from "../../assets/DataSets";
+import {getDocs} from "firebase/firestore";
 
 const { Option } = Select;
 
 export default function SearchBar() {
     const [neighborhoods, setNeighborhoods] = useState([])
     const [sortBy, setSortBy] = useState('')
-    const currentUser = useContext(AuthContext);
 
     const handleNeighborhoodFilterChange = (selectedValues) => {
         setNeighborhoods(selectedValues);
@@ -24,6 +24,7 @@ export default function SearchBar() {
             <TreeSelect
                 treeData = {NeighborhoodDict}
                 treeCheckable
+                defaultValue={neighborhoods}
                 allowClear="true"
                 showCheckedStrategy="SHOW_CHILD"
                 placeholder="Neighborhood"

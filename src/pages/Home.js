@@ -11,22 +11,9 @@ import {db} from "../firebase";
 
 
 export default function Home() {
-    const currentUser = useContext(AuthContext);
     const [userNeighborhood, setUserNeighborhood] = useState('');
-
-    const getUserNeighborhood = async () => {
-        try {
-            const CurrentUserRef = doc(db, 'users', currentUser.uid);
-            const docSnapshot = await getDoc(CurrentUserRef);
-            setUserNeighborhood(docSnapshot.data()['neighborhood']);
-        } catch (err) {
-            console.error(err);
-        }
-    };
-
-    useEffect(() => {
-        getUserNeighborhood();
-    }, []);
+    const currentUser = useContext(AuthContext);
+    const CurrentUserRef = doc(db, 'users', currentUser.uid);
 
     return (
         <div>
@@ -36,7 +23,7 @@ export default function Home() {
                 ( <MainHeader email={null}/> )}
 
             <div className={"home-container"}>
-                <SearchBar />
+                <SearchBar defaultNeighborhood={userNeighborhood} />
                 <MainFeed/>
             </div>
             <Navbar/>

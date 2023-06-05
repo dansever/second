@@ -63,10 +63,11 @@ export default function ProductCard(product) {
         }
     };
 
+    /**
     useEffect(() => {
-        getSellerPhoneNumber();
+        // getSellerPhoneNumber();
     }, [product]);
-
+    **/
 
     return (
         <>

@@ -97,4 +97,4 @@ export function SecondaryHeader() {
                      style={{width:"100px", height:"80px"}}/>
         </HeaderContainer>
     );
-};
+}
