@@ -6,6 +6,11 @@ import Navbar from "../components/Navbar";
 import { AuthContext } from '../components/AuthProvider';
 import {doc, getDoc} from "firebase/firestore";
 import {db} from "../firebase";
+import {Badge, Descriptions, Space, Tooltip} from 'antd';
+import {EditOutlined, SettingOutlined} from "@ant-design/icons";
+import MyShopFeed from "../components/MyShopFeed";
+
+
 
 export default function MyProfile() {
     const currentUser = useContext(AuthContext);
@@ -50,20 +55,31 @@ export default function MyProfile() {
                 :
                 ( <MainHeader email={null}/> )
             }
+
             <header className={"page_header"}>My Profile</header>
-            <div className={"info-container"}>
-                <div id={"personal-info"}>
-                    <h3>Name: {userName}</h3>
-                    <h3>Neighborhood: {userNeighborhood}</h3>
-                    <h3>Phone number: {userPhoneNumber}</h3>
 
-
-                </div>
-                <div id={"product-info"}>
-                    <h4>liked items: 4</h4>
-
+            <div style={{ position: 'relative' }}>
+                <Descriptions className="personal-info-table"
+                              layout="horizontal"
+                              column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                              bordered
+                              size={"small"}>
+                    <Descriptions.Item label="Name">{userName}</Descriptions.Item>
+                    <Descriptions.Item label="Neighborhood">{userNeighborhood}</Descriptions.Item>
+                    <Descriptions.Item label="Phone number">{userPhoneNumber}</Descriptions.Item>
+                </Descriptions>
+                <div style={{ position: 'absolute', top: '20px', right: '20px'}}>
+                    <Tooltip className={"info-edit-btn"} title="Edit Info">
+                        <SettingOutlined style={{ fontSize: '16px' }} />
+                    </Tooltip>
                 </div>
             </div>
+
+            <div className={"feed-container"}>
+                <h2 >Uploaded Items</h2>
+                <MyShopFeed/>
+            </div>
+
             <Navbar/>
         </div>
     );
