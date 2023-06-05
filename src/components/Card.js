@@ -1,13 +1,15 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {EditOutlined, HeartFilled, HeartOutlined, WhatsAppOutlined} from "@ant-design/icons";
-import {Button, Modal, Space, Tooltip} from "antd";
+import {Button, Form, Modal, Select, Tooltip} from "antd";
 import Card from '@mui/material/Card';
 import "../styles/Card.css"
 import {AuthContext} from "./AuthProvider";
 import {db} from "../firebase";
-import {doc, updateDoc, arrayUnion, arrayRemove, getDocs, getDoc} from "firebase/firestore";
+import {doc, updateDoc, arrayUnion, arrayRemove, getDoc} from "firebase/firestore";
 import Colors from "../color";
-import {ref} from "firebase/storage";
+import {conditionOptions, genderOptions, sizeOptions, typeOptions} from "../assets/DataSets";
+
+const { Option } = Select;
 
 
 export default function ProductCard(product) {
@@ -80,7 +82,7 @@ export default function ProductCard(product) {
                     <div className={"left-side"}
                          onClick={handleModalOpen}>
                         <p>Size: {product.size}</p>
-                        <p>Price: {product.price}</p>
+                        <p>Price: {product.tokens}</p>
                     </div>
 
                     <div className={"right-side"}>
@@ -98,7 +100,8 @@ export default function ProductCard(product) {
             </Card>
 
             {/*MAIN MODAL*/}
-            <Modal className={"custom-modal"} open={modalVisible}
+            <Modal className={"custom-modal"}
+                   open={modalVisible}
                    onCancel={handleModalClose}
                    footer={[]} // Empty array to hide buttons>
                 >
@@ -111,7 +114,7 @@ export default function ProductCard(product) {
                          alt={product.alt}/>
                 </div>
                 <p>Type: {product.type}</p>
-                <p>Price: {product.price}</p>
+                <p>Price: {product.tokens}</p>
                 <p>Brand: {product.brand}</p>
                 <p>Gender: {product.gender}</p>
                 <p>Size: {product.size}</p>
@@ -149,7 +152,19 @@ export default function ProductCard(product) {
 style={{scale: "140%", color: "green" }}/>Chat for more details or claiming product
 </Button>
 
+
+
 export function MyItemCard (product) {
+    const [title, setTitle] = useState(product.title);
+    const [type, setType] = useState(product.type);
+    const [size, setSize] = useState(product.size);
+    const [brand, setBrand] = useState(product.brand);
+    const [condition, setCondition] = useState(product.condition);
+    const [gender, setGender] = useState(product.gender);
+    const [tokens, setTokens] = useState(product.tokens);
+
+    const [editItemModalVisible, setEditItemModalVisible] = useState(false);
+
 
     const cardStyle = {
         borderRadius: '20px',
@@ -157,26 +172,136 @@ export function MyItemCard (product) {
         position: 'relative'
     };
 
+    const handleEditItemModalOpen = () => {
+        setEditItemModalVisible(true);
+    };
+    const handleEditItemModalClose = () => {
+        setEditItemModalVisible(false);
+    };
+
+
+    const handleItemInfoEdit = async (e) => {
+        e.preventDefault();
+        // try {
+        //     const UserRef = doc(db,'users',userId);
+        //     const newData = {
+        //         first_name: userFirstName,
+        //         neighborhood: userNeighborhood,
+        //         phone_number: userPhoneNumber,
+        //     };
+        //     updateDoc(UserRef, newData)
+        //         .then( () => {
+        //             console.log('User updated successfully');
+        //             message.success(
+        //                 "User updated successfully", 2, () => {
+        //                     console.log('Pop-up closed');
+        //                 });
+        //         })
+        // } catch (error) {
+        //     console.log('Something went wrong. Please try again.');
+        // }
+    };
+
+    const handleSizeChange      = (value) => { setSize(value); };
+    const handleTypeChange      = (value) => { setType(value); };
+    const handleGenderChange    = (value) => { setGender(value); };
+    const handleConditionChange = (value) => { setCondition(value); };
 
     return (
-        <>
-            <Card style={cardStyle}>
-                <div className={"img-box"}>
-                    <img src={product.image_url}
-                         alt={product.alt}/>
+        <Card style={cardStyle}>
+            <div className={"img-box"}>
+                <img src={product.image_url}
+                     alt={product.alt}/>
+            </div>
+            <div style={{position: 'absolute', top: '20px', right: '20px'}}>
+                <Tooltip title="Edit Item">
+                    <Button shape="circle"
+                            style={{scale: "140%", border: "1px solid black", boxShadow: "2px 2px 2px 0 black"}}
+                            onClick={handleEditItemModalOpen}>
+                        <EditOutlined/>
+                    </Button>
+                </Tooltip>
+            </div>
+
+            <div className={"content-box"}>
+                <p>{title}</p>
+            </div>
+
+            {/*EDIT INFO MODAL*/}
+            <Modal title="Edit Item Information"
+                   open={editItemModalVisible}
+                   onCancel={handleEditItemModalClose}
+                   footer={[]} // Empty array to hide buttons>
+            >
+                <div className={"edit-info-modal"}>
+                    <form onSubmit={handleItemInfoEdit}>
+
+                        <input value={title} placeholder={title ? {title} : "title"}
+                               type="text" onChange={(e) => setTitle(e.target.value)}
+                        />
+                        <input value={brand} placeholder={brand ? {brand} : "brand"}
+                               type="text" onChange={(e) => setBrand(e.target.value)}
+                        />
+
+                        <input value={tokens} placeholder={tokens ? {tokens} : "tokens"}
+                               type="number" min={0} max={10}
+                               onChange={(e) => setTokens(e.target.value)}
+                        />
+
+                        <Form.Item
+                            style={{marginBottom: "0px"}}>
+                            <Select
+                                value={type} placeholder={type ? {type} : "type"}
+                                onChange={handleTypeChange} style={{width: '200px',}}>
+                                {typeOptions.map((type_) => (
+                                    <Option key={type_} value={type_}>
+                                        {type_}
+                                    </Option>
+                                ))}
+                            </Select>
+                        </Form.Item>
+
+                        <Form.Item
+                            style={{marginBottom: "0px"}}>
+                            <Select
+                                value={size} placeholder={size ? {size} : "size"}
+                                onChange={handleSizeChange}
+                                style={{width: '200px'}}>
+                                {sizeOptions.map((size) => (
+                                    <Option key={size} value={size}>{size}</Option>))}
+                            </Select>
+                        </Form.Item>
+
+                        <Form.Item
+                            style={{marginBottom:"0px"}}>
+                            <Select
+                                value={gender} placeholder={gender ? {gender} : "gender"}
+                                onChange={handleGenderChange}
+                                style = {{width: '200px'}}>
+                                {genderOptions.map((gender) => (
+                                    <Option key={gender} value={gender}>{gender}</Option>))}
+                            </Select>
+                        </Form.Item>
+
+                        <Form.Item
+                            style={{marginBottom:"0px"}}>
+                            <Select
+                                value={condition} placeholder={condition ? {condition} : "condition"}
+                                onChange={handleConditionChange}
+                                style = {{width: '200px'}}>
+                                {conditionOptions.map((condition) => (
+                                    <Option key={condition} value={condition}>{condition}</Option>))}
+                            </Select>
+                        </Form.Item>
+
+
+                        <button className={"update-button"} type="submit">
+                            Update Item Information
+                        </button>
+                    </form>
                 </div>
-                <div style={{ position: 'absolute', top: '20px', right: '20px'}}>
-                    <Tooltip title="Edit Item">
-                        <Button shape="circle"
-                                style={{scale:"140%",
-                                    border:"1px solid black",
-                                    boxShadow: "2px 2px 2px 0 black"}}>
-                            <EditOutlined/>
-                        </Button>
-                    </Tooltip>
-                </div>
-                <h3>nice black shirt</h3>
-            </Card>
-        </>
+            </Modal>
+
+        </Card>
     );
 }
