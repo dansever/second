@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {EditOutlined, HeartFilled, HeartOutlined, WhatsAppOutlined} from "@ant-design/icons";
-import {Button, Form, Modal, Select, Tooltip} from "antd";
+import {Button, Form, message, Modal, Select, Tooltip} from "antd";
 import Card from '@mui/material/Card';
 import "../styles/Card.css"
 import {AuthContext} from "./AuthProvider";
@@ -53,19 +53,19 @@ export default function ProductCard(product) {
     const handleWhatsappModalOpen = () => {setWhatsappModalVisible(true);};
     const handleWhatsappModalClose = () => {setWhatsappModalVisible(false);};
 
+    const getSellerPhoneNumber = async () => {
+        try {
+            const SellerUserRef = doc(db, 'users', product.seller_uid);
+            const docSnapshot = await getDoc(SellerUserRef);
+            setSellerPhoneNumber(docSnapshot.data()['phone_number']);
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     useEffect(() => {
-        const getSellerPhoneNumber = async () => {
-            try {
-                const SellerUserRef = doc(db, 'users', product.seller_uid);
-                const docSnapshot = await getDoc(SellerUserRef);
-                setSellerPhoneNumber(docSnapshot.data()['phone_number']);
-            } catch (err) {
-                console.error(err);
-            }
-        };
         getSellerPhoneNumber();
-    }, []);
+    }, [product]);
 
 
     return (
@@ -162,6 +162,8 @@ export function MyItemCard (product) {
     const [condition, setCondition] = useState(product.condition);
     const [gender, setGender] = useState(product.gender);
     const [tokens, setTokens] = useState(product.tokens);
+    const [productId, setProductId] = useState(product.product_id);
+
 
     const [editItemModalVisible, setEditItemModalVisible] = useState(false);
 
@@ -182,24 +184,28 @@ export function MyItemCard (product) {
 
     const handleItemInfoEdit = async (e) => {
         e.preventDefault();
-        // try {
-        //     const UserRef = doc(db,'users',userId);
-        //     const newData = {
-        //         first_name: userFirstName,
-        //         neighborhood: userNeighborhood,
-        //         phone_number: userPhoneNumber,
-        //     };
-        //     updateDoc(UserRef, newData)
-        //         .then( () => {
-        //             console.log('User updated successfully');
-        //             message.success(
-        //                 "User updated successfully", 2, () => {
-        //                     console.log('Pop-up closed');
-        //                 });
-        //         })
-        // } catch (error) {
-        //     console.log('Something went wrong. Please try again.');
-        // }
+        try {
+            const productRef = doc(db,'products',productId);
+            const newData = {
+                title: title,
+                type: type,
+                size: size,
+                brand: brand,
+                condition: condition,
+                gender: gender,
+                tokens: tokens,
+            };
+            updateDoc(productRef, newData)
+                .then( () => {
+                    console.log('Item updated successfully');
+                    message.success(
+                        "User updated successfully", 1, () => {
+                            console.log('Pop-up closed');
+                        });
+                })
+        } catch (error) {
+            console.log('Something went wrong. Please try again.');
+        }
     };
 
     const handleSizeChange      = (value) => { setSize(value); };
