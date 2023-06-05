@@ -37,7 +37,6 @@ export default function MyShopFeed() {
                             product_id = {product.id}
                             title={product.title}
                             seller_uid={product.seller_uid}
-                            unique_id={product.unique_id}
                             type={product.type}
                             gender={product.gender}
                             image_url={product.image_url}

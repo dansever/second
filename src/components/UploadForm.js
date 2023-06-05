@@ -49,7 +49,6 @@ function App() {
 
     useEffect(() => {
         setUserId(currentUser.uid);
-        console.log("new user id: " + userId);
         }, [currentUser]);
 
     useEffect(() => {
@@ -110,7 +109,6 @@ function App() {
                 tokens: newPrice,
             });
             const newDocumentId = docRef.id;
-            console.log("New document ID:", newDocumentId);
             await updateDoc( doc(db,'users',userId), {
                 uploaded_items: arrayUnion(newDocumentId)
             });
