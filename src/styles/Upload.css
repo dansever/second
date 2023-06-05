@@ -1,25 +1,16 @@
-header {
-    margin-left: auto;
-    margin-right: auto;
-    font-family: 'Lora', serif;
-    font-size: 30px;
-}
-
-form {
-    height: 70vh;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--light_green);
-}
-
 form h3 {
     color: var(--primary_green);
     margin-bottom: 0;
 }
 
 .upload-container {
+    background-color: var(--light_green);
+    overflow: auto;
+    padding: 0 10px 0 10px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    height: 80vh;
+    row-gap: 20px;
 }
 
 
@@ -37,15 +28,6 @@ form h3 {
     border-color: transparent;
 }
 
-.dropdown-style {
-    /*flex: 1;*/
-    /*height: 32px;*/
-    /*!*border: 1px solid #d9d9d9;*!*/
-    /*border-radius: 4px;*/
-    /*line-height: 32px;*/
-}
-
-
 div > form > div > label {
     flex: 0 0 90px;
     font-weight: bold;
@@ -57,7 +39,6 @@ div > form > div > input  {
     border-radius: 8px;
     margin-bottom: 2px;
     border: 1px solid lightgray;
-    /*background: var(--);*/
     font-size: 16px;
     color: rgb(0, 0, 32);
     outline: none;
@@ -83,4 +64,11 @@ button {
     font-size: 20px;
     text-align: center;
     font-weight: bold;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
 }

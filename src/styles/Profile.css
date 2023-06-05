@@ -1,23 +1,14 @@
-.page_container {
-    background-color: var(--secondary_green);
+.info-container {
+    padding: 0 5px 80px 5px;
     display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    align-content: center;
-    height: 90vh;
-    padding-top: 15px;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-.profile_container{
-    width: 80%;
-    height: 10%;
-    /*border: 1px solid black;*/
+#personal-info {
+
 }
 
-.seller-info-container{
-    display: flex;
-    flex-direction: column;
-    /*border: 1px solid red;*/
-}
+#product-info {
 
+}
