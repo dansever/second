@@ -34,8 +34,6 @@ export function AddToShop() {
 export function FilterButton() {
     return (
         <div className={"filter-btn"}>
-            {/*<FilterFilled/>*/}
-            {/*<FilterFilled/>*/}
             <ButtonStyle><HiFilter/>Filter</ButtonStyle>
         </div>
     );

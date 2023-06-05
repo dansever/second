@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {EditOutlined, HeartFilled, HeartOutlined, WhatsAppOutlined} from "@ant-design/icons";
 import {Button, Form, message, Modal, Select, Tooltip} from "antd";
 import Card from '@mui/material/Card';
@@ -63,10 +63,11 @@ export default function ProductCard(product) {
         }
     };
 
+    /**
     useEffect(() => {
-        getSellerPhoneNumber();
+        // getSellerPhoneNumber();
     }, [product]);
-
+    **/
 
     return (
         <>
@@ -258,6 +259,7 @@ export function MyItemCard (product) {
                             style={{marginBottom: "0px"}}>
                             <Select
                                 value={type} placeholder={type ? {type} : "type"}
+                                allowClear="true"
                                 onChange={handleTypeChange} style={{width: '200px',}}>
                                 {typeOptions.map((type_) => (
                                     <Option key={type_} value={type_}>
@@ -268,9 +270,10 @@ export function MyItemCard (product) {
                         </Form.Item>
 
                         <Form.Item
-                            style={{marginBottom: "0px"}}>
+                            style={{marginBottom: "0"}}>
                             <Select
                                 value={size} placeholder={size ? {size} : "size"}
+                                allowClear="true"
                                 onChange={handleSizeChange}
                                 style={{width: '200px'}}>
                                 {sizeOptions.map((size) => (
@@ -279,9 +282,10 @@ export function MyItemCard (product) {
                         </Form.Item>
 
                         <Form.Item
-                            style={{marginBottom:"0px"}}>
+                            style={{marginBottom:"0"}}>
                             <Select
                                 value={gender} placeholder={gender ? {gender} : "gender"}
+                                allowClear="true"
                                 onChange={handleGenderChange}
                                 style = {{width: '200px'}}>
                                 {genderOptions.map((gender) => (
@@ -290,9 +294,10 @@ export function MyItemCard (product) {
                         </Form.Item>
 
                         <Form.Item
-                            style={{marginBottom:"0px"}}>
+                            style={{marginBottom:"0"}}>
                             <Select
                                 value={condition} placeholder={condition ? {condition} : "condition"}
+                                allowClear="true"
                                 onChange={handleConditionChange}
                                 style = {{width: '200px'}}>
                                 {conditionOptions.map((condition) => (
