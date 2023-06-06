@@ -13,7 +13,6 @@ import {db} from "../firebase";
 export default function Home() {
     const [userNeighborhood, setUserNeighborhood] = useState('');
     const currentUser = useContext(AuthContext);
-    const CurrentUserRef = doc(db, 'users', currentUser.uid);
 
     return (
         <div>

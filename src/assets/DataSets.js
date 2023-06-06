@@ -51,11 +51,40 @@ export const filterDatabase = [
             { title: 'Unisex',  value: 'unisex' },
         ],
     },
+    {
+        title: 'Condition', value: 'condition',
+        children: [
+            { title: 'Old',     value: 'old' },
+            { title: 'Worn',    value: 'worn' },
+            { title: 'Good',    value: 'good' },
+            { title: 'As New',  value: 'as_new' },
+            { title: 'New',     value: 'new' },
+        ],
+    },
+    {
+        title: 'Type', value: 'type',
+        children: [
+            { title: 'Hat',     value: 'hat' },
+            { title: 'Shirt',   value: 'shirt' },
+            { title: 'Shoes',   value: 'shoes' },
+            { title: 'Top',     value: 'top' },
+            { title: 'Pants',   value: 'pants' },
+            { title: 'Dress',   value: 'Dress' },
+            { title: 'Skirt',   value: 'Skirt' },
+            { title: 'Swimwear',value: 'Swimwear' },
+            { title: 'Jacket/Coat',   value: 'jacket_coat' },
+            { title: 'Sweater',   value: 'sweater' },
+        ],
+    },
+
+
+
 ];
 
-export const sortTypes = ['name', 'price'];
-export const typeOptions = ['Hat', 'Shirt', 'Shoes', 'Top', 'Pants',
-    'Dress', 'Skirt', 'Swimwear'];
+export const sortType = ['tokens', 'title'];
+export const sortDirection = ['asc', 'desc'];
+export const typeOptions = ['Hat', 'Shirt', 'Shoes', 'Top',
+    'Pants', 'Dress', 'Skirt', 'Swimwear'];
 export const sizeOptions = ['XS', 'S', 'M', 'L', 'XL', 'One Size'];
 export const genderOptions = ['Female', 'Male', 'Unisex'];
 export const conditionOptions = ['Old', 'Worn', 'Good', 'As New', 'New'];
