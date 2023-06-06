@@ -1,19 +1,23 @@
 import React, {useEffect, useState} from 'react';
 import "../styles/Feed.css"
 import {Col, Row} from "antd";
-import {collection, getDocs} from "firebase/firestore";
+import {collection, getDocs, query, orderBy } from "firebase/firestore";
 import {db} from "../firebase";
 import ProductCard from "./Card";
 
 
 export default function MainFeed() {
     const [productsList, setProductsList] = useState([]);
+    const [sortBy, setsortBy] = useState("tokens");
+    const [sortDirection, setSortDirection] = useState("desc");
     const productsCollectionRef = collection(db,'products');
 
     useEffect(() => {
         const getProductList = async () => {
             try {
-                const data = await getDocs(productsCollectionRef);
+                const sortedProductsCollectionRef = query(productsCollectionRef,
+                    orderBy("tokens", "desc"));
+                const data = await getDocs(sortedProductsCollectionRef);
                 const filteredData = data.docs.map((doc) => ({
                     ...doc.data(),
                     id: doc.id
