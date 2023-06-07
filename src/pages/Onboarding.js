@@ -6,7 +6,7 @@ import unique from "../assets/images/unique.png"
 import friends from "../assets/images/friends.png"
 import lightbulb from "../assets/images/lightbulb.png"
 import "../styles/Login.css"
-import {Button, Input} from "antd";
+import {Button} from "antd";
 
 const Picture = styled.img`
     width: 300px;

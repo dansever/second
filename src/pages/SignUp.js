@@ -3,14 +3,9 @@ import { useNavigate  } from 'react-router-dom';
 import "../styles/SingUp.css"
 import {auth, db} from "../firebase"
 import {createUserWithEmailAndPassword} from "firebase/auth"
-import {Form, Input, message, TreeSelect} from "antd";
+import {Input, message, TreeSelect} from "antd";
 import {setDoc, collection, doc} from "firebase/firestore";
 import { NeighborhoodDict } from "../assets/DataSets"
-
-const Neighborhood = ['Rehavia', 'Nahlaot', 'City Central',
-    'Talbia', 'Katamon', 'Beit HaKerem', 'Pisgat Zeev',
-    'Ramot', 'The French Hill', 'Kiryat Yuvel', 'Kiryat Moshe',
-    'Malha', 'Kiryat Menahem'];
 
 export const SignUp = () => {
     const [name, setName] = useState('');
@@ -19,7 +14,6 @@ export const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [userID, setUserID] = useState(null);
-    const [error, setError] = useState('');
     const navigate  = useNavigate ();
 
     // Step 2: Listen for authentication state changes
@@ -62,7 +56,7 @@ export const SignUp = () => {
                 })
 
         } catch (error) {
-            setError('Something went wrong. Please try again.');
+            console.log('Something went wrong. Please try again.');
         }
     };
 

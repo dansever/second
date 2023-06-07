@@ -4,8 +4,6 @@ import { HiOutlineUserCircle } from "react-icons/hi";
 import { CiSquarePlus } from "react-icons/ci";
 import {Link, useMatch, useResolvedPath} from "react-router-dom";
 import "../styles/Navbar.css"
-import LikedPage from "../pages/LikedPage";
-
 
 export default function Navbar () {
     return (
