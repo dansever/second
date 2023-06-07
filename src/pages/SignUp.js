@@ -74,13 +74,13 @@ export const SignUp = () => {
                     type="text" value={name} placeholder="Enter first name"
                     onChange={(e) => setName(e.target.value)}/>
 
-                    <TreeSelect
-                        placeholder="Where do you live?"
-                        treeData = {NeighborhoodDict}
-                        allowClear
-                        value={neighborhood}
-                        onChange={handleNeighborhoodChange}
-                    />
+                <TreeSelect
+                    placeholder="Where do you live?"
+                    treeData = {NeighborhoodDict}
+                    allowClear
+                    value={neighborhood}
+                    onChange={handleNeighborhoodChange}
+                />
 
                 <Input
                     type="text" value={phoneNumber} placeholder="Enter phone number"
