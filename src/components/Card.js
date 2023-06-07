@@ -133,9 +133,19 @@ export default function ProductCard(product) {
                 <p>Gender: {product.gender}</p>
                 <p>Size: {product.size}</p>
                 <p>condition: {product.condition}</p>
-                <Button href={whatsappLink} target="_blank" rel="noopener noreferrer">
-                    <WhatsAppOutlined
-                        style={{scale: "140%", color: "green" }}/>Chat for more details or claiming product
+
+                <Button className={"go-to-whatsapp-btn"}
+                        href={whatsappLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{width:"100%",
+                            display:"flex",
+                            flexDirection:"row",
+                            alignItems:"center",
+                            fontWeight:"bold"}}
+                >
+                    <WhatsAppOutlined style={{scale: "160%", color: "green"}}/>
+                    Chat to get more details and claim product!
                 </Button>
             </Modal>
         </>
