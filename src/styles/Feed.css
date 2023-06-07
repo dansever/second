@@ -20,3 +20,22 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 16px;
 }
+
+
+.filter-sort-container{
+    display: flex;
+    flex-direction: column;
+    padding-right: 5px;
+    align-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    row-gap: 5px;
+}
+
+.filter-sort-container > div {
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+}

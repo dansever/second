@@ -83,7 +83,7 @@ export default function ProductCard(product) {
                     <div className={"left-side"}
                          onClick={handleModalOpen}>
                         <p>Size: {product.size}</p>
-                        <p>Price: {product.tokens}</p>
+                        <p>Tokens: {product.tokens}</p>
                     </div>
 
                     <div className={"right-side"}>
@@ -115,7 +115,7 @@ export default function ProductCard(product) {
                          alt={product.alt}/>
                 </div>
                 <p>Type: {product.type}</p>
-                <p>Price: {product.tokens}</p>
+                <p>Tokens: {product.tokens}</p>
                 <p>Brand: {product.brand}</p>
                 <p>Gender: {product.gender}</p>
                 <p>Size: {product.size}</p>
