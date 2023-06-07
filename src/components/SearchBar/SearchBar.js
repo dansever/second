@@ -2,15 +2,34 @@ import React, {useState} from "react"
 import "./SearchBar.css"
 import { Select, TreeSelect} from "antd";
 import {filterDatabase, NeighborhoodDict, sortBy, sortDirection, sortType, sortTypes} from "../../assets/DataSets";
+import {collection, getDocs, orderBy, query, where} from "firebase/firestore";
+import {db} from "../../firebase";
 
 const { Option } = Select;
 
-export default function SearchBar() {
+export default function SearchBar(setProductsList) {
     const [neighborhoods, setNeighborhoods] = useState([])
     const [sortBy, setSortBy] = useState('')
     const [sortOrder, setSortOrder] = useState('')
+    const productsCollectionRef = collection(db,'products');
 
-    const handleNeighborhoodFilterChange = (selectedValues) => {
+    const getItemNeighborhood = (key) => {
+        productsCollectionRef.child(key).on()
+    }
+    const handleNeighborhoodFilterChange = async (selectedValues) => {
+        try {
+            const sortedProductsCollectionRef = query(productsCollectionRef,
+                orderBy("tokens", "desc"));
+            // const data = await getDocs(sortedProductsCollectionRef);
+            const filteredData = query(productsCollectionRef, where("user_id", "==", selectedValues));
+            //     data.docs.map((doc) => ({
+            //     ...doc.data(),
+            //     id: doc.id
+            // }));
+            setProductsList(filteredData);
+        } catch (err) {
+            console.error(err);
+        }
         setNeighborhoods(selectedValues);
     };
     const handleSortChange = (selectedValue) => {

@@ -22,7 +22,7 @@ export default function Home() {
                 ( <MainHeader email={null}/> )}
 
             <div className={"home-container"}>
-                <SearchBar defaultNeighborhood={userNeighborhood} />
+                {/*<SearchBar defaultNeighborhood={userNeighborhood}  />*/}
                 <MainFeed/>
             </div>
             <Navbar/>
