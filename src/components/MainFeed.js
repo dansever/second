@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import "../styles/Feed.css"
-import {Col, Row, Select, TreeSelect} from "antd";
+import {Col, Row, Select} from "antd";
 import {collection, getDocs, query, orderBy, onSnapshot  } from "firebase/firestore";
 import {db} from "../firebase";
 import ProductCard from "./Card";
 import {filterDatabase, NeighborhoodDict, sortDirection, sortType} from "../assets/DataSets";
-import SearchBar from "./SearchBar/SearchBar";
+import SearchBar from "./SearchBar";
 
 const { Option } = Select;
 
