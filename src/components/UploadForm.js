@@ -3,7 +3,7 @@ import '../styles/Index.css';
 import '../styles/Upload.css';
 import { db, storage } from "../firebase";
 import { AuthContext } from './AuthProvider';
-import {ButtonStyle} from "./Buttons/Button";
+import {ButtonStyle} from "./Button";
 import {getDocs, collection, addDoc, doc, updateDoc, arrayUnion} from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import {Select, Form} from 'antd';
@@ -63,9 +63,7 @@ function App() {
     const handleImageUpload = async (file) => {
         try {
             const unique_filename = Date.now() + '_' + file.name;
-
             const storageRef = ref(storage, `product_images/${unique_filename}`);
-
             const uploadTask = uploadBytesResumable(storageRef, file);
             uploadTask.on('state_changed',
                 (snapshot) => {
@@ -86,7 +84,7 @@ function App() {
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref)
                         .then((downloadURL) => {
-                        saveFormData(downloadURL);
+                        saveFormData(unique_filename, downloadURL);
                     });
                 }
             );
@@ -96,7 +94,7 @@ function App() {
     };
 
 
-    const saveFormData = async (downloadURL) => {
+    const saveFormData = async (imageFilename, downloadURL) => {
         try {
             const docRef = await addDoc(productsCollectionRef, {
                 title: newTitle,
@@ -105,6 +103,7 @@ function App() {
                 brand: newBrand,
                 condition: newCondition,
                 gender: newGender,
+                image_filename: imageFilename,
                 image_url: downloadURL,
                 seller_uid: currentUser.uid,
                 tokens: newPrice,

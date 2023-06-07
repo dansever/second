@@ -5,7 +5,7 @@ import {collection, getDocs, query, orderBy, onSnapshot  } from "firebase/firest
 import {db} from "../firebase";
 import ProductCard from "./Card";
 import {filterDatabase, NeighborhoodDict, sortDirection, sortType} from "../assets/DataSets";
-import SearchBar from "./SearchBar/SearchBar";
+import SearchBar from "./SearchBar";
 
 const { Option } = Select;
 

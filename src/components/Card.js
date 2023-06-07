@@ -1,21 +1,22 @@
 import React, {useContext, useState} from 'react';
-import {EditOutlined, HeartFilled, HeartOutlined, WhatsAppOutlined} from "@ant-design/icons";
+import {EditOutlined, HeartFilled,
+    HeartOutlined, WhatsAppOutlined} from "@ant-design/icons";
+import {conditionOptions, genderOptions,
+    sizeOptions, typeOptions} from "../assets/DataSets";
+import {doc, updateDoc, deleteDoc, arrayUnion, arrayRemove, getDoc} from "firebase/firestore";
+import {deleteObject} from "firebase/storage";
 import {Button, Form, message, Modal, Select, Tooltip} from "antd";
-import Card from '@mui/material/Card';
-import "../styles/Card.css"
 import {AuthContext} from "./AuthProvider";
-import {db} from "../firebase";
-import {doc, updateDoc, arrayUnion, arrayRemove, getDoc} from "firebase/firestore";
+import Card from '@mui/material/Card';
+import {db, storage} from "../firebase";
 import Colors from "../color";
-import {conditionOptions, genderOptions, sizeOptions, typeOptions} from "../assets/DataSets";
-
+import "../styles/Card.css"
+import {ref} from "firebase/storage";
 const { Option } = Select;
-
 
 export default function ProductCard(product) {
     const [isLikeToggledOn, setLikeToggledOn] = useState(product.isLiked);
     const [modalVisible, setModalVisible] = useState(false);
-    const [whatsappModalVisible, setWhatsappModalVisible] = useState(false);
     const [sellerPhoneNumber, setSellerPhoneNumber] = useState('');
 
     const [whatsappLink, setWhatsappLink] = useState('');
@@ -80,19 +81,6 @@ export default function ProductCard(product) {
     const handleModalOpen = () => {setModalVisible(true);
         getWhatsappLink();};
     const handleModalClose = () => {setModalVisible(false);};
-    const handleWhatsappModalOpen = () => {setWhatsappModalVisible(true);};
-    const handleWhatsappModalClose = () => {setWhatsappModalVisible(false);};
-    /**
-    useEffect(() => {
-        // getSellerPhoneNumber();
-    }, [product]);
-    **/
-
-    /**
-     useEffect(() => {
-        // getWhatsappLink()
-    }, [product]);
-     **/
 
     return (
         <>
@@ -150,39 +138,9 @@ export default function ProductCard(product) {
                         style={{scale: "140%", color: "green" }}/>Chat for more details or claiming product
                 </Button>
             </Modal>
-
-
-
         </>
     );
 }
-
-// {/*WHATSAPP MODAL*/}
-// <Modal title="Seller Phone Number:"
-//        open={whatsappModalVisible}
-//        onCancel={handleWhatsappModalClose}
-//        footer={[]} // Empty array to hide buttons>
-// >
-//     <div className={"whatsapp-modal"}>
-//         <h3
-//             style={{fontWeight:"bold"}}>
-//         </h3>
-//         <Button href="whatsapp://send?text=WHATEVER_LINK_OR_TEXT_YOU_WANT_TO_SEND">
-//             <WhatsAppOutlined
-//                 style={{scale: "140%", color: "green" }}/>Chat for more details or claiming product
-//         </Button>
-//         <Button shape="square"
-//                 className={"card_like_button"}
-//                 onClick={handleWhatsappModalOpen}>
-//             <WhatsAppOutlined
-//                 style={{ scale: "140%", color: "green" }}
-//             />
-//         </Button>
-//     </div>
-// </Modal>
-
-
-
 
 export function MyItemCard (product) {
     const [title, setTitle] = useState(product.title);
@@ -238,6 +196,27 @@ export function MyItemCard (product) {
         }
     };
 
+
+
+    const handleDeleteItem = async (e) => {
+        e.preventDefault();
+        try {
+            //get refs
+            const productRef = doc(db,'products',productId);
+            const productSnapshot = await getDoc(productRef);
+            const imageFilename = productSnapshot.data()['image_filename'];
+            const storageRef = ref(storage, `product_images/${imageFilename}`);
+            //start deleting stuff
+            await deleteDoc(productRef);
+            console.log("delete item successfully")
+            await deleteObject(storageRef);
+            console.log("Image deleted successfully.");
+        } catch (error) {
+            console.log('Something went wrong in item delete process.');
+        }
+    };
+
+
     const handleSizeChange      = (value) => { setSize(value); };
     const handleTypeChange      = (value) => { setType(value); };
     const handleGenderChange    = (value) => { setGender(value); };
@@ -270,7 +249,8 @@ export function MyItemCard (product) {
                    footer={[]} // Empty array to hide buttons>
             >
                 <div className={"edit-info-modal"}>
-                    <form onSubmit={handleItemInfoEdit}>
+                    <form className={"edit-info-form"}
+                        onSubmit={handleItemInfoEdit}>
 
                         <input value={title} placeholder={title ? {title} : "title"}
                                type="text" onChange={(e) => setTitle(e.target.value)}
@@ -334,10 +314,18 @@ export function MyItemCard (product) {
                             </Select>
                         </Form.Item>
 
+                        <div className={"update_delete_button_box"}>
 
-                        <button className={"update-button"} type="submit">
-                            Update Item Information
-                        </button>
+                            <button className={"update-button"} type="submit">
+                                Update Item Info
+                            </button>
+
+                            <button className={"delete-btn"}
+                                    onClick={handleDeleteItem}>
+                                Delete Item
+                            </button>
+                        </div>
+
                     </form>
                 </div>
             </Modal>
