@@ -29,7 +29,7 @@ export const LoginPage = () => {
 
     return (
         <div className={"main-container"}>
-            <header><h3>Welcome</h3></header>
+            <header><h1>Welcome Back!</h1></header>
             {error && <p
                 style={{color: 'red'}}>{error}</p>}
             <form onSubmit={handleLogin}>

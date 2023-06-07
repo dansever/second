@@ -35,6 +35,10 @@ form {
     cursor: pointer;
 }
 
+p {
+    font-weight: normal;
+}
+
 .sign-up-button {
     font-size: 18px;
     font-weight: bold;

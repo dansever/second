@@ -3,7 +3,7 @@ import { useNavigate  } from 'react-router-dom';
 import "../styles/SingUp.css"
 import {auth, db} from "../firebase"
 import {createUserWithEmailAndPassword} from "firebase/auth"
-import {Input, message, TreeSelect} from "antd";
+import {Form, Input, message, TreeSelect} from "antd";
 import {setDoc, collection, doc} from "firebase/firestore";
 import { NeighborhoodDict } from "../assets/DataSets"
 
@@ -14,7 +14,7 @@ const Neighborhood = ['Rehavia', 'Nahlaot', 'City Central',
 
 export const SignUp = () => {
     const [name, setName] = useState('');
-    const [neighborhood, setNeighborhood] = useState('');
+    const [neighborhood, setNeighborhood] = useState(null);
     const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -72,27 +72,28 @@ export const SignUp = () => {
 
     return (
         <div className={"main-container"}>
-            <header> <h3 >Welcome to Second</h3> </header>
-            <h3>Lets get started</h3>
+            <header> <h1 >Welcome to Second</h1> </header>
+            <h2>Lets get started</h2>
             <form onSubmit={ handleSignup }>
 
                 <Input
                     type="text" value={name} placeholder="Enter first name"
                     onChange={(e) => setName(e.target.value)}/>
 
-                <TreeSelect
-                    treeData = {NeighborhoodDict}
-                    value={neighborhood}
-                    placeholder={"Enter Neighborhood"}
-                    onChange={handleNeighborhoodChange}
-                />
+                    <TreeSelect
+                        placeholder="Enter neighborhood"
+                        treeData = {NeighborhoodDict}
+                        allowClear
+                        value={neighborhood}
+                        onChange={handleNeighborhoodChange}
+                    />
 
                 <Input
                     type="text" value={phoneNumber} placeholder="Enter phone number"
                     onChange={(e) => setPhoneNumber(e.target.value)}
                 />
                 <Input
-                    type="email" value={email} placeholder="Enter Email address"
+                    type="email" value={email} placeholder="Enter email address"
                     onChange={(e) => setEmail(e.target.value)}/>
                 <Input
                     type="password" value={password} placeholder="Choose a password"
