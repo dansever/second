@@ -18,9 +18,11 @@ export default function ProductCard(product) {
     const [whatsappModalVisible, setWhatsappModalVisible] = useState(false);
     const [sellerPhoneNumber, setSellerPhoneNumber] = useState('');
 
+    const [whatsappLink, setWhatsappLink] = useState('');
     const currentUser = useContext(AuthContext);
     const currentUserRef = doc(db, 'users', currentUser.uid);
     const product_id = product.product_id;
+    const product_title = product.title
 
     const cardStyle = {
         borderRadius: '20px',
@@ -48,10 +50,7 @@ export default function ProductCard(product) {
             likeAction();
         }
     }
-    const handleModalOpen = () => {setModalVisible(true);};
-    const handleModalClose = () => {setModalVisible(false);};
-    const handleWhatsappModalOpen = () => {setWhatsappModalVisible(true);};
-    const handleWhatsappModalClose = () => {setWhatsappModalVisible(false);};
+
 
     const getSellerPhoneNumber = async () => {
         try {
@@ -63,11 +62,37 @@ export default function ProductCard(product) {
         }
     };
 
+    const getWhatsappLink = async () => {
+        try {
+            const SellerUserRef = doc(db, 'users', product.seller_uid);
+            const docSnapshot = await getDoc(SellerUserRef);
+            const sellerPhoneNumber = docSnapshot.data()['phone_number'];
+            const message = "Hi, I'm interested in your product: " + product_title + "!";
+            const number = sellerPhoneNumber.slice(1);
+            const encodedMessage = encodeURIComponent(message);
+            const link = "https://wa.me/972" + number + "?text=" + encodedMessage;
+            console.log("aaa")
+            setWhatsappLink(link);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+    const handleModalOpen = () => {setModalVisible(true);
+        getWhatsappLink();};
+    const handleModalClose = () => {setModalVisible(false);};
+    const handleWhatsappModalOpen = () => {setWhatsappModalVisible(true);};
+    const handleWhatsappModalClose = () => {setWhatsappModalVisible(false);};
     /**
     useEffect(() => {
         // getSellerPhoneNumber();
     }, [product]);
     **/
+
+    /**
+     useEffect(() => {
+        // getWhatsappLink()
+    }, [product]);
+     **/
 
     return (
         <>
@@ -120,38 +145,42 @@ export default function ProductCard(product) {
                 <p>Gender: {product.gender}</p>
                 <p>Size: {product.size}</p>
                 <p>condition: {product.condition}</p>
-                <p>seller phone number: {sellerPhoneNumber} </p>
+                <Button href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                    <WhatsAppOutlined
+                        style={{scale: "140%", color: "green" }}/>Chat for more details or claiming product
+                </Button>
             </Modal>
 
-            {/*WHATSAPP MODAL*/}
-            <Modal title="Seller Phone Number:"
-                   open={whatsappModalVisible}
-                   onCancel={handleWhatsappModalClose}
-                   footer={[]} // Empty array to hide buttons>
-            >
-                <div className={"whatsapp-modal"}>
-                    <h3
-                        style={{fontWeight:"bold"}}>
-                        0546436246
-                    </h3>
-                    <Button shape="square"
-                            className={"card_like_button"}
-                            onClick={handleWhatsappModalOpen}>
-                        <WhatsAppOutlined
-                            style={{ scale: "140%", color: "green" }}
-                        />
-                    </Button>
-                </div>
-            </Modal>
+
 
         </>
     );
 }
 
-<Button href="whatsapp://send?text=WHATEVER_LINK_OR_TEXT_YOU_WANT_TO_SEND">
-<WhatsAppOutlined
-style={{scale: "140%", color: "green" }}/>Chat for more details or claiming product
-</Button>
+// {/*WHATSAPP MODAL*/}
+// <Modal title="Seller Phone Number:"
+//        open={whatsappModalVisible}
+//        onCancel={handleWhatsappModalClose}
+//        footer={[]} // Empty array to hide buttons>
+// >
+//     <div className={"whatsapp-modal"}>
+//         <h3
+//             style={{fontWeight:"bold"}}>
+//         </h3>
+//         <Button href="whatsapp://send?text=WHATEVER_LINK_OR_TEXT_YOU_WANT_TO_SEND">
+//             <WhatsAppOutlined
+//                 style={{scale: "140%", color: "green" }}/>Chat for more details or claiming product
+//         </Button>
+//         <Button shape="square"
+//                 className={"card_like_button"}
+//                 onClick={handleWhatsappModalOpen}>
+//             <WhatsAppOutlined
+//                 style={{ scale: "140%", color: "green" }}
+//             />
+//         </Button>
+//     </div>
+// </Modal>
+
 
 
 
