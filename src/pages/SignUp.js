@@ -81,7 +81,7 @@ export const SignUp = () => {
                     onChange={(e) => setName(e.target.value)}/>
 
                     <TreeSelect
-                        placeholder="Enter neighborhood"
+                        placeholder="Where do you live?"
                         treeData = {NeighborhoodDict}
                         allowClear
                         value={neighborhood}
