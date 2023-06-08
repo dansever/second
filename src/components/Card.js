@@ -5,13 +5,14 @@ import {conditionOptions, genderOptions,
     sizeOptions, typeOptions} from "../assets/DataSets";
 import {doc, updateDoc, deleteDoc, arrayUnion, arrayRemove, getDoc} from "firebase/firestore";
 import {deleteObject} from "firebase/storage";
-import {Button, Form, message, Modal, Select, Tooltip} from "antd";
+import {Button, Form, Input, message, Modal, Select, Tooltip} from "antd";
 import {AuthContext} from "./AuthProvider";
 import Card from '@mui/material/Card';
 import {db, storage} from "../firebase";
 import Colors from "../color";
 import "../styles/Card.css"
 import {ref} from "firebase/storage";
+import { GiReceiveMoney } from "react-icons/gi";
 const { Option } = Select;
 
 export default function ProductCard(product) {
@@ -51,8 +52,6 @@ export default function ProductCard(product) {
             likeAction();
         }
     }
-
-
     const getSellerPhoneNumber = async () => {
         try {
             const SellerUserRef = doc(db, 'users', product.seller_uid);
@@ -134,19 +133,16 @@ export default function ProductCard(product) {
                 <p>Size: {product.size}</p>
                 <p>condition: {product.condition}</p>
 
-                <Button className={"go-to-whatsapp-btn"}
-                        href={whatsappLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{width:"100%",
-                            display:"flex",
-                            flexDirection:"row",
-                            alignItems:"center",
-                            fontWeight:"bold"}}
-                >
-                    <WhatsAppOutlined style={{scale: "160%", color: "green"}}/>
-                    Chat to get more details and claim product!
-                </Button>
+                <div className={"step-box"}>
+                    <Button className={"chat-or-pay-btn"}
+                            href={whatsappLink}
+                            target="_blank"
+                            rel="noopener noreferrer">
+                        <WhatsAppOutlined style={{scale: "160%", color: "green"}}/>
+                        <h3>Chat with seller for info</h3>
+                    </Button>
+                </div>
+
             </Modal>
         </>
     );
@@ -162,8 +158,11 @@ export function MyItemCard (product) {
     const [tokens, setTokens] = useState(product.tokens);
     const [productId, setProductId] = useState(product.product_id);
 
+    const [buyerNumber, setBuyerNumber] = useState("");
+
 
     const [editItemModalVisible, setEditItemModalVisible] = useState(false);
+    const [requestPaymentModalVisible, setRequestPaymentModalVisible] = useState(false);
 
 
     const cardStyle = {
@@ -178,6 +177,14 @@ export function MyItemCard (product) {
     const handleEditItemModalClose = () => {
         setEditItemModalVisible(false);
     };
+
+    const handleSendPaymentModalOpen = () => {
+        setRequestPaymentModalVisible(true);
+    };
+    const handleSendPaymentModalClose = () => {
+        setRequestPaymentModalVisible(false);
+    };
+
 
 
     const handleItemInfoEdit = async (e) => {
@@ -206,6 +213,14 @@ export function MyItemCard (product) {
         }
     };
 
+    const handleSendPayment = async (e) => {
+        e.preventDefault();
+        try {
+
+        } catch (error) {
+            console.log('Something went wrong in item delete process.');
+        }
+    };
 
 
     const handleDeleteItem = async (e) => {
@@ -248,8 +263,22 @@ export function MyItemCard (product) {
                 </Tooltip>
             </div>
 
+            <div style={{position: 'absolute',
+                top: '80px',
+                right: '20px'}}>
+                <Tooltip title="Request Payment">
+                    <Button shape="circle"
+                            style={{scale: "140%",
+                                border: "1px solid black",
+                                boxShadow: "2px 2px 2px 0 black"}}
+                            onClick={handleSendPaymentModalOpen}>
+                        <GiReceiveMoney scale="150%"/>
+                    </Button>
+                </Tooltip>
+            </div>
+
             <div className={"content-box"}>
-                <p>{title}</p>
+                <h3>{title}</h3>
             </div>
 
             {/*EDIT INFO MODAL*/}
@@ -337,6 +366,28 @@ export function MyItemCard (product) {
                         </div>
 
                     </form>
+                </div>
+            </Modal>
+
+            {/*REQUEST PAYMENT MODAL*/}
+            <Modal title=""
+                   open={requestPaymentModalVisible}
+                   onCancel={handleSendPaymentModalClose}
+                   footer={[]} // Empty array to hide buttons>
+            >
+                <div className={"request-payment-modal"}>
+                    <h3>Enter phone number of buyer to
+                        request payment:</h3>
+                    <Input
+                        type="text" value={buyerNumber}
+                        placeholder="Enter Phone Number"
+                        onChange={(e) => setBuyerNumber(e.target.value)}
+                    />
+                    <Button
+                        className={"request-pay-btn"}
+                        onClick={handleSendPayment}>
+                        Request Payment
+                    </Button>
                 </div>
             </Modal>
 

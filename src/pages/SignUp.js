@@ -24,12 +24,30 @@ export const SignUp = () => {
         }
     });
 
+    const generateRandomCode = () => {
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const digits = '0123456789';
+        let code = '';
+        for (let i = 0; i < 2; i++) {
+            const randomIndex = Math.floor(Math.random() * letters.length);
+            code += letters.charAt(randomIndex);
+        }
+        for (let i = 2; i < 4; i++) {
+            const randomIndex = Math.floor(Math.random() * digits.length);
+            code += digits.charAt(randomIndex);
+        }
+        return code;
+    };
+
     const handleSignup  = async (e) => {
         e.preventDefault();
         try {
             // Step 1: Create the user in Firebase Authentication
             const newUserCredentials =
                 await createUserWithEmailAndPassword(auth, email, password);
+
+            // Step 2: generate user code
+            const randomCode = generateRandomCode();
 
             // Step 3: Add a new document to the user's database
             const usersCollectionRef = collection(db, "users");
@@ -44,6 +62,7 @@ export const SignUp = () => {
                 phone_number: phoneNumber,
                 uploaded_items: [],
                 liked_items: [],
+                random_code: randomCode,
             };
 
             setDoc(newUserRef, data)
