@@ -4,7 +4,7 @@ import '../styles/Upload.css';
 import { db, storage } from "../firebase";
 import { AuthContext } from './AuthProvider';
 import {ButtonStyle} from "./Button";
-import {getDocs, collection, addDoc, doc, updateDoc, arrayUnion} from "firebase/firestore";
+import {getDocs, collection, addDoc, doc, updateDoc, arrayUnion, getDoc} from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import {Select, Form} from 'antd';
 import {conditionOptions, genderOptions, sizeOptions, typeOptions} from "../assets/DataSets";
@@ -34,6 +34,7 @@ function App() {
     const [userId, setUserId] = useState("");
 
     const productsCollectionRef = collection(db, "products");
+    const usersCollectionRef = collection(db, "users");
 
     const getProductList = async () => {
         try {
@@ -79,7 +80,7 @@ function App() {
                     console.log('Upload is ' + progress + '% done');
                 },
                 (error) => {
-                    console.log("Error occured during upload");
+                    console.log("Error occurred during upload");
                 },
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref)
@@ -96,7 +97,9 @@ function App() {
 
     const saveFormData = async (imageFilename, downloadURL) => {
         try {
-            const docRef = await addDoc(productsCollectionRef, {
+            const userRef = doc(db,'users',currentUser.uid);
+            const userSnapshot = await getDoc(userRef);
+            const neighborhood =  userSnapshot.data()['neighborhood'];            const docRef = await addDoc(productsCollectionRef, {
                 title: newTitle,
                 type: newType,
                 size: newSize,
@@ -107,12 +110,12 @@ function App() {
                 image_url: downloadURL,
                 seller_uid: currentUser.uid,
                 tokens: newPrice,
+                seller_neighborhood: neighborhood,
             });
             const newDocumentId = docRef.id;
             await updateDoc( doc(db,'users',userId), {
                 uploaded_items: arrayUnion(newDocumentId)
             });
-
             setNewTitle("");
             setNewType("");
             setNewSize("");
