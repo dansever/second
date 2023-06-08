@@ -142,7 +142,6 @@ export default function ProductCard(product) {
                         <h3>Chat with seller for info</h3>
                     </Button>
                 </div>
-
             </Modal>
         </>
     );

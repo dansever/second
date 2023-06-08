@@ -6,6 +6,14 @@ import {createUserWithEmailAndPassword} from "firebase/auth"
 import {Input, message, TreeSelect} from "antd";
 import {setDoc, collection, doc} from "firebase/firestore";
 import { NeighborhoodDict } from "../assets/DataSets"
+import logo from "../assets/Second_logo.png"
+import styled from "styled-components";
+
+const Picture = styled.img`
+    height: 30%;
+    object-fit: cover;
+`;
+
 
 export const SignUp = () => {
     const [name, setName] = useState('');
@@ -86,6 +94,7 @@ export const SignUp = () => {
     return (
         <div className={"main-container"}>
             <header> <h1 >Welcome to Second</h1> </header>
+            <Picture src={logo}/>
             <h2>Lets get started</h2>
             <form onSubmit={ handleSignup }>
 

@@ -23,7 +23,7 @@ const Container = styled.div`
 
 const Div = styled.div`
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -65,6 +65,14 @@ export const Onboarding = () => {
                             onClick={handleNext}>
                             Next
                         </button>
+                        <div className={"new-user"}>
+                            <p>Already have an account?</p>
+                            <Button
+                                className={"sign-up-button"}
+                                onClick={handleLogin}>
+                                Login
+                            </Button>
+                        </div>
                     </Div>
                 </Container>
             )}
@@ -78,6 +86,14 @@ export const Onboarding = () => {
                             onClick={handleNext}>
                             Next
                         </button>
+                        <div className={"new-user"}>
+                            <p>Already have an account?</p>
+                            <Button
+                                className={"sign-up-button"}
+                                onClick={handleLogin}>
+                                Login
+                            </Button>
+                        </div>
                     </Div>
                 </Container>
             )}
@@ -91,6 +107,14 @@ export const Onboarding = () => {
                             onClick={handleNext}>
                             Next
                         </button>
+                        <div className={"new-user"}>
+                            <p>Already have an account?</p>
+                            <Button
+                                className={"sign-up-button"}
+                                onClick={handleLogin}>
+                                Login
+                            </Button>
+                        </div>
                     </Div>
                 </Container>
             )}
