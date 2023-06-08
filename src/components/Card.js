@@ -145,7 +145,7 @@ export default function ProductCard(product) {
                             fontWeight:"bold"}}
                 >
                     <WhatsAppOutlined style={{scale: "160%", color: "green"}}/>
-                    Chat to get more details and claim product!
+                    Chat for more info
                 </Button>
             </Modal>
         </>

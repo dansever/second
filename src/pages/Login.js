@@ -5,7 +5,13 @@ import { auth } from "../firebase"
 
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {Button, Input} from "antd";
+import logo from "../assets/Second_logo.png"
+import styled from "styled-components";
 
+const Picture = styled.img`
+    height: 30%;
+    object-fit: cover;
+`;
 export const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -29,9 +35,11 @@ export const LoginPage = () => {
 
     return (
         <div className={"main-container"}>
+            <Picture src={logo}/>
             <header><h1>Welcome Back!</h1></header>
             {error && <p
                 style={{color: 'red'}}>{error}</p>}
+
             <form onSubmit={handleLogin}>
                 <Input
                     type="email"

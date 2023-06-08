@@ -110,6 +110,9 @@ h2 {
     box-shadow: 0 4px 0 var(--text_color);
     border-radius: 16px;
 }
+.ant-btn {
+    word-wrap: break-word;
+}
 
 input  {
     flex: 1;
