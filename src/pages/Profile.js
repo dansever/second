@@ -16,6 +16,7 @@ export default function MyProfile() {
     const [userFirstName, setUserFirstName] = useState("");
     const [userNeighborhood, setUserNeighborhood] = useState("");
     const [userPhoneNumber, setUserPhoneNumber] = useState("");
+    const [userSecretCode, setUserSecretCode] = useState("");
     const [editInfoModalVisible, setEditInfoModalVisible] = useState(false);
 
     useEffect(() => {
@@ -25,7 +26,6 @@ export default function MyProfile() {
     }, []);
 
 
-
     async function getUserData(UserRef) {
         try {
             const docSnap = await getDoc(UserRef);
@@ -33,6 +33,8 @@ export default function MyProfile() {
                 setUserFirstName(docSnap.data().first_name);
                 setUserNeighborhood(docSnap.data().neighborhood);
                 setUserPhoneNumber(docSnap.data().phone_number);
+                setUserSecretCode(docSnap.data().random_code);
+
             } else {
                 console.log("User document does not exist");
                 return null;
@@ -93,6 +95,7 @@ export default function MyProfile() {
                     <Descriptions.Item label="Name">{userFirstName}</Descriptions.Item>
                     <Descriptions.Item label="Neighborhood">{userNeighborhood}</Descriptions.Item>
                     <Descriptions.Item label="Phone number">{userPhoneNumber}</Descriptions.Item>
+                    <Descriptions.Item label="Secret Code">{userSecretCode}</Descriptions.Item>
                 </Descriptions>
                 <div style={{ position: 'absolute', top: '20px', right: '20px'}}>
                     <Tooltip className={"info-edit-btn"} title="Edit Info">
