@@ -94,10 +94,33 @@ h2 {
     column-gap: 40px;
 }
 
+.chat-or-pay-btn{
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: bold;
+    column-gap: 10px;
+}
+
+.step-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.edit-info-form {
+    width: 100%;
+}
+
 .custom-modal .ant-modal-content{
     border: 2px solid var(--text_color);
     box-shadow: 0 4px 0 var(--text_color);
     border-radius: 16px;
+}
+.ant-btn {
+    word-wrap: break-word;
 }
 
 input  {
@@ -114,4 +137,46 @@ input  {
 
 input:focus, textarea:focus {
     border: 1px solid rgb(79, 169, 79);
+}
+
+.update_delete_button_box {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 2vw;
+}
+
+.update-button {
+    border-radius: 10px;
+    width: 60vw;
+    padding: 10px 5px 10px 5px;
+    background-color: var(--secondary_green);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.update-button:hover {
+    background-color: var(--primary_green);
+    cursor: pointer;
+}
+
+.delete-btn {
+    border-radius: 10px;
+    width: 35vw;
+    padding: 10px 5px 10px 5px;
+    background-color: white;
+    border-color: red;
+    color: red;
+    font-size: 16px;
+}
+
+.delete-btn:hover {
+    background-color: lightpink;
+    cursor: pointer;
+}
+
+.request-pay-btn {
+    margin-top: 5px;
+    width: 70%;
+    font-weight: bold;
+    background-color: var(--primary_green);
 }

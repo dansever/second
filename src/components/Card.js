@@ -1,26 +1,30 @@
 import React, {useContext, useState} from 'react';
-import {EditOutlined, HeartFilled, HeartOutlined, WhatsAppOutlined} from "@ant-design/icons";
-import {Button, Form, message, Modal, Select, Tooltip} from "antd";
-import Card from '@mui/material/Card';
-import "../styles/Card.css"
+import {EditOutlined, HeartFilled,
+    HeartOutlined, WhatsAppOutlined} from "@ant-design/icons";
+import {conditionOptions, genderOptions,
+    sizeOptions, typeOptions} from "../assets/DataSets";
+import {doc, updateDoc, deleteDoc, arrayUnion, arrayRemove, getDoc} from "firebase/firestore";
+import {deleteObject} from "firebase/storage";
+import {Button, Form, Input, message, Modal, Select, Tooltip} from "antd";
 import {AuthContext} from "./AuthProvider";
-import {db} from "../firebase";
-import {doc, updateDoc, arrayUnion, arrayRemove, getDoc} from "firebase/firestore";
+import Card from '@mui/material/Card';
+import {db, storage} from "../firebase";
 import Colors from "../color";
-import {conditionOptions, genderOptions, sizeOptions, typeOptions} from "../assets/DataSets";
-
+import "../styles/Card.css"
+import {ref} from "firebase/storage";
+import { GiReceiveMoney } from "react-icons/gi";
 const { Option } = Select;
-
 
 export default function ProductCard(product) {
     const [isLikeToggledOn, setLikeToggledOn] = useState(product.isLiked);
     const [modalVisible, setModalVisible] = useState(false);
-    const [whatsappModalVisible, setWhatsappModalVisible] = useState(false);
     const [sellerPhoneNumber, setSellerPhoneNumber] = useState('');
 
+    const [whatsappLink, setWhatsappLink] = useState('');
     const currentUser = useContext(AuthContext);
     const currentUserRef = doc(db, 'users', currentUser.uid);
     const product_id = product.product_id;
+    const product_title = product.title
 
     const cardStyle = {
         borderRadius: '20px',
@@ -48,11 +52,6 @@ export default function ProductCard(product) {
             likeAction();
         }
     }
-    const handleModalOpen = () => {setModalVisible(true);};
-    const handleModalClose = () => {setModalVisible(false);};
-    const handleWhatsappModalOpen = () => {setWhatsappModalVisible(true);};
-    const handleWhatsappModalClose = () => {setWhatsappModalVisible(false);};
-
     const getSellerPhoneNumber = async () => {
         try {
             const SellerUserRef = doc(db, 'users', product.seller_uid);
@@ -63,11 +62,24 @@ export default function ProductCard(product) {
         }
     };
 
-    /**
-    useEffect(() => {
-        // getSellerPhoneNumber();
-    }, [product]);
-    **/
+    const getWhatsappLink = async () => {
+        try {
+            const SellerUserRef = doc(db, 'users', product.seller_uid);
+            const docSnapshot = await getDoc(SellerUserRef);
+            const sellerPhoneNumber = docSnapshot.data()['phone_number'];
+            const message = "Hi, I'm interested in your product: " + product_title + "!";
+            const number = sellerPhoneNumber.slice(1);
+            const encodedMessage = encodeURIComponent(message);
+            const link = "https://wa.me/972" + number + "?text=" + encodedMessage;
+            console.log("aaa")
+            setWhatsappLink(link);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+    const handleModalOpen = () => {setModalVisible(true);
+        getWhatsappLink();};
+    const handleModalClose = () => {setModalVisible(false);};
 
     return (
         <>
@@ -120,40 +132,20 @@ export default function ProductCard(product) {
                 <p>Gender: {product.gender}</p>
                 <p>Size: {product.size}</p>
                 <p>condition: {product.condition}</p>
-                <p>seller phone number: {sellerPhoneNumber} </p>
-            </Modal>
 
-            {/*WHATSAPP MODAL*/}
-            <Modal title="Seller Phone Number:"
-                   open={whatsappModalVisible}
-                   onCancel={handleWhatsappModalClose}
-                   footer={[]} // Empty array to hide buttons>
-            >
-                <div className={"whatsapp-modal"}>
-                    <h3
-                        style={{fontWeight:"bold"}}>
-                        0546436246
-                    </h3>
-                    <Button shape="square"
-                            className={"card_like_button"}
-                            onClick={handleWhatsappModalOpen}>
-                        <WhatsAppOutlined
-                            style={{ scale: "140%", color: "green" }}
-                        />
+                <div className={"step-box"}>
+                    <Button className={"chat-or-pay-btn"}
+                            href={whatsappLink}
+                            target="_blank"
+                            rel="noopener noreferrer">
+                        <WhatsAppOutlined style={{scale: "160%", color: "green"}}/>
+                        <h3>Chat with seller for info</h3>
                     </Button>
                 </div>
             </Modal>
-
         </>
     );
 }
-
-<Button href="whatsapp://send?text=WHATEVER_LINK_OR_TEXT_YOU_WANT_TO_SEND">
-<WhatsAppOutlined
-style={{scale: "140%", color: "green" }}/>Chat for more details or claiming product
-</Button>
-
-
 
 export function MyItemCard (product) {
     const [title, setTitle] = useState(product.title);
@@ -165,8 +157,11 @@ export function MyItemCard (product) {
     const [tokens, setTokens] = useState(product.tokens);
     const [productId, setProductId] = useState(product.product_id);
 
+    const [buyerNumber, setBuyerNumber] = useState("");
+
 
     const [editItemModalVisible, setEditItemModalVisible] = useState(false);
+    const [requestPaymentModalVisible, setRequestPaymentModalVisible] = useState(false);
 
 
     const cardStyle = {
@@ -181,6 +176,14 @@ export function MyItemCard (product) {
     const handleEditItemModalClose = () => {
         setEditItemModalVisible(false);
     };
+
+    const handleSendPaymentModalOpen = () => {
+        setRequestPaymentModalVisible(true);
+    };
+    const handleSendPaymentModalClose = () => {
+        setRequestPaymentModalVisible(false);
+    };
+
 
 
     const handleItemInfoEdit = async (e) => {
@@ -209,6 +212,35 @@ export function MyItemCard (product) {
         }
     };
 
+    const handleSendPayment = async (e) => {
+        e.preventDefault();
+        try {
+
+        } catch (error) {
+            console.log('Something went wrong in item delete process.');
+        }
+    };
+
+
+    const handleDeleteItem = async (e) => {
+        e.preventDefault();
+        try {
+            //get refs
+            const productRef = doc(db,'products',productId);
+            const productSnapshot = await getDoc(productRef);
+            const imageFilename = productSnapshot.data()['image_filename'];
+            const storageRef = ref(storage, `product_images/${imageFilename}`);
+            //start deleting stuff
+            await deleteDoc(productRef);
+            console.log("delete item successfully")
+            await deleteObject(storageRef);
+            console.log("Image deleted successfully.");
+        } catch (error) {
+            console.log('Something went wrong in item delete process.');
+        }
+    };
+
+
     const handleSizeChange      = (value) => { setSize(value); };
     const handleTypeChange      = (value) => { setType(value); };
     const handleGenderChange    = (value) => { setGender(value); };
@@ -230,8 +262,22 @@ export function MyItemCard (product) {
                 </Tooltip>
             </div>
 
+            <div style={{position: 'absolute',
+                top: '80px',
+                right: '20px'}}>
+                <Tooltip title="Request Payment">
+                    <Button shape="circle"
+                            style={{scale: "140%",
+                                border: "1px solid black",
+                                boxShadow: "2px 2px 2px 0 black"}}
+                            onClick={handleSendPaymentModalOpen}>
+                        <GiReceiveMoney scale="150%"/>
+                    </Button>
+                </Tooltip>
+            </div>
+
             <div className={"content-box"}>
-                <p>{title}</p>
+                <h3>{title}</h3>
             </div>
 
             {/*EDIT INFO MODAL*/}
@@ -241,7 +287,8 @@ export function MyItemCard (product) {
                    footer={[]} // Empty array to hide buttons>
             >
                 <div className={"edit-info-modal"}>
-                    <form onSubmit={handleItemInfoEdit}>
+                    <form className={"edit-info-form"}
+                        onSubmit={handleItemInfoEdit}>
 
                         <input value={title} placeholder={title ? {title} : "title"}
                                type="text" onChange={(e) => setTitle(e.target.value)}
@@ -305,11 +352,41 @@ export function MyItemCard (product) {
                             </Select>
                         </Form.Item>
 
+                        <div className={"update_delete_button_box"}>
 
-                        <button className={"update-button"} type="submit">
-                            Update Item Information
-                        </button>
+                            <button className={"update-button"} type="submit">
+                                Update Item Info
+                            </button>
+
+                            <button className={"delete-btn"}
+                                    onClick={handleDeleteItem}>
+                                Delete Item
+                            </button>
+                        </div>
+
                     </form>
+                </div>
+            </Modal>
+
+            {/*REQUEST PAYMENT MODAL*/}
+            <Modal title=""
+                   open={requestPaymentModalVisible}
+                   onCancel={handleSendPaymentModalClose}
+                   footer={[]} // Empty array to hide buttons>
+            >
+                <div className={"request-payment-modal"}>
+                    <h3>Enter phone number of buyer to
+                        request payment:</h3>
+                    <Input
+                        type="text" value={buyerNumber}
+                        placeholder="Enter Phone Number"
+                        onChange={(e) => setBuyerNumber(e.target.value)}
+                    />
+                    <Button
+                        className={"request-pay-btn"}
+                        onClick={handleSendPayment}>
+                        Request Payment
+                    </Button>
                 </div>
             </Modal>
 

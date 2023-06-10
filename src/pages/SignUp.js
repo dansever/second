@@ -6,20 +6,22 @@ import {createUserWithEmailAndPassword} from "firebase/auth"
 import {Input, message, TreeSelect} from "antd";
 import {setDoc, collection, doc} from "firebase/firestore";
 import { NeighborhoodDict } from "../assets/DataSets"
+import logo from "../assets/Second_logo.png"
+import styled from "styled-components";
 
-const Neighborhood = ['Rehavia', 'Nahlaot', 'City Central',
-    'Talbia', 'Katamon', 'Beit HaKerem', 'Pisgat Zeev',
-    'Ramot', 'The French Hill', 'Kiryat Yuvel', 'Kiryat Moshe',
-    'Malha', 'Kiryat Menahem'];
+const Picture = styled.img`
+    height: 30%;
+    object-fit: cover;
+`;
+
 
 export const SignUp = () => {
     const [name, setName] = useState('');
-    const [neighborhood, setNeighborhood] = useState('');
+    const [neighborhood, setNeighborhood] = useState(null);
     const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [userID, setUserID] = useState(null);
-    const [error, setError] = useState('');
     const navigate  = useNavigate ();
 
     // Step 2: Listen for authentication state changes
@@ -30,12 +32,30 @@ export const SignUp = () => {
         }
     });
 
+    const generateRandomCode = () => {
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const digits = '0123456789';
+        let code = '';
+        for (let i = 0; i < 2; i++) {
+            const randomIndex = Math.floor(Math.random() * letters.length);
+            code += letters.charAt(randomIndex);
+        }
+        for (let i = 2; i < 4; i++) {
+            const randomIndex = Math.floor(Math.random() * digits.length);
+            code += digits.charAt(randomIndex);
+        }
+        return code;
+    };
+
     const handleSignup  = async (e) => {
         e.preventDefault();
         try {
             // Step 1: Create the user in Firebase Authentication
             const newUserCredentials =
                 await createUserWithEmailAndPassword(auth, email, password);
+
+            // Step 2: generate user code
+            const randomCode = generateRandomCode();
 
             // Step 3: Add a new document to the user's database
             const usersCollectionRef = collection(db, "users");
@@ -50,6 +70,7 @@ export const SignUp = () => {
                 phone_number: phoneNumber,
                 uploaded_items: [],
                 liked_items: [],
+                random_code: randomCode,
             };
 
             setDoc(newUserRef, data)
@@ -62,7 +83,7 @@ export const SignUp = () => {
                 })
 
         } catch (error) {
-            setError('Something went wrong. Please try again.');
+            console.log('Something went wrong. Please try again.');
         }
     };
 
@@ -72,8 +93,9 @@ export const SignUp = () => {
 
     return (
         <div className={"main-container"}>
-            <header> <h3 >Welcome to Second</h3> </header>
-            <h3>Lets get started</h3>
+            <header> <h1 >Welcome to Second</h1> </header>
+            <Picture src={logo}/>
+            <h2>Lets get started</h2>
             <form onSubmit={ handleSignup }>
 
                 <Input
@@ -81,9 +103,10 @@ export const SignUp = () => {
                     onChange={(e) => setName(e.target.value)}/>
 
                 <TreeSelect
+                    placeholder="Where do you live?"
                     treeData = {NeighborhoodDict}
+                    allowClear
                     value={neighborhood}
-                    placeholder={"Enter Neighborhood"}
                     onChange={handleNeighborhoodChange}
                 />
 
@@ -92,7 +115,7 @@ export const SignUp = () => {
                     onChange={(e) => setPhoneNumber(e.target.value)}
                 />
                 <Input
-                    type="email" value={email} placeholder="Enter Email address"
+                    type="email" value={email} placeholder="Enter email address"
                     onChange={(e) => setEmail(e.target.value)}/>
                 <Input
                     type="password" value={password} placeholder="Choose a password"
