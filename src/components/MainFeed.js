@@ -52,70 +52,19 @@ export default function MainFeed() {
         });
     }, []);
 
-
-    const handleNeighborhoodFilterChange = (value) => {setNeighborhoods(value);};
+    //
+    // const handleNeighborhoodFilterChange = (value) => {
+    //
+    //     setProductsList(neighborhood_filter);
+    //     // setNeighborhoods(value);
+    // };
     const handleSortChange = (value) => {setSortBy(value);};
     const handleSortOrderChange = (value) => {setSortOrder(value);};
 
 
     return (
         <>
-            {/*<div className={"filter-sort-container"}>*/}
-            {/*    <div>*/}
-            {/*        <TreeSelect*/}
-            {/*            treeData = {filterDatabase}*/}
-            {/*            treeCheckable*/}
-            {/*            allowClear="true"*/}
-            {/*            showCheckedStrategy="SHOW_CHILD"*/}
-            {/*            placeholder="Filter by"*/}
-            {/*            onChange={handleNeighborhoodFilterChange}*/}
-            {/*            style={{ width: '93vw' }}*/}
-            {/*        />*/}
-            {/*    </div>*/}
-            {/*    <div>*/}
-
-            {/*        <TreeSelect*/}
-            {/*            treeData = {NeighborhoodDict}*/}
-            {/*            treeCheckable*/}
-            {/*            defaultValue={neighborhoods}*/}
-            {/*            allowClear="true"*/}
-            {/*            showCheckedStrategy="SHOW_CHILD"*/}
-            {/*            placeholder="Neighborhood"*/}
-            {/*            onChange={handleNeighborhoodFilterChange}*/}
-            {/*            style={{ width: '45vw' }}*/}
-            {/*        />*/}
-
-            {/*        <Select*/}
-            {/*            placeholder="Sort by"*/}
-            {/*            onChange={handleSortChange}*/}
-            {/*            allowClear="true"*/}
-            {/*            defaultValue={sortBy}*/}
-            {/*            style = {{width:'24vw'}}>*/}
-            {/*            >*/}
-            {/*            {sortType.map((type_) => (*/}
-            {/*                <Option key={type_} value={type_}>*/}
-            {/*                    {type_}*/}
-            {/*                </Option>*/}
-            {/*            ))}*/}
-            {/*        </Select>*/}
-
-            {/*        <Select*/}
-            {/*            placeholder="Asc/Desc"*/}
-            {/*            onChange={handleSortOrderChange}*/}
-            {/*            allowClear="true"*/}
-            {/*            defaultValue={sortOrder}*/}
-            {/*            style = {{width:'22vw'}}>*/}
-            {/*            >*/}
-            {/*            {sortDirection.map((type_) => (*/}
-            {/*                <Option key={type_} value={type_}>*/}
-            {/*                    {type_}*/}
-            {/*                </Option>*/}
-            {/*            ))}*/}
-            {/*        </Select>*/}
-
-            {/*    </div>*/}
-            {/*</div>*/}
-            <SearchBar handleNeighborhoodFilterChange={handleNeighborhoodFilterChange} handleSortChange={handleSortChange}
+            <SearchBar handleSortChange={handleSortChange}
                        handleSortOrderChange={handleSortOrderChange} setProductsList={setProductsList}/>
 
             <div className="feed">

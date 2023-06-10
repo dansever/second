@@ -84,7 +84,7 @@ export const filterDatabase = [
 export const sortType = ['tokens', 'title'];
 export const sortDirection = ['asc', 'desc'];
 export const typeOptions = ['Hat', 'Shirt', 'Shoes', 'Top',
-    'Pants', 'Dress', 'Skirt', 'Swimwear'];
+    'Pants', 'Dress', 'Skirt', 'Swimwear', 'Jacket/Coat', 'Sweater'];
 export const sizeOptions = ['XS', 'S', 'M', 'L', 'XL', 'One Size'];
 export const genderOptions = ['Female', 'Male', 'Unisex'];
 export const conditionOptions = ['Old', 'Worn', 'Good', 'As New', 'New'];
