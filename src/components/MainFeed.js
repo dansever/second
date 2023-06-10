@@ -116,7 +116,7 @@ export default function MainFeed() {
             {/*    </div>*/}
             {/*</div>*/}
             <SearchBar handleNeighborhoodFilterChange={handleNeighborhoodFilterChange} handleSortChange={handleSortChange}
-                       handleSortOrderChange={handleSortOrderChange}/>
+                       handleSortOrderChange={handleSortOrderChange} setProductsList={setProductsList}/>
 
             <div className="feed">
                 <Row gutter={[16, 16]}>
