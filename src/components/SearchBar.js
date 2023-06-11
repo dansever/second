@@ -22,11 +22,12 @@ export default function SearchBar(props) {
 
 
     const handleNeighborhoodFilterChange = async (selectedValues) => {
-        // alert(selectedValues);
+        alert(selectedValues);
         userQuery = query(userQuery,where('seller_neighborhood', '==', selectedValues));
         const snapshot = await getDocs(userQuery);
         const filteredData = snapshot.docs.map((doc) => doc.data());
         props.setProductsList(filteredData);
+        alert(filteredData);
     };
 
     const [value, setValue] = useState(undefined);
