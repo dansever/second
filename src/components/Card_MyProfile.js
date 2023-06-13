@@ -1,8 +1,8 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {EditOutlined} from "@ant-design/icons";
 import {conditionOptions, genderOptions,
     sizeOptions, typeOptions} from "../assets/DataSets";
-import {doc, updateDoc, deleteDoc, getDoc, arrayUnion, collection, getDocs, arrayRemove} from "firebase/firestore";
+import {doc, updateDoc, deleteDoc, getDoc} from "firebase/firestore";
 import {deleteObject} from "firebase/storage";
 import {Button, Form, message, Modal, Select, Tooltip} from "antd";
 import Card from '@mui/material/Card';

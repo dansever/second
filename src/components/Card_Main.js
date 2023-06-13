@@ -1,17 +1,13 @@
 import React, {useContext, useState} from 'react';
-import {EditOutlined, HeartFilled,
+import { HeartFilled,
     HeartOutlined, WhatsAppOutlined} from "@ant-design/icons";
-import {conditionOptions, genderOptions,
-    sizeOptions, typeOptions} from "../assets/DataSets";
-import {doc, updateDoc, deleteDoc, arrayUnion, arrayRemove, getDoc} from "firebase/firestore";
-import {deleteObject} from "firebase/storage";
-import {Button, Form, Input, message, Modal, Select, Tooltip} from "antd";
+import {doc, updateDoc, arrayUnion, arrayRemove, getDoc} from "firebase/firestore";
+import {Button, Modal, Select} from "antd";
 import {AuthContext} from "./AuthProvider";
 import Card from '@mui/material/Card';
-import {db, storage} from "../firebase";
+import {db} from "../firebase";
 import Colors from "../color";
 import "../styles/Card.css"
-import {ref} from "firebase/storage";
 const { Option } = Select;
 
 export default function MainCard(product) {
