@@ -3,11 +3,11 @@ import "../styles/Feed.css"
 import {Col, Row} from "antd";
 import {collection, getDocs, query, where} from "firebase/firestore";
 import {db} from "../firebase";
-import ProductCard, {MyItemCard} from "./Card";
+import MyCard from "./Card_MyProfile";
 import {AuthContext} from "./AuthProvider";
 
 
-export default function MyShopFeed() {
+export default function Feed_MyProfile() {
     const [productsList, setProductsList] = useState([]);
     const productsCollectionRef = collection(db,'products');
     const currentUser = useContext(AuthContext);
@@ -32,9 +32,9 @@ export default function MyShopFeed() {
                 {productsList.map((product, index) => (
                     <Col span={12}
                          key={index}>
-                        <MyItemCard
+                        <MyCard
                             isLiked = {false}
-                            product_id = {product.id}
+                            product_id = {product.product_id}
                             title={product.title}
                             seller_uid={product.seller_uid}
                             type={product.type}
@@ -42,7 +42,6 @@ export default function MyShopFeed() {
                             image_url={product.image_url}
                             brand={product.brand}
                             size={product.size}
-                            tokens={product.tokens}
                             condition={product.condition}
                         />
                     </Col>

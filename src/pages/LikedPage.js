@@ -3,7 +3,7 @@ import "../styles/Index.css"
 import Navbar from "../components/Navbar"
 import MainHeader from "../components/Header";
 import { AuthContext } from '../components/AuthProvider';
-import LikedFeed from "../components/LikedFeed"
+import Feed_Liked from "../components/Feed_Liked"
 
 export default function LikedPage() {
     const currentUser = useContext(AuthContext);
@@ -16,7 +16,7 @@ export default function LikedPage() {
                 ( <MainHeader email={null}/> )}
             <div className={"liked-page-container"}>
                 <header className={"page_header"}>Liked Items</header>
-                <LikedFeed/>
+                <Feed_Liked/>
             </div>
             <Navbar/>
         </div>

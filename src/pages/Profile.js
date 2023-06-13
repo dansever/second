@@ -8,7 +8,7 @@ import { doc, getDoc, updateDoc} from "firebase/firestore";
 import { db} from "../firebase";
 import { Descriptions, Input, message, Modal, Tooltip, TreeSelect} from 'antd';
 import {SettingOutlined} from "@ant-design/icons";
-import MyShopFeed from "../components/MyShopFeed";
+import Feed_MyProfile from "../components/Feed_MyProfile";
 import {NeighborhoodDict} from "../assets/DataSets";
 
 export default function MyProfile() {
@@ -16,7 +16,6 @@ export default function MyProfile() {
     const [userFirstName, setUserFirstName] = useState("");
     const [userNeighborhood, setUserNeighborhood] = useState("");
     const [userPhoneNumber, setUserPhoneNumber] = useState("");
-    const [userSecretCode, setUserSecretCode] = useState("");
     const [editInfoModalVisible, setEditInfoModalVisible] = useState(false);
 
     useEffect(() => {
@@ -25,7 +24,6 @@ export default function MyProfile() {
         getUserData(UserRef);
     }, []);
 
-
     async function getUserData(UserRef) {
         try {
             const docSnap = await getDoc(UserRef);
@@ -33,8 +31,6 @@ export default function MyProfile() {
                 setUserFirstName(docSnap.data().first_name);
                 setUserNeighborhood(docSnap.data().neighborhood);
                 setUserPhoneNumber(docSnap.data().phone_number);
-                setUserSecretCode(docSnap.data().random_code);
-
             } else {
                 console.log("User document does not exist");
                 return null;
@@ -47,10 +43,7 @@ export default function MyProfile() {
 
     const handleEditInfoModalOpen = () => {setEditInfoModalVisible(true);};
     const handleEditInfoModalClose = () => {setEditInfoModalVisible(false);};
-
-    const handleNeighborhoodChange = (value, label) => {
-        setUserNeighborhood(value);
-    };
+    const handleNeighborhoodChange = (value, label) => {setUserNeighborhood(value);};
 
     const handleUserInfoEdit  = async (e) => {
         e.preventDefault();
@@ -66,9 +59,7 @@ export default function MyProfile() {
                 .then( () => {
                     console.log('User updated successfully');
                     message.success(
-                        "User updated successfully", 2, () => {
-                            console.log('Pop-up closed');
-                        });
+                        "User updated successfully", 2, () => {console.log('Pop-up closed');});
                 })
         } catch (error) {
             console.log('Something went wrong. Please try again.');
@@ -85,7 +76,6 @@ export default function MyProfile() {
             }
 
             <header className={"page_header"}>My Profile</header>
-
             <div style={{ position: 'relative' }}>
                 <Descriptions className="personal-info-table"
                               layout="horizontal"
@@ -95,7 +85,7 @@ export default function MyProfile() {
                     <Descriptions.Item label="Name">{userFirstName}</Descriptions.Item>
                     <Descriptions.Item label="Neighborhood">{userNeighborhood}</Descriptions.Item>
                     <Descriptions.Item label="Phone number">{userPhoneNumber}</Descriptions.Item>
-                    <Descriptions.Item label="Secret Code">{userSecretCode}</Descriptions.Item>
+
                 </Descriptions>
                 <div style={{ position: 'absolute', top: '20px', right: '20px'}}>
                     <Tooltip className={"info-edit-btn"} title="Edit Info">
@@ -108,12 +98,15 @@ export default function MyProfile() {
 
             <div className={"feed-container"}>
                 <h2 >Uploaded Items</h2>
-                <MyShopFeed/>
+                <Feed_MyProfile/>
             </div>
 
             <Navbar/>
 
-            {/*EDIT INFO MODAL*/}
+
+
+
+            {/*EDIT PERSONAL INFO MODAL*/}
             <Modal title="Edit Personal Information"
                    open={editInfoModalVisible}
                    onCancel={handleEditInfoModalClose}
@@ -140,7 +133,6 @@ export default function MyProfile() {
                             placeholder={userPhoneNumber}
                             onChange={(e) => setUserPhoneNumber(e.target.value)}
                         />
-
                         <button className={"update-button"} type="submit">
                             Update Information
                         </button>

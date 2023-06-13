@@ -32,21 +32,6 @@ export const SignUp = () => {
         }
     });
 
-    const generateRandomCode = () => {
-        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        const digits = '0123456789';
-        let code = '';
-        for (let i = 0; i < 2; i++) {
-            const randomIndex = Math.floor(Math.random() * letters.length);
-            code += letters.charAt(randomIndex);
-        }
-        for (let i = 2; i < 4; i++) {
-            const randomIndex = Math.floor(Math.random() * digits.length);
-            code += digits.charAt(randomIndex);
-        }
-        return code;
-    };
-
     const handleSignup  = async (e) => {
         e.preventDefault();
         try {
@@ -54,10 +39,7 @@ export const SignUp = () => {
             const newUserCredentials =
                 await createUserWithEmailAndPassword(auth, email, password);
 
-            // Step 2: generate user code
-            const randomCode = generateRandomCode();
-
-            // Step 3: Add a new document to the user's database
+            // Step 2: Add a new document to the user's database
             const usersCollectionRef = collection(db, "users");
 
             const newUserRef = doc(usersCollectionRef,
@@ -66,11 +48,9 @@ export const SignUp = () => {
                 // userId: newUserCredentials.user.uid,
                 first_name: name,
                 neighborhood: neighborhood,
-                coins: 20,
                 phone_number: phoneNumber,
                 uploaded_items: [],
                 liked_items: [],
-                random_code: randomCode,
             };
 
             setDoc(newUserRef, data)
@@ -115,7 +95,10 @@ export const SignUp = () => {
                     onChange={(e) => setPhoneNumber(e.target.value)}
                 />
                 <Input
-                    type="email" value={email} placeholder="Enter email address"
+                    type="email" value={email} placeholder="Enter university email address"
+                    required
+                    pattern=".+@.+\.(ac\.il)$"
+                    title="Please enter a valid university email address ending with '.ac.il'"
                     onChange={(e) => setEmail(e.target.value)}/>
                 <Input
                     type="password" value={password} placeholder="Choose a password"

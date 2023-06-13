@@ -24,7 +24,6 @@ function App() {
     const [newBrand, setNewBrand] = useState("");
     const [newCondition, setNewCondition] = useState("");
     const [newGender, setNewGender] = useState("");
-    const [newPrice, setNewPrice] = useState(0);
 
     // File States
     const [imageFile, setImageFile] = useState(null);
@@ -99,7 +98,8 @@ function App() {
         try {
             const userRef = doc(db,'users',currentUser.uid);
             const userSnapshot = await getDoc(userRef);
-            const neighborhood =  userSnapshot.data()['neighborhood'];            const docRef = await addDoc(productsCollectionRef, {
+            const neighborhood =  userSnapshot.data()['neighborhood'];
+            const docRef = await addDoc(productsCollectionRef, {
                 title: newTitle,
                 type: newType,
                 size: newSize,
@@ -109,12 +109,14 @@ function App() {
                 image_filename: imageFilename,
                 image_url: downloadURL,
                 seller_uid: currentUser.uid,
-                tokens: newPrice,
                 seller_neighborhood: neighborhood,
             });
             const newDocumentId = docRef.id;
             await updateDoc( doc(db,'users',userId), {
                 uploaded_items: arrayUnion(newDocumentId)
+            });
+            await updateDoc( doc(db,'products',newDocumentId), {
+                product_id: docRef.id,
             });
             setNewTitle("");
             setNewType("");
@@ -123,7 +125,6 @@ function App() {
             setNewCondition("");
             setNewGender("");
             setNewSize("");
-            setNewPrice(0);
             setImageFile(null);
             console.log('Form data saved successfully!');
         } catch (error) {
@@ -173,18 +174,6 @@ function App() {
                         type="text"
                         onChange={(e) => setNewBrand(e.target.value)}
                     />
-                </div>
-
-                <div className={"form-row"}>
-                    <label>Price</label>
-                        <input
-                            value={newPrice}
-                            placeholder="Enter price..."
-                            type="number"
-                            min={0} max={10}
-                            onChange={(e) => setNewPrice(e.target.value)}
-                            style = {{width: '200px'}}
-                        />
                 </div>
 
                 <div className={"form-row"}>
