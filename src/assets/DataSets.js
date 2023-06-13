@@ -46,8 +46,8 @@ export const filterDatabase = [
     {
         title: 'Gender', value: 'gender',
         children: [
-            { title: 'Boy',    value: 'Boy' },
-            { title: 'Girl',  value: 'Girl' },
+            { title: 'Male',    value: 'Male' },
+            { title: 'Female',  value: 'Female' },
             { title: 'Unisex',  value: 'Unisex' },
         ],
     },
@@ -65,6 +65,7 @@ export const filterDatabase = [
             { title: 'Socks',   value: 'Socks' },
             { title: 'Shoes',   value: 'Shoes' },
             { title: 'Pants/Shorts',   value: 'Pants/Shorts' },
+            { title: 'Dress',   value: 'Dress' },
             { title: 'Shirt',   value: 'Shirt' },
             { title: 'Sweater',   value: 'Sweater' },
             { title: 'Jacket/Coat',   value: 'Jacket/Coat' },
@@ -75,16 +76,14 @@ export const filterDatabase = [
     },
 
 
-
 ];
 
 export const sortType = ['tokens', 'title'];
 export const sortDirection = ['asc', 'desc'];
-export const typeOptions = ['Socks','Shoes','Pants/Shorts', 'Shirt',
-    'Sweater','Jacket/Coat', 'Pajama','Swimwear','Other']
+export const typeOptions = ['Socks','Shoes','Pants/Shorts', 'Dress',
+    'Shirt','Sweater','Jacket/Coat', 'Pajama','Swimwear','Other']
 export const sizeOptions = ['XS', 'S', 'M', 'L', 'XL', 'One Size'];
+export const genderOptions = ['Male', 'Female', 'Unisex'];
+export const conditionOptions = ['Old/Worn', 'Good', 'New/As New',];
 
-export const age = ['0-2', '3-5', '6-8', '9-11', '12-114'];
-
-export const genderOptions = ['Girl', 'Boy', 'Unisex'];
-export const conditionOptions = ['Old', 'Worn', 'Good', 'As New', 'New'];
+export const universities = ['HUJI', 'TAU', 'Technion'];

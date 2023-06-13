@@ -1,17 +1,14 @@
 import React, {useContext, useEffect, useState} from 'react';
 import "../styles/Feed.css"
 import {Col, Row} from "antd";
-import {collection, getDoc, getDocs, query, where, doc, documentId} from 'firebase/firestore';
-import {auth, db} from "../firebase";
+import {collection, getDocs, query, where, documentId} from 'firebase/firestore';
+import {db} from "../firebase";
 import {AuthContext} from "./AuthProvider";
-import {getAuth} from "firebase/auth";
-import ProductCard from "./Card";
-// import firebase from "firebase/compat";
-// import 'firebase/compat/firestore';
+import MainCard from "./Card_Main";
 
 
 
-export default function LikedFeed() {
+export default function Feed_Liked() {
     const [likedProductsList, setLikedProductsList] = useState([]);
     const currentUser = useContext(AuthContext);
     const productsCollectionRef = collection(db,'products');
@@ -50,8 +47,6 @@ export default function LikedFeed() {
         getProductList();
     }, []);
 
-
-
     return (
         <div>
             <div className="feed">
@@ -59,17 +54,15 @@ export default function LikedFeed() {
                     {likedProductsList.map((product, index) => (
                     <Col span={12}
                          key={index}>
-                        <ProductCard
+                        <MainCard
                             isLiked = {true}
                             product_id = {product.id}
                             title={product.title}
                             seller_uid={product.seller_uid}
-                            unique_id={product.unique_id}
                             type={product.type}
                             gender={product.gender}
                             image_url={product.image_url}
                             brand={product.brand}
-                            tokens={product.tokens}
                             size={product.size}
                             condition={product.condition}
                         />
@@ -80,51 +73,3 @@ export default function LikedFeed() {
         </div>
     );
 };
-
-
-
-// export default function MainFeed() {
-//     const [productsList, setProductsList] = useState([]);
-//     const productsCollectionRef = collection(db,'products');
-//
-//     useEffect(() => {
-//         const getProductList = async () => {
-//             try {
-//                 const data = await getDocs(productsCollectionRef);
-//                 const filteredData = data.docs.map((doc) => ({
-//                     ...doc.data(),
-//                     id: doc.id
-//                 }));
-//                 setProductsList(filteredData);
-//             } catch (err) {
-//                 console.error(err);
-//             }
-//         };
-//         getProductList();
-//     }, []);
-//
-//     return (
-//         <div className="feed">
-//             <Row gutter={[16, 16]}>
-//                 {productsList.map((product, index) => (
-//                     <Col span={12}
-//                          key={index}>
-//                         <ProductCard
-//                             isLiked = {false}
-//                             product_id = {product.id}
-//                             title={product.title}
-//                             seller_id={product.seller_id}
-//                             unique_id={product.unique_id}
-//                             type={product.type}
-//                             gender={product.gender}
-//                             image_url={product.image_url}
-//                             brand={product.brand}
-//                             size={product.size}
-//                             condition={product.condition}
-//                         />
-//                     </Col>
-//                 ))}
-//             </Row>
-//         </div>
-//     );
-// };

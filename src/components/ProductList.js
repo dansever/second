@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import firebase from '../firebase';
-import MainCard from './Card';
+import MainCard from './Card_Main';
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
