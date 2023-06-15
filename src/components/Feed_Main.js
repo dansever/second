@@ -76,6 +76,7 @@ export default function Feed_Main() {
                                 product_id = {product.id}
                                 title={product.title}
                                 seller_uid={product.seller_uid}
+                                tokens={product.tokens}
                                 type={product.type}
                                 gender={product.gender}
                                 image_url={product.image_url}

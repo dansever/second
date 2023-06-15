@@ -105,9 +105,10 @@ h2 {
 
 .step-box {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
-    column-gap: 20px;
+    column-gap:10px;
 }
 
 .edit-info-form {

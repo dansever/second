@@ -61,12 +61,12 @@ export const SignUp = () => {
             const newUserRef = doc(usersCollectionRef,
                 newUserCredentials.user.uid);
             const data = {
-                // userId: newUserCredentials.user.uid,
                 first_name: name,
+                liked_items: [],
                 neighborhood: neighborhood,
                 phone_number: phoneNumber,
+                tokens_left: 10,
                 uploaded_items: [],
-                liked_items: [],
                 userCode: userCode,
             };
 

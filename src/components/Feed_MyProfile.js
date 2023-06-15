@@ -34,16 +34,15 @@ export default function Feed_MyProfile() {
                          key={index}>
                         <MyCard
                             isLiked = {false}
-                            product_id = {product.product_id}
-                            title={product.title}
-                            seller_uid={product.seller_uid}
-                            type={product.type}
+                            brand={product.brand}
+                            condition={product.condition}
                             gender={product.gender}
                             image_url={product.image_url}
-                            brand={product.brand}
+                            product_id = {product.product_id}
                             size={product.size}
+                            title={product.title}
+                            type={product.type}
                             tokens={product.tokens}
-                            condition={product.condition}
                         />
                     </Col>
                 ))}
