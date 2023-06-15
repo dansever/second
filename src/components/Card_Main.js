@@ -121,11 +121,11 @@ export default function MainCard(product) {
                          alt={product.alt}/>
                 </div>
                 <p>Type: {product.type}</p>
-
                 <p>Brand: {product.brand}</p>
                 <p>Gender: {product.gender}</p>
                 <p>Size: {product.size}</p>
                 <p>condition: {product.condition}</p>
+                <p>Tokens: {product.tokens}</p>
 
                 <div className={"step-box"}>
                     <Button className={"chat-or-pay-btn"}

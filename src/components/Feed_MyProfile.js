@@ -42,6 +42,7 @@ export default function Feed_MyProfile() {
                             image_url={product.image_url}
                             brand={product.brand}
                             size={product.size}
+                            tokens={product.tokens}
                             condition={product.condition}
                         />
                     </Col>

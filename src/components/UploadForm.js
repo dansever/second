@@ -6,7 +6,7 @@ import { AuthContext } from './AuthProvider';
 import {ButtonStyle} from "./Button";
 import {getDocs, collection, addDoc, doc, updateDoc, arrayUnion, getDoc} from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import {Select, Form} from 'antd';
+import {Select, Form, InputNumber} from 'antd';
 import {conditionOptions, genderOptions, sizeOptions, typeOptions} from "../assets/DataSets";
 
 const { Option } = Select;
@@ -24,6 +24,8 @@ function App() {
     const [newBrand, setNewBrand] = useState("");
     const [newCondition, setNewCondition] = useState("");
     const [newGender, setNewGender] = useState("");
+    const [newTokens, setNewTokens] = useState(1);
+
 
     // File States
     const [imageFile, setImageFile] = useState(null);
@@ -33,7 +35,7 @@ function App() {
     const [userId, setUserId] = useState("");
 
     const productsCollectionRef = collection(db, "products");
-    const usersCollectionRef = collection(db, "users");
+    const usersCollectionRef    = collection(db, "users");
 
     const getProductList = async () => {
         try {
@@ -59,6 +61,8 @@ function App() {
     const handleTypeChange      = (value) => { setNewType(value); };
     const handleGenderChange    = (value) => { setNewGender(value); };
     const handleConditionChange = (value) => { setNewCondition(value); };
+    const handleTokensChange = (value) => { setNewTokens(value); };
+
 
     const handleImageUpload = async (file) => {
         try {
@@ -108,6 +112,7 @@ function App() {
                 gender: newGender,
                 image_filename: imageFilename,
                 image_url: downloadURL,
+                tokens: newTokens,
                 seller_uid: currentUser.uid,
                 seller_neighborhood: neighborhood,
             });
@@ -125,6 +130,7 @@ function App() {
             setNewCondition("");
             setNewGender("");
             setNewSize("");
+            setNewTokens(0);
             setImageFile(null);
             console.log('Form data saved successfully!');
         } catch (error) {
@@ -150,6 +156,7 @@ function App() {
                         type="file"
                         accept="image/" // Specify the accepted file types --> images
                         onChange={(e) => setImageFile(e.target.files[0])}
+                        required
                     />
                 </div>
 
@@ -252,6 +259,18 @@ function App() {
                     </Form.Item>
                 </div>
 
+                <div className={"form-row"}>
+                    <label>Tokens</label>
+                    <Form.Item
+                        style={{marginBottom:"0"}}>
+                        <InputNumber
+                            onChange={handleTokensChange}
+                            min={0}
+                            max={5}
+                            style = {{width: '200px'}}
+                            />
+                    </Form.Item>
+                </div>
                 <ButtonStyle
                     type="submit">
                     Add To Shop

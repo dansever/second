@@ -14,7 +14,6 @@ const Picture = styled.img`
     object-fit: cover;
 `;
 
-
 export const SignUp = () => {
     const [name, setName] = useState('');
     const [neighborhood, setNeighborhood] = useState(null);
@@ -22,17 +21,34 @@ export const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [userID, setUserID] = useState(null);
+    const [userCode, setUserCode] = useState("");
+
     const navigate  = useNavigate ();
 
-    // Step 2: Listen for authentication state changes
-    // and get the new user's UID
+    // Listen for authentication state changes, get the new user's UID
     auth.onAuthStateChanged(user => {
         if (user) {
             setUserID(user.uid);
         }
     });
 
-    const handleSignup  = async (e) => {
+    function generateRandomCode() {
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const digits = '0123456789';
+        let code = '';
+        // Generate 2 random letters
+        for (let i = 0; i < 2; i++) {
+            const randomLetter = letters.charAt(Math.floor(Math.random() * letters.length));
+            code += randomLetter;
+        }
+        for (let i = 0; i < 2; i++) {
+            const randomDigit = digits.charAt(Math.floor(Math.random() * digits.length));
+            code += randomDigit;
+        }
+        setUserCode(code);
+    }
+
+        const handleSignup  = async (e) => {
         e.preventDefault();
         try {
             // Step 1: Create the user in Firebase Authentication
@@ -41,7 +57,7 @@ export const SignUp = () => {
 
             // Step 2: Add a new document to the user's database
             const usersCollectionRef = collection(db, "users");
-
+            await generateRandomCode();
             const newUserRef = doc(usersCollectionRef,
                 newUserCredentials.user.uid);
             const data = {
@@ -51,6 +67,7 @@ export const SignUp = () => {
                 phone_number: phoneNumber,
                 uploaded_items: [],
                 liked_items: [],
+                userCode: userCode,
             };
 
             setDoc(newUserRef, data)
@@ -80,28 +97,30 @@ export const SignUp = () => {
 
                 <Input
                     type="text" value={name} placeholder="Enter first name"
+                    required
                     onChange={(e) => setName(e.target.value)}/>
 
                 <TreeSelect
                     placeholder="Where do you live?"
                     treeData = {NeighborhoodDict}
                     allowClear
+                    required
                     value={neighborhood}
                     onChange={handleNeighborhoodChange}
                 />
 
                 <Input
                     type="text" value={phoneNumber} placeholder="Enter phone number"
+                    required
                     onChange={(e) => setPhoneNumber(e.target.value)}
                 />
                 <Input
                     type="email" value={email} placeholder="Enter university email address"
                     required
-                    pattern=".+@.+\.(ac\.il)$"
-                    title="Please enter a valid university email address ending with '.ac.il'"
                     onChange={(e) => setEmail(e.target.value)}/>
                 <Input
                     type="password" value={password} placeholder="Choose a password"
+                    required
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <button className={"submit-button"} type="submit">
