@@ -1,193 +1,39 @@
 import React, {useContext, useState} from 'react';
-import {EditOutlined, HeartFilled,
-    HeartOutlined, WhatsAppOutlined} from "@ant-design/icons";
+import {EditOutlined} from "@ant-design/icons";
 import {conditionOptions, genderOptions,
     sizeOptions, typeOptions} from "../assets/DataSets";
-import {doc, updateDoc, deleteDoc, arrayUnion, arrayRemove, getDoc} from "firebase/firestore";
+import {doc, updateDoc, deleteDoc, getDoc, arrayRemove} from "firebase/firestore";
 import {deleteObject} from "firebase/storage";
-import {Button, Form, Input, message, Modal, Select, Tooltip} from "antd";
-import {AuthContext} from "./AuthProvider";
+import {Button, Form, InputNumber, message, Modal, Select, Tooltip} from "antd";
 import Card from '@mui/material/Card';
 import {db, storage} from "../firebase";
-import Colors from "../color";
 import "../styles/Card.css"
 import {ref} from "firebase/storage";
 import { GiReceiveMoney } from "react-icons/gi";
+import {AuthContext} from "./AuthProvider";
 const { Option } = Select;
 
-export default function ProductCard(product) {
-    const [isLikeToggledOn, setLikeToggledOn] = useState(product.isLiked);
-    const [modalVisible, setModalVisible] = useState(false);
-    const [sellerPhoneNumber, setSellerPhoneNumber] = useState('');
 
-    const [whatsappLink, setWhatsappLink] = useState('');
-    const currentUser = useContext(AuthContext);
-    const currentUserRef = doc(db, 'users', currentUser.uid);
-    const product_id = product.product_id;
-    const product_title = product.title
-
-    const cardStyle = {
-        borderRadius: '20px',
-        boxShadow: '0 4px 6px black',
-        cursor: 'pointer',
-    };
-
-    const likeAction = () => {
-        updateDoc(currentUserRef, {
-            liked_items: arrayUnion(product_id)
-        });
-    }
-    const unlikeAction = () => {
-        updateDoc(currentUserRef, {
-            liked_items: arrayRemove(product_id)
-        });
-
-    }
-    const handleLike = async () => {
-        setLikeToggledOn(!isLikeToggledOn);
-        if (isLikeToggledOn) {
-            unlikeAction();
-        }
-        else {
-            likeAction();
-        }
-    }
-    const getSellerPhoneNumber = async () => {
-        try {
-            const SellerUserRef = doc(db, 'users', product.seller_uid);
-            const docSnapshot = await getDoc(SellerUserRef);
-            setSellerPhoneNumber(docSnapshot.data()['phone_number']);
-        } catch (err) {
-            console.log(err);
-        }
-    };
-
-    const getWhatsappLink = async () => {
-        try {
-            const SellerUserRef = doc(db, 'users', product.seller_uid);
-            const docSnapshot = await getDoc(SellerUserRef);
-            const sellerPhoneNumber = docSnapshot.data()['phone_number'];
-            const message = "Hi, I'm interested in your product: " + product_title + "!";
-            const number = sellerPhoneNumber.slice(1);
-            const encodedMessage = encodeURIComponent(message);
-            const link = "https://wa.me/972" + number + "?text=" + encodedMessage;
-            console.log("aaa")
-            setWhatsappLink(link);
-        } catch (err) {
-            console.log(err);
-        }
-    }
-    const handleModalOpen = () => {setModalVisible(true);
-        getWhatsappLink();};
-    const handleModalClose = () => {setModalVisible(false);};
-
-    return (
-        <>
-            <Card style={cardStyle}>
-                <div className={"img-box"}
-                     onClick={handleModalOpen}>
-                    <img src={product.image_url}
-                         alt={product.alt}/>
-                </div>
-
-                <div className={"content-box"}>
-
-                    <div className={"left-side"}
-                         onClick={handleModalOpen}>
-                        <p>Size: {product.size}</p>
-                        <p>Tokens: {product.tokens}</p>
-                    </div>
-
-                    <div className={"right-side"}>
-                        <Button shape="circle"
-                                className={"card_like_button"}
-                                onClick={handleLike}>
-                            {isLikeToggledOn ?
-                                <HeartFilled
-                                    style={{ scale: "120%", color: "red" }}/>
-                                : <HeartOutlined
-                                    style={{ scale: "120%", color: "black" }}/>}
-                        </Button>
-                    </div>
-                </div>
-            </Card>
-
-            {/*MAIN MODAL*/}
-            <Modal className={"custom-modal"}
-                   open={modalVisible}
-                   onCancel={handleModalClose}
-                   footer={[]} // Empty array to hide buttons>
-                >
-                <h2 style={{color:Colors.dark_green}}>
-                    {product.title}
-                </h2>
-                <div className={"img-box-modal"}
-                     onClick={handleModalOpen}>
-                    <img src={product.image_url}
-                         alt={product.alt}/>
-                </div>
-                <p>Type: {product.type}</p>
-                <p>Tokens: {product.tokens}</p>
-                <p>Brand: {product.brand}</p>
-                <p>Gender: {product.gender}</p>
-                <p>Size: {product.size}</p>
-                <p>condition: {product.condition}</p>
-
-                <div className={"step-box"}>
-                    <Button className={"chat-or-pay-btn"}
-                            href={whatsappLink}
-                            target="_blank"
-                            rel="noopener noreferrer">
-                        <WhatsAppOutlined style={{scale: "160%", color: "green"}}/>
-                        <h3>Chat with seller for info</h3>
-                    </Button>
-                </div>
-            </Modal>
-        </>
-    );
-}
-
-export function MyItemCard (product) {
+export default function MyCard (product) {
     const [title, setTitle] = useState(product.title);
     const [type, setType] = useState(product.type);
     const [size, setSize] = useState(product.size);
     const [brand, setBrand] = useState(product.brand);
     const [condition, setCondition] = useState(product.condition);
     const [gender, setGender] = useState(product.gender);
-    const [tokens, setTokens] = useState(product.tokens);
     const [productId, setProductId] = useState(product.product_id);
-
-    const [buyerNumber, setBuyerNumber] = useState("");
-
+    const [tokens, setTokens] = useState(product.tokens);
 
     const [editItemModalVisible, setEditItemModalVisible] = useState(false);
-    const [requestPaymentModalVisible, setRequestPaymentModalVisible] = useState(false);
 
+    const cardStyle = { borderRadius: '20px', boxShadow: '0 4px 6px black', position: 'relative'};
 
-    const cardStyle = {
-        borderRadius: '20px',
-        boxShadow: '0 4px 6px black',
-        position: 'relative'
-    };
-
-    const handleEditItemModalOpen = () => {
-        setEditItemModalVisible(true);
-    };
-    const handleEditItemModalClose = () => {
-        setEditItemModalVisible(false);
-    };
-
-    const handleSendPaymentModalOpen = () => {
-        setRequestPaymentModalVisible(true);
-    };
-    const handleSendPaymentModalClose = () => {
-        setRequestPaymentModalVisible(false);
-    };
-
-
+    const handleEditItemModalOpen = () => { setEditItemModalVisible(true); };
+    const handleEditItemModalClose = () => { setEditItemModalVisible(false); };
 
     const handleItemInfoEdit = async (e) => {
         e.preventDefault();
+        console.log("product_id: " + product.product_id);
         try {
             const productRef = doc(db,'products',productId);
             const newData = {
@@ -212,15 +58,13 @@ export function MyItemCard (product) {
         }
     };
 
-    const handleSendPayment = async (e) => {
-        e.preventDefault();
-        try {
 
-        } catch (error) {
-            console.log('Something went wrong in item delete process.');
-        }
-    };
+    const currentUser = useContext(AuthContext);
+    // const [userId, setUserId] = useState("");
 
+    // useEffect(() => {
+    //     setUserId(currentUser.uid);
+    // }, [currentUser]);
 
     const handleDeleteItem = async (e) => {
         e.preventDefault();
@@ -229,12 +73,21 @@ export function MyItemCard (product) {
             const productRef = doc(db,'products',productId);
             const productSnapshot = await getDoc(productRef);
             const imageFilename = productSnapshot.data()['image_filename'];
+            console.log('hey3');
             const storageRef = ref(storage, `product_images/${imageFilename}`);
-            //start deleting stuff
+
+            //delete item doc from database
             await deleteDoc(productRef);
             console.log("delete item successfully")
+
+            //delete item image from storage
             await deleteObject(storageRef);
             console.log("Image deleted successfully.");
+
+            // delete item entry in uploaded_items array
+            await updateDoc( doc(db,'users',currentUser.uid), {
+                uploaded_items: arrayRemove(productId)
+            });
         } catch (error) {
             console.log('Something went wrong in item delete process.');
         }
@@ -245,6 +98,8 @@ export function MyItemCard (product) {
     const handleTypeChange      = (value) => { setType(value); };
     const handleGenderChange    = (value) => { setGender(value); };
     const handleConditionChange = (value) => { setCondition(value); };
+    const handleTokensChange = (value) => { setTokens(value); };
+
 
     return (
         <Card style={cardStyle}>
@@ -265,12 +120,12 @@ export function MyItemCard (product) {
             <div style={{position: 'absolute',
                 top: '80px',
                 right: '20px'}}>
-                <Tooltip title="Request Payment">
+                <Tooltip title="Mark Item as Sold">
                     <Button shape="circle"
                             style={{scale: "140%",
                                 border: "1px solid black",
                                 boxShadow: "2px 2px 2px 0 black"}}
-                            onClick={handleSendPaymentModalOpen}>
+                            onClick = {(e) => console.log("continue")}>
                         <GiReceiveMoney scale="150%"/>
                     </Button>
                 </Tooltip>
@@ -279,6 +134,10 @@ export function MyItemCard (product) {
             <div className={"content-box"}>
                 <h3>{title}</h3>
             </div>
+
+
+
+
 
             {/*EDIT INFO MODAL*/}
             <Modal title="Edit Item Information"
@@ -295,11 +154,6 @@ export function MyItemCard (product) {
                         />
                         <input value={brand} placeholder={brand ? {brand} : "brand"}
                                type="text" onChange={(e) => setBrand(e.target.value)}
-                        />
-
-                        <input value={tokens} placeholder={tokens ? {tokens} : "tokens"}
-                               type="number" min={0} max={10}
-                               onChange={(e) => setTokens(e.target.value)}
                         />
 
                         <Form.Item
@@ -352,6 +206,17 @@ export function MyItemCard (product) {
                             </Select>
                         </Form.Item>
 
+                        <Form.Item
+                            style={{marginBottom:"0"}}>
+                            <InputNumber
+                                value={tokens} placeholder={tokens ? {tokens} : "tokens"}
+                                onChange={handleTokensChange}
+                                min={0}
+                                max={5}
+                                style = {{width: '200px'}}
+                            />
+                        </Form.Item>
+
                         <div className={"update_delete_button_box"}>
 
                             <button className={"update-button"} type="submit">
@@ -365,28 +230,6 @@ export function MyItemCard (product) {
                         </div>
 
                     </form>
-                </div>
-            </Modal>
-
-            {/*REQUEST PAYMENT MODAL*/}
-            <Modal title=""
-                   open={requestPaymentModalVisible}
-                   onCancel={handleSendPaymentModalClose}
-                   footer={[]} // Empty array to hide buttons>
-            >
-                <div className={"request-payment-modal"}>
-                    <h3>Enter phone number of buyer to
-                        request payment:</h3>
-                    <Input
-                        type="text" value={buyerNumber}
-                        placeholder="Enter Phone Number"
-                        onChange={(e) => setBuyerNumber(e.target.value)}
-                    />
-                    <Button
-                        className={"request-pay-btn"}
-                        onClick={handleSendPayment}>
-                        Request Payment
-                    </Button>
                 </div>
             </Modal>
 

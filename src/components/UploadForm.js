@@ -6,7 +6,7 @@ import { AuthContext } from './AuthProvider';
 import {ButtonStyle} from "./Button";
 import {getDocs, collection, addDoc, doc, updateDoc, arrayUnion, getDoc} from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import {Select, Form} from 'antd';
+import {Select, Form, InputNumber} from 'antd';
 import {conditionOptions, genderOptions, sizeOptions, typeOptions} from "../assets/DataSets";
 
 const { Option } = Select;
@@ -24,7 +24,8 @@ function App() {
     const [newBrand, setNewBrand] = useState("");
     const [newCondition, setNewCondition] = useState("");
     const [newGender, setNewGender] = useState("");
-    const [newPrice, setNewPrice] = useState(0);
+    const [newTokens, setNewTokens] = useState(1);
+
 
     // File States
     const [imageFile, setImageFile] = useState(null);
@@ -34,7 +35,7 @@ function App() {
     const [userId, setUserId] = useState("");
 
     const productsCollectionRef = collection(db, "products");
-    const usersCollectionRef = collection(db, "users");
+    const usersCollectionRef    = collection(db, "users");
 
     const getProductList = async () => {
         try {
@@ -60,6 +61,8 @@ function App() {
     const handleTypeChange      = (value) => { setNewType(value); };
     const handleGenderChange    = (value) => { setNewGender(value); };
     const handleConditionChange = (value) => { setNewCondition(value); };
+    const handleTokensChange = (value) => { setNewTokens(value); };
+
 
     const handleImageUpload = async (file) => {
         try {
@@ -99,7 +102,8 @@ function App() {
         try {
             const userRef = doc(db,'users',currentUser.uid);
             const userSnapshot = await getDoc(userRef);
-            const neighborhood =  userSnapshot.data()['neighborhood'];            const docRef = await addDoc(productsCollectionRef, {
+            const neighborhood =  userSnapshot.data()['neighborhood'];
+            const docRef = await addDoc(productsCollectionRef, {
                 title: newTitle,
                 type: newType,
                 size: newSize,
@@ -108,13 +112,16 @@ function App() {
                 gender: newGender,
                 image_filename: imageFilename,
                 image_url: downloadURL,
+                tokens: newTokens,
                 seller_uid: currentUser.uid,
-                tokens: newPrice,
                 seller_neighborhood: neighborhood,
             });
             const newDocumentId = docRef.id;
             await updateDoc( doc(db,'users',userId), {
                 uploaded_items: arrayUnion(newDocumentId)
+            });
+            await updateDoc( doc(db,'products',newDocumentId), {
+                product_id: docRef.id,
             });
             setNewTitle("");
             setNewType("");
@@ -123,7 +130,7 @@ function App() {
             setNewCondition("");
             setNewGender("");
             setNewSize("");
-            setNewPrice(0);
+            setNewTokens(0);
             setImageFile(null);
             console.log('Form data saved successfully!');
         } catch (error) {
@@ -149,6 +156,7 @@ function App() {
                         type="file"
                         accept="image/" // Specify the accepted file types --> images
                         onChange={(e) => setImageFile(e.target.files[0])}
+                        required
                     />
                 </div>
 
@@ -173,18 +181,6 @@ function App() {
                         type="text"
                         onChange={(e) => setNewBrand(e.target.value)}
                     />
-                </div>
-
-                <div className={"form-row"}>
-                    <label>Price</label>
-                        <input
-                            value={newPrice}
-                            placeholder="Enter price..."
-                            type="number"
-                            min={0} max={10}
-                            onChange={(e) => setNewPrice(e.target.value)}
-                            style = {{width: '200px'}}
-                        />
                 </div>
 
                 <div className={"form-row"}>
@@ -263,6 +259,18 @@ function App() {
                     </Form.Item>
                 </div>
 
+                <div className={"form-row"}>
+                    <label>Tokens</label>
+                    <Form.Item
+                        style={{marginBottom:"0"}}>
+                        <InputNumber
+                            onChange={handleTokensChange}
+                            min={0}
+                            max={5}
+                            style = {{width: '200px'}}
+                            />
+                    </Form.Item>
+                </div>
                 <ButtonStyle
                     type="submit">
                     Add To Shop

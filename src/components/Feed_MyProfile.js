@@ -1,23 +1,23 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import "../styles/Feed.css"
 import {Col, Row} from "antd";
-import {collection, getDocs} from "firebase/firestore";
+import {collection, getDocs, query, where} from "firebase/firestore";
 import {db} from "../firebase";
-import ProductCard, {MyItemCard} from "./Card";
+import MyCard from "./Card_MyProfile";
+import {AuthContext} from "./AuthProvider";
 
 
-export default function MyShopFeed() {
+export default function Feed_MyProfile() {
     const [productsList, setProductsList] = useState([]);
     const productsCollectionRef = collection(db,'products');
+    const currentUser = useContext(AuthContext);
 
     useEffect(() => {
         const getProductList = async () => {
             try {
-                const data = await getDocs(productsCollectionRef);
-                const filteredData = data.docs.map((doc) => ({
-                    ...doc.data(),
-                    id: doc.id
-                }));
+                const userUploads = query(productsCollectionRef,where('seller_uid', '==', currentUser.uid));
+                const data = await getDocs(userUploads);
+                const filteredData = data.docs.map(doc => doc.data());
                 setProductsList(filteredData);
             } catch (err) {
                 console.error(err);
@@ -32,9 +32,9 @@ export default function MyShopFeed() {
                 {productsList.map((product, index) => (
                     <Col span={12}
                          key={index}>
-                        <MyItemCard
+                        <MyCard
                             isLiked = {false}
-                            product_id = {product.id}
+                            product_id = {product.product_id}
                             title={product.title}
                             seller_uid={product.seller_uid}
                             type={product.type}
