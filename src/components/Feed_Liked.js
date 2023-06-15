@@ -31,7 +31,7 @@ export default function Feed_Liked() {
                 let filteredData = [];
                 for (let arrayItem of Object.values(LikedItemsId)) {
                     for (let itemId of arrayItem.values()){
-                        alert(itemId);
+                        // alert(itemId);
                         const likedQuery = query(productsCollectionRef,where(documentId(), '==', itemId));
                         const data2 = await getDocs(likedQuery);
                         const a = data2.docs.map(doc => doc.data());

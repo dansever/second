@@ -1,14 +1,14 @@
 import React, {useContext, useEffect, useState} from "react";
 import MainHeader from "../components/Header";
+import Navbar from "../components/Navbar";
+import { doc, getDoc, updateDoc} from "firebase/firestore";
+import Feed_MyProfile from "../components/Feed_MyProfile";
 import "../styles/Profile.css"
 import "../styles/Index.css"
-import Navbar from "../components/Navbar";
-import { AuthContext } from '../components/AuthProvider';
-import { doc, getDoc, updateDoc} from "firebase/firestore";
-import { db} from "../firebase";
-import { Descriptions, Input, message, Modal, Tooltip, TreeSelect} from 'antd';
+import {Descriptions, Input, message, Modal, Tooltip, TreeSelect} from 'antd';
+import {AuthContext } from '../components/AuthProvider';
+import {db} from "../firebase";
 import {SettingOutlined} from "@ant-design/icons";
-import Feed_MyProfile from "../components/Feed_MyProfile";
 import {NeighborhoodDict} from "../assets/DataSets";
 
 export default function MyProfile() {
@@ -16,6 +16,8 @@ export default function MyProfile() {
     const [userFirstName, setUserFirstName] = useState("");
     const [userNeighborhood, setUserNeighborhood] = useState("");
     const [userPhoneNumber, setUserPhoneNumber] = useState("");
+    const [userCode, setUserCode] = useState("");
+    const [userTokens, setUserTokens] = useState(0);
     const [editInfoModalVisible, setEditInfoModalVisible] = useState(false);
 
     useEffect(() => {
@@ -31,6 +33,8 @@ export default function MyProfile() {
                 setUserFirstName(docSnap.data().first_name);
                 setUserNeighborhood(docSnap.data().neighborhood);
                 setUserPhoneNumber(docSnap.data().phone_number);
+                setUserCode(docSnap.data().userCode);
+                setUserTokens(docSnap.data().tokens_left);
             } else {
                 console.log("User document does not exist");
                 return null;
@@ -85,7 +89,8 @@ export default function MyProfile() {
                     <Descriptions.Item label="Name">{userFirstName}</Descriptions.Item>
                     <Descriptions.Item label="Neighborhood">{userNeighborhood}</Descriptions.Item>
                     <Descriptions.Item label="Phone number">{userPhoneNumber}</Descriptions.Item>
-
+                    <Descriptions.Item label="User Code">{userCode}</Descriptions.Item>
+                    <Descriptions.Item label="Tokens">{userTokens}</Descriptions.Item>
                 </Descriptions>
                 <div style={{ position: 'absolute', top: '20px', right: '20px'}}>
                     <Tooltip className={"info-edit-btn"} title="Edit Info">

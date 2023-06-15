@@ -33,7 +33,7 @@ export default function MyCard (product) {
 
     const handleItemInfoEdit = async (e) => {
         e.preventDefault();
-        console.log("product_id: " + product.product_id);
+        console.log("product_id: " + productId);
         try {
             const productRef = doc(db,'products',productId);
             const newData = {
@@ -68,12 +68,12 @@ export default function MyCard (product) {
 
     const handleDeleteItem = async (e) => {
         e.preventDefault();
+
         try {
             //get refs
             const productRef = doc(db,'products',productId);
             const productSnapshot = await getDoc(productRef);
             const imageFilename = productSnapshot.data()['image_filename'];
-            console.log('hey3');
             const storageRef = ref(storage, `product_images/${imageFilename}`);
 
             //delete item doc from database
