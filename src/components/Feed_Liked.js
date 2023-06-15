@@ -60,6 +60,7 @@ export default function Feed_Liked() {
                             title={product.title}
                             seller_uid={product.seller_uid}
                             type={product.type}
+                            tokens = {product.tokens}
                             gender={product.gender}
                             image_url={product.image_url}
                             brand={product.brand}

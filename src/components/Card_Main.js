@@ -19,7 +19,7 @@ export default function MainCard(product) {
     const currentUser = useContext(AuthContext);
     const currentUserRef = doc(db, 'users', currentUser.uid);
     const product_id = product.product_id;
-    const product_title = product.title;
+
 
     const cardStyle = {
         borderRadius: '20px',
@@ -53,25 +53,29 @@ export default function MainCard(product) {
         try {
             const sellerRef = doc(db,'users',product.seller_uid);
             const sellerSnapshot = await getDoc(sellerRef);
-            const old_tokens_amount = sellerSnapshot.data()['tokens_left'];
-            const newData = {
-                tokens: old_tokens_amount + product.tokens,
-            };
-            console.log("inputSellerCode: "+inputSellerCode);
-            console.log("realSellerCode: "+sellerCode);
-            if (inputSellerCode === sellerCode)
-            {
+            const seller_old_tokens_amount = sellerSnapshot.data()['tokens_left'];
+            console.log("seller_old_tokens_amount: "+seller_old_tokens_amount);
+            console.log("product.item_tokens: "+product.tokens);
+            const newData = {tokens_left: seller_old_tokens_amount + product.tokens,};
+            if (inputSellerCode === sellerCode) {
+                console.log("YES");
                 updateDoc(sellerRef, newData)
-                .then( () => {
-                    console.log('Success');
-                    message.success(
-                        "Tokens Transfered successfully", 1, () => {
-                            console.log('Pop-up closed');
-                        });
-                })
+                    .then(() => {
+                        console.log('Success');
+                        message.success(
+                            "Tokens Transferred successfully", 1, () => {
+                                console.log('Pop-up closed');
+                            });
+                    })
+
+                const currentUserSnapshot = await getDoc(currentUserRef);
+                const current_user_old_tokens_amount = currentUserSnapshot.data()['tokens_left'];
+                const new_token_amount = current_user_old_tokens_amount - product.tokens;
+                await updateDoc(currentUserRef, {tokens_left: new_token_amount});
             }
+            setInputSellerCode("");
         } catch (error) {
-            console.log('Something went wrong in item delete process.');
+            console.log('Token Transfer Terminated --> X');
         }
     }
 
@@ -93,7 +97,7 @@ export default function MainCard(product) {
             const SellerUserRef = doc(db, 'users', product.seller_uid);
             const docSnapshot = await getDoc(SellerUserRef);
             const sellerPhoneNumber = docSnapshot.data()['phone_number'];
-            const message = "Hi, I'm interested in your product: " + product_title + "!";
+            const message = "Hi, I'm interested in your product: " + product.title + "!";
             const number = sellerPhoneNumber.slice(1);
             const encodedMessage = encodeURIComponent(message);
             const link = "https://wa.me/972" + number + "?text=" + encodedMessage;
@@ -151,11 +155,12 @@ export default function MainCard(product) {
                     <img src={product.image_url}
                          alt={product.alt}/>
                 </div>
+
                 <p>Type: {product.type}</p>
                 <p>Brand: {product.brand}</p>
                 <p>Gender: {product.gender}</p>
                 <p>Size: {product.size}</p>
-                <p>condition: {product.condition}</p>
+                <p>Condition: {product.condition}</p>
                 <p>Tokens: {product.tokens}</p>
 
                 <div className={"step-box"}>
