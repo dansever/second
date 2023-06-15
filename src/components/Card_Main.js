@@ -1,14 +1,13 @@
 import React, {useContext, useEffect, useState} from 'react';
 import { HeartFilled,
     HeartOutlined, WhatsAppOutlined} from "@ant-design/icons";
-import {doc, updateDoc, arrayUnion, arrayRemove, getDoc, deleteDoc} from "firebase/firestore";
-import {Button, Input, message, Modal, Select} from "antd";
+import {doc, updateDoc, arrayUnion, arrayRemove, getDoc} from "firebase/firestore";
+import {Button, Input, message, Modal} from "antd";
 import {AuthContext} from "./AuthProvider";
 import Card from '@mui/material/Card';
-import {db, storage} from "../firebase";
+import {db} from "../firebase";
 import Colors from "../color";
 import "../styles/Card.css"
-import {deleteObject, ref} from "firebase/storage";
 
 export default function MainCard(product) {
     const [isLikeToggledOn, setLikeToggledOn] = useState(product.isLiked);
