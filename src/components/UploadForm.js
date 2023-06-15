@@ -6,9 +6,9 @@ import { AuthContext } from './AuthProvider';
 import {ButtonStyle} from "./Button";
 import {getDocs, collection, addDoc, doc, updateDoc, arrayUnion, getDoc} from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import {Select, Form, InputNumber} from 'antd';
+import {Select, Form, InputNumber, Modal} from 'antd';
 import {conditionOptions, genderOptions, sizeOptions, typeOptions} from "../assets/DataSets";
-
+import loading from "../assets/images/loading.gif";
 const { Option } = Select;
 
 
@@ -64,8 +64,11 @@ function App() {
     const handleTokensChange = (value) => { setNewTokens(value); };
 
 
+    const [isLoading, setIsLoading] = useState(false);
+
     const handleImageUpload = async (file) => {
         try {
+            setIsLoading(true);
             const unique_filename = Date.now() + '_' + file.name;
             const storageRef = ref(storage, `product_images/${unique_filename}`);
             const uploadTask = uploadBytesResumable(storageRef, file);
@@ -89,11 +92,14 @@ function App() {
                     getDownloadURL(uploadTask.snapshot.ref)
                         .then((downloadURL) => {
                         saveFormData(unique_filename, downloadURL);
+                        setIsLoading(false);
                     });
                 }
             );
         } catch (error) {
             console.error('Error uploading image:', error);
+            setIsLoading(false);
+
         }
     };
 
@@ -142,6 +148,7 @@ function App() {
     function handleFormSubmit  (e) {
         e.preventDefault();
         handleImageUpload(imageFile);
+
     };
 
     return (
@@ -277,6 +284,15 @@ function App() {
                 </ButtonStyle>
 
             </form>
+            <Modal className={"loading-modal"}
+                   open={isLoading}
+                   footer={[]} // Empty array to hide buttons>
+            >
+                <div className="modal-content">
+                    <h2>Uploading...</h2>
+                    <img class={"loading"} src={loading}/>
+                </div>
+            </Modal>
         </div>
     );
 }
