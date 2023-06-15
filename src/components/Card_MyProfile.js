@@ -2,9 +2,9 @@ import React, {useContext, useState} from 'react';
 import {EditOutlined} from "@ant-design/icons";
 import {conditionOptions, genderOptions,
     sizeOptions, typeOptions} from "../assets/DataSets";
-import {doc, updateDoc, deleteDoc, getDoc} from "firebase/firestore";
+import {doc, updateDoc, deleteDoc, getDoc, arrayRemove} from "firebase/firestore";
 import {deleteObject} from "firebase/storage";
-import {Button, Form, message, Modal, Select, Tooltip} from "antd";
+import {Button, Form, InputNumber, message, Modal, Select, Tooltip} from "antd";
 import Card from '@mui/material/Card';
 import {db, storage} from "../firebase";
 import "../styles/Card.css"
@@ -22,6 +22,7 @@ export default function MyCard (product) {
     const [condition, setCondition] = useState(product.condition);
     const [gender, setGender] = useState(product.gender);
     const [productId, setProductId] = useState(product.product_id);
+    const [tokens, setTokens] = useState(product.tokens);
 
     const [editItemModalVisible, setEditItemModalVisible] = useState(false);
 
@@ -42,6 +43,7 @@ export default function MyCard (product) {
                 brand: brand,
                 condition: condition,
                 gender: gender,
+                tokens: tokens,
             };
             updateDoc(productRef, newData)
                 .then( () => {
@@ -96,6 +98,8 @@ export default function MyCard (product) {
     const handleTypeChange      = (value) => { setType(value); };
     const handleGenderChange    = (value) => { setGender(value); };
     const handleConditionChange = (value) => { setCondition(value); };
+    const handleTokensChange = (value) => { setTokens(value); };
+
 
     return (
         <Card style={cardStyle}>
@@ -200,6 +204,17 @@ export default function MyCard (product) {
                                 {conditionOptions.map((condition) => (
                                     <Option key={condition} value={condition}>{condition}</Option>))}
                             </Select>
+                        </Form.Item>
+
+                        <Form.Item
+                            style={{marginBottom:"0"}}>
+                            <InputNumber
+                                value={tokens} placeholder={tokens ? {tokens} : "tokens"}
+                                onChange={handleTokensChange}
+                                min={0}
+                                max={5}
+                                style = {{width: '200px'}}
+                            />
                         </Form.Item>
 
                         <div className={"update_delete_button_box"}>
