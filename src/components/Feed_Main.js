@@ -3,14 +3,13 @@ import "../styles/Feed.css"
 import {Col, Row, Select} from "antd";
 import {collection, getDocs, query, orderBy, onSnapshot, where, documentId} from "firebase/firestore";
 import {db} from "../firebase";
-import ProductCard from "./Card";
-// import {filterDatabase, NeighborhoodDict, sortDirection, sortType} from "../assets/DataSets";
+import MainCard from "./Card_Main";
 import SearchBar from "./SearchBar";
 import {AuthContext} from "./AuthProvider";
 
-// const { Option } = Select;
+const { Option } = Select;
 
-export default function MainFeed() {
+export default function Feed_Main() {
     const [productsList, setProductsList] = useState([]);
     const [sortBy, setSortBy] = useState('tokens');
     const [sortOrder, setSortOrder] = useState('asc');
@@ -95,17 +94,16 @@ export default function MainFeed() {
                     {productsList.map((product, index) => (
                         <Col span={12}
                              key={index}>
-                            <ProductCard
+                            <MainCard
                                 isLiked = {isLiked(product)}
                                 product_id = {product.id}
                                 title={product.title}
                                 seller_uid={product.seller_uid}
-                                unique_id={product.unique_id}
+                                tokens={product.tokens}
                                 type={product.type}
                                 gender={product.gender}
                                 image_url={product.image_url}
                                 brand={product.brand}
-                                tokens={product.tokens}
                                 size={product.size}
                                 condition={product.condition}
                             />
