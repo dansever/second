@@ -19,6 +19,7 @@ export default function Feed_Main() {
     const currentUser = useContext(AuthContext);
     const productsCollectionRef = collection(db,'products');
     const usersCollectionRef = collection(db,'users');
+    let userQuery;
 
 
     const getProductList = async () => {

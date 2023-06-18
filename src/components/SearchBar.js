@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 // import "./SearchBar.css"
 import { Select, TreeSelect} from "antd";
 import {filterDatabase, NeighborhoodDict, sortBy, sortDirection, sortType, sortTypes} from "../assets/DataSets";
@@ -8,10 +8,9 @@ import {db} from "../firebase";
 const { Option } = Select;
 
 export default function SearchBar(props) {
-    const [neighborhoods, setNeighborhoods] = useState([])
     const [sortBy, setSortBy] = useState('')
     const [sortOrder, setSortOrder] = useState('')
-    let userQuery = collection(db,'products');
+    let userQuery= collection(db,'products');
    // let data = userQuery.get().docs();
    // alert(data[0]);
 
@@ -19,15 +18,37 @@ export default function SearchBar(props) {
     const [gender,setGender] = useState([]);
     const [type,setType] = useState([]);
     const [condition,setCondition] = useState([]);
+    const [neighborhoods, setNeighborhoods] = useState([])
 
 
-    const handleNeighborhoodFilterChange = async (selectedValues) => {
-        // alert(selectedValues);
-        userQuery = query(userQuery,where('seller_neighborhood', '==', selectedValues));
+
+    const handleNeighborhoodFilterChange = async (selectedValues, title) => {
+        if(title.length === 0){
+            userQuery= collection(db,'products');
+            setNeighborhoods([]);
+            if(size.length !== 0){
+                userQuery = query(userQuery,where('size', '==', size[0]));
+            }
+            if(gender.length !== 0){
+                userQuery = query(userQuery,where('gender', '==', gender[0]));
+            }
+            if(type.length !== 0){
+                userQuery = query(userQuery,where('type', '==', type[0]));
+            }
+            if(condition.length !== 0){
+                userQuery = query(userQuery,where('condition', '==', condition[0]));
+            }
+
+        }
+        else {
+            userQuery = query(userQuery,where('seller_neighborhood', '==', title[0]));
+            // console.log(title);
+            setNeighborhoods(title);
+        }
         const snapshot = await getDocs(userQuery);
         const filteredData = snapshot.docs.map((doc) => doc.data());
         props.setProductsList(filteredData);
-        // alert(filteredData);
+        // console.log(filteredData);
     };
 
     const [value, setValue] = useState(undefined);
@@ -56,10 +77,22 @@ export default function SearchBar(props) {
     }
 
 
-    const onChange = (value, title, extra) => {
-        // alert("Change: " + getPath(value));
-        // // setValue({ value });
-        // alert(extra);
+    const onChange = async (value, title, extra) => {
+        if (value.length === 0) {
+            userQuery = collection(db, 'products');
+            setSize([]);
+            setType([]);
+            setGender([]);
+            setCondition([]);
+            // console.log("neighborhoods.length: "+neighborhoods.length);
+            // console.log(neighborhoods);
+            if(neighborhoods.length !== 0){
+                userQuery = query(userQuery,where('seller_neighborhood', '==', neighborhoods[0]));
+            }
+        }
+        const snapshot = await getDocs(userQuery);
+        const filteredData = snapshot.docs.map((doc) => doc.data());
+        props.setProductsList(filteredData);
 
 
     };
@@ -67,7 +100,7 @@ export default function SearchBar(props) {
     const fetchData = async () => {
         const snapshot = await getDocs(userQuery);
         const filteredData = snapshot.docs.map((doc) => doc.data());
-        console.log(filteredData); // Log the data to the console
+        // console.log(filteredData); // Log the data to the console
     };
 
 
@@ -76,20 +109,20 @@ export default function SearchBar(props) {
         let filterBy = select[0];
         let value = select[1];
         if(filterBy === "size"){
-            // setSize([...size, value]);
+            setSize([...size, value]);
             // value = value.toUpperCase();
             userQuery = query(userQuery,where('size', '==', value));
         }
         if(filterBy === "gender"){
-            // setGender([...gender, value]);
+            setGender([...gender, value]);
             userQuery = query(userQuery,where('gender', '==', value));
         }
         if(filterBy === "type"){
-            // setType([...type, value]);
+            setType([...type, value]);
             userQuery = query(userQuery,where('type', '==', value));
         }
         if(filterBy === "condition"){
-            // setCondition([...condition, value]);
+            setCondition([...condition, value]);
             userQuery = query(userQuery,where('condition', '==', value));
         }
         const snapshot = await getDocs(userQuery);
@@ -117,7 +150,8 @@ export default function SearchBar(props) {
 
                 <TreeSelect
                     treeData = {NeighborhoodDict}
-                    treeCheckable
+                    // treeCheckable
+                    multiple = {false}
                     defaultValue={neighborhoods}
                     allowClear="true"
                     showCheckedStrategy="SHOW_CHILD"
