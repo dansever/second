@@ -290,7 +290,7 @@ function App() {
             >
                 <div className="modal-content">
                     <h2>Uploading...</h2>
-                    <img class={"loading"} src={loading}/>
+                    <img class={"loading"} src={loading} alt={"loading_object"}/>
                 </div>
             </Modal>
         </div>
@@ -298,4 +298,3 @@ function App() {
 }
 
 export default App;
-

@@ -160,7 +160,7 @@ export default function MainCard(product) {
                 <p>Gender: {product.gender}</p>
                 <p>Size: {product.size}</p>
                 <p>Condition: {product.condition}</p>
-                <p>Tokens: {product.tokens}</p>
+                <p>Value: {product.tokens} Tokens</p>
 
                 <div className={"step-box"}>
                     <h3>Step 1:</h3>
