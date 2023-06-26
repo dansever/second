@@ -1,3 +1,4 @@
+
 header h3{
     color: var(--dark_green);
 }
@@ -21,22 +22,15 @@ form {
 .submit-button {
     border-radius: 10px;
     width: 100%;
+    height: 100%;
     padding: 10px;
-    background-color: var(--secondary_green);
-    font-weight: bold;
+    background-color: #8EC16E;
     font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.submit-button:hover {
-    background-color: var(--primary_green);
-    cursor: pointer;
-}
-
-p {
-    font-weight: normal;
+    box-shadow: 2px 3px 0 0 var(--text_color);
+    font-family: 'Montserrat', sans-serif;
 }
 
 .sign-up-button {
@@ -68,7 +62,7 @@ p {
 }
 
 .auth-wrapper .form-control:focus {
-    border-color: #167bff;
+    border-color: #8EC16E;
     box-shadow: none;
 }
 
@@ -78,3 +72,15 @@ p {
     line-height: 1;
     padding-bottom: 20px;
 }
+
+.ant-input, .ant-input:focus, .ant-input-number, .ant-input-number:focus, .ant-input-number:active {
+    background-color: white;
+    box-shadow: 2px 3px 0 0 var(--text_color);
+    border-radius: 6px;
+    border: 1px solid var(--text_color) !important;
+    font-family: 'Montserrat', sans-serif;
+}
+.ant-input::placeholder {
+    color: var(--text_color);
+}
+

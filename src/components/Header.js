@@ -13,7 +13,6 @@ import {auth} from "../firebase";
 const HeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
-  background-color: var(--secondary_green);
   position: fixed;
   width: 100%;
   top: 0;
@@ -23,7 +22,8 @@ const HeaderContainer = styled.div`
   padding-right: 5px;
   align-items: center;
   justify-content: space-between;
-
+  border-bottom: var(--text_color) 3px solid;
+  margin-bottom: -3px;
 `;
 
 const TitleAndLogo = styled.div`
@@ -33,18 +33,31 @@ const TitleAndLogo = styled.div`
   align-items: center;
 `;
 
-
-
 export default function MainHeader(props) {
     const navigate = useNavigate();
-
-
     const handleSignOut = () => {
         auth.signOut();
         // Sign out successful
         console.log('User signed out');
         navigate("/Login");
     }
+
+    const HeaderContainer = styled.div`
+        display: flex;
+        flex-direction: row;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1;
+        height: 60px;
+        padding-left: 15px;
+        padding-right: 5px;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: var(--text_color) 3px solid;
+        margin-bottom: -3px;
+        background-color: ${props.color} !important; // Set the background color dynamically
+    `;
 
     const items = [
         {
@@ -60,7 +73,7 @@ export default function MainHeader(props) {
                     style={{
                         color: Colors.dark_green,
                         fontSize:"32px"}}>
-                    second
+                    Second
                 </h3>
                 <img
                     src={second_logo}
@@ -86,7 +99,23 @@ export default function MainHeader(props) {
     );
 };
 
-export function SecondaryHeader() {
+export function SecondaryHeader(props) {
+    const HeaderContainer = styled.div`
+        display: flex;
+        flex-direction: row;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1;
+        height: 60px;
+        padding-left: 15px;
+        padding-right: 5px;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: var(--text_color) 3px solid;
+        margin-bottom: -3px;
+        background-color: ${props.color} !important; // Set the background color dynamically
+    `;
     const navigate = useNavigate();
     return (
         <HeaderContainer>

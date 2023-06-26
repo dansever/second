@@ -3,17 +3,21 @@ import "../styles/Index.css"
 
 export const ButtonStyle = styled.button`
   color: var(--text_color);
+  background-color: var(--baby_pink);
   border-radius: 12px;
   height: 40px;
   width: 170px;
-  font-family: "Montserrat", sans-serif;
-  font-size: medium;
-  font-weight: 600;
+  font-weight: 700;
   box-shadow: 2px 3px 0 0 black;
-  &:hover {
-    cursor: pointer;
-    background-color: var(--secondary_green);
-    scale: 101%;
-  }
-  background-color: ${({ isFollowing }) => (isFollowing ? "#749A83" : "#F1F7F1" )};
+  //background-color: ${({ isFollowing }) => (isFollowing ? "#749A83" : "#F1F7F1" )};
 `;
+
+export const applyButton = styled.button`
+  color: var(--text_color);
+  background-color: var(--baby_pink);
+  border-radius: 12px;
+  height: 40px;
+  width: 170px;
+  font-weight: 700;
+  box-shadow: 2px 3px 0 0 black;
+  `;

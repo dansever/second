@@ -11,6 +11,10 @@ h2 {
     flex-direction: column;
     align-items: center;
 }
+
+.ant-modal-body {
+    margin: -10px;
+}
 .img-box {
     overflow: hidden;
     flex: 7;
@@ -30,6 +34,7 @@ h2 {
     flex: 7;
     align-items: center;
     padding-bottom: 10px;
+
 }
 
 .img-box-modal img {
@@ -70,15 +75,10 @@ h2 {
     padding-top: 15px;
 }
 
-.card_like_button {
+.card_like_button, .card_like_button:hover, .card_like_button:focus, .card_like_button:active {
     scale: 120%;
-    border-color: black;
-    box-shadow: 1px 1px 1px 0 black;
-}
-
-.card_like_button:hover {
-    scale: 125%;
-    border-color: black;
+    border-color: black !important;
+    box-shadow: 1px 1px 1px 0 black !important;
 }
 
 .modal_icons {
@@ -87,6 +87,9 @@ h2 {
     column-gap: 40px;
 }
 
+.ant-wave {
+    display: none;
+}
 .whatsapp-modal {
     display: flex;
     flex-direction: row;
@@ -94,8 +97,15 @@ h2 {
     column-gap: 40px;
 }
 
+.ant-btn {
+    border-radius: 10px;
+    box-shadow: 2px 3px 0 0 var(--text_color);
+    border: 2px solid var(--text_color);
+}
+
 .chat-or-pay-btn{
     width: 70%;
+    background-color: var(--primary_green);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -103,12 +113,22 @@ h2 {
     column-gap: 10px;
 }
 
+.apply-button {
+    color: var(--text_color);
+    background-color: var(--orangie);
+    border-radius: 10px;
+    height:35px;
+    width: 80px;
+    font-weight: 700;
+    box-shadow: 2px 3px 0 0 black;
+}
+
 .step-box {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
-    column-gap:10px;
+    column-gap: 10px;
+    padding-top: 10px;
 }
 
 .edit-info-form {
@@ -117,8 +137,9 @@ h2 {
 
 .custom-modal .ant-modal-content{
     border: 2px solid var(--text_color);
-    box-shadow: 0 4px 0 var(--text_color);
+    box-shadow: 2px 3px 0 0 var(--text_color);
     border-radius: 16px;
+    background-color: #FDF3E6;
 }
 .ant-btn {
     word-wrap: break-word;

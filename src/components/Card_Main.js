@@ -7,7 +7,7 @@ import {AuthContext} from "./AuthProvider";
 import Card from '@mui/material/Card';
 import {db} from "../firebase";
 import Colors from "../color";
-import "../styles/Card.css"
+import "../styles/Card.css";
 
 export default function MainCard(product) {
     const [isLikeToggledOn, setLikeToggledOn] = useState(product.isLiked);
@@ -21,9 +21,10 @@ export default function MainCard(product) {
 
 
     const cardStyle = {
-        borderRadius: '20px',
-        boxShadow: '0 4px 6px black',
+        borderRadius: '25px',
+        boxShadow: '2px 3px 0 0 #02110A',
         cursor: 'pointer',
+        border: '2px solid #02110A',
     };
 
     const likeAction = () => {
@@ -152,7 +153,7 @@ export default function MainCard(product) {
                 <div className={"img-box-modal"}
                      onClick={handleModalOpen}>
                     <img src={product.image_url}
-                         alt={product.alt}/>
+                         alt={product.alt} style={{border:"2px solid", borderColor:Colors.text_color}}/>
                 </div>
 
                 <p>Type: {product.type}</p>
@@ -162,29 +163,23 @@ export default function MainCard(product) {
                 <p>Condition: {product.condition}</p>
                 <p>Tokens: {product.tokens}</p>
 
+                <Button className={"chat-or-pay-btn"}
+                        href={whatsappLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{width:"80%"}}>
+                    <WhatsAppOutlined style={{scale: "160%", color: "green"}}/>
+                    <h3>Chat with seller for info</h3>
+                </Button>
                 <div className={"step-box"}>
-                    <h3>Step 1:</h3>
-                    <Button className={"chat-or-pay-btn"}
-                            href={whatsappLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{width:"80%"}}>
-                        <WhatsAppOutlined style={{scale: "160%", color: "green"}}/>
-                        <h3>Chat with seller for info</h3>
-                    </Button>
-                </div>
-
-                <div className={"step-box"}>
-                    <h3>Step 2:</h3>
                     <Input
                         value={inputSellerCode}
-                        placeholder="Enter sellers user code"
+                        placeholder="Enter givers user code"
                         onChange={(e) => setInputSellerCode(e.target.value)}/>
-                    <Button
-                        type="primary"
+                    <button className={"apply-button"}
                         onClick={handleApplyButton}>
                         Apply
-                    </Button>
+                    </button>
                 </div>
 
             </Modal>

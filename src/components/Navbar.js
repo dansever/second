@@ -4,10 +4,32 @@ import { HiOutlineUserCircle } from "react-icons/hi";
 import { CiSquarePlus } from "react-icons/ci";
 import {Link, useMatch, useResolvedPath} from "react-router-dom";
 import "../styles/Navbar.css"
+import Colors from "../color.js";
+
+
 
 export default function Navbar () {
+    const getPageBackgroundColor = (path) => {
+        switch (path) {
+            case "/Home":
+                return Colors.baby_pink; // Set the background color for Home page
+            case "/Upload":
+                return Colors.light_blue; // Set the background color for Upload page
+            case "/LikedPage":
+                return Colors.orangie; // Set the background color for LikedPage
+            case "/Profile":
+                return Colors.yelloww; // Set the background color for Profile page
+            default:
+                return Colors.background; // Set a default background color
+        }
+    };
+
+
+
+    const resolvedPath = useResolvedPath(window.location.pathname);
+    const pageBackgroundColor = getPageBackgroundColor(resolvedPath.pathname);
     return (
-        <nav className="nav">
+        <nav className={"nav"} style={{ backgroundColor: pageBackgroundColor }}>
             <ul>
                 <CustomLink to="/Home">
                     <BiHome size={36} strokeWidth={0.5}/>

@@ -10,6 +10,7 @@ import {AuthContext } from '../components/AuthProvider';
 import {db} from "../firebase";
 import {SettingOutlined} from "@ant-design/icons";
 import {NeighborhoodDict} from "../assets/DataSets";
+import Colors from "../color.js";
 
 export default function MyProfile() {
     const currentUser = useContext(AuthContext);
@@ -74,9 +75,9 @@ export default function MyProfile() {
     return (
         <div>
             {currentUser ?
-                ( <MainHeader email={currentUser.email}/> )
+                ( <MainHeader color={Colors.yelloww} email={currentUser.email}/> )
                 :
-                ( <MainHeader email={null}/> )
+                ( <MainHeader color={Colors.yelloww} email={null}/> )
             }
 
             <header className={"page_header"}>My Profile</header>
@@ -106,7 +107,7 @@ export default function MyProfile() {
                 <Feed_MyProfile/>
             </div>
 
-            <Navbar/>
+            <Navbar className={"nav-profil"}/>
 
 
 

@@ -1,10 +1,8 @@
 form h3 {
-    color: var(--primary_green);
     margin-bottom: 0;
 }
 
 .upload-container {
-    background-color: var(--light_green);
     overflow: auto;
     padding: 0 10px 0 10px;
     display: flex;
@@ -23,6 +21,21 @@ form h3 {
 
 .form-row {
     display: flex;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+
+}
+
+.form-row-img {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .file-form-row {
@@ -84,3 +97,4 @@ button {
     width: 20%;
     display: flex;
 }
+

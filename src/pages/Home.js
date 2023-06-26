@@ -5,6 +5,7 @@ import Feed_Main from "../components/Feed_Main"
 import Navbar from "../components/Navbar"
 import MainHeader from "../components/Header";
 import { AuthContext } from '../components/AuthProvider';
+import Colors from "../color.js";
 
 export default function Home() {
     const currentUser = useContext(AuthContext);
@@ -12,9 +13,9 @@ export default function Home() {
     return (
         <div>
             {currentUser ?
-                ( <MainHeader email={currentUser.email}/> )
+                ( <MainHeader color={Colors.baby_pink} email={currentUser.email}/> )
                 :
-                ( <MainHeader email={null}/> )}
+                ( <MainHeader  color={Colors.baby_pink}   email={null}/> )}
             <div className={"home-container"}>
                 {/*<SearchBar defaultNeighborhood={userNeighborhood}  />*/}
                 <Feed_Main/>

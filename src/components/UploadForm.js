@@ -6,11 +6,10 @@ import { AuthContext } from './AuthProvider';
 import {ButtonStyle} from "./Button";
 import {getDocs, collection, addDoc, doc, updateDoc, arrayUnion, getDoc} from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import {Select, Form, InputNumber, Modal} from 'antd';
+import {Select, Form, InputNumber, Modal, Input} from 'antd';
 import {conditionOptions, genderOptions, sizeOptions, typeOptions} from "../assets/DataSets";
 import loading from "../assets/images/loading.gif";
 const { Option } = Select;
-
 
 
 
@@ -51,11 +50,11 @@ function App() {
 
     useEffect(() => {
         setUserId(currentUser.uid);
-        }, [currentUser]);
+    }, [currentUser]);
 
     useEffect(() => {
         getProductList();
-        }, []);
+    }, []);
 
     const handleSizeChange      = (value) => { setNewSize(value); };
     const handleTypeChange      = (value) => { setNewType(value); };
@@ -91,9 +90,9 @@ function App() {
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref)
                         .then((downloadURL) => {
-                        saveFormData(unique_filename, downloadURL);
-                        setIsLoading(false);
-                    });
+                            saveFormData(unique_filename, downloadURL);
+                            setIsLoading(false);
+                        });
                 }
             );
         } catch (error) {
@@ -154,9 +153,9 @@ function App() {
     return (
         <div>
             <form onSubmit={handleFormSubmit }>
-                <h3>Step 1 - Upload Image:</h3>
-
-                <div className={"form-row"}>
+                <div></div><div></div>
+                <div className={"form-row-img"}>
+                    <label>Add a Pic</label>
                     <input
                         className={"upload-file-button"}
                         id="fileInput"
@@ -167,11 +166,10 @@ function App() {
                     />
                 </div>
 
-                <h3>Step 2 - Fill Data:</h3>
 
                 <div className={"form-row"}>
                     <label>Title</label>
-                    <input
+                    <Input
                         value={newTitle}
                         placeholder="Enter title..."
                         type="text"
@@ -182,7 +180,7 @@ function App() {
 
                 <div className={"form-row"}>
                     <label>Brand</label>
-                    <input
+                    <Input
                         value={newBrand}
                         placeholder="Enter brand..."
                         type="text"
@@ -193,7 +191,7 @@ function App() {
                 <div className={"form-row"}>
                     <label>Type</label>
                     <Form.Item
-                    style={{marginBottom:"0"}}>
+                        style={{marginBottom:"0"}}>
                         <Select
                             value={newType}
                             placeholder="Select type..."
@@ -218,7 +216,7 @@ function App() {
                             placeholder="Select size..."
                             onChange={handleSizeChange}
                             style = {{width: '200px'}}>
-                        >
+                            >
                             {sizeOptions.map((size) => (
                                 <Option key={size} value={size}>
                                     {size}
@@ -275,13 +273,14 @@ function App() {
                             min={0}
                             max={5}
                             style = {{width: '200px'}}
-                            />
+                        />
                     </Form.Item>
                 </div>
-                <ButtonStyle
-                    type="submit">
-                    Add To Shop
-                </ButtonStyle>
+                <div className={"button"}>
+                    <ButtonStyle
+                        type="submit">Add To Shop
+                    </ButtonStyle>
+                </div>
 
             </form>
             <Modal className={"loading-modal"}
@@ -298,4 +297,3 @@ function App() {
 }
 
 export default App;
-

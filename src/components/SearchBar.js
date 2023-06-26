@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react"
-// import "./SearchBar.css"
+import "../styles/SearchBar.css"
 import { Select, TreeSelect} from "antd";
 import {filterDatabase, NeighborhoodDict, sortBy, sortDirection, sortType, sortTypes} from "../assets/DataSets";
 import {collection, getDocs, orderBy, query, where} from "firebase/firestore";
