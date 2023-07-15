@@ -19,7 +19,9 @@ export default function Feed_Main() {
     const currentUser = useContext(AuthContext);
     const productsCollectionRef = collection(db,'products');
     const usersCollectionRef = collection(db,'users');
-    let userQuery;
+    // let userQuery;
+    const [filter, setFilter] = useState({});
+    const [neighborhoodFilter, setNeighborhoodFilter] = useState([]);
 
 
     const getProductList = async () => {
@@ -58,13 +60,13 @@ export default function Feed_Main() {
         });
     }, []);
 
-    const handleSortChange = (value) => {setSortBy(value);};
-    const handleSortOrderChange = (value) => {setSortOrder(value);};
+    // const handleSortChange = (value) => {setSortBy(value);};
+    // const handleSortOrderChange = (value) => {setSortOrder(value);};
 
-    //this will run once when the page uplod
+    //this will run once when the page uplaod
     useEffect( () => {
         const getLikedItemList = async () => {
-            const userDoc = query(usersCollectionRef, where(documentId(), '==', currentUser.uid));
+            const userDoc = await query(usersCollectionRef, where(documentId(), '==', currentUser.uid));
             const data1 = await getDocs(userDoc);
             const LikedItemsId = data1.docs.map(doc => doc.data().liked_items);
             setLikedItems(LikedItemsId[0]);
@@ -73,43 +75,76 @@ export default function Feed_Main() {
         getLikedItemList().then(() => setLoading(false));
     }, []);
 
-
-    const isLiked = (product) => {
-        // console.log(product.id, likedItems.includes(product.id));
-        return likedItems.includes(product.id);
-    }
-
-
     if (isLoading) {
         return(
             <div className="loading_feed">Loading...</div>
         )
     }
+
+    const isPassFilter = ({size, gender, condition, type, seller_neighborhood}) => {
+        const passSize = !filter.size || filter.size.includes(size);
+        const passGender = !filter.gender || filter.gender.includes(gender);
+        const passCondition = !filter.condition || filter.condition.includes(condition);
+        const passType = !filter.type || filter.type.includes(type);
+        const passNeighborhood = neighborhoodFilter.length === 0 || neighborhoodFilter.includes(seller_neighborhood);
+        return passSize && passGender && passType && passCondition && passNeighborhood;
+    };
+
+    const isLiked = (product_id) => {
+        if (likedItems.length === 0){
+            return false;
+        }
+        return likedItems.includes(product_id);
+    }
+
+    const createdCards = productsList.filter(isPassFilter).map((product, index) => (
+            <Col span={12}
+                 key={index}>
+                <MainCard
+                    isLiked = {isLiked(product.id)}
+                    product_id = {product.id}
+                    title={product.title}
+                    seller_uid={product.seller_uid}
+                    tokens={product.tokens}
+                    type={product.type}
+                    gender={product.gender}
+                    image_url={product.image_url}
+                    brand={product.brand}
+                    size={product.size}
+                    condition={product.condition}
+                    setLikedItems ={setLikedItems}
+                />
+            </Col>
+        ))
     return (
         <>
-            <SearchBar handleSortChange={handleSortChange}
-                       handleSortOrderChange={handleSortOrderChange} setProductsList={setProductsList}/>
+            <SearchBar filter={filter} setFilter={setFilter} neighborhoodFilter={neighborhoodFilter}
+                       setNeighborhoodFilter={setNeighborhoodFilter} setSortBy={setSortBy} setSortOrder={setSortOrder} />
+            {/*handleSortChange={handleSortChange}*/}
+            {/*handleSortOrderChange={handleSortOrderChange} setProductsList={setProductsList} productsList={productsList}*/}
 
             <div className="feed">
                 <Row gutter={[16, 16]}>
-                    {productsList.map((product, index) => (
-                        <Col span={12}
-                             key={index}>
-                            <MainCard
-                                isLiked = {isLiked(product)}
-                                product_id = {product.id}
-                                title={product.title}
-                                seller_uid={product.seller_uid}
-                                tokens={product.tokens}
-                                type={product.type}
-                                gender={product.gender}
-                                image_url={product.image_url}
-                                brand={product.brand}
-                                size={product.size}
-                                condition={product.condition}
-                            />
-                        </Col>
-                    ))}
+                    {createdCards}
+                    {/*{productsList.map((product, index) => (*/}
+                    {/*    <Col span={12}*/}
+                    {/*         key={index}>*/}
+                    {/*        <MainCard*/}
+                    {/*            likedItems = {likedItems}*/}
+                    {/*            product_id = {product.id}*/}
+                    {/*            title={product.title}*/}
+                    {/*            seller_uid={product.seller_uid}*/}
+                    {/*            tokens={product.tokens}*/}
+                    {/*            type={product.type}*/}
+                    {/*            gender={product.gender}*/}
+                    {/*            image_url={product.image_url}*/}
+                    {/*            brand={product.brand}*/}
+                    {/*            size={product.size}*/}
+                    {/*            condition={product.condition}*/}
+                    {/*            setLikedItems ={setLikedItems}*/}
+                    {/*        />*/}
+                    {/*    </Col>*/}
+                    {/*))}*/}
                 </Row>
             </div>
         </>
