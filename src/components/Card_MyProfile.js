@@ -22,7 +22,7 @@ export default function MyCard (product) {
     const [condition, setCondition] = useState(product.condition);
     const [gender, setGender] = useState(product.gender);
     const [productId, setProductId] = useState(product.product_id);
-    const [itemsGiven, setitemsGiven] = useState(product.product_id);
+    const [itemsGiven, setitemsGiven] = useState(null);
 
     const [editItemModalVisible, setEditItemModalVisible] = useState(false);
     const [markSoldModalVisible, setMarkSoldModalVisible] = useState(false);
@@ -58,13 +58,7 @@ export default function MyCard (product) {
         }
     };
 
-
     const currentUser = useContext(AuthContext);
-    // const [userId, setUserId] = useState("");
-
-    // useEffect(() => {
-    //     setUserId(currentUser.uid);
-    // }, [currentUser]);
 
     const handleDeleteItem = async (e) => {
         e.preventDefault();
@@ -101,31 +95,25 @@ export default function MyCard (product) {
 
 
     const showMarkSoldModal = () => {setMarkSoldModalVisible(true);};
-    const handleCancalMarkItemAsSold = () => {setMarkSoldModalVisible(false);};
+    const handleCancelMarkItemAsSold = () => {setMarkSoldModalVisible(false);};
 
     const handleConfirmMarkItemAsSold = async (e) => {
         e.preventDefault();
-
         try {
+            const UserRef = doc(db,'users',currentUser.uid);
             const docSnap = await getDoc(UserRef);
             if (docSnap.exists()) {
-                setItemsGiven(docSnap.data().first_name);
-
-            const UserRef = doc(db,'users',userId);
-            const newData = {
-                items_given:
-                        first_name: userFirstName,
-                        phone_number: userPhoneNumber,
-                        neighborhood: userNeighborhood,
-                    };
-                    updateDoc(UserRef, newData)
-                        .then( () => {
-                            console.log('User updated successfully');
-                            message.success(
-                                "User updated successfully", 2, () => {console.log('Pop-up closed');});
-                        })
-
-        } catch (error) {
+                setitemsGiven(docSnap.data().items_given);
+                const newData = {
+                    items_given: itemsGiven + 1};
+                updateDoc(UserRef, newData).then( () => {
+                    message.success("User updated successfully", 2, () => {console.log('Pop-up closed');});
+                })
+            } else {
+                console.log("User document does not exist");
+                return null;
+            }
+        }  catch (error) {
             console.log('Something went wrong in item delete process.');
         }
         setMarkSoldModalVisible(false);
@@ -251,7 +239,7 @@ export default function MyCard (product) {
 
             <Modal title="Are You Sure?"
                    open={markSoldModalVisible}
-                   onCancel={handleCancalMarkItemAsSold}
+                   onCancel={handleCancelMarkItemAsSold}
                    onOk={handleConfirmMarkItemAsSold}
                    >
             </Modal>
