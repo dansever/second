@@ -48,12 +48,8 @@ export default function MainHeader(props) {
 
     const items = [
         {
-            label: <a onClick={handleSignOut}>Settings</a>,
-            key: '0',
-        },
-        {
             label: <a onClick={handleSignOut}>Sign Out</a>,
-            key: '1',
+            key: '0',
         },
     ];
 
