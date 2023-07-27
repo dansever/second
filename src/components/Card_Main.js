@@ -8,8 +8,10 @@ import Card from '@mui/material/Card';
 import {db} from "../firebase";
 import Colors from "../color";
 import "../styles/Card.css"
+import {bool} from "prop-types";
 
 export default function MainCard(product) {
+    // const linkedItemsLocal = product.likedItems.includes(product.product_id);
     const [isLikeToggledOn, setLikeToggledOn] = useState(product.isLiked);
     const [modalVisible, setModalVisible] = useState(false);
     const [sellerCode, setSellerCode] = useState('');
@@ -19,12 +21,11 @@ export default function MainCard(product) {
     const currentUserRef = doc(db, 'users', currentUser.uid);
     const product_id = product.product_id;
 
-
     const cardStyle = {
         borderRadius: '20px',
-        boxShadow: '0 4px 6px black',
+        // boxShadow: '0 2px 3px black',
         cursor: 'pointer',
-    };
+     };
 
     const likeAction = () => {
         updateDoc(currentUserRef, {
@@ -83,7 +84,7 @@ export default function MainCard(product) {
             try {
                 const SellerUserRef = doc(db, 'users', product.seller_uid);
                 const docSnapshot = await getDoc(SellerUserRef);
-                setSellerCode(docSnapshot.data()['userCode']);
+                //setSellerCode(docSnapshot.data()['userCode']);
             } catch (err) {
                 console.log(err);
             }
@@ -109,6 +110,12 @@ export default function MainCard(product) {
         getWhatsappLink();};
     const handleModalClose = () => {setModalVisible(false);};
 
+    const isLikedComponent = () => {
+        if (product.likedItems.includes(product.product_id)){
+            return
+        }
+        return
+    }
     return (
         <>
             <Card style={cardStyle}>
@@ -132,9 +139,10 @@ export default function MainCard(product) {
                                 onClick={handleLike}>
                             {isLikeToggledOn ?
                                 <HeartFilled
-                                    style={{ scale: "120%", color: "red" }}/>
-                                : <HeartOutlined
-                                    style={{ scale: "120%", color: "black" }}/>}
+                                    style={{ scale: "120%", color: "red" }}/> :
+                                <HeartOutlined
+                                    style={{ scale: "120%", color: "black" }}/>
+                            }
                         </Button>
                     </div>
                 </div>

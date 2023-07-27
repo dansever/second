@@ -19,6 +19,16 @@ export default function MyProfile() {
     const [userCode, setUserCode] = useState("");
     const [userTokens, setUserTokens] = useState(0);
     const [editInfoModalVisible, setEditInfoModalVisible] = useState(false);
+    const [userName, setUserName] = useState("");
+
+    const getUserName = async () => {
+        const userId = currentUser.uid;
+        const UserRef = doc(db, 'users', userId);
+        const docSnap = await getDoc(UserRef);
+        return docSnap.data().first_name;
+    };
+
+    getUserName().then( result => { setUserName(result)});
 
     useEffect(() => {
         const userId = currentUser.uid;
@@ -74,9 +84,9 @@ export default function MyProfile() {
     return (
         <div>
             {currentUser ?
-                ( <MainHeader email={currentUser.email}/> )
+                ( <MainHeader name={userName}/> )
                 :
-                ( <MainHeader email={null}/> )
+                ( <MainHeader name={null}/> )
             }
 
             <header className={"page_header"}>My Profile</header>
