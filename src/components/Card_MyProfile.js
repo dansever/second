@@ -206,17 +206,6 @@ export default function MyCard (product) {
                             </Select>
                         </Form.Item>
 
-                        <Form.Item
-                            style={{marginBottom:"0"}}>
-                            <InputNumber
-                                value={tokens} placeholder={tokens ? {tokens} : "tokens"}
-                                onChange={handleTokensChange}
-                                min={0}
-                                max={5}
-                                style = {{width: '200px'}}
-                            />
-                        </Form.Item>
-
                         <div className={"update_delete_button_box"}>
 
                             <button className={"update-button"} type="submit">

@@ -11,7 +11,7 @@ const { Option } = Select;
 
 export default function Feed_Main() {
     const [productsList, setProductsList] = useState([]);
-    const [sortBy, setSortBy] = useState('tokens');
+    const [sortBy, setSortBy] = useState('upload_time');
     const [sortOrder, setSortOrder] = useState('asc');
     // const [neighborhoods, setNeighborhoods] = useState([]);
     const [isLoading, setLoading] = useState(true);

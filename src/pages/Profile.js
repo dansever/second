@@ -17,7 +17,6 @@ export default function MyProfile() {
     const [userNeighborhood, setUserNeighborhood] = useState("");
     const [userPhoneNumber, setUserPhoneNumber] = useState("");
     const [userCode, setUserCode] = useState("");
-    const [userTokens, setUserTokens] = useState(0);
     const [editInfoModalVisible, setEditInfoModalVisible] = useState(false);
     const [userName, setUserName] = useState("");
 
@@ -44,7 +43,6 @@ export default function MyProfile() {
                 setUserNeighborhood(docSnap.data().neighborhood);
                 setUserPhoneNumber(docSnap.data().phone_number);
                 setUserCode(docSnap.data().userCode);
-                setUserTokens(docSnap.data().tokens_left);
             } else {
                 console.log("User document does not exist");
                 return null;
@@ -96,11 +94,7 @@ export default function MyProfile() {
                               column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
                               bordered
                               size={"small"}>
-                    <Descriptions.Item label="Name">{userFirstName}</Descriptions.Item>
-                    <Descriptions.Item label="Neighborhood">{userNeighborhood}</Descriptions.Item>
-                    <Descriptions.Item label="Phone number">{userPhoneNumber}</Descriptions.Item>
                     <Descriptions.Item label="User Code">{userCode}</Descriptions.Item>
-                    <Descriptions.Item label="Tokens">{userTokens}</Descriptions.Item>
                 </Descriptions>
                 <div style={{ position: 'absolute', top: '20px', right: '20px'}}>
                     <Tooltip className={"info-edit-btn"} title="Edit Info">
@@ -120,7 +114,7 @@ export default function MyProfile() {
 
 
 
-
+            {/*move to header for settings_apply_action*/}
             {/*EDIT PERSONAL INFO MODAL*/}
             <Modal title="Edit Personal Information"
                    open={editInfoModalVisible}

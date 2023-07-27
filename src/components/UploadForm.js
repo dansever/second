@@ -10,10 +10,6 @@ import {Select, Form, InputNumber, Modal} from 'antd';
 import {conditionOptions, genderOptions, sizeOptions, typeOptions} from "../assets/DataSets";
 import loading from "../assets/images/loading.gif";
 const { Option } = Select;
-
-
-
-
 function App() {
     const [productList, setProductList] = useState([]);
 
@@ -24,8 +20,6 @@ function App() {
     const [newBrand, setNewBrand] = useState("");
     const [newCondition, setNewCondition] = useState("");
     const [newGender, setNewGender] = useState("");
-    const [newTokens, setNewTokens] = useState(1);
-
 
     // File States
     const [imageFile, setImageFile] = useState(null);
@@ -61,8 +55,6 @@ function App() {
     const handleTypeChange      = (value) => { setNewType(value); };
     const handleGenderChange    = (value) => { setNewGender(value); };
     const handleConditionChange = (value) => { setNewCondition(value); };
-    const handleTokensChange = (value) => { setNewTokens(value); };
-
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -119,7 +111,6 @@ function App() {
                 gender: newGender,
                 image_filename: imageFilename,
                 image_url: downloadURL,
-                tokens: newTokens,
                 seller_uid: currentUser.uid,
                 seller_neighborhood: neighborhood,
                 upload_time: currentDate.getTime(),
@@ -138,7 +129,6 @@ function App() {
             setNewCondition("");
             setNewGender("");
             setNewSize("");
-            setNewTokens(0);
             setImageFile(null);
             console.log('Form data saved successfully!');
         } catch (error) {
@@ -268,18 +258,6 @@ function App() {
                     </Form.Item>
                 </div>
 
-                <div className={"form-row"}>
-                    <label>Tokens</label>
-                    <Form.Item
-                        style={{marginBottom:"0"}}>
-                        <InputNumber
-                            onChange={handleTokensChange}
-                            min={0}
-                            max={5}
-                            style = {{width: '200px'}}
-                            />
-                    </Form.Item>
-                </div>
                 <ButtonStyle
                     type="submit">
                     Add To Shop
@@ -292,7 +270,7 @@ function App() {
             >
                 <div className="modal-content">
                     <h2>Uploading...</h2>
-                    <img class={"loading"} src={loading}/>
+                    <img class={"loading"} src={loading} alt={"loading_object"}/>
                 </div>
             </Modal>
         </div>
@@ -300,4 +278,3 @@ function App() {
 }
 
 export default App;
-

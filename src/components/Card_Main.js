@@ -1,6 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import { HeartFilled,
-    HeartOutlined, WhatsAppOutlined} from "@ant-design/icons";
+import { HeartFilled, HeartOutlined, WhatsAppOutlined} from "@ant-design/icons";
 import {doc, updateDoc, arrayUnion, arrayRemove, getDoc} from "firebase/firestore";
 import {Button, Input, message, Modal} from "antd";
 import {AuthContext} from "./AuthProvider";
@@ -14,8 +13,6 @@ export default function MainCard(product) {
     // const linkedItemsLocal = product.likedItems.includes(product.product_id);
     const [isLikeToggledOn, setLikeToggledOn] = useState(product.isLiked);
     const [modalVisible, setModalVisible] = useState(false);
-    const [sellerCode, setSellerCode] = useState('');
-    const [inputSellerCode, setInputSellerCode] = useState('');
     const [whatsappLink, setWhatsappLink] = useState('');
     const currentUser = useContext(AuthContext);
     const currentUserRef = doc(db, 'users', currentUser.uid);
@@ -48,36 +45,6 @@ export default function MainCard(product) {
         }
     }
 
-    const handleApplyButton = async (e) => {
-        e.preventDefault();
-        try {
-            const sellerRef = doc(db,'users',product.seller_uid);
-            const sellerSnapshot = await getDoc(sellerRef);
-            const seller_old_tokens_amount = sellerSnapshot.data()['tokens_left'];
-            console.log("seller_old_tokens_amount: "+seller_old_tokens_amount);
-            console.log("product.item_tokens: "+product.tokens);
-            const newData = {tokens_left: seller_old_tokens_amount + product.tokens,};
-            if (inputSellerCode === sellerCode) {
-                console.log("YES");
-                updateDoc(sellerRef, newData)
-                    .then(() => {
-                        console.log('Success');
-                        message.success(
-                            "Tokens Transferred successfully", 1, () => {
-                                console.log('Pop-up closed');
-                            });
-                    })
-
-                const currentUserSnapshot = await getDoc(currentUserRef);
-                const current_user_old_tokens_amount = currentUserSnapshot.data()['tokens_left'];
-                const new_token_amount = current_user_old_tokens_amount - product.tokens;
-                await updateDoc(currentUserRef, {tokens_left: new_token_amount});
-            }
-            setInputSellerCode("");
-        } catch (error) {
-            console.log('Token Transfer Terminated --> X');
-        }
-    }
 
     useEffect(() => {
         const getSellerCode = async () => {
@@ -168,10 +135,8 @@ export default function MainCard(product) {
                 <p>Gender: {product.gender}</p>
                 <p>Size: {product.size}</p>
                 <p>Condition: {product.condition}</p>
-                <p>Tokens: {product.tokens}</p>
 
                 <div className={"step-box"}>
-                    <h3>Step 1:</h3>
                     <Button className={"chat-or-pay-btn"}
                             href={whatsappLink}
                             target="_blank"
@@ -179,19 +144,6 @@ export default function MainCard(product) {
                             style={{width:"80%"}}>
                         <WhatsAppOutlined style={{scale: "160%", color: "green"}}/>
                         <h3>Chat with seller for info</h3>
-                    </Button>
-                </div>
-
-                <div className={"step-box"}>
-                    <h3>Step 2:</h3>
-                    <Input
-                        value={inputSellerCode}
-                        placeholder="Enter sellers user code"
-                        onChange={(e) => setInputSellerCode(e.target.value)}/>
-                    <Button
-                        type="primary"
-                        onClick={handleApplyButton}>
-                        Apply
                     </Button>
                 </div>
 
