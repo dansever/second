@@ -120,8 +120,6 @@ export default function Feed_Main() {
         <>
             <SearchBar filter={filter} setFilter={setFilter} neighborhoodFilter={neighborhoodFilter}
                        setNeighborhoodFilter={setNeighborhoodFilter} setSortBy={setSortBy} setSortOrder={setSortOrder} />
-            {/*handleSortChange={handleSortChange}*/}
-            {/*handleSortOrderChange={handleSortOrderChange} setProductsList={setProductsList} productsList={productsList}*/}
 
             <div className="feed">
                 <Row gutter={[16, 16]}>

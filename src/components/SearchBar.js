@@ -2,8 +2,6 @@ import React, {useState} from "react"
 // import "./SearchBar.css"
 import {Select, TreeSelect} from "antd";
 import {filterDatabase, NeighborhoodDict, sortDirection, sortType} from "../assets/DataSets";
-import {collection, getDocs} from "firebase/firestore";
-import {db} from "../firebase";
 
 const { Option } = Select;
 
