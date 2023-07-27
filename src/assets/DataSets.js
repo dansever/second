@@ -14,16 +14,16 @@ export const NeighborhoodDict = [
             { value: 'Malha',           label: 'Malha',},
         ],
     },
-    {
-        value: 'tel_aviv', label: 'Tel Aviv',
-        children: [
-            { value: 'Old North', label: 'Old North' },
-            { value: 'New North', label: 'New North' },
-            { value: 'Lev Ha`ir',  label: 'Lev Ha`ir' },
-            { value: 'Jaffo',     label: 'Jaffo'},
-            { value: 'Florentin', label: 'Florentin'},
-            ]
-    },
+    // {
+    //     value: 'tel_aviv', label: 'Tel Aviv',
+    //     children: [
+    //         { value: 'Old North', label: 'Old North' },
+    //         { value: 'New North', label: 'New North' },
+    //         { value: 'Lev Ha`ir',  label: 'Lev Ha`ir' },
+    //         { value: 'Jaffo',     label: 'Jaffo'},
+    //         { value: 'Florentin', label: 'Florentin'},
+    //         ]
+    // },
 ]
 
 export const NeighborhoodList = ['Rehavia', 'Nahlaot', 'City Central',
@@ -35,50 +35,50 @@ export const filterDatabase = [
     {
         title: 'Size', value: 'size',
         children: [
-            { title: 'XS',      value: 'XS' },
-            { title: 'S',       value: 'S' },
-            { title: 'M',       value: 'M' },
-            { title: 'L',       value: 'L' },
-            { title: 'XL',      value: 'XL' },
-            { title: 'One Size',value: 'One Size' },
+            { title: 'XS',      value: 'size_XS' },
+            { title: 'S',       value: 'size_S' },
+            { title: 'M',       value: 'size_M' },
+            { title: 'L',       value: 'size_L' },
+            { title: 'XL',      value: 'size_XL' },
+            { title: 'One Size',value: 'size_One Size' },
         ],
     },
     {
         title: 'Gender', value: 'gender',
         children: [
-            { title: 'Male',    value: 'Male' },
-            { title: 'Female',  value: 'Female' },
-            { title: 'Unisex',  value: 'Unisex' },
+            { title: 'Male',    value: 'gender_Male' },
+            { title: 'Female',  value: 'gender_Female' },
+            { title: 'Unisex',  value: 'gender_Unisex' },
         ],
     },
     {
         title: 'Condition', value: 'condition',
         children: [
-            { title: 'Old/Worn',    value: 'Old/Worn' },
-            { title: 'Good',        value: 'Good' },
-            { title: 'New/As New',  value: 'New/As New' },
+            { title: 'Old/Worn',    value: 'condition_Old/Worn' },
+            { title: 'Good',        value: 'condition_Good' },
+            { title: 'New/As New',  value: 'condition_New/As New' },
         ],
     },
     {
         title: 'Type', value: 'type',
         children: [
-            { title: 'Socks',   value: 'Socks' },
-            { title: 'Shoes',   value: 'Shoes' },
-            { title: 'Pants/Shorts',   value: 'Pants/Shorts' },
-            { title: 'Dress',   value: 'Dress' },
-            { title: 'Shirt',   value: 'Shirt' },
-            { title: 'Sweater',   value: 'Sweater' },
-            { title: 'Jacket/Coat',   value: 'Jacket/Coat' },
-            { title: 'Pajama',   value: 'Pajama' },
-            { title: 'Swimwear',value: 'Swimwear' },
-            { title: 'Other',     value: 'Other' },
+            { title: 'Socks',   value: 'type_Socks' },
+            { title: 'Shoes',   value: 'type_Shoes' },
+            { title: 'Pants/Shorts',   value: 'type_Pants/Shorts' },
+            { title: 'Dress',   value: 'type_Dress' },
+            { title: 'Shirt',   value: 'type_Shirt' },
+            { title: 'Sweater',   value: 'type_Sweater' },
+            { title: 'Jacket/Coat',   value: 'type_Jacket/Coat' },
+            { title: 'Pajama',   value: 'type_Pajama' },
+            { title: 'Swimwear',value: 'type_Swimwear' },
+            { title: 'Other',     value: 'type_Other' },
         ],
     },
 
 
 ];
 
-export const sortType = ['tokens', 'title'];
+export const sortType = ['tokens', 'title', 'upload_time'];
 export const sortDirection = ['asc', 'desc'];
 export const typeOptions = ['Socks','Shoes','Pants/Shorts', 'Dress',
     'Shirt','Sweater','Jacket/Coat', 'Pajama','Swimwear','Other']

@@ -108,6 +108,7 @@ function App() {
             const userRef = doc(db,'users',currentUser.uid);
             const userSnapshot = await getDoc(userRef);
             const neighborhood =  userSnapshot.data()['neighborhood'];
+            const currentDate = new Date();
             const docRef = await addDoc(productsCollectionRef, {
                 title: newTitle,
                 type: newType,
@@ -120,6 +121,7 @@ function App() {
                 tokens: newTokens,
                 seller_uid: currentUser.uid,
                 seller_neighborhood: neighborhood,
+                upload_time: currentDate.getTime(),
             });
             const newDocumentId = docRef.id;
             await updateDoc( doc(db,'users',userId), {

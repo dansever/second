@@ -89,9 +89,9 @@ export default function MainHeader(props) {
                 className={"user_info_dropdown"}
             >
                 <a onClick={(e) => e.preventDefault()}>
-                    <p style={{fontSize:"12px"}}>
-                        {props.email}
-                        <DownOutlined />
+                    <p style={{fontSize:"14px", padding:"5px"}}>
+                        Hi {props.name}
+                        <DownOutlined style={{padding:"5px"}}/>
                     </p>
                 </a>
             </Dropdown>
