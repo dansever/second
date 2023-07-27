@@ -6,7 +6,7 @@ form h3 {
 .upload-container {
     background-color: var(--light_green);
     overflow: auto;
-    padding: 0px 15px 60px 15px;
+    padding: 0 15px 60px 15px;
     display: flex;
     flex-direction: column;
     height: 80vh;
