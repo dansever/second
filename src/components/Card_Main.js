@@ -23,7 +23,7 @@ export default function MainCard(product) {
 
     const cardStyle = {
         borderRadius: '20px',
-        boxShadow: '0 2px 3px black',
+        // boxShadow: '0 2px 3px black',
         cursor: 'pointer',
      };
 
