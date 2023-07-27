@@ -51,7 +51,7 @@ export default function MainCard(product) {
             try {
                 const SellerUserRef = doc(db, 'users', product.seller_uid);
                 const docSnapshot = await getDoc(SellerUserRef);
-                //setSellerCode(docSnapshot.data()['userCode']);
+                //setSellerCode(docSnapshot.data()['user_code']);
             } catch (err) {
                 console.log(err);
             }

@@ -22,9 +22,10 @@ export default function MyCard (product) {
     const [condition, setCondition] = useState(product.condition);
     const [gender, setGender] = useState(product.gender);
     const [productId, setProductId] = useState(product.product_id);
-    const [tokens, setTokens] = useState(product.tokens);
+    const [itemsGiven, setitemsGiven] = useState(product.product_id);
 
     const [editItemModalVisible, setEditItemModalVisible] = useState(false);
+    const [markSoldModalVisible, setMarkSoldModalVisible] = useState(false);
 
     const cardStyle = { borderRadius: '20px', boxShadow: '0 4px 6px black', position: 'relative'};
 
@@ -43,7 +44,6 @@ export default function MyCard (product) {
                 brand: brand,
                 condition: condition,
                 gender: gender,
-                tokens: tokens,
             };
             updateDoc(productRef, newData)
                 .then( () => {
@@ -98,8 +98,38 @@ export default function MyCard (product) {
     const handleTypeChange      = (value) => { setType(value); };
     const handleGenderChange    = (value) => { setGender(value); };
     const handleConditionChange = (value) => { setCondition(value); };
-    const handleTokensChange = (value) => { setTokens(value); };
 
+
+    const showMarkSoldModal = () => {setMarkSoldModalVisible(true);};
+    const handleCancalMarkItemAsSold = () => {setMarkSoldModalVisible(false);};
+
+    const handleConfirmMarkItemAsSold = async (e) => {
+        e.preventDefault();
+
+        try {
+            const docSnap = await getDoc(UserRef);
+            if (docSnap.exists()) {
+                setItemsGiven(docSnap.data().first_name);
+
+            const UserRef = doc(db,'users',userId);
+            const newData = {
+                items_given:
+                        first_name: userFirstName,
+                        phone_number: userPhoneNumber,
+                        neighborhood: userNeighborhood,
+                    };
+                    updateDoc(UserRef, newData)
+                        .then( () => {
+                            console.log('User updated successfully');
+                            message.success(
+                                "User updated successfully", 2, () => {console.log('Pop-up closed');});
+                        })
+
+        } catch (error) {
+            console.log('Something went wrong in item delete process.');
+        }
+        setMarkSoldModalVisible(false);
+    };
 
     return (
         <Card style={cardStyle}>
@@ -125,7 +155,7 @@ export default function MyCard (product) {
                             style={{scale: "140%",
                                 border: "1px solid black",
                                 boxShadow: "2px 2px 2px 0 black"}}
-                            onClick = {(e) => console.log("continue")}>
+                            onClick={showMarkSoldModal}>
                         <GiReceiveMoney scale="150%"/>
                     </Button>
                 </Tooltip>
@@ -134,9 +164,6 @@ export default function MyCard (product) {
             <div className={"content-box"}>
                 <h3>{title}</h3>
             </div>
-
-
-
 
 
             {/*EDIT INFO MODAL*/}
@@ -220,6 +247,13 @@ export default function MyCard (product) {
 
                     </form>
                 </div>
+            </Modal>
+
+            <Modal title="Are You Sure?"
+                   open={markSoldModalVisible}
+                   onCancel={handleCancalMarkItemAsSold}
+                   onOk={handleConfirmMarkItemAsSold}
+                   >
             </Modal>
 
         </Card>

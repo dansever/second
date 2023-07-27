@@ -67,7 +67,7 @@ export const SignUp = () => {
                 phone_number: phoneNumber,
                 tokens_left: 10,
                 uploaded_items: [],
-                userCode: code,
+                user_code: code,
             };
 
             setDoc(newUserRef, data)
