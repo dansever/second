@@ -1,13 +1,12 @@
 import React, {useContext, useEffect, useState} from 'react';
 import { HeartFilled, HeartOutlined, WhatsAppOutlined} from "@ant-design/icons";
 import {doc, updateDoc, arrayUnion, arrayRemove, getDoc} from "firebase/firestore";
-import {Button, Input, message, Modal} from "antd";
+import {Button, Modal} from "antd";
 import {AuthContext} from "./AuthProvider";
 import Card from '@mui/material/Card';
 import {db} from "../firebase";
 import Colors from "../color";
 import "../styles/Card.css"
-import {bool} from "prop-types";
 
 export default function MainCard(product) {
     // const linkedItemsLocal = product.likedItems.includes(product.product_id);
