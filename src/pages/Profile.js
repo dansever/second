@@ -17,7 +17,7 @@ export default function MyProfile() {
     const [userNeighborhood, setUserNeighborhood] = useState("");
     const [userPhoneNumber, setUserPhoneNumber] = useState("");
     const [userCode, setUserCode] = useState("");
-    const [userTokens, setUserTokens] = useState(0);
+    const [userFriends, setUserFriends] = useState(0);
     const [editInfoModalVisible, setEditInfoModalVisible] = useState(false);
     const [userName, setUserName] = useState("");
 
@@ -43,8 +43,8 @@ export default function MyProfile() {
                 setUserFirstName(docSnap.data().first_name);
                 setUserNeighborhood(docSnap.data().neighborhood);
                 setUserPhoneNumber(docSnap.data().phone_number);
-                setUserCode(docSnap.data().userCode);
-                setUserTokens(docSnap.data().tokens_left);
+                setUserCode(docSnap.data()["user_code"]);
+                setUserFriends(docSnap.data().friends_add);
             } else {
                 console.log("User document does not exist");
                 return null;
@@ -100,7 +100,7 @@ export default function MyProfile() {
                     <Descriptions.Item label="Neighborhood">{userNeighborhood}</Descriptions.Item>
                     <Descriptions.Item label="Phone number">{userPhoneNumber}</Descriptions.Item>
                     <Descriptions.Item label="User Code">{userCode}</Descriptions.Item>
-                    <Descriptions.Item label="Tokens">{userTokens}</Descriptions.Item>
+                    <Descriptions.Item label="Friends you added">{userFriends}</Descriptions.Item>
                 </Descriptions>
                 <div style={{ position: 'absolute', top: '20px', right: '20px'}}>
                     <Tooltip className={"info-edit-btn"} title="Edit Info">

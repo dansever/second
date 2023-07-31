@@ -30,7 +30,8 @@ export const LoginPage = () => {
 
     const handleSignup = () => {
         // Redirect to signup page
-        navigate("/Signup");
+        // navigate("/Signup");
+        navigate("/JoinTheCommunity");
     };
 
     return (

@@ -8,6 +8,7 @@ import SignUp from "./pages/SignUp";
 import AuthProvider from './components/AuthProvider';
 import Onboarding from "./pages/Onboarding";
 import LikedPage from "./pages/LikedPage";
+import {SignUPFriendCode} from "./pages/FriendCode";
 
 
 export default function App() {
@@ -34,6 +35,7 @@ export default function App() {
                             <Route path="/" element={<Navigate to="/Login" />} />
                             <Route path="/Login" element={<LoginPage />} />
                             <Route path="/Signup" element={<SignUp />} />
+                            <Route path="/JoinTheCommunity" element={<SignUPFriendCode />} />
                             <Route path="/Home" element={<Home />} />
                             <Route path="/Upload" element={<Upload />} />
                             <Route path="/LikedPage" element={<LikedPage />} />
@@ -44,6 +46,7 @@ export default function App() {
                             <Route path="/" element={<Home />} />
                             <Route path="/Login" element={<LoginPage />} />
                             <Route path="/Signup" element={<SignUp />} />
+                            <Route path="/JoinTheCommunity" element={<SignUPFriendCode />} />
                             <Route path="/Home" element={<Home />} />
                             <Route path="/Upload" element={<Upload />} />
                             <Route path="/LikedPage" element={<LikedPage />} />

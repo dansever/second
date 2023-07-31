@@ -68,6 +68,7 @@ export const SignUp = () => {
                 tokens_left: 10,
                 uploaded_items: [],
                 userCode: userCode,
+                friends_add: 0,
             };
 
             setDoc(newUserRef, data)
