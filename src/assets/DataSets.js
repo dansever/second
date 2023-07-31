@@ -78,7 +78,7 @@ export const filterDatabase = [
 
 ];
 
-export const sortType = ['tokens', 'title', 'upload_time'];
+export const sortType = ['title', 'upload_time'];
 export const sortDirection = ['asc', 'desc'];
 export const typeOptions = ['Socks','Shoes','Pants/Shorts', 'Dress',
     'Shirt','Sweater','Jacket/Coat', 'Pajama','Swimwear','Other']

@@ -1,10 +1,10 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {EditOutlined} from "@ant-design/icons";
 import {conditionOptions, genderOptions,
     sizeOptions, typeOptions} from "../assets/DataSets";
 import {doc, updateDoc, deleteDoc, getDoc, arrayRemove} from "firebase/firestore";
 import {deleteObject} from "firebase/storage";
-import {Button, Form, InputNumber, message, Modal, Select, Tooltip} from "antd";
+import {Button, Form, message, Modal, Select, Tooltip} from "antd";
 import Card from '@mui/material/Card';
 import {db, storage} from "../firebase";
 import "../styles/Card.css"
@@ -21,19 +21,19 @@ export default function MyCard (product) {
     const [brand, setBrand] = useState(product.brand);
     const [condition, setCondition] = useState(product.condition);
     const [gender, setGender] = useState(product.gender);
-    const [productId, setProductId] = useState(product.product_id);
-    const [tokens, setTokens] = useState(product.tokens);
+    const productId = useState(product.product_id);
 
     const [editItemModalVisible, setEditItemModalVisible] = useState(false);
+    const [markSoldModalVisible, setMarkSoldModalVisible] = useState(false);
 
+    const currentUser = useContext(AuthContext);
     const cardStyle = { borderRadius: '20px', boxShadow: '0 4px 6px black', position: 'relative'};
 
-    const handleEditItemModalOpen = () => { setEditItemModalVisible(true); };
-    const handleEditItemModalClose = () => { setEditItemModalVisible(false); };
+    useEffect(() => {
+    }, []);
 
     const handleItemInfoEdit = async (e) => {
         e.preventDefault();
-        console.log("product_id: " + productId);
         try {
             const productRef = doc(db,'products',productId);
             const newData = {
@@ -43,7 +43,6 @@ export default function MyCard (product) {
                 brand: brand,
                 condition: condition,
                 gender: gender,
-                tokens: tokens,
             };
             updateDoc(productRef, newData)
                 .then( () => {
@@ -57,14 +56,6 @@ export default function MyCard (product) {
             console.log('Something went wrong. Please try again.');
         }
     };
-
-
-    const currentUser = useContext(AuthContext);
-    // const [userId, setUserId] = useState("");
-
-    // useEffect(() => {
-    //     setUserId(currentUser.uid);
-    // }, [currentUser]);
 
     const handleDeleteItem = async (e) => {
         e.preventDefault();
@@ -93,13 +84,27 @@ export default function MyCard (product) {
         }
     };
 
+    const handleMarkItemAsSold = async (e) => {
+        e.preventDefault();
+        try {
+            //await handleDeleteItem();
+            const userRef = doc(db,'users',currentUser.uid);
+            const userSnapshot = await getDoc(userRef);
+            const itemsGiven = userSnapshot.data()['items_given'];
+
+            await updateDoc(userRef,{items_given: itemsGiven + 1});
+        }  catch (error) {
+            console.log('Something went wrong');
+        }
+        setMarkSoldModalVisible(false);
+    };
+
+
 
     const handleSizeChange      = (value) => { setSize(value); };
     const handleTypeChange      = (value) => { setType(value); };
     const handleGenderChange    = (value) => { setGender(value); };
     const handleConditionChange = (value) => { setCondition(value); };
-    const handleTokensChange = (value) => { setTokens(value); };
-
 
     return (
         <Card style={cardStyle}>
@@ -111,7 +116,7 @@ export default function MyCard (product) {
                 <Tooltip title="Edit Item">
                     <Button shape="circle"
                             style={{scale: "140%", border: "1px solid black", boxShadow: "2px 2px 2px 0 black"}}
-                            onClick={handleEditItemModalOpen}>
+                            onClick={() => setEditItemModalVisible(true)}>
                         <EditOutlined/>
                     </Button>
                 </Tooltip>
@@ -125,7 +130,7 @@ export default function MyCard (product) {
                             style={{scale: "140%",
                                 border: "1px solid black",
                                 boxShadow: "2px 2px 2px 0 black"}}
-                            onClick = {(e) => console.log("continue")}>
+                            onClick={() => setMarkSoldModalVisible(true)}>
                         <GiReceiveMoney scale="150%"/>
                     </Button>
                 </Tooltip>
@@ -136,13 +141,10 @@ export default function MyCard (product) {
             </div>
 
 
-
-
-
             {/*EDIT INFO MODAL*/}
             <Modal title="Edit Item Information"
                    open={editItemModalVisible}
-                   onCancel={handleEditItemModalClose}
+                   onCancel={() => setEditItemModalVisible(false)}
                    footer={[]} // Empty array to hide buttons>
             >
                 <div className={"edit-info-modal"}>
@@ -206,17 +208,6 @@ export default function MyCard (product) {
                             </Select>
                         </Form.Item>
 
-                        <Form.Item
-                            style={{marginBottom:"0"}}>
-                            <InputNumber
-                                value={tokens} placeholder={tokens ? {tokens} : "tokens"}
-                                onChange={handleTokensChange}
-                                min={0}
-                                max={5}
-                                style = {{width: '200px'}}
-                            />
-                        </Form.Item>
-
                         <div className={"update_delete_button_box"}>
 
                             <button className={"update-button"} type="submit">
@@ -231,6 +222,13 @@ export default function MyCard (product) {
 
                     </form>
                 </div>
+            </Modal>
+
+            <Modal title="Are You Sure?"
+                   open={markSoldModalVisible}
+                   onCancel={() => setMarkSoldModalVisible(false)}
+                   onOk={handleMarkItemAsSold}
+                   style={{ maxWidth: '80%' }}>
             </Modal>
 
         </Card>
