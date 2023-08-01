@@ -1,14 +1,13 @@
 import React, {useContext, useEffect, useState} from 'react';
 import { HeartFilled, HeartOutlined, WhatsAppOutlined} from "@ant-design/icons";
 import {doc, updateDoc, arrayUnion, arrayRemove, getDoc} from "firebase/firestore";
-import {Button, Modal,  ConfigProvider, theme} from "antd";
+import {Button, Modal,  ConfigProvider} from "antd";
 import {AuthContext} from "./AuthProvider";
 import Card from '@mui/material/Card';
 import {db} from "../firebase";
 import Colors from "../color";
 import "../styles/Card.css"
-import {bool} from "prop-types";
-import {ButtonStyle, StyledA} from "./Button";
+import {ButtonStyle} from "./Button";
 
 
 export default function MainCard(product) {
