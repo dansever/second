@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import { HeartFilled, HeartOutlined, WhatsAppOutlined} from "@ant-design/icons";
 import {doc, updateDoc, arrayUnion, arrayRemove, getDoc} from "firebase/firestore";
-import {Button, Modal} from "antd";
+import {Button, Modal,  ConfigProvider, theme} from "antd";
 import {AuthContext} from "./AuthProvider";
 import Card from '@mui/material/Card';
 import {db} from "../firebase";
