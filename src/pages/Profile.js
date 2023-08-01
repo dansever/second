@@ -10,6 +10,7 @@ import {AuthContext } from '../components/AuthProvider';
 import {db} from "../firebase";
 import {SettingOutlined} from "@ant-design/icons";
 import {NeighborhoodDict} from "../assets/DataSets";
+import Colors from "../color.js";
 
 export default function MyProfile() {
     const currentUser = useContext(AuthContext);

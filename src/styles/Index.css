@@ -1,20 +1,17 @@
 :root {
     --text_color: #02110A;
-    --dark_grey: #343636;
-    --dark_green: #194b19;
-    --primary_green: #749A83;
-    --secondary_green: #CDDCC7;
-    --secondary_blue: #68a8bd;
-    --light_green: #E8EEE8;
-    --off_white: #F1F7F1;
+    --off_white: #F5f5f5;
+    --green: #11998E;
+    --background_white: #F7F7F7;
+    --light_green: #38ef7d;
 }
 
 html, body {
-    background-color: var(--light_green);
+    background-color: var(--off_white);
     margin: 0;
     padding: 0;
     position:relative;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Syne', sans-serif;
 }
 
 .page_header {
@@ -22,19 +19,21 @@ html, body {
     display: flex;
     justify-content: center;
     width: 100%;
-    font-family: 'Lora', serif;
+    font-family: 'Syne', sans-serif;
     font-size: 30px;
-}
-
-h1, h2, h3, h4, h5{
-    font-family: 'Lora', serif;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 p {
-    font-style: normal;
-    font-weight: 600;
+    font-weight: normal;
+    font-family: 'Montserrat', sans-serif;
 }
+
+h1, h2, h3, h4, h5{
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+}
+
 body {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -43,3 +42,4 @@ body {
 .user_info_dropdown:hover {
     cursor:pointer;
 }
+

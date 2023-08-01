@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e09fdaf6-aff6-48b2-adab-0a366e56e92f" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="master" />
+              </list>
+            </value>
+          </entry>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2PHgnNVn1EM54jLtWZciUdjUhLG" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;inbal__branch&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/inbal/WebstormProjects/second-app/src/components&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\inbal\WebstormProjects\second-app\src\components" />
+      <recent name="C:\Users\inbal\WebstormProjects\second-app\src\components\Sort" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e09fdaf6-aff6-48b2-adab-0a366e56e92f" name="Changes" comment="" />
+      <created>1683119589479</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683119589479</updated>
+      <workItem from="1683119591726" duration="16754000" />
+      <workItem from="1683208432731" duration="32300000" />
+      <workItem from="1685181795002" duration="27066000" />
+      <workItem from="1686150572041" duration="209000" />
+      <workItem from="1686150844424" duration="10173000" />
+      <workItem from="1686831550768" duration="7630000" />
+      <workItem from="1687160191566" duration="26524000" />
+      <workItem from="1687769082685" duration="76000" />
+      <workItem from="1688288145772" duration="524000" />
+      <workItem from="1690457509261" duration="14720000" />
+      <workItem from="1690878272496" duration="11203000" />
+    </task>
+    <task id="LOCAL‎-00001" summary="override + changing the upload form">
+      <created>1683124739070</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL‎-00001" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1683124739070</updated>
+    </task>
+    <task id="LOCAL‎-00002" summary="changing the upload form with styled componenets">
+      <created>1683134871247</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL‎-00002" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1683134871247</updated>
+    </task>
+    <task id="LOCAL‎-00003" summary="changing the radio buttons in profile">
+      <created>1683225672994</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL‎-00003" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1683225672994</updated>
+    </task>
+    <task id="LOCAL‎-00004" summary="i changed the button font, cart - button text + x on top of the pictures, navbar i added z-index and sign-up &amp;login made to the center of the page">
+      <created>1683308489368</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL‎-00004" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1683308489368</updated>
+    </task>
+    <task id="LOCAL‎-00005" summary="login page is ready! :)))">
+      <created>1683323817103</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL‎-00005" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1683323817109</updated>
+    </task>
+    <task id="LOCAL‎-00006" summary="changed the follow-unfollow button, changed the font of the radio buttons &amp; the look of the follow list at the profile page &amp; the saved button on cards">
+      <created>1683335115857</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL‎-00006" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1683335115857</updated>
+    </task>
+    <task id="LOCAL‎-00007" summary="almost done upload form :)">
+      <created>1683378183021</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL‎-00007" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1683378183021</updated>
+    </task>
+    <task id="LOCAL‎-00008" summary="onboarding flow">
+      <created>1685206000301</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL‎-00008" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1685206000301</updated>
+    </task>
+    <task id="LOCAL‎-00009" summary="pictures for onboarding">
+      <created>1685348388347</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL‎-00009" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1685348388347</updated>
+    </task>
+    <task id="LOCAL‎-00010" summary="changes of the modal &amp; card not finished">
+      <created>1685370189854</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL‎-00010" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1685370189854</updated>
+    </task>
+    <task id="LOCAL‎-00011" summary="WhatsApp link">
+      <created>1686158458114</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL‎-00011" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1686158458114</updated>
+    </task>
+    <task id="LOCAL‎-00012" summary="on boarding skip button + whatsapp link button wrap text">
+      <created>1686229836875</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL‎-00012" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1686229836875</updated>
+    </task>
+    <task id="LOCAL‎-00013" summary="loading modal upload">
+      <created>1686840251630</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL‎-00013" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1686840251630</updated>
+    </task>
+    <task id="LOCAL‎-00014" summary="changing the visuals">
+      <created>1687769150101</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL‎-00014" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1687769150101</updated>
+    </task>
+    <task id="LOCAL‎-00015" summary="changing the whole app style">
+      <created>1690889040097</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL‎-00015" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1690889040097</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="0a969427-4b7f-4d45-be5b-0cf58303b4d9" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/inbal_branch" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="inbal_branch" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="0a969427-4b7f-4d45-be5b-0cf58303b4d9">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/inbal_branch" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="override + changing the upload form" />
+    <MESSAGE value="changing the upload form with styled componenets" />
+    <MESSAGE value="changing the radio buttons in profile" />
+    <MESSAGE value="i changed the button font, cart - button text + x on top of the pictures, navbar i added z-index and sign-up &amp;login made to the center of the page" />
+    <MESSAGE value="login page is ready! :)))" />
+    <MESSAGE value="changed the follow-unfollow button, changed the font of the radio buttons &amp; the look of the follow list at the profile page &amp; the saved button on cards" />
+    <MESSAGE value="almost done upload form :)" />
+    <MESSAGE value="onboarding flow" />
+    <MESSAGE value="pictures for onboarding" />
+    <MESSAGE value="changes of the modal &amp; card not finished" />
+    <MESSAGE value="WhatsApp link" />
+    <MESSAGE value="on boarding skip button + whatsapp link button wrap text" />
+    <MESSAGE value="loading modal upload" />
+    <MESSAGE value="changing the visuals" />
+    <MESSAGE value="changing the whole app style" />
+    <option name="LAST_COMMIT_MESSAGE" value="changing the whole app style" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/pages/Profile/Profile_MyShop.js</url>
+          <line>2</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { useNavigate  } from 'react-router-dom';
 import "../styles/Login.css"
 import { auth } from "../firebase"
-
 import { signInWithEmailAndPassword } from "firebase/auth";
-import {Button, Input} from "antd";
+import {Button, Input, ConfigProvider, theme} from "antd";
 import logo from "../assets/Second_logo.png"
 import styled from "styled-components";
+import Colors from "../color.js";
+import {ButtonStyle} from "../components/Button";
 
 const Picture = styled.img`
     height: 30%;
-    object-fit: cover;
 `;
 export const LoginPage = () => {
     const [email, setEmail] = useState('');
@@ -41,30 +41,43 @@ export const LoginPage = () => {
                 style={{color: 'red'}}>{error}</p>}
 
             <form onSubmit={handleLogin}>
+                <ConfigProvider
+                    theme={{
+                        "token": {
+                            "colorPrimaryBorder": "#11998E",
+                            "colorPrimaryBorderHover": "#11998E",
+                            "colorPrimaryHover": "#11998E",
+                            "colorPrimary": "#11998E",
+                            "wireframe": false
+                        },
+                    }}
+                >
                 <Input
                     type="email"
                     value={email}
                     placeholder="Email"
-                    onChange={(e) => setEmail(e.target.value)}/>
+                    onChange={(e) => setEmail(e.target.value)} class={"input-style"}/>
                 <Input
                     type="password"
                     value={password}
                     placeholder="Password"
+                    class={"input-style"}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <button
+                </ConfigProvider>
+                <ButtonStyle
                     className={"submit-button"}
                     type="submit">
                     Login
-                </button>
+                </ButtonStyle>
             </form>
             <div className={"new-user"}>
                 <p>Don't have an account?</p>
-                <Button
+                <button
                     className={"sign-up-button"}
                     onClick={handleSignup}>
                     Sign Up
-                </Button>
+                </button>
             </div>
 
         </div>

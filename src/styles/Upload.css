@@ -1,10 +1,8 @@
 form h3 {
-    color: var(--primary_green);
     margin-bottom: 0;
 }
 
 .upload-container {
-    background-color: var(--light_green);
     overflow: auto;
     padding: 0 15px 60px 15px;
     display: flex;
@@ -39,6 +37,30 @@ form h3 {
 .form-row {
     display: flex;
 }
+.add-pic{
+    white-space:nowrap;
+}
+.add-pic::after{
+    content: "*";
+    color: red
+}
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*padding:*/
+    /*margin-top: 50px;*/
+    /*width: 20%;*/
+    /*border-radius: 10px;*/
+
+}
+
+.form-row-img {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 
 .file-form-row {
     display: flex;
@@ -72,10 +94,6 @@ textarea:focus {
     border: 1px solid rgb(79, 169, 79);
 }
 
-button {
-    width: 20%;
-    border-radius: 10px;
-}
 
 /* Override the default message styles */
 .ant-message-success {
@@ -99,3 +117,4 @@ button {
     width: 20%;
     display: flex;
 }
+
