@@ -54,6 +54,19 @@ h2 {
     padding-left: 5px;
 
 }
+.profile-content-box {
+    display: flex;
+    flex-direction: row;
+    /*width: 100%;*/
+    justify-content: space-between;
+    gap: 5px;
+    margin: 20px;
+    padding-top: 5px;
+
+}
+
+
+
 
 .left-side {
     width: 80%;
@@ -82,8 +95,14 @@ p.product-info {
     padding-top: 15px;
 }
 
+
 .card_like_button, .card_like_button:hover, .card_like_button:focus, .card_like_button:active {
     scale: 120%;
+    box-shadow: none;
+    background-color: var(--background_white);
+}
+
+.profile-buttons, .profile-buttons:hover, .profile-buttons:focus, .profile-buttons:active {
     box-shadow: none;
     background-color: var(--background_white);
 }
@@ -94,9 +113,9 @@ p.product-info {
     column-gap: 40px;
 }
 
-/*.ant-wave {*/
-/*    display: none;*/
-/*}*/
+.ant-wave {
+    display: none;
+}
 /*.whatsapp-modal {*/
 /*    display: flex;*/
 /*    flex-direction: row;*/

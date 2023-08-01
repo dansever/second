@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e09fdaf6-aff6-48b2-adab-0a366e56e92f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Card_Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card_Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UploadForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UploadForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Card_MyProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card_MyProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/Card.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/Card.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +98,7 @@
       <workItem from="1687769082685" duration="76000" />
       <workItem from="1688288145772" duration="524000" />
       <workItem from="1690457509261" duration="14720000" />
-      <workItem from="1690878272496" duration="11512000" />
+      <workItem from="1690878272496" duration="14674000" />
     </task>
     <task id="LOCAL‎-00001" summary="override + changing the upload form">
       <created>1683124739070</created>
@@ -210,7 +212,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1690889652020</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL‎-00017" summary="changing the whole app style debug">
+      <created>1690889950224</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL‎-00017" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1690889950224</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,7 +295,8 @@
     <MESSAGE value="changing the visuals" />
     <MESSAGE value="changing the whole app style" />
     <MESSAGE value="changing the whole app style #2" />
-    <option name="LAST_COMMIT_MESSAGE" value="changing the whole app style #2" />
+    <MESSAGE value="changing the whole app style debug" />
+    <option name="LAST_COMMIT_MESSAGE" value="changing the whole app style debug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

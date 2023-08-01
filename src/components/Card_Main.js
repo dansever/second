@@ -25,7 +25,7 @@ export default function MainCard(product) {
         borderRadius: '10px',
         boxShadow:  'rgba(149, 157, 165, 0.2) 0px 8px 24px',
         cursor: 'pointer',
-        backgroundColor: Colors.background_white,
+        backgroundColor: Colors.background_white
      };
 
     const likeAction = () => {
@@ -110,7 +110,8 @@ export default function MainCard(product) {
                             theme={{
                                 "token": {
                                     "lineType": "none",
-                                    "wireframe": false
+                                    "wireframe": false,
+
                                 },
                             }}
                         >
@@ -156,23 +157,6 @@ export default function MainCard(product) {
                     <WhatsAppOutlined style={{scale: "160%", color: "white"}}/>
                     <h3>Chat with seller for info</h3>
                 </ButtonStyle>
-                <p>Type: {product.type}</p>
-                <p>Brand: {product.brand}</p>
-                <p>Gender: {product.gender}</p>
-                <p>Size: {product.size}</p>
-                <p>Condition: {product.condition}</p>
-
-                <div className={"step-box"}>
-                    <Button className={"chat-or-pay-btn"}
-                            href={whatsappLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{width:"80%"}}>
-                        <WhatsAppOutlined style={{scale: "160%", color: "green"}}/>
-                        <h3>Chat with seller for info</h3>
-                    </Button>
-                </div>
-
             </Modal>
         </>
     );

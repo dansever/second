@@ -277,10 +277,6 @@ function App() {
                     </ButtonStyle>
                 </div>
             </ConfigProvider>
-                <ButtonStyle
-                    type="submit">
-                    Add To Shop
-                </ButtonStyle>
 
             </form>
             <Modal className={"loading-modal"}
