@@ -21,7 +21,6 @@ export default function MyCard (product) {
     const [brand, setBrand] = useState(product.brand);
     const [condition, setCondition] = useState(product.condition);
     const [gender, setGender] = useState(product.gender);
-    const productId = useState(product.product_id);
 
     const [editItemModalVisible, setEditItemModalVisible] = useState(false);
     const [markSoldModalVisible, setMarkSoldModalVisible] = useState(false);

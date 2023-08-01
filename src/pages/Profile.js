@@ -21,9 +21,6 @@ export default function MyProfile() {
     const [co2Saved, setCo2Saved] = useState("");
     const [editInfoModalVisible, setEditInfoModalVisible] = useState(false);
 
-    const [profileState, setProfileState] = useState(null);
-
-
     useEffect(() => {
         const userId = currentUser.uid;
         const UserRef = doc(db,'users',userId);
@@ -85,7 +82,7 @@ export default function MyProfile() {
             <div style={{ position: 'absolute', top: '72px', right: '20px'}}>
                 <Tooltip className={"info-edit-btn"} title="Edit Info">
                     <SettingOutlined style={{ fontSize: '20px' }}
-                                     onClick={() => {setEditInfoModalVisible((true))}}
+                                     onClick={() => {setEditInfoModalVisible(true)}}
                     />
                 </Tooltip>
             </div>
