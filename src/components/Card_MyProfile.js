@@ -2,7 +2,6 @@ import React, {useContext, useEffect, useState} from 'react';
 import {EditOutlined} from "@ant-design/icons";
 import {conditionOptions, genderOptions,
     sizeOptions, typeOptions} from "../assets/DataSets";
-import {ButtonStyle} from "./Button";
 import {doc, updateDoc, deleteDoc, getDoc, arrayRemove} from "firebase/firestore";
 import {deleteObject} from "firebase/storage";
 import {Button, Form, message, Modal, Select, Tooltip, ConfigProvider, theme} from "antd";
