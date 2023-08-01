@@ -47,6 +47,7 @@ export const SignUp = () => {
             const randomDigit = digits.charAt(Math.floor(Math.random() * digits.length));
             code += randomDigit;
         }
+        return code;
         setUserCode(code);
     }    const handleLogin = () => {
         // Redirect to signup page
@@ -62,7 +63,7 @@ export const SignUp = () => {
 
             // Step 2: Add a new document to the user's database
             const usersCollectionRef = collection(db, "users");
-            await generateRandomCode();
+            let code = generateRandomCode();
             const newUserRef = doc(usersCollectionRef,
                 newUserCredentials.user.uid);
             const data = {
@@ -72,7 +73,7 @@ export const SignUp = () => {
                 phone_number: phoneNumber,
                 tokens_left: 10,
                 uploaded_items: [],
-                userCode: userCode,
+                user_code: code,
             };
 
             setDoc(newUserRef, data)

@@ -1,11 +1,11 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {EditOutlined} from "@ant-design/icons";
 import {conditionOptions, genderOptions,
     sizeOptions, typeOptions} from "../assets/DataSets";
 import {ButtonStyle} from "./Button";
 import {doc, updateDoc, deleteDoc, getDoc, arrayRemove} from "firebase/firestore";
 import {deleteObject} from "firebase/storage";
-import {Button, Form, InputNumber, message, Modal, Select, Tooltip} from "antd";
+import {Button, Form, message, Modal, Select, Tooltip} from "antd";
 import Card from '@mui/material/Card';
 import {db, storage} from "../firebase";
 import "../styles/Card.css"
@@ -23,21 +23,19 @@ export default function MyCard (product) {
     const [brand, setBrand] = useState(product.brand);
     const [condition, setCondition] = useState(product.condition);
     const [gender, setGender] = useState(product.gender);
-    const [productId, setProductId] = useState(product.product_id);
-    const [tokens, setTokens] = useState(product.tokens);
 
     const [editItemModalVisible, setEditItemModalVisible] = useState(false);
+    const [markSoldModalVisible, setMarkSoldModalVisible] = useState(false);
 
+    const currentUser = useContext(AuthContext);
     const cardStyle = { borderRadius: '20px', boxShadow: '0 4px 6px black', position: 'relative'};
 
-    const handleEditItemModalOpen = () => { setEditItemModalVisible(true); };
-    const handleEditItemModalClose = () => { setEditItemModalVisible(false); };
+    useEffect(() => {}, []);
 
     const handleItemInfoEdit = async (e) => {
         e.preventDefault();
-        console.log("product_id: " + productId);
         try {
-            const productRef = doc(db,'products',productId);
+            const productRef = doc(db,'products',product.product_id);
             const newData = {
                 title: title,
                 type: type,
@@ -45,35 +43,24 @@ export default function MyCard (product) {
                 brand: brand,
                 condition: condition,
                 gender: gender,
-                tokens: tokens,
             };
             updateDoc(productRef, newData)
                 .then( () => {
                     console.log('Item updated successfully');
                     message.success(
-                        "User updated successfully", 1, () => {
-                            console.log('Pop-up closed');
-                        });
+                        "Product updated successfully", 2,
+                        () => {console.log('Pop-up closed');});
                 })
         } catch (error) {
-            console.log('Something went wrong. Please try again.');
+            console.log('Something went wrong, try again.');
         }
+        setEditItemModalVisible(false);
     };
-
-
-    const currentUser = useContext(AuthContext);
-    // const [userId, setUserId] = useState("");
-
-    // useEffect(() => {
-    //     setUserId(currentUser.uid);
-    // }, [currentUser]);
 
     const handleDeleteItem = async (e) => {
         e.preventDefault();
-
         try {
-            //get refs
-            const productRef = doc(db,'products',productId);
+            const productRef = doc(db,'products',product.product_id);
             const productSnapshot = await getDoc(productRef);
             const imageFilename = productSnapshot.data()['image_filename'];
             const storageRef = ref(storage, `product_images/${imageFilename}`);
@@ -87,21 +74,34 @@ export default function MyCard (product) {
             console.log("Image deleted successfully.");
 
             // delete item entry in uploaded_items array
-            await updateDoc( doc(db,'users',currentUser.uid), {
-                uploaded_items: arrayRemove(productId)
-            });
+            await updateDoc( doc(db,'users',currentUser.uid),
+                {uploaded_items: arrayRemove(product.product_id)})
+                .then(() => {
+                    console.log('Item deleted successfully');
+                    message.success(
+                        "Item deleted successfully", 2,
+                        () => {console.log('Pop-up closed');});
+            })
         } catch (error) {
             console.log('Something went wrong in item delete process.');
         }
+        setEditItemModalVisible(false);
     };
 
-
-    const handleSizeChange      = (value) => { setSize(value); };
-    const handleTypeChange      = (value) => { setType(value); };
-    const handleGenderChange    = (value) => { setGender(value); };
-    const handleConditionChange = (value) => { setCondition(value); };
-    const handleTokensChange = (value) => { setTokens(value); };
-
+    const handleMarkItemAsSold = async (e) => {
+        e.preventDefault();
+        try {
+            const userRef = doc(db,'users',currentUser.uid);
+            const userSnapshot = await getDoc(userRef);
+            const itemsGiven = userSnapshot.data()['items_given'];
+            await updateDoc(userRef,{items_given: itemsGiven + 1});
+            console.log('Item marked as given.');
+            await handleDeleteItem(e);
+        }  catch (error) {
+            console.log('Something went wrong');
+        }
+        setMarkSoldModalVisible(false);
+    };
 
     return (
         <Card style={cardStyle}>
@@ -113,7 +113,7 @@ export default function MyCard (product) {
                 <Tooltip title="Edit Item">
                     <Button shape="circle"
                             style={{scale: "140%", border: "1px solid black", boxShadow: "2px 2px 2px 0 black"}}
-                            onClick={handleEditItemModalOpen}>
+                            onClick={() => setEditItemModalVisible(true)}>
                         <EditOutlined/>
                     </Button>
                 </Tooltip>
@@ -127,7 +127,7 @@ export default function MyCard (product) {
                             style={{scale: "140%",
                                 border: "1px solid black",
                                 boxShadow: "2px 2px 2px 0 black"}}
-                            onClick = {(e) => console.log("continue")}>
+                            onClick={() => setMarkSoldModalVisible(true)}>
                         <GiReceiveMoney scale="150%"/>
                     </Button>
                 </Tooltip>
@@ -138,24 +138,25 @@ export default function MyCard (product) {
             </div>
 
 
-
-
-
             {/*EDIT INFO MODAL*/}
             <Modal title="Edit Item Information"
                    open={editItemModalVisible}
-                   onCancel={handleEditItemModalClose}
+                   onCancel={() => setEditItemModalVisible(false)}
                    footer={[]} // Empty array to hide buttons>
             >
                 <div className={"edit-info-modal"}>
                     <form className={"edit-info-form"}
                         onSubmit={handleItemInfoEdit}>
 
-                        <input value={title} placeholder={title ? {title} : "title"}
-                               type="text" onChange={(e) => setTitle(e.target.value)}
+                        <input value={title}
+                               placeholder={title ? {title} : "title"}
+                               type="text"
+                               onChange={(e) => setTitle(e.target.value)}
                         />
-                        <input value={brand} placeholder={brand ? {brand} : "brand"}
-                               type="text" onChange={(e) => setBrand(e.target.value)}
+                        <input value={brand}
+                               placeholder={brand ? {brand} : "brand"}
+                               type="text"
+                               onChange={(e) => setBrand(e.target.value)}
                         />
 
                         <Form.Item
@@ -163,7 +164,8 @@ export default function MyCard (product) {
                             <Select
                                 value={type} placeholder={type ? {type} : "type"}
                                 allowClear="true"
-                                onChange={handleTypeChange} style={{width: '200px',}}>
+                                onChange={(value) => { setType(value)}}
+                                style={{width: '200px',}}>
                                 {typeOptions.map((type_) => (
                                     <Option key={type_} value={type_}>
                                         {type_}
@@ -177,10 +179,12 @@ export default function MyCard (product) {
                             <Select
                                 value={size} placeholder={size ? {size} : "size"}
                                 allowClear="true"
-                                onChange={handleSizeChange}
+                                onChange={(value) => { setSize(value)}}
                                 style={{width: '200px'}}>
                                 {sizeOptions.map((size) => (
-                                    <Option key={size} value={size}>{size}</Option>))}
+                                    <Option key={size}
+                                            value={size}>
+                                        {size}</Option>))}
                             </Select>
                         </Form.Item>
 
@@ -189,39 +193,32 @@ export default function MyCard (product) {
                             <Select
                                 value={gender} placeholder={gender ? {gender} : "gender"}
                                 allowClear="true"
-                                onChange={handleGenderChange}
+                                onChange={(value) => { setGender(value)}}
                                 style = {{width: '200px'}}>
                                 {genderOptions.map((gender) => (
-                                    <Option key={gender} value={gender}>{gender}</Option>))}
+                                    <Option key={gender}
+                                            value={gender}>
+                                        {gender}</Option>))}
                             </Select>
                         </Form.Item>
 
                         <Form.Item
                             style={{marginBottom:"0"}}>
                             <Select
-                                value={condition} placeholder={condition ? {condition} : "condition"}
+                                value={condition}
+                                placeholder={condition ? {condition} : "condition"}
                                 allowClear="true"
-                                onChange={handleConditionChange}
+                                onChange={(value) => { setCondition(value)}}
                                 style = {{width: '200px'}}>
                                 {conditionOptions.map((condition) => (
                                     <Option key={condition} value={condition}>{condition}</Option>))}
                             </Select>
                         </Form.Item>
 
-                        <Form.Item
-                            style={{marginBottom:"0"}}>
-                            <InputNumber
-                                value={tokens} placeholder={tokens ? {tokens} : "tokens"}
-                                onChange={handleTokensChange}
-                                min={0}
-                                max={5}
-                                style = {{width: '200px'}}
-                            />
-                        </Form.Item>
-
                         <div className={"update_delete_button_box"}>
 
-                            <button className={"update-button"} type="submit">
+                            <button className={"update-button"}
+                                    type="submit">
                                 Update Item Info
                             </button>
 
@@ -233,6 +230,13 @@ export default function MyCard (product) {
 
                     </form>
                 </div>
+            </Modal>
+
+            <Modal title="Are You Sure?"
+                   open={markSoldModalVisible}
+                   onCancel={() => setMarkSoldModalVisible(false)}
+                   onOk={handleMarkItemAsSold}
+                   style={{ maxWidth: '80%' }}>
             </Modal>
 
         </Card>

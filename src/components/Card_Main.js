@@ -1,8 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
-import { HeartFilled,
-    HeartOutlined, WhatsAppOutlined} from "@ant-design/icons";
+import { HeartFilled, HeartOutlined, WhatsAppOutlined} from "@ant-design/icons";
 import {doc, updateDoc, arrayUnion, arrayRemove, getDoc} from "firebase/firestore";
-import {Button, Input, message, Modal, ConfigProvider, theme} from "antd";
+import {Button, Modal} from "antd";
 import {AuthContext} from "./AuthProvider";
 import Card from '@mui/material/Card';
 import {db} from "../firebase";
@@ -16,8 +15,6 @@ export default function MainCard(product) {
     // const linkedItemsLocal = product.likedItems.includes(product.product_id);
     const [isLikeToggledOn, setLikeToggledOn] = useState(product.isLiked);
     const [modalVisible, setModalVisible] = useState(false);
-    const [sellerCode, setSellerCode] = useState('');
-    const [inputSellerCode, setInputSellerCode] = useState('');
     const [whatsappLink, setWhatsappLink] = useState('');
     const currentUser = useContext(AuthContext);
     const currentUserRef = doc(db, 'users', currentUser.uid);
@@ -52,49 +49,20 @@ export default function MainCard(product) {
         }
     }
 
-    // const handleApplyButton = async (e) => {
-    //     e.preventDefault();
-    //     try {
-    //         const sellerRef = doc(db,'users',product.seller_uid);
-    //         const sellerSnapshot = await getDoc(sellerRef);
-    //         // const seller_old_tokens_amount = sellerSnapshot.data()['tokens_left'];
-    //         // console.log("seller_old_tokens_amount: "+seller_old_tokens_amount);
-    //         // console.log("product.item_tokens: "+product.tokens);
-    //         // const newData = {tokens_left: seller_old_tokens_amount + product.tokens,};
-    //         // if (inputSellerCode === sellerCode) {
-    //         //     console.log("YES");
-    //         //     updateDoc(sellerRef, newData)
-    //         //         .then(() => {
-    //         //             console.log('Success');
-    //         //             message.success(
-    //         //                 "Tokens Transferred successfully", 1, () => {
-    //         //                     console.log('Pop-up closed');
-    //         //                 });
-    //         //         })
-    //
-    //             const currentUserSnapshot = await getDoc(currentUserRef);
-    //             const current_user_old_tokens_amount = currentUserSnapshot.data()['tokens_left'];
-    //             const new_token_amount = current_user_old_tokens_amount - product.tokens;
-    //             await updateDoc(currentUserRef, {tokens_left: new_token_amount});
-    //         }
-    //         setInputSellerCode("");
-    //     } catch (error) {
-    //         console.log('Token Transfer Terminated --> X');
-    //     }
-    // }
 
-    // useEffect(() => {
-    //     const getSellerCode = async () => {
-    //         try {
-    //             const SellerUserRef = doc(db, 'users', product.seller_uid);
-    //             const docSnapshot = await getDoc(SellerUserRef);
-    //             //setSellerCode(docSnapshot.data()['userCode']);
-    //         } catch (err) {
-    //             console.log(err);
-    //         }
-    //     };
-    //     getSellerCode();
-    // }, []);
+
+    useEffect(() => {
+        const getSellerCode = async () => {
+            try {
+                const SellerUserRef = doc(db, 'users', product.seller_uid);
+                const docSnapshot = await getDoc(SellerUserRef);
+                //setSellerCode(docSnapshot.data()['user_code']);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        getSellerCode();
+    }, []);
 
     const getWhatsappLink = async () => {
         try {
@@ -180,18 +148,6 @@ export default function MainCard(product) {
                 <p className={"product-info"}>Gender: {product.gender}</p>
                 <p className={"product-info"}>Size: {product.size}</p>
                 <p className={"product-info"}>Condition: {product.condition}</p>
-                {/*<p>Tokens: {product.tokens}</p>*/}
-                {/*<ConfigProvider*/}
-                {/*    theme={{*/}
-                {/*        "token": {*/}
-                {/*            "colorPrimaryBorder": "#11998E",*/}
-                {/*            "colorPrimaryBorderHover": "#11998E",*/}
-                {/*            "colorPrimaryHover": "#11998E",*/}
-                {/*            "colorPrimary": "#11998E",*/}
-                {/*            "wireframe": false*/}
-                {/*        },*/}
-                {/*    }}*/}
-                {/*>*/}
                 <ButtonStyle className={"chat-or-pay-btn"}
                         href={whatsappLink}
                         target="_blank"
@@ -200,17 +156,22 @@ export default function MainCard(product) {
                     <WhatsAppOutlined style={{scale: "160%", color: "white"}}/>
                     <h3>Chat with seller for info</h3>
                 </ButtonStyle>
-                {/*</ConfigProvider>*/}
-                {/*<div className={"step-box"}>*/}
-                {/*    <Input*/}
-                {/*        value={inputSellerCode}*/}
-                {/*        placeholder="Enter givers user code"*/}
-                {/*        onChange={(e) => setInputSellerCode(e.target.value)}/>*/}
-                {/*    <button className={"apply-button"}*/}
-                {/*        onClick={handleApplyButton}>*/}
-                {/*        Apply*/}
-                {/*    </button>*/}
-                {/*</div>*/}
+                <p>Type: {product.type}</p>
+                <p>Brand: {product.brand}</p>
+                <p>Gender: {product.gender}</p>
+                <p>Size: {product.size}</p>
+                <p>Condition: {product.condition}</p>
+
+                <div className={"step-box"}>
+                    <Button className={"chat-or-pay-btn"}
+                            href={whatsappLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{width:"80%"}}>
+                        <WhatsAppOutlined style={{scale: "160%", color: "green"}}/>
+                        <h3>Chat with seller for info</h3>
+                    </Button>
+                </div>
 
             </Modal>
         </>

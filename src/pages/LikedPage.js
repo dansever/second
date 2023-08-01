@@ -2,11 +2,13 @@ import React, {useContext, useState} from "react"
 import "../styles/Index.css"
 import Navbar from "../components/Navbar"
 import MainHeader from "../components/Header";
+import "../styles/LikedPage.css"
 import { AuthContext } from '../components/AuthProvider';
 import Feed_Liked from "../components/Feed_Liked"
 import Colors from "../color.js";
 import {doc, getDoc} from "firebase/firestore";
 import {db} from "../firebase";
+
 
 export default function LikedPage() {
     const currentUser = useContext(AuthContext);
@@ -29,6 +31,7 @@ export default function LikedPage() {
                 ( <MainHeader color={Colors.orangie} name={null}/> )}
             <div className={"liked-page-container"}>
                 <header className={"page_header"}>Liked Items</header>
+
                 <Feed_Liked/>
             </div>
             <Navbar/>
