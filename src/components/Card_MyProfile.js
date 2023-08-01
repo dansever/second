@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import {EditOutlined} from "@ant-design/icons";
 import {conditionOptions, genderOptions,
     sizeOptions, typeOptions} from "../assets/DataSets";
+import {ButtonStyle} from "./Button";
 import {doc, updateDoc, deleteDoc, getDoc, arrayRemove} from "firebase/firestore";
 import {deleteObject} from "firebase/storage";
 import {Button, Form, message, Modal, Select, Tooltip, ConfigProvider, theme} from "antd";
@@ -263,14 +264,28 @@ export default function MyCard (product) {
                     </form>
                 </div>
             </Modal>
-
-            <Modal title="Have you gave away the item?"
-                   open={markSoldModalVisible}
+            <ConfigProvider
+                theme={{
+                    "token": {
+                        "colorPrimaryBorder": "#11998E",
+                        "colorPrimaryBorderHover": "#11998E",
+                        "colorPrimaryHover": "#11998E",
+                        "colorPrimary": "#11998E",
+                        "wireframe": false,
+                    },
+                }}
+            >
+            <Modal open={markSoldModalVisible}
                    onCancel={() => setMarkSoldModalVisible(false)}
-                   onOk={handleMarkItemAsSold}
-                   style={{ maxWidth: '80%' }}>
-            </Modal>
+                   footer={[]}>
+                <div className={"sold-modal"}>
+                    <h2 style={{color:Colors.green}}>Give away the item</h2>
+                    <p> Are you sure?</p>
+                    <ButtonStyle onClick={handleMarkItemAsSold}>I gave away the item!</ButtonStyle>
+                </div>
 
+            </Modal>
+            </ConfigProvider>
         </Card>
     );
 }
