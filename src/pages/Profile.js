@@ -21,6 +21,9 @@ export default function MyProfile() {
     const [co2Saved, setCo2Saved] = useState("");
     const [editInfoModalVisible, setEditInfoModalVisible] = useState(false);
 
+    const [profileState, setProfileState] = useState(null);
+
+
     useEffect(() => {
         const userId = currentUser.uid;
         const UserRef = doc(db,'users',userId);
