@@ -5,6 +5,7 @@ import MainHeader from "../components/Header";
 import "../styles/LikedPage.css"
 import { AuthContext } from '../components/AuthProvider';
 import Feed_Liked from "../components/Feed_Liked"
+import Colors from "../color.js";
 import {doc, getDoc} from "firebase/firestore";
 import {db} from "../firebase";
 
@@ -25,9 +26,9 @@ export default function LikedPage() {
     return (
         <div>
             {currentUser ?
-                ( <MainHeader name={userName}/> )
+                ( <MainHeader color={Colors.orangie} name={userName}/> )
                 :
-                ( <MainHeader name={null}/> )}
+                ( <MainHeader color={Colors.orangie} name={null}/> )}
             <div className={"liked-page-container"}>
                 <header className={"page_header"}>Liked Items</header>
 

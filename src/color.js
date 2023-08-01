@@ -1,12 +1,9 @@
 const Colors = {
   text_black: "#02110A",
-  dark_grey: "#343636",
-  dark_green: "#194b19",
-  primary_green: "#749A83",
-  secondary_green: "#CDDCC7",
-  secondary_blue: "#68a8bd",
-  light_green: "#E8EEE8",
-  off_white: "#F1F7F1",
+  light_green: "#38ef7d",
+  off_white: "#f5f5f5",
+  green: "#11998E",
+  background_white: "#F7F7F7",
 };
 
 export default Colors;

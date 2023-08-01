@@ -4,14 +4,17 @@ import {conditionOptions, genderOptions,
     sizeOptions, typeOptions} from "../assets/DataSets";
 import {doc, updateDoc, deleteDoc, getDoc, arrayRemove} from "firebase/firestore";
 import {deleteObject} from "firebase/storage";
-import {Button, Form, message, Modal, Select, Tooltip} from "antd";
+import {Button, Form, message, Modal, Select, Tooltip, ConfigProvider, theme} from "antd";
 import Card from '@mui/material/Card';
 import {db, storage} from "../firebase";
 import "../styles/Card.css"
 import {ref} from "firebase/storage";
-import { GiReceiveMoney } from "react-icons/gi";
+import Colors from "../color";
+import { BiDonateHeart } from "react-icons/bi";
+
 import {AuthContext} from "./AuthProvider";
 const { Option } = Select;
+
 
 
 export default function MyCard (product) {
@@ -26,7 +29,12 @@ export default function MyCard (product) {
     const [markSoldModalVisible, setMarkSoldModalVisible] = useState(false);
 
     const currentUser = useContext(AuthContext);
-    const cardStyle = { borderRadius: '20px', boxShadow: '0 4px 6px black', position: 'relative'};
+    const cardStyle =  {
+        borderRadius: '10px',
+        boxShadow:  'rgba(149, 157, 165, 0.2) 0px 8px 24px',
+        cursor: 'pointer',
+        backgroundColor: Colors.background_white
+    };
 
     useEffect(() => {}, []);
 
@@ -107,32 +115,58 @@ export default function MyCard (product) {
                 <img src={product.image_url}
                      alt={product.alt}/>
             </div>
-            <div style={{position: 'absolute', top: '20px', right: '20px'}}>
-                <Tooltip title="Edit Item">
-                    <Button shape="circle"
-                            style={{scale: "140%", border: "1px solid black", boxShadow: "2px 2px 2px 0 black"}}
-                            onClick={() => setEditItemModalVisible(true)}>
-                        <EditOutlined/>
-                    </Button>
-                </Tooltip>
-            </div>
+            {/*<div style={{position: 'absolute', top: '20px', right: '20px'}}>*/}
+            {/*    <Tooltip title="Edit Item">*/}
+            {/*        <Button shape="circle"*/}
+            {/*                style={{scale: "140%", border: "1px solid black", boxShadow: "2px 2px 2px 0 black"}}*/}
+            {/*                onClick={() => setEditItemModalVisible(true)}>*/}
+            {/*            <EditOutlined/>*/}
+            {/*        </Button>*/}
+            {/*    </Tooltip>*/}
+            {/*</div>*/}
 
-            <div style={{position: 'absolute',
-                top: '80px',
-                right: '20px'}}>
+            {/*<div style={{position: 'absolute',*/}
+            {/*    top: '80px',*/}
+            {/*    right: '20px'}}>*/}
+            {/*    <Tooltip title="Mark Item as Sold">*/}
+            {/*        <Button shape="circle"*/}
+            {/*                style={{scale: "140%",*/}
+            {/*                    border: "1px solid black",*/}
+            {/*                    boxShadow: "2px 2px 2px 0 black"}}*/}
+            {/*                onClick={() => setMarkSoldModalVisible(true)}>*/}
+            {/*            <BiDonateHeart scale="150%"/>*/}
+            {/*        </Button>*/}
+            {/*    </Tooltip>*/}
+            {/*</div>*/}
+
+            <div className={"profile-content-box"}>
+                <ConfigProvider
+                    theme={{
+                        "token": {
+                            "lineType": "none",
+                            "wireframe": false,
+                            "colorPrimaryBorder": "#11998E",
+                            "colorPrimaryBorderHover": "none",
+                            "colorPrimaryHover": "none",
+                            "colorPrimary": "#11998E",
+                        },
+                    }}
+                >
+                <div>
+                    <Tooltip title="Edit Item">
+                        <Button className={"profile-buttons"} onClick={() => setEditItemModalVisible(true)}>
+                            <EditOutlined style={{ scale: "200%"}}/>
+                        </Button>
+                    </Tooltip>
+                </div>
+                <div>
                 <Tooltip title="Mark Item as Sold">
-                    <Button shape="circle"
-                            style={{scale: "140%",
-                                border: "1px solid black",
-                                boxShadow: "2px 2px 2px 0 black"}}
-                            onClick={() => setMarkSoldModalVisible(true)}>
-                        <GiReceiveMoney scale="150%"/>
+                    <Button className={"profile-buttons"} onClick={() => setMarkSoldModalVisible(true)}>
+                        <BiDonateHeart style={{scale:"200%"}}/>
                     </Button>
                 </Tooltip>
-            </div>
-
-            <div className={"content-box"}>
-                <h3>{title}</h3>
+                </div>
+                </ConfigProvider>
             </div>
 
 
@@ -230,7 +264,7 @@ export default function MyCard (product) {
                 </div>
             </Modal>
 
-            <Modal title="Are You Sure?"
+            <Modal title="Have you gave away the item?"
                    open={markSoldModalVisible}
                    onCancel={() => setMarkSoldModalVisible(false)}
                    onOk={handleMarkItemAsSold}

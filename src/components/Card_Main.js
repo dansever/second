@@ -1,12 +1,15 @@
 import React, {useContext, useEffect, useState} from 'react';
 import { HeartFilled, HeartOutlined, WhatsAppOutlined} from "@ant-design/icons";
 import {doc, updateDoc, arrayUnion, arrayRemove, getDoc} from "firebase/firestore";
-import {Button, Modal} from "antd";
+import {Button, Modal,  ConfigProvider, theme} from "antd";
 import {AuthContext} from "./AuthProvider";
 import Card from '@mui/material/Card';
 import {db} from "../firebase";
 import Colors from "../color";
 import "../styles/Card.css"
+import {bool} from "prop-types";
+import {ButtonStyle} from "./Button";
+
 
 export default function MainCard(product) {
     // const linkedItemsLocal = product.likedItems.includes(product.product_id);
@@ -17,10 +20,12 @@ export default function MainCard(product) {
     const currentUserRef = doc(db, 'users', currentUser.uid);
     const product_id = product.product_id;
 
+
     const cardStyle = {
-        borderRadius: '20px',
-        // boxShadow: '0 2px 3px black',
+        borderRadius: '10px',
+        boxShadow:  'rgba(149, 157, 165, 0.2) 0px 8px 24px',
         cursor: 'pointer',
+        backgroundColor: Colors.background_white
      };
 
     const likeAction = () => {
@@ -43,6 +48,7 @@ export default function MainCard(product) {
             likeAction();
         }
     }
+
 
 
     useEffect(() => {
@@ -100,8 +106,16 @@ export default function MainCard(product) {
                     </div>
 
                     <div className={"right-side"}>
-                        <Button shape="circle"
-                                className={"card_like_button"}
+                        <ConfigProvider
+                            theme={{
+                                "token": {
+                                    "lineType": "none",
+                                    "wireframe": false,
+
+                                },
+                            }}
+                        >
+                        <Button className={"card_like_button"}
                                 onClick={handleLike}>
                             {isLikeToggledOn ?
                                 <HeartFilled
@@ -110,6 +124,7 @@ export default function MainCard(product) {
                                     style={{ scale: "120%", color: "black" }}/>
                             }
                         </Button>
+                        </ConfigProvider>
                     </div>
                 </div>
             </Card>
@@ -120,7 +135,7 @@ export default function MainCard(product) {
                    onCancel={handleModalClose}
                    footer={[]} // Empty array to hide buttons>
                 >
-                <h2 style={{color:Colors.dark_green}}>
+                <h2 style={{color:Colors.green}}>
                     {product.title}
                 </h2>
                 <div className={"img-box-modal"}
@@ -129,23 +144,19 @@ export default function MainCard(product) {
                          alt={product.alt}/>
                 </div>
 
-                <p>Type: {product.type}</p>
-                <p>Brand: {product.brand}</p>
-                <p>Gender: {product.gender}</p>
-                <p>Size: {product.size}</p>
-                <p>Condition: {product.condition}</p>
-
-                <div className={"step-box"}>
-                    <Button className={"chat-or-pay-btn"}
-                            href={whatsappLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{width:"80%"}}>
-                        <WhatsAppOutlined style={{scale: "160%", color: "green"}}/>
-                        <h3>Chat with seller for info</h3>
-                    </Button>
-                </div>
-
+                <p className={"product-info"}>Type: {product.type}</p>
+                <p className={"product-info"}>Brand: {product.brand}</p>
+                <p className={"product-info"}>Gender: {product.gender}</p>
+                <p className={"product-info"}>Size: {product.size}</p>
+                <p className={"product-info"}>Condition: {product.condition}</p>
+                <ButtonStyle className={"chat-or-pay-btn"}
+                        href={whatsappLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{width:"80%"}}>
+                    <WhatsAppOutlined style={{scale: "160%", color: "white"}}/>
+                    <h3>Chat with seller for info</h3>
+                </ButtonStyle>
             </Modal>
         </>
     );
