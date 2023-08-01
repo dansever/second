@@ -21,9 +21,6 @@ export default function MyProfile() {
     const [co2Saved, setCo2Saved] = useState("");
     const [editInfoModalVisible, setEditInfoModalVisible] = useState(false);
 
-    const [profileState, setProfileState] = useState(null);
-
-
     useEffect(() => {
         const userId = currentUser.uid;
         const UserRef = doc(db,'users',userId);
@@ -50,11 +47,6 @@ export default function MyProfile() {
             return null;
         }
     }
-
-    const handleEditInfoModalOpen = () => {setEditInfoModalVisible(true);};
-    const handleEditInfoModalClose = () => {setEditInfoModalVisible(false);};
-    const handleNeighborhoodChange = (value, label) => {setUserNeighborhood(value);};
-
     const handleUserInfoEdit  = async (e) => {
         e.preventDefault();
         try {
@@ -74,6 +66,7 @@ export default function MyProfile() {
         } catch (error) {
             console.log('Something went wrong. Please try again.');
         }
+        setEditInfoModalVisible(false);
     };
 
 
@@ -89,7 +82,7 @@ export default function MyProfile() {
             <div style={{ position: 'absolute', top: '72px', right: '20px'}}>
                 <Tooltip className={"info-edit-btn"} title="Edit Info">
                     <SettingOutlined style={{ fontSize: '20px' }}
-                                     onClick={handleEditInfoModalOpen}
+                                     onClick={() => {setEditInfoModalVisible(true)}}
                     />
                 </Tooltip>
             </div>
@@ -119,7 +112,7 @@ export default function MyProfile() {
             {/*EDIT PERSONAL INFO MODAL*/}
             <Modal title="Edit Personal Information"
                    open={editInfoModalVisible}
-                   onCancel={handleEditInfoModalClose}
+                   onCancel={() => {setEditInfoModalVisible(false)}}
                    footer={[]} // Empty array to hide buttons>
             >
                 <div className={"edit-info-modal"}>
@@ -145,7 +138,7 @@ export default function MyProfile() {
                             treeData = {NeighborhoodDict}
                             value={userNeighborhood}
                             placeholder={"Enter Neighborhood"}
-                            onChange={handleNeighborhoodChange}
+                            onChange={(value, label) => {setUserNeighborhood(value)}}
                         />
 
                         <button className={"update-button"} type="submit">

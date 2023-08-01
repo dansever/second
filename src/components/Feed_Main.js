@@ -7,7 +7,7 @@ import MainCard from "./Card_Main";
 import SearchBar from "./SearchBar";
 import {AuthContext} from "./AuthProvider";
 
-const { Option } = Select;
+// const { Option } = Select;
 
 export default function Feed_Main() {
     const [productsList, setProductsList] = useState([]);
