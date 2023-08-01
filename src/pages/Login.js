@@ -3,10 +3,9 @@ import { useNavigate  } from 'react-router-dom';
 import "../styles/Login.css"
 import { auth } from "../firebase"
 import { signInWithEmailAndPassword } from "firebase/auth";
-import {Button, Input, ConfigProvider, theme} from "antd";
+import {Input, ConfigProvider} from "antd";
 import logo from "../assets/Second_logo.png"
 import styled from "styled-components";
-import Colors from "../color.js";
 import {ButtonStyle} from "../components/Button";
 
 const Picture = styled.img`

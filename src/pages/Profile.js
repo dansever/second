@@ -10,7 +10,6 @@ import {AuthContext } from '../components/AuthProvider';
 import {db} from "../firebase";
 import {SettingOutlined} from "@ant-design/icons";
 import {NeighborhoodDict} from "../assets/DataSets";
-import Colors from "../color.js";
 
 export default function MyProfile() {
     const currentUser = useContext(AuthContext);
@@ -28,6 +27,16 @@ export default function MyProfile() {
         getUserData(UserRef);
     }, []);
 
+    const generateRandomNumber = () => {
+        // Generate a random number between 0 and 3 (exclusive)
+        const randomValue = Math.random() * 3;
+        // Add 6 to the randomValue to get a number between 6 and 9 (exclusive)
+        const randomNumber = randomValue + 6;
+        // Round the number to 2 decimal places
+        const roundedNumber = parseFloat(randomNumber.toFixed(2));
+        return roundedNumber;
+    };
+
     async function getUserData(UserRef) {
         try {
             const docSnap = await getDoc(UserRef);
@@ -37,6 +46,7 @@ export default function MyProfile() {
                 setUserNeighborhood(docSnap.data().neighborhood);
                 setUserCode(docSnap.data().user_code);
                 setItemsDonated(docSnap.data().items_given);
+
                 setCo2Saved((docSnap.data().items_given) * 7.5);
 
             } else {
@@ -69,7 +79,6 @@ export default function MyProfile() {
         }
         setEditInfoModalVisible(false);
     };
-
 
     return (
         <div>
@@ -107,8 +116,6 @@ export default function MyProfile() {
             </div>
 
             <Navbar/>
-
-
 
             {/*EDIT PERSONAL INFO MODAL*/}
             <Modal title="Edit Personal Information"

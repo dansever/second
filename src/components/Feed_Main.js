@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import "../styles/Feed.css"
-import {Col, Row, Select} from "antd";
+import {Col, Row} from "antd";
 import {collection, getDocs, query, orderBy, onSnapshot, where, documentId} from "firebase/firestore";
 import {db} from "../firebase";
 import MainCard from "./Card_Main";
@@ -60,14 +60,13 @@ export default function Feed_Main() {
         });
     }, []);
 
-    //this will run once when the page uplaod
+    //this will run once when the page upload
     useEffect( () => {
         const getLikedItemList = async () => {
             const userDoc = await query(usersCollectionRef, where(documentId(), '==', currentUser.uid));
             const data1 = await getDocs(userDoc);
             const LikedItemsId = data1.docs.map(doc => doc.data().liked_items);
             setLikedItems(LikedItemsId[0]);
-            // console.log(LikedItemsId[0]);
         }
         getLikedItemList().then(() => setLoading(false));
     }, []);
