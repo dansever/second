@@ -90,12 +90,12 @@ export default function MyCard (product) {
     const handleMarkItemAsSold = async (e) => {
         e.preventDefault();
         try {
-            //await handleDeleteItem();
             const userRef = doc(db,'users',currentUser.uid);
             const userSnapshot = await getDoc(userRef);
             const itemsGiven = userSnapshot.data()['items_given'];
             await updateDoc(userRef,{items_given: itemsGiven + 1});
             console.log('Item marked as given.');
+            await handleDeleteItem(e);
         }  catch (error) {
             console.log('Something went wrong');
         }
