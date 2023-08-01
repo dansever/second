@@ -60,9 +60,6 @@ export default function Feed_Main() {
         });
     }, []);
 
-    // const handleSortChange = (value) => {setSortBy(value);};
-    // const handleSortOrderChange = (value) => {setSortOrder(value);};
-
     //this will run once when the page uplaod
     useEffect( () => {
         const getLikedItemList = async () => {
@@ -97,7 +94,8 @@ export default function Feed_Main() {
         return likedItems.includes(product_id);
     }
 
-    const createdCards = productsList.filter(isPassFilter).map((product, index) => (
+    const createdCards = productsList.filter(isPassFilter)
+        .map((product, index) => (
             <Col span={12}
                  key={index}>
                 <MainCard
@@ -124,25 +122,6 @@ export default function Feed_Main() {
             <div className="feed">
                 <Row gutter={[16, 16]}>
                     {createdCards}
-                    {/*{productsList.map((product, index) => (*/}
-                    {/*    <Col span={12}*/}
-                    {/*         key={index}>*/}
-                    {/*        <MainCard*/}
-                    {/*            likedItems = {likedItems}*/}
-                    {/*            product_id = {product.id}*/}
-                    {/*            title={product.title}*/}
-                    {/*            seller_uid={product.seller_uid}*/}
-                    {/*            tokens={product.tokens}*/}
-                    {/*            type={product.type}*/}
-                    {/*            gender={product.gender}*/}
-                    {/*            image_url={product.image_url}*/}
-                    {/*            brand={product.brand}*/}
-                    {/*            size={product.size}*/}
-                    {/*            condition={product.condition}*/}
-                    {/*            setLikedItems ={setLikedItems}*/}
-                    {/*        />*/}
-                    {/*    </Col>*/}
-                    {/*))}*/}
                 </Row>
             </div>
         </>
