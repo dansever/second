@@ -10,21 +10,7 @@ import { Dropdown} from 'antd';
 import {auth} from "../firebase";
 
 
-const HeaderContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1;
-  height: 60px;
-  padding-left: 15px;
-  padding-right: 5px;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: var(--text_color) 3px solid;
-  margin-bottom: -3px;
-`;
+
 
 const TitleAndLogo = styled.div`
   display: flex;
@@ -43,20 +29,19 @@ export default function MainHeader(props) {
     }
 
     const HeaderContainer = styled.div`
-        display: flex;
-        flex-direction: row;
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 1;
-        height: 60px;
-        padding-left: 15px;
-        padding-right: 5px;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: var(--text_color) 3px solid;
-        margin-bottom: -3px;
-        background-color: ${props.color} !important; // Set the background color dynamically
+      display: flex;
+      flex-direction: row;
+      background-image: linear-gradient(to top left, ${Colors.green}, ${Colors.light_green} );
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1;
+      height: 60px;
+      padding-left: 15px;
+      padding-right: 5px;
+      align-items: center;
+      justify-content: space-between;
+    
     `;
 
     const items = [
@@ -71,7 +56,7 @@ export default function MainHeader(props) {
             <TitleAndLogo>
                 <h3
                     style={{
-                        color: Colors.dark_green,
+                        color: Colors.background_white,
                         fontSize:"32px"}}>
                     Second
                 </h3>
@@ -101,20 +86,21 @@ export default function MainHeader(props) {
 
 export function SecondaryHeader(props) {
     const HeaderContainer = styled.div`
-        display: flex;
-        flex-direction: row;
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 1;
-        height: 60px;
-        padding-left: 15px;
-        padding-right: 5px;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: var(--text_color) 3px solid;
-        margin-bottom: -3px;
-        background-color: ${props.color} !important; // Set the background color dynamically
+      display: flex;
+      flex-direction: row;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1;
+      height: 60px;
+      padding-left: 15px;
+      padding-right: 5px;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: var(--green) 1px solid;
+      //box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      margin-bottom: -3px;
+      background-image: linear-gradient(to top left, ${Colors.green}, ${Colors.light_green} );
     `;
     const navigate = useNavigate();
     return (

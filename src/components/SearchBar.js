@@ -1,6 +1,5 @@
 import React, {useState} from "react"
-// import "./SearchBar.css"
-import {Select, TreeSelect} from "antd";
+import {Select, TreeSelect, ConfigProvider, theme} from "antd";
 import {filterDatabase, NeighborhoodDict, sortDirection, sortType} from "../assets/DataSets";
 
 const { Option } = Select;
@@ -162,9 +161,26 @@ export default function SearchBar({filter, setFilter, neighborhoodFilter, setNei
 
     return (
         <div className={"filter-sort-container"}>
-
+            <ConfigProvider
+                theme={{
+                    "token": {
+                        "colorPrimaryBorder": "#11998E",
+                        "colorPrimaryBorderHover": "#11998E",
+                        "colorPrimaryHover": "#11998E",
+                        "colorPrimary": "#11998E",
+                        "wireframe": false
+                    },
+                }}
+            >
             <div>
+
                 <TreeSelect
+                    // style={{
+                    //         "colorPrimaryBorder": "#11998E",
+                    //         "colorPrimaryBorderHover": "#11998E",
+                    //         "colorPrimaryHover": "#11998E",
+                    //         "colorPrimary": "#11998E",
+                    //     }}
                     treeData = {filterDatabase}
                     treeCheckable
                     allowClear="true"
@@ -229,6 +245,7 @@ export default function SearchBar({filter, setFilter, neighborhoodFilter, setNei
                 </Select>
 
             </div>
+            </ConfigProvider>
         </div>
     );
 };

@@ -1,6 +1,6 @@
 
 header h3{
-    color: var(--dark_green);
+    color: var(--green);
 }
 
 .main-container {
@@ -19,24 +19,26 @@ form {
     gap: 16px;
 }
 
-.submit-button {
-    border-radius: 10px;
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    background-color: #8EC16E;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 2px 3px 0 0 var(--text_color);
-    font-family: 'Montserrat', sans-serif;
-}
+/*.submit-button {*/
+/*    border-radius: 10px;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    padding: 10px;*/
+/*    background-color: #8EC16E;*/
+/*    font-size: 20px;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    box-shadow: 2px 3px 0 0 var(--text_color);*/
+/*    font-family: 'Montserrat', sans-serif;*/
+/*}*/
 
 .sign-up-button {
     font-size: 18px;
     font-weight: bold;
-    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    color: var(--green);
     display: flex;
     align-items: center;
     align-content: center;
@@ -73,14 +75,14 @@ form {
     padding-bottom: 20px;
 }
 
-.ant-input, .ant-input:focus, .ant-input-number, .ant-input-number:focus, .ant-input-number:active {
-    background-color: white;
-    box-shadow: 2px 3px 0 0 var(--text_color);
-    border-radius: 6px;
-    border: 1px solid var(--text_color) !important;
-    font-family: 'Montserrat', sans-serif;
-}
-.ant-input::placeholder {
-    color: var(--text_color);
-}
+/*.ant-input, .ant-input:focus, .ant-input-number, .ant-input-number:focus, .ant-input-number:active {*/
+/*    background-color: white;*/
+/*    box-shadow: 2px 3px 0 0 var(--text_color);*/
+/*    border-radius: 6px;*/
+/*    border: 1px solid var(--text_color) !important;*/
+/*    font-family: 'Montserrat', sans-serif;*/
+/*}*/
+/*.ant-input::placeholder {*/
+/*    color: var(--text_color);*/
+/*}*/
 

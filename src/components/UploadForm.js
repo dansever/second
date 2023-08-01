@@ -6,7 +6,7 @@ import { AuthContext } from './AuthProvider';
 import {ButtonStyle} from "./Button";
 import {getDocs, collection, addDoc, doc, updateDoc, arrayUnion, getDoc} from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import {Select, Form, InputNumber, Modal, Input} from 'antd';
+import {Select, Form, InputNumber, Modal, Input, ConfigProvider, theme} from 'antd';
 import {conditionOptions, genderOptions, sizeOptions, typeOptions} from "../assets/DataSets";
 import loading from "../assets/images/loading.gif";
 const { Option } = Select;
@@ -157,7 +157,7 @@ function App() {
             <form onSubmit={handleFormSubmit }>
                 <div></div><div></div>
                 <div className={"form-row-img"}>
-                    <label>Add a Pic</label>
+                    <label className={"add-pic"}>Add image</label>
                     <input
                         className={"upload-file-button"}
                         id="fileInput"
@@ -167,9 +167,20 @@ function App() {
                         required
                     />
                 </div>
-
+                <ConfigProvider
+                    theme={{
+                        "token": {
+                            "colorPrimaryBorder": "#11998E",
+                            "colorPrimaryBorderHover": "#11998E",
+                            "colorPrimaryHover": "#11998E",
+                            "colorPrimary": "#11998E",
+                            "wireframe": false
+                        },
+                    }}
+                >
 
                 <div className={"form-row"}>
+
                     <label>Title</label>
                     <Input
                         value={newTitle}
@@ -277,13 +288,14 @@ function App() {
                             style = {{width: '200px'}}
                         />
                     </Form.Item>
+
                 </div>
                 <div className={"button"}>
                     <ButtonStyle
                         type="submit">Add To Shop
                     </ButtonStyle>
                 </div>
-
+            </ConfigProvider>
             </form>
             <Modal className={"loading-modal"}
                    open={isLoading}

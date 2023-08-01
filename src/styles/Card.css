@@ -10,6 +10,7 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: var(--green);
 }
 
 .ant-modal-body {
@@ -18,7 +19,7 @@ h2 {
 .img-box {
     overflow: hidden;
     flex: 7;
-    border-radius: 20px 20px 0 0 ;
+    border-radius: 10px 10px 0 0 ;
 }
 
 .img-box img {
@@ -59,10 +60,16 @@ h2 {
     row-gap: 60px;
 }
 
+p.product-info {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
 .left-side h3 {
     display: flex;
     justify-content: center;
-    color: var(--primary_green);
+    color: var(--green);
 }
 
 
@@ -77,8 +84,8 @@ h2 {
 
 .card_like_button, .card_like_button:hover, .card_like_button:focus, .card_like_button:active {
     scale: 120%;
-    border-color: black !important;
-    box-shadow: 1px 1px 1px 0 black !important;
+    box-shadow: none;
+    background-color: var(--background_white);
 }
 
 .modal_icons {
@@ -87,62 +94,61 @@ h2 {
     column-gap: 40px;
 }
 
-.ant-wave {
-    display: none;
-}
-.whatsapp-modal {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    column-gap: 40px;
-}
+/*.ant-wave {*/
+/*    display: none;*/
+/*}*/
+/*.whatsapp-modal {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    align-items: center;*/
+/*    column-gap: 40px;*/
+/*}*/
 
-.ant-btn {
-    border-radius: 10px;
-    box-shadow: 2px 3px 0 0 var(--text_color);
-    border: 2px solid var(--text_color);
-}
 
 .chat-or-pay-btn{
-    width: 70%;
-    background-color: var(--primary_green);
+    /*width:80%;*/
+    /*background-color: var(--background_white);*/
+    /*border: var(--green) 2px solid;*/
+    /*border-radius: 5px;*/
+    /*box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 10px;*/
+    /*display: inline-flex;*/
+    /*flex-direction: row;*/
+    /*align-items: center;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    gap: 8px;
     display: flex;
-    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    font-weight: bold;
-    column-gap: 10px;
+
 }
 
-.apply-button {
-    color: var(--text_color);
-    background-color: var(--orangie);
-    border-radius: 10px;
-    height:35px;
-    width: 80px;
-    font-weight: 700;
-    box-shadow: 2px 3px 0 0 black;
-}
+/*.apply-button {*/
+/*    color: var(--text_color);*/
+/*    background-color: var(--orangie);*/
+/*    border-radius: 10px;*/
+/*    height:35px;*/
+/*    width: 80px;*/
+/*    font-weight: 700;*/
+/*    box-shadow: 2px 3px 0 0 black;*/
+/*}*/
 
-.step-box {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    column-gap: 10px;
-    padding-top: 10px;
-}
+/*.step-box {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    align-items: center;*/
+/*    column-gap: 10px;*/
+/*    padding-top: 10px;*/
+/*}*/
 
 .edit-info-form {
     width: 100%;
 }
 
 .custom-modal .ant-modal-content{
-    border: 2px solid var(--text_color);
-    box-shadow: 2px 3px 0 0 var(--text_color);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     border-radius: 16px;
-    background-color: #FDF3E6;
-}
-.ant-btn {
-    word-wrap: break-word;
+    background-color: var(--background_white);
 }
 
 input  {
@@ -167,19 +173,19 @@ input:focus, textarea:focus {
     column-gap: 2vw;
 }
 
-.update-button {
-    border-radius: 10px;
-    width: 60vw;
-    padding: 10px 5px 10px 5px;
-    background-color: var(--secondary_green);
-    font-size: 16px;
-    font-weight: bold;
-}
+/*.update-button {*/
+/*    border-radius: 10px;*/
+/*    width: 60vw;*/
+/*    padding: 10px 5px 10px 5px;*/
+/*    background-color: var(--secondary_green);*/
+/*    font-size: 16px;*/
+/*    font-weight: bold;*/
+/*}*/
 
-.update-button:hover {
-    background-color: var(--primary_green);
-    cursor: pointer;
-}
+/*.update-button:hover {*/
+/*    background-color: var(--primary_green);*/
+/*    cursor: pointer;*/
+/*}*/
 
 .delete-btn {
     border-radius: 10px;
@@ -196,9 +202,9 @@ input:focus, textarea:focus {
     cursor: pointer;
 }
 
-.request-pay-btn {
-    margin-top: 5px;
-    width: 70%;
-    font-weight: bold;
-    background-color: var(--primary_green);
-}
+/*.request-pay-btn {*/
+/*    margin-top: 5px;*/
+/*    width: 70%;*/
+/*    font-weight: bold;*/
+/*    background-color: var(--green);*/
+/*}*/

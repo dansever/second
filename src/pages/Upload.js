@@ -24,9 +24,9 @@ export default function Upload() {
     return (
         <div>
             {currentUser ?
-                ( <MainHeader color={Colors.light_blue} name={userName}/> )
+                ( <MainHeader color={Colors.background_white} name={userName}/> )
                 :
-                ( <MainHeader color={Colors.light_blue} name={null}/> )
+                ( <MainHeader color={Colors.background_white} name={null}/> )
             }
             <header className={"page_header"}>Upload an Item</header>
             <div className={"upload-container"}>
