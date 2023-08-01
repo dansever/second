@@ -271,19 +271,6 @@ function App() {
                     </Form.Item>
                 </div>
 
-                <div className={"form-row"}>
-                    <label>Tokens</label>
-                    <Form.Item
-                        style={{marginBottom:"0"}}>
-                        <InputNumber
-                            onChange={handleTokensChange}
-                            min={0}
-                            max={5}
-                            style = {{width: '200px'}}
-                        />
-                    </Form.Item>
-
-                </div>
                 <div className={"button"}>
                     <ButtonStyle
                         type="submit">Add To Shop
