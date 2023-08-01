@@ -1,14 +1,13 @@
 import React, {useContext, useEffect, useState} from 'react';
 import { HeartFilled, HeartOutlined, WhatsAppOutlined} from "@ant-design/icons";
 import {doc, updateDoc, arrayUnion, arrayRemove, getDoc} from "firebase/firestore";
-import {Button, Modal,  ConfigProvider, theme} from "antd";
+import {Button, Modal,  ConfigProvider} from "antd";
 import {AuthContext} from "./AuthProvider";
 import Card from '@mui/material/Card';
 import {db} from "../firebase";
 import Colors from "../color";
 import "../styles/Card.css"
-import {bool} from "prop-types";
-import {ButtonStyle, StyledA} from "./Button";
+import {ButtonStyle} from "./Button";
 
 
 export default function MainCard(product) {
@@ -149,14 +148,14 @@ export default function MainCard(product) {
                 <p className={"product-info"}>Gender: {product.gender}</p>
                 <p className={"product-info"}>Size: {product.size}</p>
                 <p className={"product-info"}>Condition: {product.condition}</p>
-                <StyledA className={"chat-or-pay-btn"}
+                <ButtonStyle className={"chat-or-pay-btn"}
                         href={whatsappLink}
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{width:"80%"}}>
                     <WhatsAppOutlined style={{scale: "160%", color: "white"}}/>
                     <h3>Chat with seller for info</h3>
-                </StyledA>
+                </ButtonStyle>
             </Modal>
         </>
     );
