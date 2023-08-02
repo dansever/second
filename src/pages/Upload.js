@@ -6,6 +6,7 @@ import {AuthContext} from "../components/AuthProvider";
 import FormComponent from "../components/UploadForm";
 import {doc, getDoc} from "firebase/firestore";
 import {db} from "../firebase";
+import Colors from "../color.js";
 
 export default function Upload() {
     const currentUser = useContext(AuthContext);
@@ -23,9 +24,9 @@ export default function Upload() {
     return (
         <div>
             {currentUser ?
-                ( <MainHeader name={userName}/> )
+                ( <MainHeader color={Colors.background_white} name={userName}/> )
                 :
-                ( <MainHeader name={null}/> )
+                ( <MainHeader color={Colors.background_white} name={null}/> )
             }
             <header className={"page_header"}>Upload an Item</header>
             <div className={"upload-container"}>

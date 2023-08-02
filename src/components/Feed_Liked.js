@@ -6,7 +6,7 @@ import {db} from "../firebase";
 import {AuthContext} from "./AuthProvider";
 import MainCard from "./Card_Main";
 
-
+import Colors from "../color.js";
 
 export default function Feed_Liked() {
     const [likedProductsList, setLikedProductsList] = useState([]);

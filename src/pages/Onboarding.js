@@ -7,6 +7,8 @@ import friends from "../assets/images/friends.png"
 import lightbulb from "../assets/images/lightbulb.png"
 import "../styles/Login.css"
 import {Button} from "antd";
+import {ButtonStyle} from "../components/Button";
+
 
 const Picture = styled.img`
     width: 300px;
@@ -60,11 +62,11 @@ export const Onboarding = () => {
                     <Div>
                         <h2>Elevate Your Wardrobe with Unique Second-Hand Finds</h2>
                         <Picture src={unique}/>
-                        <button
+                        <ButtonStyle
                             className={"submit-button"}
                             onClick={handleNext}>
                             Next
-                        </button>
+                        </ButtonStyle>
                         <div className={"new-user"}>
                             <p>Already have an account?</p>
                             <Button
@@ -81,18 +83,18 @@ export const Onboarding = () => {
                     <Div>
                         <h2>Make a Positive Environmental Change Through Fashion</h2>
                         <Picture src={planet}/>
-                        <button
+                        <ButtonStyle
                             className={"submit-button"}
                             onClick={handleNext}>
                             Next
-                        </button>
+                        </ButtonStyle>
                         <div className={"new-user"}>
                             <p>Already have an account?</p>
-                            <Button
+                            <button
                                 className={"sign-up-button"}
                                 onClick={handleLogin}>
                                 Login
-                            </Button>
+                            </button>
                         </div>
                     </Div>
                 </Container>
@@ -102,18 +104,18 @@ export const Onboarding = () => {
                     <Div>
                         <h2>Give New Life to Your Clothing by Sharing Them with Friends, Earning Tokens Along the Way</h2>
                         <Picture src={friends}/>
-                        <button
+                        <ButtonStyle
                             className={"submit-button"}
                             onClick={handleNext}>
                             Next
-                        </button>
+                        </ButtonStyle>
                         <div className={"new-user"}>
                             <p>Already have an account?</p>
-                            <Button
+                            <button
                                 className={"sign-up-button"}
                                 onClick={handleLogin}>
                                 Login
-                            </Button>
+                            </button>
                         </div>
                     </Div>
                 </Container>
@@ -123,10 +125,10 @@ export const Onboarding = () => {
                     <Div>
                         <h2>Start Your Journey in Second Right Now!</h2>
                         <Picture src={lightbulb}/>
-                        <button className={"submit-button"}
+                        <ButtonStyle className={"submit-button"}
                                 onClick={handleSignup}>
                             Sign Up
-                        </button>
+                        </ButtonStyle>
                         <div className={"new-user"}>
                             <p>Already have an account?</p>
                             <Button

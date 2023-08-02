@@ -3,11 +3,13 @@ import { useNavigate  } from 'react-router-dom';
 import "../styles/SingUp.css"
 import {auth, db} from "../firebase"
 import {createUserWithEmailAndPassword} from "firebase/auth"
-import {Input, message, TreeSelect} from "antd";
+import {Input, message, TreeSelect, ConfigProvider, theme} from "antd";
 import {setDoc, collection, doc} from "firebase/firestore";
 import { NeighborhoodDict } from "../assets/DataSets"
 import logo from "../assets/Second_logo.png"
 import styled from "styled-components";
+import {ButtonStyle} from "../components/Button";
+
 
 const Picture = styled.img`
     height: 30%;
@@ -46,6 +48,10 @@ export const SignUp = () => {
             code += randomDigit;
         }
         return code;
+        setUserCode(code);
+    }    const handleLogin = () => {
+        // Redirect to signup page
+        navigate("/Login");
     }
 
         const handleSignup  = async (e) => {
@@ -95,7 +101,17 @@ export const SignUp = () => {
             <Picture src={logo}/>
             <h2>Lets get started</h2>
             <form onSubmit={ handleSignup }>
-
+            <ConfigProvider
+                theme={{
+                    "token": {
+                        "colorPrimaryBorder": "#11998E",
+                        "colorPrimaryBorderHover": "#11998E",
+                        "colorPrimaryHover": "#11998E",
+                        "colorPrimary": "#11998E",
+                        "wireframe": false
+                    },
+                }}
+                >
                 <Input
                     type="text" value={name} placeholder="Enter first name"
                     required
@@ -124,9 +140,18 @@ export const SignUp = () => {
                     required
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <button className={"submit-button"} type="submit">
+            </ConfigProvider>
+                <ButtonStyle className={"submit-button"} type="submit">
                     Sign Up
-                </button>
+                </ButtonStyle>
+                <div className={"new-user"}>
+                    <p>Already have an account?</p>
+                    <button
+                        className={"sign-up-button"}
+                        onClick={handleLogin}>
+                        Login
+                    </button>
+                </div>
             </form>
         </div>
     );

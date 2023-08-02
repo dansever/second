@@ -1,13 +1,13 @@
 import React, {useContext, useEffect, useState} from 'react';
 import "../styles/Feed.css"
-import {Col, Row, Select} from "antd";
+import {Col, Row} from "antd";
 import {collection, getDocs, query, orderBy, onSnapshot, where, documentId} from "firebase/firestore";
 import {db} from "../firebase";
 import MainCard from "./Card_Main";
 import SearchBar from "./SearchBar";
 import {AuthContext} from "./AuthProvider";
 
-const { Option } = Select;
+// const { Option } = Select;
 
 export default function Feed_Main() {
     const [productsList, setProductsList] = useState([]);
@@ -60,17 +60,13 @@ export default function Feed_Main() {
         });
     }, []);
 
-    // const handleSortChange = (value) => {setSortBy(value);};
-    // const handleSortOrderChange = (value) => {setSortOrder(value);};
-
-    //this will run once when the page uplaod
+    //this will run once when the page upload
     useEffect( () => {
         const getLikedItemList = async () => {
             const userDoc = await query(usersCollectionRef, where(documentId(), '==', currentUser.uid));
             const data1 = await getDocs(userDoc);
             const LikedItemsId = data1.docs.map(doc => doc.data().liked_items);
             setLikedItems(LikedItemsId[0]);
-            // console.log(LikedItemsId[0]);
         }
         getLikedItemList().then(() => setLoading(false));
     }, []);
@@ -97,7 +93,8 @@ export default function Feed_Main() {
         return likedItems.includes(product_id);
     }
 
-    const createdCards = productsList.filter(isPassFilter).map((product, index) => (
+    const createdCards = productsList.filter(isPassFilter)
+        .map((product, index) => (
             <Col span={12}
                  key={index}>
                 <MainCard
@@ -124,25 +121,6 @@ export default function Feed_Main() {
             <div className="feed">
                 <Row gutter={[16, 16]}>
                     {createdCards}
-                    {/*{productsList.map((product, index) => (*/}
-                    {/*    <Col span={12}*/}
-                    {/*         key={index}>*/}
-                    {/*        <MainCard*/}
-                    {/*            likedItems = {likedItems}*/}
-                    {/*            product_id = {product.id}*/}
-                    {/*            title={product.title}*/}
-                    {/*            seller_uid={product.seller_uid}*/}
-                    {/*            tokens={product.tokens}*/}
-                    {/*            type={product.type}*/}
-                    {/*            gender={product.gender}*/}
-                    {/*            image_url={product.image_url}*/}
-                    {/*            brand={product.brand}*/}
-                    {/*            size={product.size}*/}
-                    {/*            condition={product.condition}*/}
-                    {/*            setLikedItems ={setLikedItems}*/}
-                    {/*        />*/}
-                    {/*    </Col>*/}
-                    {/*))}*/}
                 </Row>
             </div>
         </>
