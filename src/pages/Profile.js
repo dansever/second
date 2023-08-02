@@ -5,11 +5,13 @@ import { doc, getDoc, updateDoc} from "firebase/firestore";
 import Feed_MyProfile from "../components/Feed_MyProfile";
 import "../styles/Profile.css"
 import "../styles/Index.css"
-import {Descriptions, Input, message, Modal, Tooltip, TreeSelect} from 'antd';
+import {Descriptions, Input, message, Modal, Tooltip, TreeSelect, ConfigProvider} from 'antd';
 import {AuthContext } from '../components/AuthProvider';
 import {db} from "../firebase";
 import {SettingOutlined} from "@ant-design/icons";
 import {NeighborhoodDict} from "../assets/DataSets";
+import {BorderedButtonGreen} from "../components/Button.js"
+import Colors from "../color.js";
 
 export default function MyProfile() {
     const currentUser = useContext(AuthContext);
@@ -97,16 +99,29 @@ export default function MyProfile() {
                 </Tooltip>
             </div>
 
-            <div style={{ position: 'relative' }}>
-                <Descriptions className="personal-info-table"
-                              layout="horizontal"
-                              column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
-                              bordered
-                              size={"small"}>
-                    <Descriptions.Item label="User Code">{userCode}</Descriptions.Item>
-                    <Descriptions.Item label="Items Donated">{itemsDonated}</Descriptions.Item>
-                    <Descriptions.Item label="CO2 Saved">{co2Saved} kgs</Descriptions.Item>
-                </Descriptions>
+            <div>
+                <div className={"user-info"}>
+                    <div className={"description"}>
+                        <h4 className={"h4-des"}>{itemsDonated}</h4>
+                        <h5>Items Donated</h5>
+                    </div>
+                    <div className={"description"}>
+                        <h4 className={"h4-des"}>{co2Saved}</h4>
+                        <h5>CO2 saved</h5>
+                    </div>
+                </div>
+                <div className={"invite-friends"}>
+                    <h5 className={"h4-des"}>copy your code and invite friends:</h5>
+                    <h4 style={{color:Colors.green}}>{userCode}</h4>
+                </div>
+
+                {/*<Descriptions className="personal-info-table"*/}
+                {/*              layout="horizontal"*/}
+                {/*              column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}*/}
+                {/*              size={"small"}>*/}
+                {/*    <Descriptions.Item label="Items Donated">{itemsDonated}</Descriptions.Item>*/}
+                {/*    <Descriptions.Item label="CO2 Saved">{co2Saved} kgs</Descriptions.Item>*/}
+                {/*</Descriptions>*/}
 
             </div>
 
@@ -118,14 +133,25 @@ export default function MyProfile() {
             <Navbar/>
 
             {/*EDIT PERSONAL INFO MODAL*/}
-            <Modal title="Edit Personal Information"
+            <Modal
                    open={editInfoModalVisible}
                    onCancel={() => {setEditInfoModalVisible(false)}}
                    footer={[]} // Empty array to hide buttons>
             >
                 <div className={"edit-info-modal"}>
+                    <h2 style={{color:Colors.green}}>Edit item information</h2>
                     <form onSubmit={ handleUserInfoEdit }>
-
+                        <ConfigProvider
+                            theme={{
+                                "token": {
+                                    "colorPrimaryBorder": "#11998E",
+                                    "colorPrimaryBorderHover": "#11998E",
+                                    "colorPrimaryHover": "#11998E",
+                                    "colorPrimary": "#11998E",
+                                    "wireframe": false
+                                },
+                            }}
+                        >
                         <Input
                             type="text"
                             addonBefore="First Name"
@@ -148,10 +174,10 @@ export default function MyProfile() {
                             placeholder={"Enter Neighborhood"}
                             onChange={(value, label) => {setUserNeighborhood(value)}}
                         />
-
-                        <button className={"update-button"} type="submit">
+                        </ConfigProvider>
+                        <BorderedButtonGreen className={"update-button"} type="submit">
                             Update Information
-                        </button>
+                        </BorderedButtonGreen>
                     </form>
                 </div>
             </Modal>

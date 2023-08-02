@@ -2,10 +2,10 @@ import React, {useContext, useEffect, useState} from 'react';
 import {EditOutlined} from "@ant-design/icons";
 import {conditionOptions, genderOptions,
     sizeOptions, typeOptions} from "../assets/DataSets";
-import {ButtonStyle} from "./Button";
+import {ButtonStyle,  BorderedButtonGreen, BorderedRedButton} from "./Button";
 import {doc, updateDoc, deleteDoc, getDoc, arrayRemove} from "firebase/firestore";
 import {deleteObject} from "firebase/storage";
-import {Button, Form, message, Modal, Select, Tooltip, ConfigProvider} from "antd";
+import {Button, Form, message, Modal, Select, Tooltip, ConfigProvider, theme, Input} from "antd";
 import Card from '@mui/material/Card';
 import {db, storage} from "../firebase";
 import "../styles/Card.css"
@@ -172,26 +172,39 @@ export default function MyCard (product) {
 
 
             {/*EDIT INFO MODAL*/}
-            <Modal title="Edit Item Information"
+            <Modal
                    open={editItemModalVisible}
                    onCancel={() => setEditItemModalVisible(false)}
                    footer={[]} // Empty array to hide buttons>
             >
                 <div className={"edit-info-modal"}>
+                    <h2 style={{color:Colors.green}}>Edit item information</h2>
+                    <ConfigProvider
+                        theme={{
+                            "token": {
+                                "colorPrimaryBorder": "#11998E",
+                                "colorPrimaryBorderHover": "#11998E",
+                                "colorPrimaryHover": "#11998E",
+                                "colorPrimary": "#11998E",
+                                "wireframe": false,
+                            },
+                        }}
+                    >
                     <form className={"edit-info-form"}
                         onSubmit={handleItemInfoEdit}>
-
-                        <input value={title}
+                        <Input value={title}
                                placeholder={title ? {title} : "title"}
                                type="text"
+                               required
                                onChange={(e) => setTitle(e.target.value)}
+                               style={{width: '200px',}}
                         />
-                        <input value={brand}
+                        <Input value={brand}
                                placeholder={brand ? {brand} : "brand"}
                                type="text"
                                onChange={(e) => setBrand(e.target.value)}
+                               style={{width: '200px',}}
                         />
-
                         <Form.Item
                             style={{marginBottom: "0px"}}>
                             <Select
@@ -206,7 +219,6 @@ export default function MyCard (product) {
                                 ))}
                             </Select>
                         </Form.Item>
-
                         <Form.Item
                             style={{marginBottom: "0"}}>
                             <Select
@@ -221,6 +233,7 @@ export default function MyCard (product) {
                             </Select>
                         </Form.Item>
 
+                        <div className={"form-row"}>
                         <Form.Item
                             style={{marginBottom:"0"}}>
                             <Select
@@ -234,7 +247,8 @@ export default function MyCard (product) {
                                         {gender}</Option>))}
                             </Select>
                         </Form.Item>
-
+                        </div>
+                        <div className={"form-row"}>
                         <Form.Item
                             style={{marginBottom:"0"}}>
                             <Select
@@ -247,21 +261,22 @@ export default function MyCard (product) {
                                     <Option key={condition} value={condition}>{condition}</Option>))}
                             </Select>
                         </Form.Item>
-
+                    </div>
                         <div className={"update_delete_button_box"}>
 
-                            <button className={"update-button"}
-                                    type="submit">
-                                Update Item Info
-                            </button>
+                            <BorderedButtonGreen
+                                    onClick={handleItemInfoEdit}>
+                                Update Item
+                            </BorderedButtonGreen>
 
-                            <button className={"delete-btn"}
+                            <BorderedRedButton
                                     onClick={handleDeleteItem}>
                                 Delete Item
-                            </button>
+                            </BorderedRedButton>
                         </div>
 
                     </form>
+                    </ConfigProvider>
                 </div>
             </Modal>
             <ConfigProvider
