@@ -103,7 +103,7 @@ function App() {
             const neighborhood =  userSnapshot.data()['neighborhood'];
             const currentDate = new Date();
             const docRef = await addDoc(productsCollectionRef, {
-                title: newTitle,
+                title: newTitle.toLowerCase(),
                 type: newType,
                 size: newSize,
                 brand: newBrand,

@@ -33,6 +33,7 @@ export default function MainCard(product) {
             liked_items: arrayRemove(product_id)
         });
 
+
     }
     const handleLike = async () => {
         setLikeToggledOn(!isLikeToggledOn);

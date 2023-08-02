@@ -12,7 +12,7 @@ const { Option } = Select;
 export default function Feed_Main() {
     const [productsList, setProductsList] = useState([]);
     const [sortBy, setSortBy] = useState('upload_time');
-    const [sortOrder, setSortOrder] = useState('asc');
+    const [sortOrder, setSortOrder] = useState('desc');
     // const [neighborhoods, setNeighborhoods] = useState([]);
     const [isLoading, setLoading] = useState(true);
     const [likedItems, setLikedItems] = useState([]);

@@ -34,7 +34,10 @@ export default function Feed_Liked() {
                         // alert(itemId);
                         const likedQuery = query(productsCollectionRef,where(documentId(), '==', itemId));
                         const data2 = await getDocs(likedQuery);
-                        const a = data2.docs.map(doc => doc.data());
+                        const a = data2.docs.map((doc) => ({
+                            ...doc.data(),
+                            id: doc.id
+                        }));
                         filteredData = [...filteredData, ...a];
                     }
                 }
