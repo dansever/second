@@ -5,14 +5,11 @@ import { doc, getDoc, updateDoc} from "firebase/firestore";
 import Feed_MyProfile from "../components/Feed_MyProfile";
 import "../styles/Profile.css"
 import "../styles/Index.css"
-import {Descriptions, Input, message, Modal, Tooltip, TreeSelect, ConfigProvider} from 'antd';
+import {Input, message, Modal, Tooltip, TreeSelect, ConfigProvider} from 'antd';
 import {AuthContext } from '../components/AuthProvider';
 import {db} from "../firebase";
 import {SettingOutlined} from "@ant-design/icons";
 import { BsBagHeart, BsCloudSun, BsPersonPlus } from "react-icons/bs";
-import { FaCloudSun } from "react-icons/fa";
-import { RiUserHeartFill } from "react-icons/ri";
-// import { LuHeartHandshake } from "react-icons/lu";
 import {NeighborhoodDict} from "../assets/DataSets";
 import {BorderedButtonGreen} from "../components/Button.js"
 import Colors from "../color.js";
@@ -37,16 +34,6 @@ export default function MyProfile() {
         const UserRef = doc(db,'users',userId);
         getUserData(UserRef);
     }, []);
-
-    const generateRandomNumber = () => {
-        // Generate a random number between 0 and 3 (exclusive)
-        const randomValue = Math.random() * 3;
-        // Add 6 to the randomValue to get a number between 6 and 9 (exclusive)
-        const randomNumber = randomValue + 6;
-        // Round the number to 2 decimal places
-        const roundedNumber = parseFloat(randomNumber.toFixed(2));
-        return roundedNumber;
-    };
 
     async function getUserData(UserRef) {
         try {
@@ -126,22 +113,22 @@ export default function MyProfile() {
                         <BsBagHeart/>
                         <h4 >{itemsDonated}</h4>
                     </div>
-                        <h5>Items given</h5>
+                        <h5>Items Given</h5>
                     </div>
 
                     <div className={"description"}>
                         <div className={"icons"}>
                             <BsCloudSun/>
-                            <h4 className={"h4-des"}>{co2Saved}</h4>
+                            <h4 className={"h4-des"}>{co2Saved} kg</h4>
                         </div>
-                        <h5>CO<sub>2</sub> saved</h5>
+                        <h5>CO<sub>2</sub> Saved</h5>
                     </div>
                     <div className={"description"}>
                         <div className={"icons"}>
                             <BsPersonPlus/>
                             <h4 className={"h4-des"}>{userFriends}</h4>
                         </div>
-                        <h5>Friends added</h5>
+                        <h5>Friends Added</h5>
                     </div>
                 </div>
                 <div className={"invite-friends"}>

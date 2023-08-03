@@ -11,31 +11,18 @@ form h3 {
     row-gap: 20px;
 }
 
-/**
-.home-container {
-    background-color: var(--light_green);
-    width: 100%;
-    padding: 60px 5px 80px 5px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    justify-items: center;
-    justify-content: center;
-}
- */
 
 .modal-content {
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
 .form-row {
     display: flex;
+    margin-bottom: 10px;
+    align-items: center;
 }
 .add-pic{
     white-space:nowrap;
@@ -48,11 +35,6 @@ form h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    /*padding:*/
-    /*margin-top: 50px;*/
-    /*width: 20%;*/
-    /*border-radius: 10px;*/
-
 }
 
 .form-row-img {
@@ -60,6 +42,8 @@ form h3 {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
+
 }
 
 .file-form-row {

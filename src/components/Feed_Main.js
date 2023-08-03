@@ -13,13 +13,11 @@ export default function Feed_Main() {
     const [productsList, setProductsList] = useState([]);
     const [sortBy, setSortBy] = useState('upload_time');
     const [sortOrder, setSortOrder] = useState('desc');
-    // const [neighborhoods, setNeighborhoods] = useState([]);
     const [isLoading, setLoading] = useState(true);
     const [likedItems, setLikedItems] = useState([]);
     const currentUser = useContext(AuthContext);
     const productsCollectionRef = collection(db,'products');
     const usersCollectionRef = collection(db,'users');
-    // let userQuery;
     const [filter, setFilter] = useState({});
     const [neighborhoodFilter, setNeighborhoodFilter] = useState([]);
 
@@ -47,15 +45,9 @@ export default function Feed_Main() {
         const snap = onSnapshot(productsCollectionRef, (snapshot) => {
             snapshot.docChanges().forEach((change) => {
                 // Handle document changes here
-                if (change.type === 'added') {
-                    getProductList();
-                }
-                if (change.type === 'modified') {
-                    getProductList();
-                }
-                if (change.type === 'removed') {
-                    getProductList();
-                }
+                if (change.type === 'added') { getProductList(); }
+                if (change.type === 'modified') { getProductList(); }
+                if (change.type === 'removed') { getProductList(); }
             });
         });
     }, []);
@@ -115,8 +107,10 @@ export default function Feed_Main() {
         ))
     return (
         <>
-            <SearchBar filter={filter} setFilter={setFilter} neighborhoodFilter={neighborhoodFilter}
-                       setNeighborhoodFilter={setNeighborhoodFilter} setSortBy={setSortBy} setSortOrder={setSortOrder} />
+            <SearchBar setFilter={setFilter}
+                       setNeighborhoodFilter={setNeighborhoodFilter}
+                       setSortBy={setSortBy}
+                       setSortOrder={setSortOrder} />
 
             <div className="feed">
                 <Row gutter={[16, 16]}>

@@ -1,13 +1,10 @@
 import React, {useState} from "react"
-import {Select, TreeSelect, ConfigProvider, theme} from "antd";
+import {Select, TreeSelect, ConfigProvider} from "antd";
 import {filterDatabase, NeighborhoodDict, sortDirection, sortType} from "../assets/DataSets";
 
 const { Option } = Select;
 
-export default function SearchBar({filter, setFilter, neighborhoodFilter,
-                                      setNeighborhoodFilter, setSortBy,
-                                      setSortOrder}) {
-    const [value, setValue] = useState(undefined);
+export default function SearchBar({setFilter, setNeighborhoodFilter, setSortBy, setSortOrder}) {
     const valueMap = {};
     function loops(list, parent) {
         return (list || []).map(({ children, value }) => {
@@ -48,12 +45,6 @@ export default function SearchBar({filter, setFilter, neighborhoodFilter,
             <div>
 
                 <TreeSelect
-                    // style={{
-                    //         "colorPrimaryBorder": "#11998E",
-                    //         "colorPrimaryBorderHover": "#11998E",
-                    //         "colorPrimaryHover": "#11998E",
-                    //         "colorPrimary": "#11998E",
-                    //     }}
                     treeData = {filterDatabase}
                     treeCheckable
                     allowClear="true"
@@ -70,7 +61,6 @@ export default function SearchBar({filter, setFilter, neighborhoodFilter,
                         }
                         updateFilter(result)
                     }}
-                    // onSelect = {onSelect}
                     style={{ width: '93vw' }}
                 />
             </div>
@@ -79,7 +69,7 @@ export default function SearchBar({filter, setFilter, neighborhoodFilter,
 
                 <TreeSelect
                     treeData = {NeighborhoodDict}
-                    // treeCheckable
+                    //treeCheckable
                     multiple = {true}
                     defaultValue={[]}
                     allowClear="true"
@@ -93,7 +83,6 @@ export default function SearchBar({filter, setFilter, neighborhoodFilter,
                     placeholder="Sort by"
                     onChange={(value)=> {setSortBy(value)}}
                     allowClear="true"
-                    // defaultValue={'tokens'}
                     style = {{width:'24vw'}}>
                     >
                     {sortType.map((type_) => (

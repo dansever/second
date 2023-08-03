@@ -71,10 +71,10 @@ export const SignUp = () => {
                 liked_items: [],
                 neighborhood: neighborhood,
                 phone_number: phoneNumber,
-                tokens_left: 10,
                 uploaded_items: [],
                 user_code: code,
                 friends_add: 0,
+                items_given: 0
             };
 
             setDoc(newUserRef, data)

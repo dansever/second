@@ -1,11 +1,10 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {EditOutlined} from "@ant-design/icons";
-import {conditionOptions, genderOptions,
-    sizeOptions, typeOptions} from "../assets/DataSets";
+import {conditionOptions, genderOptions, sizeOptions, typeOptions} from "../assets/DataSets";
 import {ButtonStyle,  BorderedButtonGreen, BorderedRedButton} from "./Button";
 import {doc, updateDoc, deleteDoc, getDoc, arrayRemove} from "firebase/firestore";
 import {deleteObject} from "firebase/storage";
-import {Button, Form, message, Modal, Select, Tooltip, ConfigProvider, theme, Input} from "antd";
+import {Button, Form, message, Modal, Select, Tooltip, ConfigProvider, Input} from "antd";
 import Card from '@mui/material/Card';
 import {db, storage} from "../firebase";
 import "../styles/Card.css"
@@ -34,7 +33,7 @@ export default function MyCard (props) {
     const currentUser = useContext(AuthContext);
     const cardStyle =  {
         borderRadius: '10px',
-        boxShadow:  'rgba(149, 157, 165, 0.2) 0px 8px 24px',
+        boxShadow:  'rgba(149, 157, 165, 0.2) px 8px 24px',
         cursor: 'pointer',
         backgroundColor: Colors.background_white
     };
@@ -187,6 +186,7 @@ export default function MyCard (props) {
                     <form className={"edit-info-form"}
                         onSubmit={handleItemInfoEdit}>
                         <Input value={title}
+                               addonBefore="Title"
                                placeholder={title ? {title} : "title"}
                                type="text"
                                required
@@ -194,11 +194,13 @@ export default function MyCard (props) {
                                style={{width: '200px',}}
                         />
                         <Input value={brand}
+                               addonBefore="Brand"
                                placeholder={brand ? {brand} : "brand"}
                                type="text"
                                onChange={(e) => setBrand(e.target.value)}
                                style={{width: '200px',}}
                         />
+
                         <Form.Item
                             style={{marginBottom: "0px"}}>
                             <Select
@@ -213,6 +215,7 @@ export default function MyCard (props) {
                                 ))}
                             </Select>
                         </Form.Item>
+
                         <Form.Item
                             style={{marginBottom: "0"}}>
                             <Select
@@ -227,7 +230,6 @@ export default function MyCard (props) {
                             </Select>
                         </Form.Item>
 
-                        <div className={"form-row"}>
                         <Form.Item
                             style={{marginBottom:"0"}}>
                             <Select
@@ -241,8 +243,7 @@ export default function MyCard (props) {
                                         {gender}</Option>))}
                             </Select>
                         </Form.Item>
-                        </div>
-                        <div className={"form-row"}>
+
                         <Form.Item
                             style={{marginBottom:"0"}}>
                             <Select
@@ -252,12 +253,13 @@ export default function MyCard (props) {
                                 onChange={(value) => { setCondition(value)}}
                                 style = {{width: '200px'}}>
                                 {conditionOptions.map((condition) => (
-                                    <Option key={condition} value={condition}>{condition}</Option>))}
+                                    <Option key={condition}
+                                            value={condition}>{condition}
+                                    </Option>))}
                             </Select>
                         </Form.Item>
-                    </div>
-                        <div className={"update_delete_button_box"}>
 
+                        <div className={"update_delete_button_box"}>
                             <BorderedButtonGreen
                                     onClick={handleItemInfoEdit}>
                                 Update Item
@@ -273,6 +275,7 @@ export default function MyCard (props) {
                     </ConfigProvider>
                 </div>
             </Modal>
+
             <ConfigProvider
                 theme={{
                     "token": {

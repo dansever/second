@@ -22,14 +22,6 @@
     align-items: center;
 }
 
-/*.info-edit-btn {*/
-/*    scale: 150%;*/
-/*}*/
-/*.info-edit-btn:hover {*/
-/*    scale: 160%;*/
-/*    cursor: pointer;*/
-/*    color: var(--dark_green);*/
-/*}*/
 .user-info {
     display: flex;
     flex-direction: row;
@@ -54,7 +46,6 @@
     text-align: center;
 }
 .h4-des {
-
 }
 
 

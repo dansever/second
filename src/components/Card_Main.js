@@ -11,7 +11,6 @@ import {ButtonStyle, StyledA} from "./Button";
 
 
 export default function MainCard(product) {
-    // const linkedItemsLocal = product.likedItems.includes(product.product_id);
     const [isLikeToggledOn, setLikeToggledOn] = useState(product.isLiked);
     const [modalVisible, setModalVisible] = useState(false);
     const [whatsappLink, setWhatsappLink] = useState('');
@@ -22,7 +21,7 @@ export default function MainCard(product) {
 
     const cardStyle = {
         borderRadius: '10px',
-        boxShadow:  'rgba(149, 157, 165, 0.2) 0px 8px 24px',
+        boxShadow:  'rgba(149, 157, 165, 0.2) px 8px 24px',
         cursor: 'pointer',
         backgroundColor: Colors.background_white
      };
@@ -55,8 +54,7 @@ export default function MainCard(product) {
         const getSellerCode = async () => {
             try {
                 const SellerUserRef = doc(db, 'users', product.seller_uid);
-                const docSnapshot = await getDoc(SellerUserRef);
-                //setSellerCode(docSnapshot.data()['user_code']);
+                await getDoc(SellerUserRef);
             } catch (err) {
                 console.log(err);
             }
@@ -83,12 +81,6 @@ export default function MainCard(product) {
         getWhatsappLink();};
     const handleModalClose = () => {setModalVisible(false);};
 
-    const isLikedComponent = () => {
-        if (product.likedItems.includes(product.product_id)){
-            return
-        }
-        return
-    }
     return (
         <>
             <Card style={cardStyle}>
