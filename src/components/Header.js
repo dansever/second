@@ -12,7 +12,6 @@ import {auth} from "../firebase";
 
 
 
-
 const TitleAndLogo = styled.div`
   display: flex;
   flex-direction: row;
