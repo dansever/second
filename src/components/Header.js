@@ -3,12 +3,14 @@ import { useNavigate} from 'react-router-dom';
 import "../styles/Index.css";
 import styled from "styled-components";
 import white_logo from "../assets/images/white_logo.png";
-import {ArrowLeftOutlined} from "@ant-design/icons";
 import Colors from "../color";
 import { DownOutlined } from '@ant-design/icons';
-import { Dropdown, ConfigProvider} from 'antd';
-import {auth} from "../firebase";
-
+import {Dropdown, ConfigProvider, Modal, message, Input, TreeSelect} from 'antd';
+import {auth, db} from "../firebase";
+import {AuthContext} from "./AuthProvider";
+import {doc, getDoc, updateDoc} from "firebase/firestore";
+import {BorderedButtonGreen} from "./Button";
+import {NeighborhoodDict} from "../assets/DataSets";
 
 
 const TitleAndLogo = styled.div`
@@ -132,12 +134,10 @@ export default function MainHeader(props) {
                 className={"user_info_dropdown"}
             >
                 <a onClick={(e) => e.preventDefault()}>
-                    <p style={{fontSize:"14px", padding:"5px"}}>
-                        Hi {userFirstName}
                     <p style={{color: Colors.background_white,
                         fontSize:"16px",
                         padding:"5px"}}>
-                        Hi {props.name}!
+                        Hi {userFirstName}!
                         <DownOutlined style={{padding:"5px"}}/>
                     </p>
                 </a>
