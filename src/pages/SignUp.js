@@ -6,7 +6,6 @@ import {createUserWithEmailAndPassword} from "firebase/auth"
 import {Input, message, TreeSelect, ConfigProvider, theme} from "antd";
 import {setDoc, collection, doc} from "firebase/firestore";
 import { NeighborhoodDict } from "../assets/DataSets"
-// import logo from "../assets/Second_logo.png"
 import styled from "styled-components";
 import {ButtonStyle} from "../components/Button";
 import green_logo from "../assets/images/green_logo.png";
@@ -69,13 +68,13 @@ export const SignUp = () => {
                 newUserCredentials.user.uid);
             const data = {
                 first_name: name,
+                friends_add: 0,
+                items_given: 0,
                 liked_items: [],
                 neighborhood: neighborhood,
                 phone_number: phoneNumber,
                 uploaded_items: [],
-                user_code: code,
-                friends_add: 0,
-                items_given: 0
+                user_code: code
             };
 
             setDoc(newUserRef, data)

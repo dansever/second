@@ -1,14 +1,13 @@
 import React, {useContext, useEffect, useState} from "react";
 import MainHeader from "../components/Header";
 import Navbar from "../components/Navbar";
-import { doc, getDoc, updateDoc} from "firebase/firestore";
+import { doc, getDoc} from "firebase/firestore";
 import Feed_MyProfile from "../components/Feed_MyProfile";
 import "../styles/Profile.css"
 import "../styles/Index.css"
-import {message, Modal, Tooltip} from 'antd';
+import {message} from 'antd';
 import {AuthContext } from '../components/AuthProvider';
 import {db} from "../firebase";
-import {SettingOutlined} from "@ant-design/icons";
 import { BsBagHeart, BsCloudSun, BsPersonPlus } from "react-icons/bs";
 import Colors from "../color.js";
 import { toast } from "react-toastify";
