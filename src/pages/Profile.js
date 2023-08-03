@@ -21,12 +21,14 @@ export default function MyProfile() {
     const [userFirstName, setUserFirstName] = useState("");
     const [userNeighborhood, setUserNeighborhood] = useState("");
     const [userPhoneNumber, setUserPhoneNumber] = useState("");
+    const [codeBoxText, setCodeBoxText] = useState("");
     const [userCode, setUserCode] = useState("");
     const [userFriends, setUserFriends] = useState(0);
     const [itemsDonated, setItemsDonated] = useState("");
     const [co2Saved, setCo2Saved] = useState("");
     const [editInfoModalVisible, setEditInfoModalVisible] = useState(false);
 
+    const [isCopied, setIsCopied] = useState(false);
 
     useEffect(() => {
         const UserRef = doc(db,'users',currentUser.uid);
@@ -40,7 +42,8 @@ export default function MyProfile() {
                 setUserFirstName(docSnap.data().first_name);
                 setUserPhoneNumber(docSnap.data().phone_number);
                 setUserNeighborhood(docSnap.data().neighborhood);
-                setUserCode(docSnap.data().user_code);
+                setUserCode(docSnap.data().user_code)
+                setCodeBoxText(docSnap.data().user_code)
                 setUserFriends(docSnap.data().friends_add);
                 setItemsDonated(docSnap.data().items_given);
                 setCo2Saved((docSnap.data().items_given) * 7.5);
@@ -80,6 +83,12 @@ export default function MyProfile() {
         let isCopy = copy(userCode);
         if (isCopy) {
             toast.success("Copied to Clipboard");
+            setIsCopied(true);
+            setCodeBoxText("Copied")
+            setTimeout(() => {
+                setCodeBoxText(userCode)
+                setIsCopied(false);
+            }, 1000);
             message.info(
                 "Copied to Clipboard", 1,
                 () => {console.log('Pop-up closed');});
@@ -131,7 +140,12 @@ export default function MyProfile() {
                 </div>
                 <div className={"invite-friends"}>
                     <h5 className={"h4-des-1"}>Copy code to invite friends:</h5>
-                    <button className={"code-button"} onClick={copyToClipboard} style={{color:Colors.green}}>{userCode}</button>
+                    <button
+                            className={`code-button ${isCopied ? 'copied' : ''}`}
+                            onClick={copyToClipboard}
+                            style={{color:Colors.green}}>
+                        {codeBoxText}
+                    </button>
                 </div>
 
             </div>
@@ -153,10 +167,10 @@ export default function MyProfile() {
             <Modal
                    open={editInfoModalVisible}
                    onCancel={() => {setEditInfoModalVisible(false)}}
-                   footer={[]} // Empty array to hide buttons>
+                   footer={[]}
             >
                 <div className={"edit-info-modal"}>
-                    <h2 style={{color:Colors.green}}>Edit item information</h2>
+                    <h2 style={{color:Colors.green}}>Edit Personal Information</h2>
                     <form onSubmit={ handleUserInfoEdit }>
                         <ConfigProvider
                             theme={{

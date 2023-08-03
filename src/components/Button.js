@@ -47,6 +47,9 @@ export const BorderedButtonGreen = styled.button `
   margin-right: auto;
   box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
   padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 export const BorderedRedButton = styled.button`
@@ -61,4 +64,7 @@ export const BorderedRedButton = styled.button`
   margin-right: auto;
   box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
   padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
