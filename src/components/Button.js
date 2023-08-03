@@ -8,6 +8,7 @@ export const ButtonStyle = styled.button`
   border-radius: 12px;
   border: none;
   height: 40px;
+  cursor: pointer;
   margin-left: auto;
   margin-right: auto;
   white-space: nowrap;
