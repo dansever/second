@@ -18,13 +18,13 @@ const { Option } = Select;
 
 
 
-export default function MyCard (product) {
-    const [title, setTitle] = useState(product.title);
-    const [type, setType] = useState(product.type);
-    const [size, setSize] = useState(product.size);
-    const [brand, setBrand] = useState(product.brand);
-    const [condition, setCondition] = useState(product.condition);
-    const [gender, setGender] = useState(product.gender);
+export default function MyCard (props) {
+    const [title, setTitle] = useState(props.title);
+    const [type, setType] = useState(props.type);
+    const [size, setSize] = useState(props.size);
+    const [brand, setBrand] = useState(props.brand);
+    const [condition, setCondition] = useState(props.condition);
+    const [gender, setGender] = useState(props.gender);
 
     const [editItemModalVisible, setEditItemModalVisible] = useState(false);
     const [markSoldModalVisible, setMarkSoldModalVisible] = useState(false);
@@ -42,7 +42,7 @@ export default function MyCard (product) {
     const handleItemInfoEdit = async (e) => {
         e.preventDefault();
         try {
-            const productRef = doc(db,'products',product.product_id);
+            const productRef = doc(db,'products',props.product_id);
             const newData = {
                 title: title,
                 type: type,
@@ -67,7 +67,7 @@ export default function MyCard (product) {
     const handleDeleteItem = async (e) => {
         e.preventDefault();
         try {
-            const productRef = doc(db,'products',product.product_id);
+            const productRef = doc(db,'products',props.product_id);
             const productSnapshot = await getDoc(productRef);
             const imageFilename = productSnapshot.data()['image_filename'];
             const storageRef = ref(storage, `product_images/${imageFilename}`);
@@ -82,13 +82,14 @@ export default function MyCard (product) {
 
             // delete item entry in uploaded_items array
             await updateDoc( doc(db,'users',currentUser.uid),
-                {uploaded_items: arrayRemove(product.product_id)})
+                {uploaded_items: arrayRemove(props.product_id)})
                 .then(() => {
                     console.log('Item deleted successfully');
                     message.success(
                         "Item deleted successfully", 2,
                         () => {console.log('Pop-up closed');});
             })
+            props.setCollectionToggle(!props.collectionToggle);
         } catch (error) {
             console.log('Something went wrong in item delete process.');
         }
@@ -104,6 +105,8 @@ export default function MyCard (product) {
             await updateDoc(userRef,{items_given: itemsGiven + 1});
             console.log('Item marked as given.');
             await handleDeleteItem(e);
+            props.setItemsDonated(props.itemsDonated + 1);
+            props.setCo2Saved(props.co2Saved + 7.5);
         }  catch (error) {
             console.log('Something went wrong');
         }
@@ -113,32 +116,9 @@ export default function MyCard (product) {
     return (
         <Card style={cardStyle}>
             <div className={"img-box"}>
-                <img src={product.image_url}
-                     alt={product.alt}/>
+                <img src={props.image_url}
+                     alt={props.alt}/>
             </div>
-            {/*<div style={{position: 'absolute', top: '20px', right: '20px'}}>*/}
-            {/*    <Tooltip title="Edit Item">*/}
-            {/*        <Button shape="circle"*/}
-            {/*                style={{scale: "140%", border: "1px solid black", boxShadow: "2px 2px 2px 0 black"}}*/}
-            {/*                onClick={() => setEditItemModalVisible(true)}>*/}
-            {/*            <EditOutlined/>*/}
-            {/*        </Button>*/}
-            {/*    </Tooltip>*/}
-            {/*</div>*/}
-
-            {/*<div style={{position: 'absolute',*/}
-            {/*    top: '80px',*/}
-            {/*    right: '20px'}}>*/}
-            {/*    <Tooltip title="Mark Item as Sold">*/}
-            {/*        <Button shape="circle"*/}
-            {/*                style={{scale: "140%",*/}
-            {/*                    border: "1px solid black",*/}
-            {/*                    boxShadow: "2px 2px 2px 0 black"}}*/}
-            {/*                onClick={() => setMarkSoldModalVisible(true)}>*/}
-            {/*            <BiDonateHeart scale="150%"/>*/}
-            {/*        </Button>*/}
-            {/*    </Tooltip>*/}
-            {/*</div>*/}
 
             <div className={"profile-content-box"}>
                 <ConfigProvider

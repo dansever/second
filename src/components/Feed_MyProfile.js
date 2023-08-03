@@ -7,10 +7,12 @@ import MyCard from "./Card_MyProfile";
 import {AuthContext} from "./AuthProvider";
 
 
-export default function Feed_MyProfile() {
+export default function Feed_MyProfile(
+    {setItemsDonated, itemsDonated, setCo2Saved, co2Saved}) {
     const [productsList, setProductsList] = useState([]);
     const productsCollectionRef = collection(db,'products');
     const currentUser = useContext(AuthContext);
+    const [collectionToggle, setCollectionToggle] = useState(false);
 
     useEffect(() => {
         const getProductList = async () => {
@@ -24,7 +26,7 @@ export default function Feed_MyProfile() {
             }
         };
         getProductList();
-    }, []);
+    }, [collectionToggle]);
 
     return (
         <div className="feed">
@@ -42,7 +44,12 @@ export default function Feed_MyProfile() {
                             size={product.size}
                             title={product.title}
                             type={product.type}
-                            tokens={product.tokens}
+                            setItemsDonated = {setItemsDonated}
+                            itemsDonated = {itemsDonated}
+                            setCo2Saved = {setCo2Saved}
+                            co2Saved = {co2Saved}
+                            collectionToggle = {collectionToggle}
+                            setCollectionToggle = {setCollectionToggle}
                         />
                     </Col>
                 ))}
