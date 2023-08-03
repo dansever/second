@@ -32,13 +32,6 @@ export default function MyProfile() {
         getUserData(UserRef);
     }, []);
 
-    const generateRandomNumber = () => {
-        const randomValue = Math.random() * 3;
-        const randomNumber = randomValue + 6;
-        const roundedNumber = parseFloat(randomNumber.toFixed(2));
-        return roundedNumber;
-    };
-
     async function getUserData(UserRef) {
         try {
             const docSnap = await getDoc(UserRef);

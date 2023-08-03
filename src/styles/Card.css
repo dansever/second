@@ -145,7 +145,7 @@ p.product-info {
 }
 
 .custom-modal .ant-modal-content{
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
     border-radius: 16px;
     background-color: var(--background_white);
 }
