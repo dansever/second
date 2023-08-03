@@ -106,7 +106,7 @@ export default function MyProfile() {
                         <h5>Items Donated</h5>
                     </div>
                     <div className={"description"}>
-                        <h4 className={"h4-des"}>{co2Saved}</h4>
+                        <h4 className={"h4-des"}>{co2Saved} kg</h4>
                         <h5>CO2 saved</h5>
                     </div>
                 </div>
@@ -115,19 +115,15 @@ export default function MyProfile() {
                     <h4 style={{color:Colors.green}}>{userCode}</h4>
                 </div>
 
-                {/*<Descriptions className="personal-info-table"*/}
-                {/*              layout="horizontal"*/}
-                {/*              column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}*/}
-                {/*              size={"small"}>*/}
-                {/*    <Descriptions.Item label="Items Donated">{itemsDonated}</Descriptions.Item>*/}
-                {/*    <Descriptions.Item label="CO2 Saved">{co2Saved} kgs</Descriptions.Item>*/}
-                {/*</Descriptions>*/}
-
             </div>
 
             <div className={"feed-container"}>
                 <h2 >Uploaded Items</h2>
-                <Feed_MyProfile/>
+                <Feed_MyProfile
+                    setItemsDonated = {setItemsDonated}
+                    itemsDonated = {itemsDonated}
+                    setCo2Saved = {setCo2Saved}
+                    co2Saved = {co2Saved}/>
             </div>
 
             <Navbar/>
