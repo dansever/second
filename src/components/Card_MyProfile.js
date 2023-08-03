@@ -13,6 +13,9 @@ import Colors from "../color";
 import { BiDonateHeart } from "react-icons/bi";
 
 import {AuthContext} from "./AuthProvider";
+import Confetti from './Confetti';
+
+
 const { Option } = Select;
 
 
@@ -29,7 +32,7 @@ export default function MyCard (props) {
     const [markSoldModalVisible, setMarkSoldModalVisible] = useState(false);
     const [isDeleted, setIsDeleted] = useState(false);
     const [isUpdated, setIsUpdated] = useState(false);
-
+    const [isDonated, setIsDonated] = useState(false);
     const currentUser = useContext(AuthContext);
     const cardStyle =  {
         borderRadius: '10px',
@@ -102,6 +105,45 @@ export default function MyCard (props) {
         setEditItemModalVisible(false);
     };
 
+
+    const handleDonateItem = async (e) => {
+        e.preventDefault();
+        try {
+            const productRef = doc(db,'products',props.product_id);
+            const productSnapshot = await getDoc(productRef);
+            const imageFilename = productSnapshot.data()['image_filename'];
+            const storageRef = ref(storage, `product_images/${imageFilename}`);
+
+            //delete item doc from database
+            await deleteDoc(productRef);
+            console.log("delete item successfully")
+
+            //delete item image from storage
+            await deleteObject(storageRef);
+            console.log("Image deleted successfully.");
+
+            // delete item entry in uploaded_items array
+            await updateDoc( doc(db,'users',currentUser.uid),
+                {uploaded_items: arrayRemove(props.product_id)})
+                .then(() => {
+                    // setIsDonated(true);
+
+                    console.log('Item deleted successfully');
+                    // setTimeout(() => {setIsDonated(false);}, 4000);
+
+                    // message.success(
+                    //     "Thanks For Saving the World", 2,
+                    //     () => {handleConfettiModal(e);}
+                    // );
+                })
+
+            props.setCollectionToggle(!props.collectionToggle);
+        } catch (error) {
+            console.log('Something went wrong in item delete process.');
+        }
+        setEditItemModalVisible(false);
+    };
+
     const handleMarkItemAsSold = async (e) => {
         e.preventDefault();
         try {
@@ -110,14 +152,23 @@ export default function MyCard (props) {
             const itemsGiven = userSnapshot.data()['items_given'];
             await updateDoc(userRef,{items_given: itemsGiven + 1});
             console.log('Item marked as given.');
-            await handleDeleteItem(e);
+            await handleDonateItem(e);
+            props.setConfetti(true);
             props.setItemsDonated(props.itemsDonated + 1);
             props.setCo2Saved(props.co2Saved + 7.5);
+            // await handleConfettiModal(e);
         }  catch (error) {
             console.log('Something went wrong');
         }
         setMarkSoldModalVisible(false);
+
+
     };
+
+    const handleConfettiModal = async (e) =>
+    {
+
+    }
 
     return (
         <Card style={cardStyle}>
@@ -305,6 +356,15 @@ export default function MyCard (props) {
                     <h2>Item deleted</h2>
                 </div>
             </Modal>
+                {/*<Modal*/}
+                {/*    closable={false}*/}
+                {/*    open={isConfettiModal} // Use the updated state variable*/}
+                {/*    footer={[]} // Empty array to hide buttons*/}
+                {/*>*/}
+                {/*    <div className="modal-content">*/}
+                {/*        <h2>Thanks for saving the world!</h2>*/}
+                {/*    </div>*/}
+                {/*</Modal>*/}
             <Modal closable={false}
                    open={isUpdated}
                    footer={[]}

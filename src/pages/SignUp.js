@@ -6,9 +6,10 @@ import {createUserWithEmailAndPassword} from "firebase/auth"
 import {Input, message, TreeSelect, ConfigProvider, theme} from "antd";
 import {setDoc, collection, doc} from "firebase/firestore";
 import { NeighborhoodDict } from "../assets/DataSets"
-import logo from "../assets/Second_logo.png"
+// import logo from "../assets/Second_logo.png"
 import styled from "styled-components";
 import {ButtonStyle} from "../components/Button";
+import green_logo from "../assets/images/green_logo.png";
 
 
 const Picture = styled.img`
@@ -98,7 +99,7 @@ export const SignUp = () => {
     return (
         <div className={"main-container"}>
             <header> <h1 >Welcome to Second</h1> </header>
-            <Picture src={logo}/>
+            <Picture src={green_logo}/>
             <h2>Lets get started</h2>
             <form onSubmit={ handleSignup }>
             <ConfigProvider
