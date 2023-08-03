@@ -281,6 +281,7 @@ function App() {
             </form>
             <Modal className={"loading-modal"}
                    open={isLoading}
+                   closable={false}
                    footer={[]} // Empty array to hide buttons>
             >
                 <div className="modal-content">

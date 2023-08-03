@@ -9,6 +9,10 @@ import {Descriptions, Input, message, Modal, Tooltip, TreeSelect, ConfigProvider
 import {AuthContext } from '../components/AuthProvider';
 import {db} from "../firebase";
 import {SettingOutlined} from "@ant-design/icons";
+import { BsBagHeart, BsCloudSun, BsPersonPlus } from "react-icons/bs";
+import { FaCloudSun } from "react-icons/fa";
+import { RiUserHeartFill } from "react-icons/ri";
+// import { LuHeartHandshake } from "react-icons/lu";
 import {NeighborhoodDict} from "../assets/DataSets";
 import {BorderedButtonGreen} from "../components/Button.js"
 import Colors from "../color.js";
@@ -23,6 +27,7 @@ export default function MyProfile() {
     const [itemsDonated, setItemsDonated] = useState("");
     const [co2Saved, setCo2Saved] = useState("");
     const [editInfoModalVisible, setEditInfoModalVisible] = useState(false);
+
 
     useEffect(() => {
         const userId = currentUser.uid;
@@ -104,12 +109,26 @@ export default function MyProfile() {
             <div>
                 <div className={"user-info"}>
                     <div className={"description"}>
-                        <h4 className={"h4-des"}>{itemsDonated}</h4>
-                        <h5>Items Donated</h5>
+                    <div className={"icons"}>
+                        <BsBagHeart/>
+                        <h4 >{itemsDonated}</h4>
+                    </div>
+                        <h5>Items given</h5>
+                    </div>
+
+                    <div className={"description"}>
+                        <div className={"icons"}>
+                            <BsCloudSun/>
+                            <h4 className={"h4-des"}>{co2Saved}</h4>
+                        </div>
+                        <h5>CO<sub>2</sub> saved</h5>
                     </div>
                     <div className={"description"}>
-                        <h4 className={"h4-des"}>{co2Saved}</h4>
-                        <h5>CO2 saved</h5>
+                        <div className={"icons"}>
+                            <BsPersonPlus/>
+                            <h4 className={"h4-des"}>{userFriends}</h4>
+                        </div>
+                        <h5>Friends added</h5>
                     </div>
                 </div>
                 <div className={"invite-friends"}>
