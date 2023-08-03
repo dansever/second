@@ -29,8 +29,7 @@ export default function MyProfile() {
 
 
     useEffect(() => {
-        const userId = currentUser.uid;
-        const UserRef = doc(db,'users',userId);
+        const UserRef = doc(db,'users',currentUser.uid);
         getUserData(UserRef);
     }, []);
 
