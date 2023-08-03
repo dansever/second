@@ -12,6 +12,9 @@ import {SettingOutlined} from "@ant-design/icons";
 import {NeighborhoodDict} from "../assets/DataSets";
 import {BorderedButtonGreen} from "../components/Button.js"
 import Colors from "../color.js";
+import { toast } from "react-toastify";
+import { useRef } from "react";
+import copy from "copy-to-clipboard";
 
 export default function MyProfile() {
     const currentUser = useContext(AuthContext);
@@ -83,6 +86,16 @@ export default function MyProfile() {
         setEditInfoModalVisible(false);
     };
 
+    const copyToClipboard = () => {
+        let isCopy = copy(userCode);
+        if (isCopy) {
+            toast.success("Copied to Clipboard");
+            message.info(
+                "Copied to Clipboard", 1,
+                () => {console.log('Pop-up closed');});
+        }
+    };
+
 
     return (
         <div>
@@ -114,7 +127,7 @@ export default function MyProfile() {
                 </div>
                 <div className={"invite-friends"}>
                     <h5 className={"h4-des"}>copy your code and invite friends:</h5>
-                    <h4 style={{color:Colors.green}}>{userCode}</h4>
+                    <button onClick={copyToClipboard} style={{color:Colors.green}}>{userCode}</button>
                 </div>
 
             </div>
