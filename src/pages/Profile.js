@@ -132,8 +132,8 @@ export default function MyProfile() {
                     </div>
                 </div>
                 <div className={"invite-friends"}>
-                    <h5 className={"h4-des"}>copy your code and invite friends:</h5>
-                    <button onClick={copyToClipboard} style={{color:Colors.green}}>{userCode}</button>
+                    <h5 className={"h4-des-1"}>Copy code to invite friends:</h5>
+                    <button className={"code-button"} onClick={copyToClipboard} style={{color:Colors.green}}>{userCode}</button>
                 </div>
 
             </div>

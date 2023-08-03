@@ -1,4 +1,11 @@
+.code-button{
+    color: var(--background_white);
+    padding: 7px 50px;
+    background-color: transparent;
+    border: 1px solid var(--green);
+    border-radius: 7px;
 
+}
 .personal-info-table{
     padding: 10px 10px 0 10px;
 }
@@ -45,7 +52,9 @@
     align-items: center;
     text-align: center;
 }
-.h4-des {
+.h4-des-1 {
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
 
 
@@ -53,6 +62,7 @@
     justify-content: space-between;
     align-items: center;
     text-align: center;
+    margin-top: 12px;
 }
 .feed-container {
     padding-bottom: 100px;
