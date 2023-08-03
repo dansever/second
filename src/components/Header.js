@@ -201,16 +201,21 @@ export default function MainHeader(props) {
             >
                 <h2 style={{color:Colors.green}}>About Second</h2>
                 <div className={"about-second-modal"}>
-                    <h4>Hello, we are Gal, Inbal & Dan,
-                        students in the Hebrew University in Jerusalem.
-                        We Develope
-                    </h4>
-                    <p style={{fontWeight:"bold", color:Colors.green}}>Save Co2</p>
-                    <p>..</p>
+                    <h4>We are 3 students in Jerusalem that
+                        care about creating a strong student community
+                        and a positive environmental impact.</h4>
+                    <h4> We created 'second' in order to help:</h4>
+                    <p style={{fontWeight:"bold", color:Colors.green}}>Save carbon emissions</p>
+                    <p>The fashion industry is one of the worlds biggest polluters.
+                    Each clothing item that is recycled saves
+                        7.5kg of C02 on average</p>
                     <p style={{fontWeight:"bold", color:Colors.green}}>Save Money</p>
-                    <p>...</p>
-                    <p style={{fontWeight:"bold", color:Colors.green}}>Strengthen Your Community</p>
-                    <p>...</p>
+                    <p> Our shared-fashion community allows one to enjoy a diverse
+                        wardbrobe without spending hard earned money</p>
+                    <p style={{fontWeight:"bold", color:Colors.green}}>Strengthen Our Community</p>
+                    <p>Our goal is to provide a safe and easy platform
+                        for students and neighbours to meet
+                        promote community pride</p>
 
                 </div>
             </Modal>
