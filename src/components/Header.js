@@ -21,7 +21,6 @@ export default function MainHeader(props) {
     const navigate = useNavigate();
     const handleSignOut = () => {
         auth.signOut();
-        // Sign out successful
         console.log('User signed out');
         navigate("/Login");
     }
@@ -39,7 +38,6 @@ export default function MainHeader(props) {
       padding-right: 5px;
       align-items: center;
       justify-content: space-between;
-      
     `;
 
     const items = [
