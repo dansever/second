@@ -4,10 +4,7 @@ import {filterDatabase, NeighborhoodDict, sortDirection, sortType} from "../asse
 
 const { Option } = Select;
 
-export default function SearchBar({filter, setFilter, neighborhoodFilter,
-                                      setNeighborhoodFilter, setSortBy,
-                                      setSortOrder}) {
-    const [value, setValue] = useState(undefined);
+export default function SearchBar({setFilter, setNeighborhoodFilter, setSortBy, setSortOrder}) {
     const valueMap = {};
     function loops(list, parent) {
         return (list || []).map(({ children, value }) => {
@@ -72,7 +69,7 @@ export default function SearchBar({filter, setFilter, neighborhoodFilter,
 
                 <TreeSelect
                     treeData = {NeighborhoodDict}
-                    // treeCheckable
+                    //treeCheckable
                     multiple = {true}
                     defaultValue={[]}
                     allowClear="true"

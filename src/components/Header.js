@@ -3,7 +3,6 @@ import { useNavigate} from 'react-router-dom';
 import "../styles/Index.css";
 import styled from "styled-components";
 import second_logo from "../assets/Second_logo.png";
-import {ArrowLeftOutlined} from "@ant-design/icons";
 import Colors from "../color";
 import { DownOutlined } from '@ant-design/icons';
 import { Dropdown} from 'antd';

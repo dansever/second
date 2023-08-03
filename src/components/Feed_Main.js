@@ -107,9 +107,7 @@ export default function Feed_Main() {
         ))
     return (
         <>
-            <SearchBar filter={filter}
-                       setFilter={setFilter}
-                       neighborhoodFilter={neighborhoodFilter}
+            <SearchBar setFilter={setFilter}
                        setNeighborhoodFilter={setNeighborhoodFilter}
                        setSortBy={setSortBy}
                        setSortOrder={setSortOrder} />
