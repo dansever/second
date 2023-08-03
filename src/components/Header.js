@@ -39,7 +39,7 @@ export default function MainHeader(props) {
       padding-right: 5px;
       align-items: center;
       justify-content: space-between;
-    
+      
     `;
 
     const items = [

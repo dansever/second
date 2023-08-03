@@ -113,22 +113,22 @@ export default function MyProfile() {
                         <BsBagHeart/>
                         <h4 >{itemsDonated}</h4>
                     </div>
-                        <h5>Items given</h5>
+                        <h5>Items Given</h5>
                     </div>
 
                     <div className={"description"}>
                         <div className={"icons"}>
                             <BsCloudSun/>
-                            <h4 className={"h4-des"}>{co2Saved}</h4>
+                            <h4 className={"h4-des"}>{co2Saved} kg</h4>
                         </div>
-                        <h5>CO<sub>2</sub> saved</h5>
+                        <h5>CO<sub>2</sub> Saved</h5>
                     </div>
                     <div className={"description"}>
                         <div className={"icons"}>
                             <BsPersonPlus/>
                             <h4 className={"h4-des"}>{userFriends}</h4>
                         </div>
-                        <h5>Friends added</h5>
+                        <h5>Friends Added</h5>
                     </div>
                 </div>
                 <div className={"invite-friends"}>

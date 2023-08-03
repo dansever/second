@@ -21,7 +21,7 @@ export default function MainCard(product) {
 
     const cardStyle = {
         borderRadius: '10px',
-        boxShadow:  'rgba(149, 157, 165, 0.2) 0px 8px 24px',
+        boxShadow:  'rgba(149, 157, 165, 0.2) px 8px 24px',
         cursor: 'pointer',
         backgroundColor: Colors.background_white
      };

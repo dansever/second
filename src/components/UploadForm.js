@@ -149,9 +149,11 @@ function App() {
     return (
         <div>
             <form onSubmit={handleFormSubmit }>
-                <div></div><div></div>
+                <br/>
                 <div className={"form-row-img"}>
-                    <label className={"add-pic"}>Add image</label>
+                    <label className={"add-pic"} htmlFor="fileInput">
+                        Add image
+                    </label>
                     <input
                         className={"upload-file-button"}
                         id="fileInput"
@@ -161,6 +163,7 @@ function App() {
                         required
                     />
                 </div>
+
                 <ConfigProvider
                     theme={{
                         "token": {
