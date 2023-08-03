@@ -40,9 +40,8 @@ export default function Feed_Main() {
     }, [sortBy, sortOrder]);
 
     useEffect(() => {
-        const snap = onSnapshot(productsCollectionRef, (snapshot) => {
+        onSnapshot(productsCollectionRef, (snapshot) => {
             snapshot.docChanges().forEach((change) => {
-                // Handle document changes here
                 if (change.type === 'added') { getProductList(); }
                 if (change.type === 'modified') { getProductList(); }
                 if (change.type === 'removed') { getProductList(); }
