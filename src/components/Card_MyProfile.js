@@ -4,7 +4,7 @@ import {conditionOptions, genderOptions, sizeOptions, typeOptions} from "../asse
 import {ButtonStyle,  BorderedButtonGreen, BorderedRedButton} from "./Button";
 import {doc, updateDoc, deleteDoc, getDoc, arrayRemove} from "firebase/firestore";
 import {deleteObject} from "firebase/storage";
-import {Button, Form, message, Modal, Select, Tooltip, ConfigProvider, Input} from "antd";
+import {Button, Form, Modal, Select, Tooltip, ConfigProvider, Input} from "antd";
 import Card from '@mui/material/Card';
 import {db, storage} from "../firebase";
 import "../styles/Card.css"
