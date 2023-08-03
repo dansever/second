@@ -1,11 +1,19 @@
 .code-button{
     color: var(--background_white);
-    padding: 7px 50px;
+    padding: 9px;
+    width: 200px;
     background-color: transparent;
     border: 1px solid var(--green);
     border-radius: 7px;
-
 }
+
+.copied {
+    background-color: white;
+    font-weight: bold;
+    border: 2px solid var(--green);
+    padding: 8px;
+}
+
 .personal-info-table{
     padding: 10px 10px 0 10px;
 }

@@ -7,7 +7,7 @@ import Card from '@mui/material/Card';
 import {db} from "../firebase";
 import Colors from "../color";
 import "../styles/Card.css"
-import {ButtonStyle, StyledA} from "./Button";
+import {StyledA} from "./Button";
 
 
 export default function MainCard(product) {
@@ -63,7 +63,6 @@ export default function MainCard(product) {
             const SellerUserRef = doc(db, 'users', product.seller_uid);
             const docSnapshot = await getDoc(SellerUserRef);
             const sellerPhoneNumber = docSnapshot.data()['phone_number'];
-            console.log(sellerPhoneNumber);
             const message = "Hi, I'm interested in your product: " + product.title + "!";
             const number = sellerPhoneNumber.slice(1);
             const encodedMessage = encodeURIComponent(message);
@@ -90,7 +89,9 @@ export default function MainCard(product) {
 
                     <div className={"left-side"}
                          onClick={handleModalOpen}>
-                        <p style={{fontWeight:"bold"}}>{product.title}</p>
+                        <p style={{fontWeight:"bold"}}>
+                            {product.title}
+                        </p>
                         <p>Size: {product.size}</p>
                     </div>
 

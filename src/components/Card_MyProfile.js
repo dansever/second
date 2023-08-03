@@ -171,7 +171,7 @@ export default function MyCard (props) {
                    footer={[]} // Empty array to hide buttons>
             >
                 <div className={"edit-info-modal"}>
-                    <h2 style={{color:Colors.green}}>Edit item information</h2>
+                    <h2 style={{color:Colors.green}}>Edit Item</h2>
                     <ConfigProvider
                         theme={{
                             "token": {
@@ -291,15 +291,15 @@ export default function MyCard (props) {
                    onCancel={() => setMarkSoldModalVisible(false)}
                    footer={[]}>
                 <div className={"sold-modal"}>
-                    <h2 style={{color:Colors.green}}>Give away the item</h2>
+                    <h2 style={{color:Colors.green}}>Give the item away</h2>
                     <p> Are you sure?</p>
-                    <ButtonStyle onClick={handleMarkItemAsSold}>I gave away the item!</ButtonStyle>
+                    <ButtonStyle onClick={handleMarkItemAsSold}>Yes</ButtonStyle>
                 </div>
 
             </Modal>
             <Modal closable={false}
                    open={isDeleted}
-                   footer={[]} // Empty array to hide buttons>
+                   footer={[]}
             >
                 <div className="modal-content">
                     <h2>Item deleted</h2>
@@ -307,7 +307,7 @@ export default function MyCard (props) {
             </Modal>
             <Modal closable={false}
                    open={isUpdated}
-                   footer={[]} // Empty array to hide buttons>
+                   footer={[]}
             >
                 <div className="modal-content">
                     <h2>Item Updated</h2>
