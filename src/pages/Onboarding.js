@@ -1,4 +1,3 @@
-
 import second from "../assets/images/positiveinfluence.png"
 import first from "../assets/images/first.png"
 import third from "../assets/images/third.png"
@@ -6,8 +5,6 @@ import  co2 from "../assets/images/co2.png"
 import  last from "../assets/images/last.png"
 
 import Colors from "../color.js";
-
-
 
 import React, { useState } from 'react';
 import { useNavigate  } from 'react-router-dom';
