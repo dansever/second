@@ -173,6 +173,7 @@ export default function MyCard (props) {
                     <form className={"edit-info-form"}
                         onSubmit={handleItemInfoEdit}>
                         <Input value={title}
+                               addonBefore="Title"
                                placeholder={title ? {title} : "title"}
                                type="text"
                                required
@@ -180,11 +181,13 @@ export default function MyCard (props) {
                                style={{width: '200px',}}
                         />
                         <Input value={brand}
+                               addonBefore="Brand"
                                placeholder={brand ? {brand} : "brand"}
                                type="text"
                                onChange={(e) => setBrand(e.target.value)}
                                style={{width: '200px',}}
                         />
+
                         <Form.Item
                             style={{marginBottom: "0px"}}>
                             <Select
@@ -199,6 +202,7 @@ export default function MyCard (props) {
                                 ))}
                             </Select>
                         </Form.Item>
+
                         <Form.Item
                             style={{marginBottom: "0"}}>
                             <Select
@@ -213,7 +217,6 @@ export default function MyCard (props) {
                             </Select>
                         </Form.Item>
 
-                        <div className={"form-row"}>
                         <Form.Item
                             style={{marginBottom:"0"}}>
                             <Select
@@ -227,8 +230,7 @@ export default function MyCard (props) {
                                         {gender}</Option>))}
                             </Select>
                         </Form.Item>
-                        </div>
-                        <div className={"form-row"}>
+
                         <Form.Item
                             style={{marginBottom:"0"}}>
                             <Select
@@ -238,12 +240,13 @@ export default function MyCard (props) {
                                 onChange={(value) => { setCondition(value)}}
                                 style = {{width: '200px'}}>
                                 {conditionOptions.map((condition) => (
-                                    <Option key={condition} value={condition}>{condition}</Option>))}
+                                    <Option key={condition}
+                                            value={condition}>{condition}
+                                    </Option>))}
                             </Select>
                         </Form.Item>
-                    </div>
-                        <div className={"update_delete_button_box"}>
 
+                        <div className={"update_delete_button_box"}>
                             <BorderedButtonGreen
                                     onClick={handleItemInfoEdit}>
                                 Update Item
@@ -259,6 +262,7 @@ export default function MyCard (props) {
                     </ConfigProvider>
                 </div>
             </Modal>
+
             <ConfigProvider
                 theme={{
                     "token": {

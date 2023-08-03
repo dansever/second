@@ -5,7 +5,7 @@ import { doc, getDoc, updateDoc} from "firebase/firestore";
 import Feed_MyProfile from "../components/Feed_MyProfile";
 import "../styles/Profile.css"
 import "../styles/Index.css"
-import {Descriptions, Input, message, Modal, Tooltip, TreeSelect, ConfigProvider} from 'antd';
+import {Input, message, Modal, Tooltip, TreeSelect, ConfigProvider} from 'antd';
 import {AuthContext } from '../components/AuthProvider';
 import {db} from "../firebase";
 import {SettingOutlined} from "@ant-design/icons";
@@ -31,11 +31,8 @@ export default function MyProfile() {
     }, []);
 
     const generateRandomNumber = () => {
-        // Generate a random number between 0 and 3 (exclusive)
         const randomValue = Math.random() * 3;
-        // Add 6 to the randomValue to get a number between 6 and 9 (exclusive)
         const randomNumber = randomValue + 6;
-        // Round the number to 2 decimal places
         const roundedNumber = parseFloat(randomNumber.toFixed(2));
         return roundedNumber;
     };
