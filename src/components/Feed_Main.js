@@ -7,8 +7,6 @@ import MainCard from "./Card_Main";
 import SearchBar from "./SearchBar";
 import {AuthContext} from "./AuthProvider";
 
-// const { Option } = Select;
-
 export default function Feed_Main() {
     const [productsList, setProductsList] = useState([]);
     const [sortBy, setSortBy] = useState('upload_time');
@@ -42,9 +40,8 @@ export default function Feed_Main() {
     }, [sortBy, sortOrder]);
 
     useEffect(() => {
-        const snap = onSnapshot(productsCollectionRef, (snapshot) => {
+        onSnapshot(productsCollectionRef, (snapshot) => {
             snapshot.docChanges().forEach((change) => {
-                // Handle document changes here
                 if (change.type === 'added') { getProductList(); }
                 if (change.type === 'modified') { getProductList(); }
                 if (change.type === 'removed') { getProductList(); }
@@ -94,7 +91,6 @@ export default function Feed_Main() {
                     product_id = {product.id}
                     title={product.title}
                     seller_uid={product.seller_uid}
-                    tokens={product.tokens}
                     type={product.type}
                     gender={product.gender}
                     image_url={product.image_url}

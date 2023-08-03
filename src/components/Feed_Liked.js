@@ -6,19 +6,11 @@ import {db} from "../firebase";
 import {AuthContext} from "./AuthProvider";
 import MainCard from "./Card_Main";
 
-import Colors from "../color.js";
-
 export default function Feed_Liked() {
     const [likedProductsList, setLikedProductsList] = useState([]);
     const currentUser = useContext(AuthContext);
     const productsCollectionRef = collection(db,'products');
     const usersCollectionRef = collection(db,'users');
-    // const userDoc = collection(db,'products', currentUser.id);
-
-    // useEffect(() => {
-    //     const userId = currentUser.uid;
-    //     const likedProductsRef = doc(db,'products',userId);
-    //     }, []);
 
     useEffect(() => {
         const getProductList = async () => {
@@ -26,8 +18,6 @@ export default function Feed_Liked() {
                 const userDoc = query(usersCollectionRef,where(documentId(), '==', currentUser.uid));
                 const data1 = await getDocs(userDoc);
                 const LikedItemsId = data1.docs.map(doc => doc.data().liked_items);
-                // alert(LikedItemsId);
-
                 let filteredData = [];
                 for (let arrayItem of Object.values(LikedItemsId)) {
                     for (let itemId of arrayItem.values()){
@@ -63,7 +53,6 @@ export default function Feed_Liked() {
                             title={product.title}
                             seller_uid={product.seller_uid}
                             type={product.type}
-                            tokens = {product.tokens}
                             gender={product.gender}
                             image_url={product.image_url}
                             brand={product.brand}

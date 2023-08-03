@@ -30,9 +30,7 @@ function App() {
     // User States
     const currentUser = useContext(AuthContext);
     const [userId, setUserId] = useState("");
-
     const productsCollectionRef = collection(db, "products");
-    const usersCollectionRef    = collection(db, "users");
 
     const getProductList = async () => {
         try {
@@ -94,7 +92,6 @@ function App() {
         } catch (error) {
             console.error('Error uploading image:', error);
             setIsLoading(false);
-
         }
     };
 
@@ -144,12 +141,11 @@ function App() {
         e.preventDefault();
         handleImageUpload(imageFile);
 
-    };
+    }
 
     return (
         <div>
             <form onSubmit={handleFormSubmit }>
-                <br/>
                 <div className={"form-row-img"}>
                     <label className={"add-pic"} htmlFor="fileInput">
                         Add image
@@ -275,8 +271,8 @@ function App() {
                 </div>
 
                 <div className={"button"}>
-                    <ButtonStyle
-                        type="submit">Add To Shop
+                    <ButtonStyle type="submit">
+                        Add To Shop
                     </ButtonStyle>
                 </div>
             </ConfigProvider>
@@ -285,11 +281,11 @@ function App() {
             <Modal className={"loading-modal"}
                    open={isLoading}
                    closable={false}
-                   footer={[]} // Empty array to hide buttons>
+                   footer={[]}
             >
                 <div className="modal-content">
                     <h2>Uploading...</h2>
-                    <img class={"loading"} src={loading} alt={"loading_object"}/>
+                    <img className={"loading"} src={loading} alt={"loading_object"}/>
                 </div>
             </Modal>
         </div>
