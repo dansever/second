@@ -60,7 +60,8 @@ h2 {
     justify-content: space-between;
     gap: 5px;
     margin: 20px;
-    padding-top: 5px;
+    /*padding-top: 5px;*/
+    padding-bottom: 10px;
 
 }
 
@@ -108,6 +109,18 @@ p.product-info {
 .profile-buttons, .profile-buttons:hover, .profile-buttons:focus, .profile-buttons:active {
     box-shadow: none;
     background-color: var(--background_white);
+
+}
+
+.button-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loading-modal{
+    width: 20%;
+    display: flex;
 }
 
 .modal_icons {
