@@ -7,7 +7,7 @@ import Card from '@mui/material/Card';
 import {db} from "../firebase";
 import Colors from "../color";
 import "../styles/Card.css"
-import {ButtonStyle} from "./Button";
+import {ButtonStyle, StyledA} from "./Button";
 
 
 export default function MainCard(product) {
@@ -150,17 +150,15 @@ export default function MainCard(product) {
                 <p className={"product-info"}>Gender: {product.gender}</p>
                 <p className={"product-info"}>Size: {product.size}</p>
                 <p className={"product-info"}>Condition: {product.condition}</p>
-                <ButtonStyle className={"chat-or-pay-btn"}
-                        // onclick={() => { console.log(whatsappLink);
-                        //     return window.location.href = whatsappLink;
-                        // }}
-                        href = {whatsappLink}
+
+                <StyledA className={"chat-or-pay-btn"}
+                        href={whatsappLink}           
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{width:"80%"}}>
                     <WhatsAppOutlined style={{scale: "160%", color: "white"}}/>
                     <h3>Chat with seller for info</h3>
-                </ButtonStyle>
+                </StyledA>
             </Modal>
         </>
     );
