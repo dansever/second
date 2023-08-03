@@ -54,7 +54,7 @@ export default function MainCard(product) {
         const getSellerCode = async () => {
             try {
                 const SellerUserRef = doc(db, 'users', product.seller_uid);
-                const docSnapshot = await getDoc(SellerUserRef);
+                await getDoc(SellerUserRef);
             } catch (err) {
                 console.log(err);
             }
@@ -80,12 +80,6 @@ export default function MainCard(product) {
         getWhatsappLink();};
     const handleModalClose = () => {setModalVisible(false);};
 
-    const isLikedComponent = () => {
-        if (product.likedItems.includes(product.product_id)){
-            return
-        }
-        return
-    }
     return (
         <>
             <Card style={cardStyle}>
