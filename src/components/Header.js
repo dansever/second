@@ -137,7 +137,7 @@ export default function MainHeader(props) {
                     <p style={{color: Colors.background_white,
                         fontSize:"16px",
                         padding:"5px"}}>
-                        Hi {userFirstName}!
+                        Hi {userFirstName}
                         <DownOutlined style={{padding:"5px"}}/>
                     </p>
                 </a>
