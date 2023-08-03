@@ -6,7 +6,7 @@ import { AuthContext } from './AuthProvider';
 import {ButtonStyle} from "./Button";
 import {getDocs, collection, addDoc, doc, updateDoc, arrayUnion, getDoc} from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import {Select, Form, InputNumber, Modal, Input, ConfigProvider, theme} from 'antd';
+import {Select, Form, Modal, Input, ConfigProvider} from 'antd';
 import {conditionOptions, genderOptions, sizeOptions, typeOptions} from "../assets/DataSets";
 import loading from "../assets/images/loading.gif";
 const { Option } = Select;

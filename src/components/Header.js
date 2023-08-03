@@ -98,7 +98,6 @@ export function SecondaryHeader(props) {
       align-items: center;
       justify-content: space-between;
       border-bottom: var(--green) 1px solid;
-      //box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
       margin-bottom: -3px;
       background-image: linear-gradient(to top left, ${Colors.green}, ${Colors.light_green} );
     `;

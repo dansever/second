@@ -13,7 +13,6 @@ export default function Home() {
     const currentUser = useContext(AuthContext);
     const [userName, setUserName] = useState("");
 
-
     const getUserName = async () => {
         const userId = currentUser.uid;
         const UserRef = doc(db, 'users', userId);
@@ -31,7 +30,6 @@ export default function Home() {
                 :
                 ( <MainHeader  color={Colors.background_white}  name={null}/> )}
             <div className={"home-container"}>
-                {/*<SearchBar defaultNeighborhood={userNeighborhood}  />*/}
                 <Feed_Main/>
             </div>
             <Navbar/>

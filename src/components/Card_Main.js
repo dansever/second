@@ -11,7 +11,6 @@ import {ButtonStyle} from "./Button";
 
 
 export default function MainCard(product) {
-    // const linkedItemsLocal = product.likedItems.includes(product.product_id);
     const [isLikeToggledOn, setLikeToggledOn] = useState(product.isLiked);
     const [modalVisible, setModalVisible] = useState(false);
     const [whatsappLink, setWhatsappLink] = useState('');
@@ -56,7 +55,6 @@ export default function MainCard(product) {
             try {
                 const SellerUserRef = doc(db, 'users', product.seller_uid);
                 const docSnapshot = await getDoc(SellerUserRef);
-                //setSellerCode(docSnapshot.data()['user_code']);
             } catch (err) {
                 console.log(err);
             }
