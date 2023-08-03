@@ -35,8 +35,6 @@ export default function MainCard(product) {
         updateDoc(currentUserRef, {
             liked_items: arrayRemove(product_id)
         });
-
-
     }
     const handleLike = async () => {
         setLikeToggledOn(!isLikeToggledOn);
@@ -47,8 +45,6 @@ export default function MainCard(product) {
             likeAction();
         }
     }
-
-
 
     useEffect(() => {
         const getSellerCode = async () => {
@@ -126,8 +122,7 @@ export default function MainCard(product) {
             <Modal className={"custom-modal"}
                    open={modalVisible}
                    onCancel={handleModalClose}
-                   footer={[]} // Empty array to hide buttons>
-                >
+                   footer={[]}>
                 <h2 style={{color:Colors.green}}>
                     {product.title}
                 </h2>

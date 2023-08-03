@@ -14,7 +14,6 @@ import {NeighborhoodDict} from "../assets/DataSets";
 import {BorderedButtonGreen} from "../components/Button.js"
 import Colors from "../color.js";
 import { toast } from "react-toastify";
-import { useRef } from "react";
 import copy from "copy-to-clipboard";
 
 export default function MyProfile() {
@@ -98,9 +97,9 @@ export default function MyProfile() {
             }
 
             <header className={"page_header"}>My Profile</header>
-            <div style={{ position: 'absolute', top: '72px', right: '20px'}}>
+            <div style={{ position: 'absolute', top: '88px', right: '20px'}}>
                 <Tooltip className={"info-edit-btn"} title="Edit Info">
-                    <SettingOutlined style={{ fontSize: '20px' }}
+                    <SettingOutlined style={{ fontSize: '25px' }}
                                      onClick={() => {setEditInfoModalVisible(true)}}
                     />
                 </Tooltip>

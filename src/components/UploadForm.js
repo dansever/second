@@ -149,7 +149,6 @@ function App() {
     return (
         <div>
             <form onSubmit={handleFormSubmit }>
-                <br/>
                 <div className={"form-row-img"}>
                     <label className={"add-pic"} htmlFor="fileInput">
                         Add image
@@ -275,8 +274,8 @@ function App() {
                 </div>
 
                 <div className={"button"}>
-                    <ButtonStyle
-                        type="submit">Add To Shop
+                    <ButtonStyle type="submit">
+                        Add To Shop
                     </ButtonStyle>
                 </div>
             </ConfigProvider>
