@@ -69,6 +69,7 @@ export default function MainCard(product) {
             const SellerUserRef = doc(db, 'users', product.seller_uid);
             const docSnapshot = await getDoc(SellerUserRef);
             const sellerPhoneNumber = docSnapshot.data()['phone_number'];
+            console.log(sellerPhoneNumber);
             const message = "Hi, I'm interested in your product: " + product.title + "!";
             const number = sellerPhoneNumber.slice(1);
             const encodedMessage = encodeURIComponent(message);
@@ -149,8 +150,9 @@ export default function MainCard(product) {
                 <p className={"product-info"}>Gender: {product.gender}</p>
                 <p className={"product-info"}>Size: {product.size}</p>
                 <p className={"product-info"}>Condition: {product.condition}</p>
+
                 <StyledA className={"chat-or-pay-btn"}
-                        href={whatsappLink}
+                        href={whatsappLink}           
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{width:"80%"}}>
