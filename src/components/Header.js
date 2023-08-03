@@ -201,13 +201,15 @@ export default function MainHeader(props) {
             >
                 <h2 style={{color:Colors.green}}>About Second</h2>
                 <div className={"about-second-modal"}>
-                    <h5>Hello, are Gal, Inbal & Dan, students in the Hebrew University in Jerusalmed
-                    </h5>
-                    <p style={{fontWeight:"bold"}}>Save Co2</p>
+                    <h4>Hello, we are Gal, Inbal & Dan,
+                        students in the Hebrew University in Jerusalem.
+                        We Develope
+                    </h4>
+                    <p style={{fontWeight:"bold", color:Colors.green}}>Save Co2</p>
                     <p>..</p>
-                    <p style={{fontWeight:"bold"}}>Save Money</p>
+                    <p style={{fontWeight:"bold", color:Colors.green}}>Save Money</p>
                     <p>...</p>
-                    <p style={{fontWeight:"bold"}}>Strengthen Your Community</p>
+                    <p style={{fontWeight:"bold", color:Colors.green}}>Strengthen Your Community</p>
                     <p>...</p>
 
                 </div>
