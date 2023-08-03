@@ -1,11 +1,13 @@
-import {Input} from "antd";
+import {Input, ConfigProvider} from "antd";
 import React, {useState} from "react";
 import { useNavigate  } from 'react-router-dom';
 import {signInWithEmailAndPassword} from "firebase/auth";
 import {auth, db} from "../firebase";
-import logo from "../assets/Second_logo.png";
+// import logo from "../assets/Second_logo.png";
 import styled from "styled-components";
 import {collection, doc, getDoc, getDocs, updateDoc} from "firebase/firestore";
+import {ButtonStyle} from "../components/Button";
+import green_logo from "../assets/images/green_logo.png";
 
 
 const Picture = styled.img`
@@ -76,8 +78,19 @@ export const SignUPFriendCode = () => {
 
         return (
             <div className={"main-container"}>
-                <Picture src={logo}/>
-                <header><h1>Join SECOND Community!</h1></header>
+                <ConfigProvider
+                    theme={{
+                        "token": {
+                            "colorPrimaryBorder": "#11998E",
+                            "colorPrimaryBorderHover": "#11998E",
+                            "colorPrimaryHover": "#11998E",
+                            "colorPrimary": "#11998E",
+                            "wireframe": false
+                        },
+                    }}
+                >
+                <Picture src={green_logo}/>
+                <header><h1>Join Second Community!</h1></header>
                 {error && <p
                     style={{color: 'red'}}>{error}</p>}
                 <p>ask a community member to get his join code</p>
@@ -87,12 +100,14 @@ export const SignUPFriendCode = () => {
                         value={friendCode}
                         placeholder="Enter friend code"
                         onChange={(c) => setFriendCode(c.target.value)}/>
-                    <button
+                    <ButtonStyle
                         className={"submit-button"}
                         type="submit">
                         send
-                    </button>
+                    </ButtonStyle>
+
                 </form>
+                </ConfigProvider>
             </div>
         )
     }

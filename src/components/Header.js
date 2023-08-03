@@ -2,11 +2,14 @@ import React from "react";
 import { useNavigate} from 'react-router-dom';
 import "../styles/Index.css";
 import styled from "styled-components";
-import second_logo from "../assets/Second_logo.png";
+// import second_logo from "../assets/Second_logo.png";
+import white_logo from "../assets/images/white_logo.png";
+import {ArrowLeftOutlined} from "@ant-design/icons";
 import Colors from "../color";
 import { DownOutlined } from '@ant-design/icons';
-import { Dropdown} from 'antd';
+import { Dropdown, ConfigProvider} from 'antd';
 import {auth} from "../firebase";
+
 
 
 
@@ -57,9 +60,9 @@ export default function MainHeader(props) {
                     Second
                 </h3>
                 <img
-                    src={second_logo}
-                    alt={second_logo}
-                    style={{width:"36px", height:"28px"}}
+                    src={white_logo}
+                    alt={white_logo}
+                    style={{width:"45px", height:"40px"}}
                 />
             </TitleAndLogo>
             <Dropdown
@@ -70,8 +73,10 @@ export default function MainHeader(props) {
                 className={"user_info_dropdown"}
             >
                 <a onClick={(e) => e.preventDefault()}>
-                    <p style={{fontSize:"14px", padding:"5px"}}>
-                        Hi {props.name}
+                    <p style={{color: Colors.background_white,
+                        fontSize:"16px",
+                        padding:"5px"}}>
+                        Hi {props.name}!
                         <DownOutlined style={{padding:"5px"}}/>
                     </p>
                 </a>
