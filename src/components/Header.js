@@ -2,16 +2,21 @@ import React, {useContext, useEffect, useState} from "react";
 import { useNavigate} from 'react-router-dom';
 import "../styles/Index.css";
 import styled from "styled-components";
-import second_logo from "../assets/Second_logo.png";
+import white_logo from "../assets/images/white_logo.png";
+import {ArrowLeftOutlined} from "@ant-design/icons";
 import Colors from "../color";
 import { DownOutlined } from '@ant-design/icons';
-import {ConfigProvider, Dropdown, Input, message, Modal, TreeSelect} from 'antd';
-import {auth, db} from "../firebase";
-import {NeighborhoodDict} from "../assets/DataSets";
-import {BorderedButtonGreen} from "./Button";
-import {doc, getDoc, updateDoc} from "firebase/firestore";
-import {AuthContext} from "./AuthProvider";
+import { Dropdown, ConfigProvider} from 'antd';
+import {auth} from "../firebase";
 
+
+
+const TitleAndLogo = styled.div`
+  display: flex;
+  flex-direction: row;
+  column-gap: 5px;
+  align-items: center;
+`;
 
 const HeaderContainer = styled.div`
       display: flex;
@@ -27,13 +32,6 @@ const HeaderContainer = styled.div`
       align-items: center;
       justify-content: space-between;
     `;
-
-const TitleAndLogo = styled.div`
-  display: flex;
-  flex-direction: row;
-  column-gap: 5px;
-  align-items: center;
-`;
 
 export default function MainHeader(props) {
     const currentUser = useContext(AuthContext);
@@ -121,9 +119,9 @@ export default function MainHeader(props) {
                     Second
                 </h3>
                 <img
-                    src={second_logo}
-                    alt={second_logo}
-                    style={{width:"36px", height:"28px"}}
+                    src={white_logo}
+                    alt={white_logo}
+                    style={{width:"45px", height:"40px"}}
                 />
             </TitleAndLogo>
             <Dropdown
@@ -136,6 +134,10 @@ export default function MainHeader(props) {
                 <a onClick={(e) => e.preventDefault()}>
                     <p style={{fontSize:"14px", padding:"5px"}}>
                         Hi {userFirstName}
+                    <p style={{color: Colors.background_white,
+                        fontSize:"16px",
+                        padding:"5px"}}>
+                        Hi {props.name}!
                         <DownOutlined style={{padding:"5px"}}/>
                     </p>
                 </a>

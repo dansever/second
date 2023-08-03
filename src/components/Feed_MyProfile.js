@@ -5,7 +5,7 @@ import {collection, getDocs, query, where} from "firebase/firestore";
 import {db} from "../firebase";
 import MyCard from "./Card_MyProfile";
 import {AuthContext} from "./AuthProvider";
-
+import Confetti from './Confetti';
 
 export default function Feed_MyProfile(
     {setItemsDonated, itemsDonated, setCo2Saved, co2Saved}) {
@@ -13,6 +13,7 @@ export default function Feed_MyProfile(
     const productsCollectionRef = collection(db,'products');
     const currentUser = useContext(AuthContext);
     const [collectionToggle, setCollectionToggle] = useState(false);
+    const [isConfetti, setConfetti] = useState(false);
 
     useEffect(() => {
         const getProductList = async () => {
@@ -30,6 +31,7 @@ export default function Feed_MyProfile(
 
     return (
         <div className="feed">
+            {isConfetti && <Confetti/>}
             <Row gutter={[16, 16]}>
                 {productsList.map((product, index) => (
                     <Col span={12}
@@ -50,6 +52,7 @@ export default function Feed_MyProfile(
                             co2Saved = {co2Saved}
                             collectionToggle = {collectionToggle}
                             setCollectionToggle = {setCollectionToggle}
+                            setConfetti = {setConfetti}
                         />
                     </Col>
                 ))}

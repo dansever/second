@@ -4,9 +4,10 @@ import "../styles/Login.css"
 import { auth } from "../firebase"
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {Input, ConfigProvider} from "antd";
-import logo from "../assets/Second_logo.png"
+// import logo from "../assets/Second_logo.png"
 import styled from "styled-components";
 import {ButtonStyle} from "../components/Button";
+import green_logo from "../assets/images/green_logo.png";
 
 const Picture = styled.img`
     height: 30%;
@@ -35,7 +36,7 @@ export const LoginPage = () => {
 
     return (
         <div className={"main-container"}>
-            <Picture src={logo}/>
+            <Picture src={green_logo}/>
             <header><h1>Welcome Back!</h1></header>
             {error && <p
                 style={{color: 'red'}}>{error}</p>}
