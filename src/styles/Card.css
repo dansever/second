@@ -56,13 +56,10 @@ h2 {
 .profile-content-box {
     display: flex;
     flex-direction: row;
-    /*width: 100%;*/
     justify-content: space-between;
     gap: 5px;
     margin: 20px;
-    /*padding-top: 5px;*/
     padding-bottom: 10px;
-
 }
 
 
@@ -109,7 +106,6 @@ p.product-info {
 .profile-buttons, .profile-buttons:hover, .profile-buttons:focus, .profile-buttons:active {
     box-shadow: none;
     background-color: var(--background_white);
-
 }
 
 .button-div {
@@ -132,49 +128,13 @@ p.product-info {
 .ant-wave {
     display: none;
 }
-/*.whatsapp-modal {*/
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*    align-items: center;*/
-/*    column-gap: 40px;*/
-/*}*/
-
 
 .chat-or-pay-btn{
-    /*width:80%;*/
-    /*background-color: var(--background_white);*/
-    /*border: var(--green) 2px solid;*/
-    /*border-radius: 5px;*/
-    /*box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 10px;*/
-    /*display: inline-flex;*/
-    /*flex-direction: row;*/
-    /*align-items: center;*/
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
     gap: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
-
-/*.apply-button {*/
-/*    color: var(--text_color);*/
-/*    background-color: var(--orangie);*/
-/*    border-radius: 10px;*/
-/*    height:35px;*/
-/*    width: 80px;*/
-/*    font-weight: 700;*/
-/*    box-shadow: 2px 3px 0 0 black;*/
-/*}*/
-
-/*.step-box {*/
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*    align-items: center;*/
-/*    column-gap: 10px;*/
-/*    padding-top: 10px;*/
-/*}*/
 
 .edit-info-form {
     width: 100%;
@@ -182,7 +142,6 @@ p.product-info {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
 .custom-modal .ant-modal-content{
@@ -212,41 +171,3 @@ input:focus, textarea:focus {
     justify-content: space-between;
     column-gap: 2vw;
 }
-
-/*.update-button {*/
-/*    white-space: nowrap;*/
-/*    border-image-source: linear-gradient(to top left, ${Colors.green}, ${Colors.light_green} );*/
-/*    border-radius: 12px;*/
-/*    border: 3px solid;*/
-/*    height: 40px;*/
-/*    margin-left: auto;*/
-/*    margin-right: auto;*/
-/*    box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;*/
-/*}*/
-
-/*.update-button:hover {*/
-/*    background-color: var(--primary_green);*/
-/*    cursor: pointer;*/
-/*}*/
-
-/*.delete-btn {*/
-/*    border-radius: 10px;*/
-/*    !*width: 35vw;*!*/
-/*    padding: 10px 5px 10px 5px;*/
-/*    background-color: white;*/
-/*    border-color: red;*/
-/*    color: red;*/
-/*    font-size: 16px;*/
-/*}*/
-
-/*.delete-btn:hover {*/
-/*    background-color: lightpink;*/
-/*    cursor: pointer;*/
-/*}*/
-
-/*.request-pay-btn {*/
-/*    margin-top: 5px;*/
-/*    width: 70%;*/
-/*    font-weight: bold;*/
-/*    background-color: var(--green);*/
-/*}*/

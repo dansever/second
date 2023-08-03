@@ -34,20 +34,6 @@ form > div > input  {
     width: 60vw;
 }
 
-/*.submit-button {*/
-/*    border-radius: 10px;*/
-/*    width: 100%;*/
-/*    padding: 10px;*/
-/*    background-color: var(--primary_green);*/
-/*    font-weight: bold;*/
-/*    font-size: 20px;*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*}*/
-
-
-
 .new-user {
     display: flex;
     align-items: center;
@@ -56,19 +42,3 @@ form > div > input  {
     justify-content: center;
     column-gap: 15px;
 }
-
-
-/*.sign-up-button {*/
-/*    font-size: 18px;*/
-/*    font-weight: bold;*/
-/*    border-radius: 5px;*/
-/*    background-color: transparent;*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    align-content: center;*/
-/*    justify-items: center;*/
-/*    justify-content: center;*/
-/*    box-shadow: none;*/
-/*    border: none;*/
-
-/*}*/

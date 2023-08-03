@@ -10,9 +10,6 @@ import {AuthContext } from '../components/AuthProvider';
 import {db} from "../firebase";
 import {SettingOutlined} from "@ant-design/icons";
 import { BsBagHeart, BsCloudSun, BsPersonPlus } from "react-icons/bs";
-import { FaCloudSun } from "react-icons/fa";
-import { RiUserHeartFill } from "react-icons/ri";
-// import { LuHeartHandshake } from "react-icons/lu";
 import {NeighborhoodDict} from "../assets/DataSets";
 import {BorderedButtonGreen} from "../components/Button.js"
 import Colors from "../color.js";
