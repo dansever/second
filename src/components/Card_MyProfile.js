@@ -27,6 +27,8 @@ export default function MyCard (props) {
 
     const [editItemModalVisible, setEditItemModalVisible] = useState(false);
     const [markSoldModalVisible, setMarkSoldModalVisible] = useState(false);
+    const [isDeleted, setIsDeleted] = useState(false);
+    const [isUpdated, setIsUpdated] = useState(false);
 
     const currentUser = useContext(AuthContext);
     const cardStyle =  {
@@ -52,10 +54,12 @@ export default function MyCard (props) {
             };
             updateDoc(productRef, newData)
                 .then( () => {
+                    setIsUpdated(true);
                     console.log('Item updated successfully');
-                    message.success(
-                        "Product updated successfully", 2,
-                        () => {console.log('Pop-up closed');});
+                    setTimeout(() => {setIsUpdated(false);}, 2000);
+                    // message.success(
+                    //     "Product updated successfully", 2,
+                    //     () => {console.log('Pop-up closed');});
                 })
         } catch (error) {
             console.log('Something went wrong, try again.');
@@ -83,10 +87,13 @@ export default function MyCard (props) {
             await updateDoc( doc(db,'users',currentUser.uid),
                 {uploaded_items: arrayRemove(props.product_id)})
                 .then(() => {
+                    setIsDeleted(true);
                     console.log('Item deleted successfully');
-                    message.success(
-                        "Item deleted successfully", 2,
-                        () => {console.log('Pop-up closed');});
+                    setTimeout(() => {setIsDeleted(false);}, 2000);
+
+                    // message.success(
+                    //     "Item deleted successfully", 2,
+                    //     () => {console.log('Pop-up closed');});
             })
             props.setCollectionToggle(!props.collectionToggle);
         } catch (error) {
@@ -135,14 +142,21 @@ export default function MyCard (props) {
                 <div>
                     <Tooltip title="Edit Item">
                         <Button className={"profile-buttons"} onClick={() => setEditItemModalVisible(true)}>
-                            <EditOutlined style={{ scale: "200%"}}/>
+                            <div className={"button-div"}>
+                            <EditOutlined style={{scale:"150%", margin:"-5px"}}/>
+                            <h5>Edit</h5>
+                            </div>
                         </Button>
                     </Tooltip>
                 </div>
                 <div>
                 <Tooltip title="Mark Item as Sold">
                     <Button className={"profile-buttons"} onClick={() => setMarkSoldModalVisible(true)}>
-                        <BiDonateHeart style={{scale:"200%"}}/>
+                        <div className={"button-div"}>
+                            <BiDonateHeart style={{scale:"150%", margin:"-5px"}}/>
+                            <h5>Give</h5>
+                        </div>
+
                     </Button>
                 </Tooltip>
                 </div>
@@ -283,7 +297,24 @@ export default function MyCard (props) {
                 </div>
 
             </Modal>
+            <Modal closable={false}
+                   open={isDeleted}
+                   footer={[]} // Empty array to hide buttons>
+            >
+                <div className="modal-content">
+                    <h2>Item deleted</h2>
+                </div>
+            </Modal>
+            <Modal closable={false}
+                   open={isUpdated}
+                   footer={[]} // Empty array to hide buttons>
+            >
+                <div className="modal-content">
+                    <h2>Item Updated</h2>
+                </div>
+            </Modal>
             </ConfigProvider>
+
         </Card>
     );
 }
