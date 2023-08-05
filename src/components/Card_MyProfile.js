@@ -35,7 +35,6 @@ export default function MyCard (props) {
     };
 
     useEffect(() => {}, []);
-
     const handleItemInfoEdit = async (e) => {
         e.preventDefault();
         try {
