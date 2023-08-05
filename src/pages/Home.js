@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from "react"
+import React, {useContext, useState} from "react"
 import "../styles/Index.css"
 import "../styles/Home.css"
 import Feed_Main from "../components/Feed_Main"
