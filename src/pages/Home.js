@@ -24,7 +24,6 @@ export default function Home() {
 
     return (
         <div>
-
             {currentUser ?
                 (<MainHeader color={Colors.background_white} name={userName}/> )
                 :
