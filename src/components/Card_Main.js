@@ -9,7 +9,6 @@ import Colors from "../color";
 import "../styles/Card.css"
 import {StyledA} from "./Button";
 
-
 export default function MainCard(product) {
     const [isLikeToggledOn, setLikeToggledOn] = useState(product.isLiked);
     const [modalVisible, setModalVisible] = useState(false);

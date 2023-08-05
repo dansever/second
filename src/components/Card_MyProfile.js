@@ -11,14 +11,8 @@ import "../styles/Card.css"
 import {ref} from "firebase/storage";
 import Colors from "../color";
 import { BiDonateHeart } from "react-icons/bi";
-
 import {AuthContext} from "./AuthProvider";
-import Confetti from './Confetti';
-
-
 const { Option } = Select;
-
-
 
 export default function MyCard (props) {
     const [title, setTitle] = useState(props.title);
@@ -32,7 +26,6 @@ export default function MyCard (props) {
     const [markSoldModalVisible, setMarkSoldModalVisible] = useState(false);
     const [isDeleted, setIsDeleted] = useState(false);
     const [isUpdated, setIsUpdated] = useState(false);
-    const [isDonated, setIsDonated] = useState(false);
     const currentUser = useContext(AuthContext);
     const cardStyle =  {
         borderRadius: '10px',
@@ -42,7 +35,6 @@ export default function MyCard (props) {
     };
 
     useEffect(() => {}, []);
-
     const handleItemInfoEdit = async (e) => {
         e.preventDefault();
         try {
@@ -60,9 +52,6 @@ export default function MyCard (props) {
                     setIsUpdated(true);
                     console.log('Item updated successfully');
                     setTimeout(() => {setIsUpdated(false);}, 2000);
-                    // message.success(
-                    //     "Product updated successfully", 2,
-                    //     () => {console.log('Pop-up closed');});
                 })
         } catch (error) {
             console.log('Something went wrong, try again.');
@@ -93,10 +82,6 @@ export default function MyCard (props) {
                     setIsDeleted(true);
                     console.log('Item deleted successfully');
                     setTimeout(() => {setIsDeleted(false);}, 2000);
-
-                    // message.success(
-                    //     "Item deleted successfully", 2,
-                    //     () => {console.log('Pop-up closed');});
             })
             props.setCollectionToggle(!props.collectionToggle);
         } catch (error) {
@@ -343,15 +328,7 @@ export default function MyCard (props) {
                     <h2>Item deleted</h2>
                 </div>
             </Modal>
-                {/*<Modal*/}
-                {/*    closable={false}*/}
-                {/*    open={isConfettiModal} // Use the updated state variable*/}
-                {/*    footer={[]} // Empty array to hide buttons*/}
-                {/*>*/}
-                {/*    <div className="modal-content">*/}
-                {/*        <h2>Thanks for saving the world!</h2>*/}
-                {/*    </div>*/}
-                {/*</Modal>*/}
+
             <Modal closable={false}
                    open={isUpdated}
                    footer={[]}
