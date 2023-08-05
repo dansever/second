@@ -47,7 +47,7 @@ export const Onboarding = () => {
     const [step, setStep] = useState(1);
     const handleSignup = () => {
         // Redirect to signup page
-        navigate("/Signup");
+        navigate("/JoinTheCommunity");
     };
 
     const handleLogin = () => {
@@ -68,13 +68,14 @@ export const Onboarding = () => {
             {step === 1 && (
                  <Container>
                      <Div>
-                         <h2 style={{ color:Colors.green}} >Elevate Your Wardrobe with Unique Second-Hand Finds</h2>
+                         <h2 style={{ color:Colors.green}} >Elevate your wardrobe with unique second-hand finds</h2>
                          <Picture src={first}/>
                          <ButtonStyle
                              className={"submit-button"}
                              onClick={handleNext}>
                              Next
                          </ButtonStyle>
+                         <br/>
                          <div className={"new-user"}>
                              <p>Already have an account?</p>
                              <Button
@@ -89,13 +90,14 @@ export const Onboarding = () => {
              {step === 2 && (
                  <Container>
                      <Div>
-                         <h2 style={{ color:Colors.green}}>Make a Positive Environmental Change Through Fashion</h2>
+                         <h2 style={{ color:Colors.green}}>Say NO to fast fashion and create a positive environmental impact</h2>
                          <Picture src={second}/>
                          <ButtonStyle
                              className={"submit-button"}
                              onClick={handleNext}>
                              Next
                          </ButtonStyle>
+                         <br/>
                          <div className={"new-user"}>
                              <p>Already have an account?</p>
                              <button
@@ -110,13 +112,15 @@ export const Onboarding = () => {
              {step === 3 && (
                  <Container>
                      <Div>
-                         <h2 style={{ color:Colors.green}}>Find Out How Many CO2 You've Saved by Giving New Life to Your Clothes!</h2>
+                         <h2 style={{ color:Colors.green}}>Discover how much carbon emission you've reduced
+                             by giving new life to your old clothes!</h2>
                          <Picture src={co2}/>
                          <ButtonStyle
                              className={"submit-button"}
                              onClick={handleNext}>
                              Next
                          </ButtonStyle>
+                         <br/>
                          <div className={"new-user"}>
                              <p>Already have an account?</p>
                              <button
@@ -131,13 +135,14 @@ export const Onboarding = () => {
              {step === 4 && (
                  <Container>
                      <Div>
-                         <h2 style={{ color:Colors.green}}>Invite Your Friends & Swap Clothes With Them</h2>
+                         <h2 style={{ color:Colors.green}}>Invite your friends & swap clothes with them</h2>
                          <Picture src={third}/>
                          <ButtonStyle
                              className={"submit-button"}
                              onClick={handleNext}>
                              Next
                          </ButtonStyle>
+                         <br/>
                          <div className={"new-user"}>
                              <p>Already have an account?</p>
                              <button
@@ -152,12 +157,13 @@ export const Onboarding = () => {
              {step === 5 && (
              <Container>
                  <Div>
-                     <h2 style={{ color:Colors.green}}>Start Your Journey in Second Right Now!</h2>
+                     <h2 style={{ color:Colors.green}}>Let's get started! Sign up to join the Second community</h2>
                      <Picture src={last}/>
                      <ButtonStyle className={"submit-button"}
                                   onClick={handleSignup}>
                          Sign Up
                      </ButtonStyle>
+                     <br/>
                      <div className={"new-user"}>
                          <p>Already have an account?</p>
                          <Button

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {BrowserRouter , Routes, Route, Link, Navigate} from 'react-router-dom';
+import {BrowserRouter , Routes, Route} from 'react-router-dom';
 import Home from "./pages/Home";
 import Upload from "./pages/Upload";
 import LoginPage from "./pages/Login";
@@ -8,7 +8,7 @@ import SignUp from "./pages/SignUp";
 import AuthProvider from './components/AuthProvider';
 import Onboarding from "./pages/Onboarding";
 import LikedPage from "./pages/LikedPage";
-import {SignUPFriendCode} from "./pages/FriendCode";
+import {SignUpFriendCode} from "./pages/FriendCode";
 
 export default function App() {
     const [showOnboarding, setShowOnboarding] = useState(false);
@@ -28,30 +28,15 @@ export default function App() {
         <BrowserRouter>
             <AuthProvider>
                 <Routes>
-                    {showOnboarding && <Route path="/" element={<Onboarding />} />}
-                    {hasLoggedIn ? (
-                        <>
-                            <Route  path="/" element={<Navigate to="/Login" />} />
-                            <Route path="/Login" element={<LoginPage />} />
-                            <Route path="/Signup" element={<SignUp />} />
-                            <Route path="/JoinTheCommunity" element={<SignUPFriendCode />} />
-                            <Route path="/Home" element={<Home />} />
-                            <Route path="/Upload" element={<Upload />} />
-                            <Route path="/LikedPage" element={<LikedPage />} />
-                            <Route path="/Profile" element={<MyProfile />} />
-                        </>
-                    ) : (
-                        <>
-                            <Route path="/" element={<Home />}/>
-                            <Route path="/Login" element={<LoginPage />} />
-                            <Route path="/Signup" element={<SignUp />} />
-                            <Route path="/JoinTheCommunity" element={<SignUPFriendCode />} />
-                            <Route path="/Home" element={<Home />} />
-                            <Route path="/Upload" element={<Upload />} />
-                            <Route path="/LikedPage" element={<LikedPage />} />
-                            <Route path="/Profile" element={<MyProfile />}/>
-                        </>
-                    )}
+                    <Route path="/" element={<LoginPage />} />
+                    <Route path="/Login" element={<LoginPage />} />
+                    <Route path="/JoinTheCommunity" element={<SignUpFriendCode />} />
+                    <Route path="/Onboarding" element={<Onboarding />} />
+                    <Route path="/Signup" element={<SignUp />} />
+                    <Route path="/Home" element={<Home />} />
+                    <Route path="/Upload" element={<Upload />} />
+                    <Route path="/LikedPage" element={<LikedPage />} />
+                    <Route path="/Profile" element={<MyProfile />} />
                 </Routes>
             </AuthProvider>
         </BrowserRouter>

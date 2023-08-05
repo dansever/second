@@ -126,15 +126,7 @@ export default function MyCard (props) {
             await updateDoc( doc(db,'users',currentUser.uid),
                 {uploaded_items: arrayRemove(props.product_id)})
                 .then(() => {
-                    // setIsDonated(true);
-
                     console.log('Item deleted successfully');
-                    // setTimeout(() => {setIsDonated(false);}, 4000);
-
-                    // message.success(
-                    //     "Thanks For Saving the World", 2,
-                    //     () => {handleConfettiModal(e);}
-                    // );
                 })
 
             props.setCollectionToggle(!props.collectionToggle);
@@ -156,7 +148,7 @@ export default function MyCard (props) {
             props.setConfetti(true);
             props.setItemsDonated(props.itemsDonated + 1);
             props.setCo2Saved(props.co2Saved + 7.5);
-            // await handleConfettiModal(e);
+            setTimeout(() => {props.setConfetti(false);},4000);
         }  catch (error) {
             console.log('Something went wrong');
         }
@@ -164,11 +156,6 @@ export default function MyCard (props) {
 
 
     };
-
-    const handleConfettiModal = async (e) =>
-    {
-
-    }
 
     return (
         <Card style={cardStyle}>
