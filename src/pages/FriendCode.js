@@ -12,7 +12,7 @@ const Picture = styled.img`
     height: 30%;
     object-fit: cover;
 `;
-export const SignUPFriendCode = () => {
+export const SignUpFriendCode = () => {
     const [friendCode, setFriendCode] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
