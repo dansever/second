@@ -237,19 +237,20 @@ export default function MainHeader(props) {
                 onCancel={() => {setHowToModalVisible(false)}}
                 footer={[]}
             >
-                <h2 style={{color:Colors.green}}>How To Use Second</h2>
+                <h2 style={{color:Colors.green, fontWeight:"600"}}>How To Use Second</h2>
                 <div className={"how-to-modal"}>
-                    <h3 style={{color:Colors.green}}>Looking to donate a clothing item?</h3>
-                    <h3 style={{fontWeight:"normal"}}>1. Take photo of item</h3>
-                    <h3 style={{fontWeight:"normal"}}>2. Upload item to App</h3>
-                    <h3 style={{fontWeight:"normal"}}>3. Receive message from community member</h3>
-                    <h3 style={{fontWeight:"normal"}}>4. Arrange meeting with member</h3>
-                    <h3 style={{fontWeight:"normal"}}>5. Give item & select "Given" in Profile page</h3>
-                    <div/>
+                    <h3 style={{color:Colors.green}}>Looking to give away a clothing item?</h3>
+                    <p>1. Take a photo of the item</p>
+                    <p>2. Upload item information</p>
+                    <p>3. Receive message from a community member</p>
+                    <p>4. Arrange meeting at specific time & place</p>
+                    <p>5. Give item and select "Item Given" in Profile page</p>
+                    <br/>
                     <h3 style={{color:Colors.green}}>In search for new clothes?</h3>
-                    <h3 style={{fontWeight:"normal"}}>1. Search feed for items </h3>
-                    <h3 style={{fontWeight:"normal"}}>2. Save items for later by pressing Like button</h3>
-                    <h3 style={{fontWeight:"normal"}}>3. Contact seller and arrange meeting </h3>
+                    <p>1. Search feed for liked items </p>
+                    <p>2. Like to save for later or contact seller immediately</p>
+                    <p>3. Contact seller and arrange meeting </p>
+
                 </div>
             </Modal>
 

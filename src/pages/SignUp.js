@@ -71,6 +71,7 @@ export const SignUp = () => {
                 friends_add: 0,
                 items_given: 0,
                 liked_items: [],
+                first_time: true,
                 neighborhood: neighborhood,
                 phone_number: phoneNumber,
                 uploaded_items: [],
