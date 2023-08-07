@@ -4,7 +4,6 @@ import "../styles/Login.css"
 import { auth } from "../firebase"
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {Input, ConfigProvider} from "antd";
-// import logo from "../assets/Second_logo.png"
 import styled from "styled-components";
 import {ButtonStyle} from "../components/Button";
 import green_logo from "../assets/images/green_logo.png";
@@ -12,6 +11,7 @@ import green_logo from "../assets/images/green_logo.png";
 const Picture = styled.img`
     height: 30%;
 `;
+
 export const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -28,20 +28,14 @@ export const LoginPage = () => {
         }
     };
 
-    const handleSignup = () => {
-        // Redirect to signup page
-        // navigate("/Signup");
-        navigate("/JoinTheCommunity");
-    };
-
     return (
         <div className={"main-container"}>
             <Picture src={green_logo}/>
             <header><h1>Welcome Back!</h1></header>
-            {error && <p
-                style={{color: 'red'}}>{error}</p>}
+            {error && <p style={{color: 'red'}}>{error}</p>}
 
-            <form onSubmit={handleLogin}>
+            <form
+                onSubmit={handleLogin}>
                 <ConfigProvider
                     theme={{
                         "token": {
@@ -53,6 +47,7 @@ export const LoginPage = () => {
                         },
                     }}
                 >
+
                 <Input
                     type="email"
                     value={email}
@@ -76,11 +71,10 @@ export const LoginPage = () => {
                 <p>Don't have an account?</p>
                 <button
                     className={"sign-up-button"}
-                    onClick={handleSignup}>
+                    onClick={() => navigate("/Onboarding")}>
                     Sign Up
                 </button>
             </div>
-
         </div>
     )
 }

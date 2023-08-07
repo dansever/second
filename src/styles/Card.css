@@ -4,7 +4,6 @@
     height: 100%;
     align-content: center;
     align-items: center;
-    /*margin: 3px;*/
 }
 
 h2 {
@@ -20,6 +19,8 @@ h2 {
     overflow: hidden;
     flex: 7;
     border-radius: 10px 10px 0 0 ;
+    width: 45vw;
+    height: 23vh;
 }
 
 .img-box img {

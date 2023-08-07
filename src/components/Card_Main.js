@@ -9,7 +9,6 @@ import Colors from "../color";
 import "../styles/Card.css"
 import {StyledA} from "./Button";
 
-
 export default function MainCard(product) {
     const [isLikeToggledOn, setLikeToggledOn] = useState(product.isLiked);
     const [modalVisible, setModalVisible] = useState(false);
@@ -23,7 +22,10 @@ export default function MainCard(product) {
         borderRadius: '10px',
         boxShadow:  'rgba(149, 157, 165, 0.2) px 8px 24px',
         cursor: 'pointer',
-        backgroundColor: Colors.background_white
+        backgroundColor: Colors.background_white,
+        // width: '45vw',
+        // height: '35vh',
+        // margin: '10px',
      };
 
     const likeAction = () => {

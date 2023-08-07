@@ -83,3 +83,12 @@
     align-items: center;
 }
 
+.empty_feed{
+    align-items: center;
+    text-align: center;
+}
+
+.feed-title{
+    margin-top: 20px;
+}
+

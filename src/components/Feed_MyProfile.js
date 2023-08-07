@@ -29,33 +29,47 @@ export default function Feed_MyProfile(
         getProductList();
     }, [collectionToggle]);
 
+
+    if (isLoading) {
+        return(
+            <div className="loading_feed">Loading...</div>
+        )
+    }
+
     return (
         <div className="feed">
-            <Row gutter={[16, 16]}>
-                {productsList.map((product, index) => (
-                    <Col span={12}
-                         key={index}>
-                        <MyCard
-                            isLiked = {false}
-                            brand={product.brand}
-                            condition={product.condition}
-                            gender={product.gender}
-                            image_url={product.image_url}
-                            product_id = {product.product_id}
-                            size={product.size}
-                            title={product.title}
-                            type={product.type}
-                            setItemsDonated = {setItemsDonated}
-                            itemsDonated = {itemsDonated}
-                            setCo2Saved = {setCo2Saved}
-                            co2Saved = {co2Saved}
-                            collectionToggle = {collectionToggle}
-                            setCollectionToggle = {setCollectionToggle}
-                            setConfetti = {setConfetti}
-                        />
-                    </Col>
-                ))}
-            </Row>
+            {productsList.length === 0 ? (
+                <div className="empty_feed">
+                    <Picture src={last}/>
+                    <p>You didn't upload items yet!</p>
+                </div>
+            ) : (
+                <Row gutter={[16, 16]}>
+                    {productsList.map((product, index) => (
+                        <Col span={12}
+                             key={index}>
+                            <MyCard
+                                isLiked = {false}
+                                brand={product.brand}
+                                condition={product.condition}
+                                gender={product.gender}
+                                image_url={product.image_url}
+                                product_id = {product.product_id}
+                                size={product.size}
+                                title={product.title}
+                                type={product.type}
+                                setItemsDonated = {setItemsDonated}
+                                itemsDonated = {itemsDonated}
+                                setCo2Saved = {setCo2Saved}
+                                co2Saved = {co2Saved}
+                                collectionToggle = {collectionToggle}
+                                setCollectionToggle = {setCollectionToggle}
+                                setConfetti = {setConfetti}
+                            />
+                        </Col>
+                    ))}
+                </Row>
+                )}
             {isConfetti && <Confetti/>}
         </div>
     );
