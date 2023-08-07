@@ -133,7 +133,7 @@ export const SignUp = () => {
                     onChange={(e) => setPhoneNumber(e.target.value)}
                 />
                 <Input
-                    type="email" value={email} placeholder="Enter university email address"
+                    type="email" value={email} placeholder="Enter email address"
                     required
                     onChange={(e) => setEmail(e.target.value)}/>
                 <Input

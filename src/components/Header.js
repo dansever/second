@@ -250,6 +250,7 @@ export default function MainHeader(props) {
                     <p>1. Search feed for liked items </p>
                     <p>2. Like to save for later or contact seller immediately</p>
                     <p>3. Contact seller and arrange meeting </p>
+
                 </div>
             </Modal>
 
