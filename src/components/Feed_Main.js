@@ -66,13 +66,14 @@ export default function Feed_Main() {
         )
     }
 
-    const isPassFilter = ({size, gender, condition, type, seller_neighborhood}) => {
+    const isPassFilter = ({size, gender, condition, type, seller_neighborhood, seller_uid}) => {
+        const passUserId = seller_uid !== currentUser.uid;
         const passSize = !filter.size || filter.size.includes(size);
         const passGender = !filter.gender || filter.gender.includes(gender);
         const passCondition = !filter.condition || filter.condition.includes(condition);
         const passType = !filter.type || filter.type.includes(type);
         const passNeighborhood = neighborhoodFilter.length === 0 || neighborhoodFilter.includes(seller_neighborhood);
-        return passSize && passGender && passType && passCondition && passNeighborhood;
+        return passSize && passGender && passType && passCondition && passNeighborhood && passUserId;
     };
 
     const isLiked = (product_id) => {
