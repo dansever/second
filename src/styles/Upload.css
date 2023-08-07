@@ -1,7 +1,3 @@
-form h3 {
-    margin-bottom: 0;
-}
-
 .upload-container {
     overflow: auto;
     padding: 0 15px 60px 15px;
@@ -10,7 +6,6 @@ form h3 {
     height: 80vh;
     row-gap: 20px;
 }
-
 
 .modal-content {
     display:flex;
@@ -24,6 +19,7 @@ form h3 {
     margin-bottom: 10px;
     align-items: center;
 }
+
 .add-pic{
     white-space:nowrap;
 }
@@ -31,6 +27,7 @@ form h3 {
     content: "*";
     color: red
 }
+
 .button {
     display: flex;
     justify-content: center;
@@ -43,7 +40,6 @@ form h3 {
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
-
 }
 
 .file-form-row {
