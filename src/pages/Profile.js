@@ -116,7 +116,7 @@ export default function MyProfile() {
             </div>
 
             <div className={"feed-container"}>
-                <h2 >Uploaded Items</h2>
+                <h2 className="feed-title" >Uploaded Items</h2>
                 <Feed_MyProfile
                     setItemsDonated = {setItemsDonated}
                     itemsDonated = {itemsDonated}

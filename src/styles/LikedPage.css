@@ -13,3 +13,9 @@
 .feed{
     padding: 10px;
 }
+
+.empty_feed{
+    /*flex-direction: column; !* Arrange children vertically *!*/
+    /*justify-content: center; !* Center vertically *!*/
+    /*align-items: center;*/
+}
