@@ -6,6 +6,17 @@ import {db} from "../firebase";
 import MyCard from "./Card_MyProfile";
 import {AuthContext} from "./AuthProvider";
 import Confetti from './Confetti';
+import first from "../assets/images/first.png";
+import styled from "styled-components";
+import last from "../assets/images/last.png";
+
+
+const Picture = styled.img`
+    width: 80%;
+    height: 80%;
+    margin-top: 7vh;
+    object-fit: cover;
+`;
 
 export default function Feed_MyProfile(
     {setItemsDonated, itemsDonated, setCo2Saved, co2Saved}) {
@@ -14,6 +25,7 @@ export default function Feed_MyProfile(
     const currentUser = useContext(AuthContext);
     const [collectionToggle, setCollectionToggle] = useState(false);
     const [isConfetti, setConfetti] = useState(false);
+    const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
         const getProductList = async () => {
@@ -26,7 +38,7 @@ export default function Feed_MyProfile(
                 console.error(err);
             }
         };
-        getProductList();
+        getProductList().then(() => setLoading(false));
     }, [collectionToggle]);
 
 
