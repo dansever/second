@@ -20,12 +20,12 @@
 
 .personal-info-table .ant-descriptions-item-label {
     font-weight: bold;
-    font-family: 'Lora', serif;
+    /*font-family: 'Lora', serif;*/
     font-size: 16px;
 }
 
 .personal-info-table .ant-descriptions-item-content {
-    font-family: 'Lora', serif;
+    /*font-family: 'Lora', serif;*/
     font-size: 16px;
 }
 

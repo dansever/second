@@ -10,13 +10,14 @@ import first from "../assets/images/first.png";
 import styled from "styled-components";
 import last from "../assets/images/last.png";
 
+
 const Picture = styled.img`
     width: 80%;
     height: 80%;
     margin-top: 7vh;
     object-fit: cover;
-  
 `;
+
 export default function Feed_MyProfile(
     {setItemsDonated, itemsDonated, setCo2Saved, co2Saved}) {
     const [productsList, setProductsList] = useState([]);
@@ -49,7 +50,6 @@ export default function Feed_MyProfile(
 
     return (
         <div className="feed">
-            {isConfetti && <Confetti/>}
             {productsList.length === 0 ? (
                 <div className="empty_feed">
                     <Picture src={last}/>
@@ -82,6 +82,7 @@ export default function Feed_MyProfile(
                     ))}
                 </Row>
                 )}
+            {isConfetti && <Confetti/>}
         </div>
     );
 };

@@ -296,6 +296,7 @@ function App() {
 
             <Modal className={"loading-modal"}
                    open={isLoading}
+                   centered
                    closable={false}
                    footer={[]}
             >

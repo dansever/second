@@ -100,5 +100,6 @@ textarea:focus {
 .loading {
     width: 20%;
     display: flex;
+    justify-content: center;
 }
 
