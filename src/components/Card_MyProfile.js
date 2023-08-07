@@ -156,6 +156,7 @@ export default function MyCard (props) {
             props.setConfetti(true);
             props.setItemsDonated(props.itemsDonated + 1);
             props.setCo2Saved(props.co2Saved + 7.5);
+            setTimeout(() => {props.setConfetti(false);}, 4000);
             // await handleConfettiModal(e);
         }  catch (error) {
             console.log('Something went wrong');
@@ -164,11 +165,6 @@ export default function MyCard (props) {
 
 
     };
-
-    const handleConfettiModal = async (e) =>
-    {
-
-    }
 
     return (
         <Card style={cardStyle}>

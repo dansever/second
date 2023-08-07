@@ -3,7 +3,7 @@
     --off_white: #F5f5f5;
     --green: #11998E;
     --background_white: #F7F7F7;
-    --light_green: #38ef7d;
+    --light_green:#38efab;
 }
 
 html, body {
@@ -11,7 +11,9 @@ html, body {
     margin: 0;
     padding: 0;
     position:relative;
-    font-family: 'Syne', sans-serif;
+    /*font-family: 'Lato';*/
+    font-family: 'Montserrat', sans-serif;
+    /*font-family: 'Junction', sans-serif;*/
 }
 
 .page_header {
@@ -19,22 +21,37 @@ html, body {
     display: flex;
     justify-content: center;
     width: 100%;
-    font-family: 'Syne', sans-serif;
+    /*font-family: 'Lato';*/
+    font-family: 'Montserrat', sans-serif;
+    /*font-family: 'Poppins', sans-serif;;*/
+    /*font-family: 'Syne', sans-serif;*/
     font-size: 30px;
-    font-weight: 700;
+    font-weight: 500;
 }
-h4 {
-    font-weight:600;
+h4, h2 {
+    font-weight:500;
+    /*font-family: 'Poppins', sans-serif;*/
+    /*font-family: 'Lato';*/
+    /*font-family: 'Junction', sans-serif;*/
     font-family: 'Montserrat', sans-serif;
 }
 
 p, h5 {
-    font-weight: 500;
+    font-weight: 400;
     font-family: 'Montserrat', sans-serif;
+    /*font-family: 'Poppins', sans-serif;;*/
+    /*font-family: 'Lato';*/
+    /*font-family: 'Junction', sans-serif;*/
+
 }
 
-h1, h2, h3{
-    font-family: 'Syne', sans-serif;
+h1, h3{
+    /*font-family: 'Junction', sans-serif;*/
+    font-family: 'Montserrat', sans-serif;
+    /*font-family: 'Lato';*/
+
+    /*font-family: 'Poppins', sans-serif;;*/
+    /*font-family: 'Syne', sans-serif;*/
     font-weight: 700;
 }
 

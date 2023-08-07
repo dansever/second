@@ -90,7 +90,7 @@ export const SignUPFriendCode = () => {
                     }}
                 >
                 <Picture src={green_logo}/>
-                <header><h1>Join Second Community!</h1></header>
+                <header><h4 style={{fontSize:"30px", display:"inline", textAlign: "center"}}>Join the <h3 style={{display:"inline"}}>Second</h3> Community!</h4></header>
                 {error && <p
                     style={{color: 'red'}}>{error}</p>}
                 <p>ask a community member to get his join code</p>

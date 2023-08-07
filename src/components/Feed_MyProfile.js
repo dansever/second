@@ -31,7 +31,6 @@ export default function Feed_MyProfile(
 
     return (
         <div className="feed">
-            {isConfetti && <Confetti/>}
             <Row gutter={[16, 16]}>
                 {productsList.map((product, index) => (
                     <Col span={12}
@@ -57,6 +56,7 @@ export default function Feed_MyProfile(
                     </Col>
                 ))}
             </Row>
+            {isConfetti && <Confetti/>}
         </div>
     );
 };
