@@ -239,16 +239,16 @@ export default function MainHeader(props) {
             >
                 <h2 style={{color:Colors.green}}>How To Use Second</h2>
                 <div className={"how-to-modal"}>
-                    <h3 style={{color:Colors.green}}>Looking to give away a clothing item?</h3>
-                    <h3 style={{fontWeight:"normal"}}>1. Take a photo of the item</h3>
-                    <h3 style={{fontWeight:"normal"}}>2. Upload item information</h3>
-                    <h3 style={{fontWeight:"normal"}}>3. Receive message from a community member</h3>
-                    <h3 style={{fontWeight:"normal"}}>4. Arrange meeting at specific time & place</h3>
+                    <h3 style={{color:Colors.green}}>Looking to donate a clothing item?</h3>
+                    <h3 style={{fontWeight:"normal"}}>1. Take photo of item</h3>
+                    <h3 style={{fontWeight:"normal"}}>2. Upload item to App</h3>
+                    <h3 style={{fontWeight:"normal"}}>3. Receive message from community member</h3>
+                    <h3 style={{fontWeight:"normal"}}>4. Arrange meeting with member</h3>
                     <h3 style={{fontWeight:"normal"}}>5. Give item & select "Given" in Profile page</h3>
-                    <br/>
+                    <div/>
                     <h3 style={{color:Colors.green}}>In search for new clothes?</h3>
-                    <h3 style={{fontWeight:"normal"}}>1. Search feed for liked items </h3>
-                    <h3 style={{fontWeight:"normal"}}>2. Save item for later by pressing Like button</h3>
+                    <h3 style={{fontWeight:"normal"}}>1. Search feed for items </h3>
+                    <h3 style={{fontWeight:"normal"}}>2. Save items for later by pressing Like button</h3>
                     <h3 style={{fontWeight:"normal"}}>3. Contact seller and arrange meeting </h3>
                 </div>
             </Modal>

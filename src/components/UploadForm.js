@@ -147,7 +147,9 @@ function App() {
         <div>
             <form onSubmit={handleFormSubmit }>
                 <div className={"form-row-img"}>
-                    <label className={"add-pic"} htmlFor="fileInput"> Add image </label>
+                    <label className={"add-pic"} htmlFor="fileInput">
+                        Image
+                    </label>
                     <input
                         className={"upload-file-button"}
                         id="fileInput"
