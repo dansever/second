@@ -172,112 +172,128 @@ function App() {
                     }}
                 >
 
-                <div className={"form-row"}>
+                    <div className={"form-row"}>
 
-                    <label>Title</label>
-                    <Input
-                        value={newTitle}
-                        placeholder="Enter title..."
-                        type="text"
-                        required
-                        onChange={(e) => setNewTitle(e.target.value)}
-                    />
-                </div>
+                        <label>Title</label>
+                        <Input
+                            value={newTitle}
+                            placeholder="Enter title..."
+                            type="text"
+                            required
+                            onChange={(e) => setNewTitle(e.target.value)}
+                        />
+                    </div>
 
-                <div className={"form-row"}>
-                    <label>Brand</label>
-                    <Input
-                        value={newBrand}
-                        placeholder="Enter brand..."
-                        type="text"
-                        onChange={(e) => setNewBrand(e.target.value)}
-                    />
-                </div>
+                    <div className={"form-row"}>
+                        <label>Brand</label>
+                        <Input
+                            value={newBrand}
+                            placeholder="Enter brand..."
+                            type="text"
+                            onChange={(e) => setNewBrand(e.target.value)}
+                        />
+                    </div>
 
-                <div className={"form-row"}>
-                    <label>Type</label>
-                    <Form.Item
-                        style={{marginBottom:"0"}}>
-                        <Select
-                            value={newType}
-                            placeholder="Select type..."
-                            onChange={handleTypeChange}
-                            style = {{width: '200px',}}>
+                    <div className={"form-row"}>
+                        <label>Type</label>
+                        <Form.Item
+                            name={"type"}
+                            style={{marginBottom:"0"}}
+                        >
+                            <Select
+                                value={newType}
+                                placeholder="Select type..."
+                                onChange={handleTypeChange}
+                                style = {{width: '200px',}}
                             >
-                            {typeOptions.map((type_) => (
-                                <Option key={type_} value={type_}>
-                                    {type_}
-                                </Option>
-                            ))}
-                        </Select>
-                    </Form.Item>
-                </div>
+                                {typeOptions.map((type_) => (
+                                    <Option key={type_} value={type_}>
+                                        {type_}
+                                    </Option>
+                                ))}
+                            </Select>
+                        </Form.Item>
+                    </div>
 
-                <div className={"form-row"}>
-                    <label>Size</label>
-                    <Form.Item
-                        style={{marginBottom:"0"}}>
-                        <Select
-                            value={newSize}
-                            placeholder="Select size..."
-                            onChange={handleSizeChange}
-                            style = {{width: '200px'}}>
+                    <div className={"form-row"}>
+                        <label>Size</label>
+                        <Form.Item
+                            name={"size"}
+                            style={{marginBottom:"0"}}
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please select a size',
+                                },
+                            ]}
+                        >
+                            <Select
+                                value={newSize}
+                                placeholder="Select size..."
+                                onChange={handleSizeChange}
+                                style = {{width: '200px'}}
                             >
-                            {sizeOptions.map((size) => (
-                                <Option key={size} value={size}>
-                                    {size}
-                                </Option>
-                            ))}
-                        </Select>
-                    </Form.Item>
-                </div>
+                                {sizeOptions.map((size) => (
+                                    <Option key={size} value={size}>
+                                        {size}
+                                    </Option>
+                                ))}
+                            </Select>
+                        </Form.Item>
+                    </div>
 
-                <div className={"form-row"}>
-                    <label>Gender</label>
-                    <Form.Item
-                        style={{marginBottom:"0"}}>
-                        <Select
-                            value={newGender}
-                            placeholder="Select gender..."
-                            onChange={handleGenderChange}
-                            style = {{width: '200px'}}>
+                    <div className={"form-row"}>
+                        <label>Gender</label>
+                        <Form.Item
+                            name={"gender"}
+                            style={{marginBottom:"0"}}
+                        >
+                            <Select
+                                value={newGender}
+                                placeholder="Select gender..."
+                                onChange={handleGenderChange}
+                                style = {{width: '200px'}}
                             >
-                            {genderOptions.map((gender) => (
-                                <Option key={gender} value={gender}>
-                                    {gender}
-                                </Option>
-                            ))}
-                        </Select>
-                    </Form.Item>
-                </div>
+                                {genderOptions.map((gender) => (
+                                    <Option key={gender} value={gender}>
+                                        {gender}
+                                    </Option>
+                                ))}
+                            </Select>
+                        </Form.Item>
+                    </div>
 
-                <div className={"form-row"}>
-                    <label>Condition</label>
-                    <Form.Item
-                        style={{marginBottom:"0"}}>
-                        <Select
-                            value={newCondition}
-                            placeholder="Select condition..."
-                            onChange={handleConditionChange}
-                            style = {{width: '200px'}}>
+                    <div className={"form-row"}>
+                        <label>Condition</label>
+                        <Form.Item
+                            name={"condition"}
+                            style={{marginBottom:"0"}}
+                        >
+                            <Select
+                                value={newCondition}
+                                placeholder="Select condition..."
+                                onChange={handleConditionChange}
+                                style = {{width: '200px'}}
                             >
-                            {conditionOptions.map((_condition) => (
-                                <Option key={_condition} value={_condition}>
-                                    {_condition}
-                                </Option>
-                            ))}
-                        </Select>
-                    </Form.Item>
-                </div>
+                                {conditionOptions.map((_condition) => (
+                                    <Option key={_condition} value={_condition}>
+                                        {_condition}
+                                    </Option>
+                                ))}
+                            </Select>
+                        </Form.Item>
+                    </div>
 
-                <div className={"button"}>
-                    <ButtonStyle type="submit">
-                        Add To Shop
-                    </ButtonStyle>
-                </div>
-            </ConfigProvider>
+                    <div className={"button"}>
+                        <ButtonStyle type="submit">
+                            Add To Shop
+                        </ButtonStyle>
+                    </div>
+
+                </ConfigProvider>
 
             </form>
+
             <Modal className={"loading-modal"}
                    open={isLoading}
                    closable={false}
