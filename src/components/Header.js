@@ -45,6 +45,7 @@ export default function MainHeader(props) {
 
     const [aboutModalVisible, setAboutModalVisible] = useState(false);
     const [settingsModalVisible, setSettingsModalVisible] = useState(false);
+    const [howToModalVisible, setHowToModalVisible] = useState(false);
 
     useEffect(() => {
         const UserRef = doc(db,'users',currentUser.uid);
@@ -76,16 +77,20 @@ export default function MainHeader(props) {
 
     const items = [
         {
-            label: <a onClick={() => setAboutModalVisible(true)}>About</a>,
+            label: <a onClick={() => setHowToModalVisible(true)}>How To?</a>,
             key: '0',
         },
         {
-            label: <a onClick={() => setSettingsModalVisible(true)}>Settings</a>,
+            label: <a onClick={() => setAboutModalVisible(true)}>About</a>,
             key: '1',
         },
         {
-            label: <a onClick={handleSignOut}>Sign Out</a>,
+            label: <a onClick={() => setSettingsModalVisible(true)}>Settings</a>,
             key: '2',
+        },
+        {
+            label: <a onClick={handleSignOut}>Sign Out</a>,
+            key: '3',
         }
     ];
 
@@ -201,21 +206,20 @@ export default function MainHeader(props) {
             >
                 <h2 style={{color:Colors.green}}>About Second</h2>
                 <div className={"about-second-modal"}>
-                    <h3>At second we care about building a strong student community
-                        while promoting a positive environmental impact.</h3>
-                    <h3>Our goal is to help:</h3>
+                    <h3>Our goal is to build a strong student community
+                        while promoting for positive environmental impact. How?</h3>
                     <h3 style={{fontWeight:"bold", color:Colors.green}}>
                         1. Reduce Carbon Emissions
                     </h3>
                     <p>
-                        The fashion industry is one of the worlds biggest polluters.
-                        Each recycled clothing item saves 7.5kg of C02 on average
+                        The fashion industry is incredibly harmful to the environment.
+                        Each reused clothing item reduces 7.5kg of C02 on average
                     </p>
                     <h3 style={{fontWeight:"bold", color:Colors.green}}>
                         2. Save Money
                     </h3>
                     <p>
-                        Our shared-fashion community allows us to enjoy a diverse
+                        Our shared-fashion community allows us to enjoy a diverse and fashionable
                         wardrobe while staying on budget
                     </p>
                     <h3 style={{fontWeight:"bold", color:Colors.green}}>
@@ -226,6 +230,29 @@ export default function MainHeader(props) {
                     </p>
                 </div>
             </Modal>
+
+            {/*HOW TO MODAL*/}
+            <Modal
+                open={howToModalVisible}
+                onCancel={() => {setHowToModalVisible(false)}}
+                footer={[]}
+            >
+                <h2 style={{color:Colors.green}}>How To Use Second</h2>
+                <div className={"how-to-modal"}>
+                    <h3>Looking to give away a clothing item?</h3>
+                    <h3 style={{fontWeight:"normal", color:Colors.green}}>1. Take a photo of the item</h3>
+                    <h3 style={{fontWeight:"normal", color:Colors.green}}>2. Upload item information</h3>
+                    <h3 style={{fontWeight:"normal", color:Colors.green}}>3. Receive message from a community member</h3>
+                    <h3 style={{fontWeight:"normal", color:Colors.green}}>4. Arrange meeting at specific time & place</h3>
+                    <h3 style={{fontWeight:"normal", color:Colors.green}}>5. Give item and select "Item Given" in Profile page</h3>
+                    <br/>
+                    <h3>In search for new clothes?</h3>
+                    <h3 style={{fontWeight:"normal", color:Colors.green}}>1. Search feed for liked items </h3>
+                    <h3 style={{fontWeight:"normal", color:Colors.green}}>2. Like to save for later or contact seller immediately</h3>
+                    <h3 style={{fontWeight:"normal", color:Colors.green}}>3. Contact seller and arrange meeting </h3>
+                </div>
+            </Modal>
+
 
         </HeaderContainer>
     );
