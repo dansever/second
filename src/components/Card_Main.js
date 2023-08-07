@@ -23,7 +23,10 @@ export default function MainCard(product) {
         borderRadius: '10px',
         boxShadow:  'rgba(149, 157, 165, 0.2) px 8px 24px',
         cursor: 'pointer',
-        backgroundColor: Colors.background_white
+        backgroundColor: Colors.background_white,
+        // width: '45vw',
+        // height: '35vh',
+        // margin: '10px',
      };
 
     const likeAction = () => {

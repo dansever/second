@@ -5,12 +5,22 @@ import {collection, getDocs, query, where, documentId} from 'firebase/firestore'
 import {db} from "../firebase";
 import {AuthContext} from "./AuthProvider";
 import MainCard from "./Card_Main";
+import first from "../assets/images/first.png";
+import styled from "styled-components";
 
+const Picture = styled.img`
+    width: 300px;
+    height: 100%;
+    margin-top: 15vh;
+    object-fit: cover;
+  
+`;
 export default function Feed_Liked() {
     const [likedProductsList, setLikedProductsList] = useState([]);
     const currentUser = useContext(AuthContext);
     const productsCollectionRef = collection(db,'products');
     const usersCollectionRef = collection(db,'users');
+    const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
         const getProductList = async () => {
@@ -37,32 +47,45 @@ export default function Feed_Liked() {
                 console.error(err);
             }
         };
-        getProductList();
+        getProductList().then(() => setLoading(false));
     }, []);
+
+    if (isLoading) {
+        return(
+            <div className="loading_feed">Loading...</div>
+        )
+    }
 
     return (
         <div>
             <div className="feed">
-                <Row gutter={[16, 16]}>
-                    {likedProductsList.map((product, index) => (
-                    <Col span={12}
-                         key={index}>
-                        <MainCard
-                            isLiked = {true}
-                            product_id = {product.id}
-                            title={product.title}
-                            seller_uid={product.seller_uid}
-                            type={product.type}
-                            gender={product.gender}
-                            image_url={product.image_url}
-                            brand={product.brand}
-                            size={product.size}
-                            condition={product.condition}
-                        />
-                    </Col>
-                ))}
-            </Row>
-        </div>
+                {likedProductsList.length === 0 ? (
+                    <div className="empty_feed">
+                        <Picture src={first}/>
+                        <p>There are no liked items yet!</p>
+                    </div>
+                ) : (
+                    <Row gutter={[16, 16]}>
+                        {likedProductsList.map((product, index) => (
+                        <Col span={12}
+                             key={index}>
+                            <MainCard
+                                isLiked = {true}
+                                product_id = {product.id}
+                                title={product.title}
+                                seller_uid={product.seller_uid}
+                                type={product.type}
+                                gender={product.gender}
+                                image_url={product.image_url}
+                                brand={product.brand}
+                                size={product.size}
+                                condition={product.condition}
+                            />
+                        </Col>
+                    ))}
+                </Row>
+                )}
+            </div>
         </div>
     );
 };
