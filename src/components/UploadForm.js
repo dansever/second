@@ -147,9 +147,7 @@ function App() {
         <div>
             <form onSubmit={handleFormSubmit }>
                 <div className={"form-row-img"}>
-                    <label className={"add-pic"} htmlFor="fileInput">
-                        Add image
-                    </label>
+                    <label className={"add-pic"} htmlFor="fileInput"> Add image </label>
                     <input
                         className={"upload-file-button"}
                         id="fileInput"
@@ -177,7 +175,7 @@ function App() {
                         <label>Title</label>
                         <Input
                             value={newTitle}
-                            placeholder="Enter title..."
+                            // placeholder="Enter title..."
                             type="text"
                             required
                             onChange={(e) => setNewTitle(e.target.value)}
@@ -188,7 +186,7 @@ function App() {
                         <label>Brand</label>
                         <Input
                             value={newBrand}
-                            placeholder="Enter brand..."
+                            // placeholder="Enter brand..."
                             type="text"
                             onChange={(e) => setNewBrand(e.target.value)}
                         />
@@ -197,7 +195,7 @@ function App() {
                     <div className={"form-row"}>
                         <label>Type</label>
                         <Form.Item
-                            name={"type"}
+                            // name={"type"}
                             style={{marginBottom:"0"}}
                         >
                             <Select
@@ -218,7 +216,7 @@ function App() {
                     <div className={"form-row"}>
                         <label>Size</label>
                         <Form.Item
-                            name={"size"}
+                            // name={"size"}
                             style={{marginBottom:"0"}}
                             rules={[
                                 {
@@ -245,7 +243,7 @@ function App() {
                     <div className={"form-row"}>
                         <label>Gender</label>
                         <Form.Item
-                            name={"gender"}
+                            // name={"gender"}
                             style={{marginBottom:"0"}}
                         >
                             <Select
@@ -266,7 +264,7 @@ function App() {
                     <div className={"form-row"}>
                         <label>Condition</label>
                         <Form.Item
-                            name={"condition"}
+                            // name={"condition"}
                             style={{marginBottom:"0"}}
                         >
                             <Select
