@@ -1,9 +1,7 @@
 import {Input, ConfigProvider} from "antd";
 import React, {useState} from "react";
 import { useNavigate  } from 'react-router-dom';
-import {signInWithEmailAndPassword} from "firebase/auth";
-import {auth, db} from "../firebase";
-// import logo from "../assets/Second_logo.png";
+import {db} from "../firebase";
 import styled from "styled-components";
 import {collection, doc, getDoc, getDocs, updateDoc} from "firebase/firestore";
 import {ButtonStyle} from "../components/Button";
@@ -14,7 +12,7 @@ const Picture = styled.img`
     height: 30%;
     object-fit: cover;
 `;
-export const SignUPFriendCode = () => {
+export const SignUpFriendCode = () => {
     const [friendCode, setFriendCode] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -27,7 +25,6 @@ export const SignUPFriendCode = () => {
                 doc.data()["user_code"].toString()
             );
             console.log(filteredData);
-            // await signInWithEmailAndPassword(auth, email, password);
             if (filteredData.includes(friendCode)){
                 increaseFriendCount();
                 navigate("/SignUp");
@@ -43,7 +40,6 @@ export const SignUPFriendCode = () => {
     const increaseFriendCount = async () => {
         let friendId = 0;
         const data = await getDocs(usersCollectionRef);
-        // eslint-disable-next-line array-callback-return
         data.docs.map((doc) => {
             if(doc.data()["user_code"].toString()===friendCode){
                 friendId = doc.id;
@@ -71,7 +67,7 @@ export const SignUPFriendCode = () => {
             }
         }).catch((error) => {
             console.log("Error updating document:", error);
-            // Handle the error case.
+            // Handle error
         });
     }
 
@@ -90,20 +86,19 @@ export const SignUPFriendCode = () => {
                     }}
                 >
                 <Picture src={green_logo}/>
-                <header><h1>Join Second Community!</h1></header>
+                <header><h1>Join the Second Community!</h1></header>
                 {error && <p
                     style={{color: 'red'}}>{error}</p>}
-                <p>ask a community member to get his join code</p>
+                <p>Ask a community member for his user code</p>
                 <form onSubmit={handleSend}>
                     <Input
-                        // type="string"
                         value={friendCode}
-                        placeholder="Enter friend code"
+                        placeholder="Enter friend's user code"
                         onChange={(c) => setFriendCode(c.target.value)}/>
                     <ButtonStyle
                         className={"submit-button"}
                         type="submit">
-                        send
+                        Submit
                     </ButtonStyle>
 
                 </form>

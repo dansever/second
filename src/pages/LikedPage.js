@@ -8,8 +8,6 @@ import Feed_Liked from "../components/Feed_Liked"
 import Colors from "../color.js";
 import {doc, getDoc} from "firebase/firestore";
 import {db} from "../firebase";
-
-
 export default function LikedPage() {
     const currentUser = useContext(AuthContext);
     const [userName, setUserName] = useState("");
@@ -22,7 +20,6 @@ export default function LikedPage() {
     };
 
     getUserName().then( result => { setUserName(result)});
-
     return (
         <div>
             {currentUser ?
