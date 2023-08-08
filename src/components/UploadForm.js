@@ -23,6 +23,7 @@ function App() {
     const [newBrand, setNewBrand] = useState("");
     const [newCondition, setNewCondition] = useState("");
     const [newGender, setNewGender] = useState("");
+    const [uplodaed, setUploaded] = useState(false);
 
     // File States
     const [imageFile, setImageFile] = useState(null);
@@ -86,6 +87,9 @@ function App() {
                         .then((downloadURL) => {
                             saveFormData(unique_filename, downloadURL);
                             setIsLoading(false);
+                            setUploaded(true);
+                            setTimeout(() => {setUploaded(false);}, 3000);
+
                         });
                 }
             );
@@ -303,6 +307,16 @@ function App() {
                 <div className="modal-content">
                     <h2>Uploading...</h2>
                     <img className={"loading"} src={loading} alt={"loading_object"}/>
+                </div>
+            </Modal>
+            <Modal className={"uploaded-modal"}
+                   open={uplodaed}
+                   centered
+                   closable={false}
+                   footer={[]}
+            >
+                <div className="modal-content">
+                    <h2>Item Uploaded!</h2>
                 </div>
             </Modal>
         </div>

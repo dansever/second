@@ -80,10 +80,10 @@ export const SignUp = () => {
 
             setDoc(newUserRef, data)
                 .then( () => {
-                    message.success(
-                        "User created successfully", 3, () => {
-                            console.log('Pop-up closed');
-                        });
+                    // message.success(
+                    //     "User created successfully", 3, () => {
+                    //         console.log('Pop-up closed');
+                    //     });
                     navigate("/Home");
                 })
 

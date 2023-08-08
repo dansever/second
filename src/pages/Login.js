@@ -7,7 +7,6 @@ import {Input, ConfigProvider} from "antd";
 import styled from "styled-components";
 import {ButtonStyle} from "../components/Button";
 import green_logo from "../assets/images/green_logo.png";
-// import {SignUpFriendCode} from "./pages/FriendCode";
 
 const Picture = styled.img`
     height: 30%;
