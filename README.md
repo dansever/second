@@ -1,6 +1,10 @@
 # second-app
 second-app is a mobile app developed as part of the Web Development Course @ HUJI
 
+## To run the deployed app on the web go to http://second-app-2529e.web.app
+
+To run app on local PC: 
+
 ## Setup Prerequisites:
 
 * React v18.2.0
