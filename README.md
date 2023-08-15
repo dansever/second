@@ -14,6 +14,7 @@ To get started developing right away:
 * Open your terminal
 $ npm install
 This should install all the dependencies.
+
 Once done run:
 $ npm start
 to start the app locally in your development environment, by default it will be in http://localhost:3000.
