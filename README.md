@@ -4,7 +4,7 @@ second-app is a mobile app developed as part of the Web Development Course @ HUJ
 ## Setup Prerequisites:
 
 * React v18.2.0
-* NPM (Node package manager) - npm is installed along with NodeJS, React.
+* NPM (Node package manager) - npm is installed along with React.
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 First Git clone the repo into your computer:
