@@ -22,4 +22,4 @@ Once done run:
 
 ```$ npm start```
 
-*to start the app locally in your development environment, by default it will be in http://localhost:3000.
+* to start the app locally in your development environment, by default it will be in http://localhost:3000.
