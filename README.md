@@ -1,5 +1,5 @@
 # second-app
-second-app is a mobile app developed as part of the Web Development Course @ HUJI
+second-app is a MOBILE app developed as part of the Web Development Course @ HUJI
 
 ## Setup Prerequisites:
 
